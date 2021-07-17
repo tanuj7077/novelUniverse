@@ -1,0 +1,158 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+} /*Removing every default margin or padding*/
+.dark {
+  --color-primary-light: #73bbfd;
+  --color-primary-dark: #2d86da;
+
+  --color-white: hsl(0, 0%, 15%);
+  --color-black: hsl(0, 0%, 80%);
+  --color-boxShadow: rgba(243, 230, 230, 0.3);
+
+  --color-red-light: rgb(247, 99, 99);
+  --color-blue-light: #73bbfd;
+
+  --color-topNav: hsla(0, 0%, 0%, 0.26);
+
+  --color-text: hsl(0, 0%, 80%);
+  --color-text-light: hsl(0, 0%, 70%);
+  --color-text-placeholder: rgb(175, 175, 175);
+
+  --color-card-bg: hsl(0, 0%, 25%);
+  --color-card-option: hsl(0, 0%, 15%);
+  --color-card-option-voted: hsla(216, 71%, 30%, 0.568);
+  --color-card-option-notVoted: hsl(0, 0%, 30%);
+  --color-card-tag: hsl(0, 0%, 70%);
+  --color-card-tag-text: hsl(0, 0%, 80%);
+  --color-card-tag-bg: hsl(0, 0%, 15%);
+
+  --color-modal-overlay: hsl(0, 0%, 0%);
+  --color-modal-bg: hsl(0, 0%, 25%);
+  --color-modal-primary: #73bbfd;
+  --color-modal-input: hsl(0, 0%, 19%);
+
+  //--color-body-background: #fff;
+  --color-button-background: #2d86da;
+  --color-button: #fff;
+  --color-button-bg: #2d86da;
+
+  --color-icons: hsl(0, 0%, 80%);
+  --color-icons-hover: #2d86da;
+
+  --color-search-bg: hsl(0, 0%, 20%);
+  --color-search-hover: hsl(0, 0%, 15%);
+
+  --color-bottomNav-bg: #2d86da;
+  --color-bottomNav-icon: #fff;
+
+  --color-sideContent-tags: hsl(0, 0%, 25%);
+}
+.light {
+  //new
+  --color-primary-light: #73bbfd;
+  --color-primary-dark: #2d86da;
+
+  --color-white: #fff;
+  --color-black: #000;
+  --color-boxShadow: rgba(0, 0, 0, 0.3);
+
+  --color-red-light: rgb(247, 99, 99);
+  --color-blue-light: #73bbfd;
+
+  // --color-topNav: rgba(235, 235, 235, 0.281);
+  --color-topNav: rgba(190, 190, 190, 0.281);
+
+  --color-text: #000;
+  --color-text-light: rgb(73, 73, 73);
+  --color-text-placeholder: rgb(175, 175, 175);
+
+  --color-card-bg: #fff;
+  --color-card-option: rgb(219, 219, 219);
+  --color-card-option-voted: #73bbfd;
+  --color-card-option-notVoted: rgb(175, 175, 175);
+  --color-card-tag: rgb(104, 104, 104);
+  --color-card-tag-text: #fff;
+  --color-card-tag-bg: rgb(175, 175, 175);
+
+  --color-modal-overlay: #000;
+  --color-modal-bg: #fff;
+  --color-modal-primary: #2d86da;
+  --color-modal-input: #fff;
+
+  --color-button-background: #fff;
+  --color-button: #2d86da;
+  --color-button-bg: transparent;
+
+  --color-icons: rgb(104, 104, 104);
+  --color-icons-hover: #2d86da;
+
+  //--color-search-text: red;
+  --color-search-bg: #fff;
+  --color-search-hover: hsl(0, 0%, 90%);
+
+  --color-bottomNav-bg: #fff;
+  --color-bottomNav-icon: #2d86da;
+
+  --color-sideContent-tags: rgb(219, 219, 219);
+}
+html {
+  font-family: "Nunito", sans-serif, courier, arial, helvetica;
+  font-weight: 400;
+  font-size: 62.5%; /*62.5% of 16px is 10px*/
+  //therfore 1rem = 10px
+
+  @include respond(tab-land) {
+    font-size: 56.25%; //1rem=9px
+  }
+  @include respond(tab-port) {
+    font-size: 50%; //1rem=8px
+  }
+  // @include respond(medium-desk) {
+  //   font-size: 67%; //1rem=12px
+  // }
+  @include respond(big-desk) {
+    font-size: 75%; //1rem=12px
+  }
+  @include respond(large-desk) {
+    font-size: 90%; //1rem=12px
+  }
+  @include respond(2k) {
+    font-size: 100%; //1rem=12px
+  }
+  @include respond(3k) {
+    font-size: 120%; //1rem=12px
+  }
+}
+
+body {
+  box-sizing: border-box;
+  text-transform: none;
+  background-color: var(--color-white);
+  overflow-x: hidden;
+  user-select: none;
+
+  transition: all 0.3s ease;
+}
+input,
+textarea {
+  font-family: "Nunito", sans-serif, courier, arial, helvetica;
+}
+
+::selection {
+  background-color: var(--color-tertiary-light);
+  color: var(--color-white);
+}
+
+a {
+  &:link,
+  &:visited,
+  &:hover,
+  &:active {
+    text-decoration: none;
+    color: white;
+  }
+}

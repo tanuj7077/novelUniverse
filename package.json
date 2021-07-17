@@ -9,13 +9,28 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
-    "web-vitals": "^1.1.2"
+    "web-vitals": "^1.1.2",
+    "autoprefixer": "^7.2.6",
+    "axios": "^0.21.1",
+    "firebase": "^8.2.10",
+    "node-sass": "^4.14.1",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^7.0.32",
+    "postcss-cli": "^7.1.2",
+    "react-icons": "^4.2.0",
+    "react-router-dom": "^5.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "compile:sass": "node-sass sass/main.scss public/stylesheets/style.comp.css",
+    "prefix:css": "postcss --use autoprefixer -b \"last 10 versions\" public/stylesheets/style.comp.css -o public/stylesheets/style.prefix.css",
+    "compress:css": "node-sass public/stylesheets/style.prefix.css src/style.css --output-style compressed",
+    "build:css": "npm-run-all compile:sass prefix:css compress:css",
+    "watch:sass": "node-sass sass/main.scss src/style.css -w",
+    "start:css": "npm-run-all --parallel watch:sass build:css"
   },
   "eslintConfig": {
     "extends": [
