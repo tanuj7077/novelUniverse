@@ -1,0 +1,86 @@
+export const data = [
+  {
+    img: "https://static.lightnovelpub.com/bookcover/158x210/00016-reincarnation-of-the-strongest-sword-god-novel.jpg",
+    title: "Reincarnation of the Strongest",
+    rating: 4.5,
+    rank: 1,
+  },
+  {
+    img: "https://static.lightnovelpub.com/bookcover/158x210/00548-the-beginning-after-the-end.jpg",
+    title: "Reincarnation of the Strongest",
+    rating: 4.2,
+    rank: 2,
+  },
+  {
+    img: "https://static.lightnovelpub.com/bookcover/158x210/00707-my-vampire-system-wnovel.jpg",
+    title: "Reincarnation of the Strongest",
+    rating: 4.3,
+    rank: 3,
+  },
+  {
+    img: "https://static.lightnovelpub.com/bookcover/158x210/00091-super-god-gene-novel.jpg",
+    title: "Reincarnation of the Strongest",
+    rating: 4.9,
+    rank: 4,
+  },
+  {
+    img: "https://static.lightnovelpub.com/bookcover/158x210/00045-trash-count-novel.jpg",
+    title: "Reincarnation of the Strongest",
+    rating: 4.0,
+    rank: 5,
+  },
+  {
+    img: "https://static.lightnovelpub.com/bookcover/158x210/00016-reincarnation-of-the-strongest-sword-god-novel.jpg",
+    title: "Reincarnation of the Strongest",
+    rating: 4.5,
+    rank: 1,
+  },
+  {
+    img: "https://static.lightnovelpub.com/bookcover/158x210/00548-the-beginning-after-the-end.jpg",
+    title: "Reincarnation of the Strongest",
+    rating: 4.2,
+    rank: 2,
+  },
+  {
+    img: "https://static.lightnovelpub.com/bookcover/158x210/00707-my-vampire-system-wnovel.jpg",
+    title: "Reincarnation of the Strongest",
+    rating: 4.3,
+    rank: 3,
+  },
+  {
+    img: "https://static.lightnovelpub.com/bookcover/158x210/00091-super-god-gene-novel.jpg",
+    title: "Reincarnation of the Strongest",
+    rating: 4.9,
+    rank: 4,
+  },
+  {
+    img: "https://static.lightnovelpub.com/bookcover/158x210/00045-trash-count-novel.jpg",
+    title: "Reincarnation of the Strongest",
+    rating: 4.0,
+    rank: 5,
+  },
+  {
+    img: "https://static.lightnovelpub.com/bookcover/158x210/00016-reincarnation-of-the-strongest-sword-god-novel.jpg",
+    title: "Reincarnation of the Strongest",
+    rating: 4.5,
+    rank: 1,
+  },
+  {
+    img: "https://static.lightnovelpub.com/bookcover/158x210/00548-the-beginning-after-the-end.jpg",
+    title: "Reincarnation of the Strongest",
+    rating: 4.2,
+    rank: 2,
+  },
+  {
+    img: "https://static.lightnovelpub.com/bookcover/158x210/00707-my-vampire-system-wnovel.jpg",
+    title: "Reincarnation of the Strongest",
+    rating: 4.3,
+    rank: 3,
+  },
+  {
+    img: "https://static.lightnovelpub.com/bookcover/158x210/00091-super-god-gene-novel.jpg",
+    title: "Reincarnation of the Strongest",
+    rating: 4.9,
+    rank: 4,
+  },
+];

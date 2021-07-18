@@ -126,6 +126,10 @@ html {
   @include respond(3k) {
     font-size: 120%; //1rem=12px
   }
+
+  //COLORS
+  --color-primary: hsl(160, 79%, 35%);
+  --color-primary-dark: hsl(160, 79%, 30%);
 }
 
 body {
@@ -135,7 +139,16 @@ body {
   overflow-x: hidden;
   user-select: none;
 
-  transition: all 0.3s ease;
+  &::-webkit-scrollbar {
+    width: 1.5rem;
+  }
+  &::-webkit-scrollbar-track {
+    background: white;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: var(--color-primary-dark);
+    border-radius: 0.75rem;
+  }
 }
 input,
 textarea {

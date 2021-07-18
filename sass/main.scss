@@ -1,5 +1,10 @@
 @import "abstract/mixins";
+@import "base/variables";
 @import "base/base";
+@import "base/animation";
+
+@import "pages/landing";
+@import "pages/home";
 
 @import "components/sideNav";
 @import "components/topNav";

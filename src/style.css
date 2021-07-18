@@ -91,7 +91,9 @@ html {
   font-family: "Nunito", sans-serif, courier, arial, helvetica;
   font-weight: 400;
   font-size: 62.5%;
-  /*62.5% of 16px is 10px*/ }
+  /*62.5% of 16px is 10px*/
+  --color-primary: hsl(160, 79%, 35%);
+  --color-primary-dark: hsl(160, 79%, 30%); }
   @media only screen and (max-width: 75em) {
     html {
       font-size: 56.25%; } }
@@ -116,8 +118,14 @@ body {
   text-transform: none;
   background-color: var(--color-white);
   overflow-x: hidden;
-  user-select: none;
-  transition: all 0.3s ease; }
+  user-select: none; }
+  body::-webkit-scrollbar {
+    width: 1.5rem; }
+  body::-webkit-scrollbar-track {
+    background: white; }
+  body::-webkit-scrollbar-thumb {
+    background: var(--color-primary-dark);
+    border-radius: 0.75rem; }
 
 input,
 textarea {
@@ -130,3 +138,211 @@ textarea {
 a:link, a:visited, a:hover, a:active {
   text-decoration: none;
   color: white; }
+
+@keyframes landingIntroClip {
+  100% {
+    clip-path: polygon(0 0, 100% 0%, 100% 77%, 0% 100%); } }
+
+.landing {
+  width: 100vw;
+  min-height: 100vh;
+  background-color: white;
+  position: relative;
+  display: flex;
+  flex-flow: column;
+  align-items: center; }
+  .landing-top {
+    width: 100%; }
+    .landing-top-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 12.5%;
+      background-color: var(--color-primary-dark);
+      position: relative; }
+      .landing-top-nav-logo {
+        font-size: 3rem;
+        color: white; }
+      .landing-top-nav-login {
+        font-size: 2rem;
+        color: white; }
+    .landing-top-intro {
+      padding: 1rem 30%;
+      height: 80vh;
+      -webkit-backdrop-filter: blur(10px);
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%);
+      animation: landingIntroClip 0.3s ease forwards;
+      overflow: hidden; }
+      .landing-top-intro-heading {
+        font-size: 4rem;
+        color: white;
+        z-index: 2; }
+      .landing-top-intro-desc {
+        margin-top: 1rem;
+        font-size: 2.5rem;
+        color: white;
+        text-align: center;
+        z-index: 2; }
+      .landing-top-intro-cta {
+        margin-top: 2rem;
+        font-size: 2.5rem;
+        border: 2px solid white;
+        padding: 0.5rem 3rem;
+        color: var(--color-primary-dark);
+        background-color: white;
+        z-index: 2;
+        border-radius: 3rem; }
+      .landing-top-intro::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: var(--color-primary-dark);
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        transform-origin: top left; }
+
+.homePage {
+  width: 100%;
+  min-height: calc(100vh - 6rem);
+  margin-top: 6rem;
+  padding: 5rem 12%;
+  padding-right: calc(12% - 6rem);
+  background-color: rgba(164, 244, 217, 0.418);
+  display: flex;
+  flex-flow: column;
+  gap: 4rem; }
+  .homePage-novels {
+    width: 100%;
+    height: 100%; }
+    .homePage-novels-heading {
+      font-size: 2.5rem;
+      color: black;
+      margin-bottom: 1rem; }
+    .homePage-novels-content {
+      display: grid;
+      grid-template-rows: min-content;
+      grid-template-columns: repeat(7, 1fr);
+      grid-auto-rows: min-content;
+      gap: 2rem; }
+      .homePage-novels-content .novel {
+        width: 100%;
+        height: max-content;
+        border-radius: 1rem;
+        overflow: hidden;
+        position: relative; }
+        .homePage-novels-content .novel-img {
+          width: 100%;
+          padding-top: 140%;
+          background-size: cover;
+          background-position: center; }
+        .homePage-novels-content .novel-info {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: max-content;
+          background-color: rgba(0, 0, 0, 0.7); }
+          .homePage-novels-content .novel-info-title {
+            padding: 1rem;
+            color: #d4d4d4;
+            font-size: 1.6rem; }
+          .homePage-novels-content .novel-info-rating {
+            float: right;
+            padding: 0.2rem 1rem;
+            color: #d4d4d4;
+            font-size: 1.6rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem; }
+          .homePage-novels-content .novel-info-ranking {
+            float: left;
+            padding: 0.2rem 1rem;
+            color: #d4d4d4;
+            font-size: 1.6rem; }
+    .homePage-novels-more {
+      padding: 1rem 0.2rem;
+      font-size: 1.6rem; }
+
+.sideNav {
+  width: 6rem;
+  height: 100vh;
+  position: fixed;
+  top: 6rem;
+  left: 0;
+  background-color: #108a61;
+  display: flex;
+  flex-flow: column;
+  gap: 2rem;
+  padding-top: 4rem;
+  overflow: hidden;
+  align-items: center;
+  z-index: 1;
+  transition: width 0.2s ease;
+  z-index: 3; }
+  .sideNav-hamburger {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 2rem;
+    height: 2rem;
+    margin: 2rem;
+    color: #108a61; }
+  .sideNav-menuItem {
+    width: max-content; }
+    .sideNav-menuItem-icon {
+      color: white;
+      width: 3rem;
+      height: 3rem;
+      transform: scale(1);
+      transition: opacity 1s ease, transform 1s ease; }
+    .sideNav-menuItem-text {
+      font-size: 2rem;
+      text-transform: uppercase;
+      color: white;
+      transition: opacity 1s ease; }
+    .sideNav-menuItem .hideIcon {
+      display: none;
+      opacity: 0;
+      transform: scale(0);
+      transition: opacity 1s ease, transform 1s ease; }
+    .sideNav-menuItem .hideText {
+      display: none;
+      opacity: 0; }
+
+.expanded {
+  width: 15rem; }
+
+.topNav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6rem;
+  background-color: rgba(164, 244, 217, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12%;
+  padding-right: calc(12% - 6rem);
+  border-bottom: 1px solid var(--color-primary-dark);
+  z-index: 2; }
+  .topNav-logo {
+    color: var(--color-primary-dark);
+    font-size: 3rem; }
+  .topNav-login {
+    color: white;
+    text-transform: uppercase;
+    font-size: 1.6rem;
+    border-radius: 15px;
+    padding: 0.5rem 2rem;
+    background-color: var(--color-primary); }

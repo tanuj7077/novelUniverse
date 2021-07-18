@@ -1,0 +1,75 @@
+.landing {
+  width: 100vw;
+  min-height: 100vh;
+  background-color: white;
+  position: relative;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+
+  &-top {
+    width: 100%;
+    &-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 12.5%;
+      background-color: var(--color-primary-dark);
+      position: relative;
+      &-logo {
+        font-size: $logo-small-font-size;
+        color: white;
+      }
+      &-login {
+        font-size: $small-font-size;
+        color: white;
+      }
+    }
+    &-intro {
+      padding: 1rem 30%;
+      height: 80vh;
+      -webkit-backdrop-filter: blur(10px);
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%);
+      animation: landingIntroClip 0.3s ease forwards;
+      overflow: hidden;
+      &-heading {
+        font-size: $logo-font-size;
+        color: white;
+        z-index: 2;
+      }
+      &-desc {
+        margin-top: 1rem;
+        font-size: $medium-font-size;
+        color: white;
+        text-align: center;
+        z-index: 2;
+      }
+      &-cta {
+        margin-top: 2rem;
+        font-size: $medium-font-size;
+        border: 2px solid white;
+        padding: 0.5rem 3rem;
+        color: var(--color-primary-dark);
+        background-color: white;
+        z-index: 2;
+        border-radius: 3rem;
+      }
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: var(--color-primary-dark);
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        transform-origin: top left;
+      }
+    }
+  }
+}
