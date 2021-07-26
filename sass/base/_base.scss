@@ -137,13 +137,13 @@ body {
   text-transform: none;
   background-color: var(--color-white);
   overflow-x: hidden;
-  user-select: none;
+  // user-select: none;
 
   &::-webkit-scrollbar {
     width: 1.5rem;
   }
   &::-webkit-scrollbar-track {
-    background: white;
+    background: hsl(160, 79%, 15%);
   }
   &::-webkit-scrollbar-thumb {
     background: var(--color-primary-dark);
@@ -156,8 +156,8 @@ textarea {
 }
 
 ::selection {
-  background-color: var(--color-tertiary-light);
-  color: var(--color-white);
+  // background-color: var(--color-tertiary-light);
+  // color: var(--color-white);
 }
 
 a {

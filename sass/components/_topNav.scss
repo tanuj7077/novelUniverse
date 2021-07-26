@@ -1,10 +1,10 @@
-.topNav {
+/*.topNav {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   height: 6rem;
-  background-color: hsla(160, 79%, 80%, 0.7);
+  background-color: hsla(160, 79%, 100%, 0.7);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   display: flex;
@@ -27,4 +27,62 @@
     padding: 0.5rem 2rem;
     background-color: var(--color-primary);
   }
+}*/
+
+.topNav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6rem;
+  background-color: hsla(160, 79%, 15%, 0.9);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5%;
+  // border-bottom: 1px solid hsl(160, 79%, 15%);
+  z-index: 10;
+  &-left {
+    display: flex;
+    gap: 4rem;
+    align-items: center;
+    letter-spacing: 0.3rem;
+    .item {
+      font-size: $default-font-size;
+      color: white;
+    }
+  }
+  &-logo {
+    color: white;
+    font-size: $logo-small-font-size;
+  }
+  /*&-menuItems {
+    display: flex;
+    gap: 2rem;
+    font-size: $medium-font-size;
+    color: white;
+  }*/
+  &-right {
+    color: white;
+    text-transform: uppercase;
+    font-size: $default-font-size;
+    border-radius: 15px;
+    padding: 0.5rem 2rem;
+    background-color: var(--color-primary);
+  }
+  /*&-logo {
+    color: white;
+    font-size: $logo-small-font-size;
+  }
+  &-login {
+    color: white;
+    text-transform: uppercase;
+    font-size: $default-font-size;
+    border-radius: 15px;
+    padding: 0.5rem 2rem;
+    background-color: var(--color-primary);
+  }*/
 }

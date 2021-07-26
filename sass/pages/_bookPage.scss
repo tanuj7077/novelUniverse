@@ -1,0 +1,309 @@
+.bookPage {
+  width: 100%;
+  min-height: calc(100vh);
+  // margin-top: 6rem;
+  // padding: 5rem 12%;
+  // padding-right: calc(12% - 6rem);
+  // background-color: hsla(160, 79%, 100%, 0.4);
+  background-color: hsl(160, 79%, 15%);
+  display: flex;
+  flex-flow: column;
+  gap: 4rem;
+  align-items: center;
+  .introSection {
+    width: 71%;
+    height: max-content;
+    padding-top: 13rem;
+    // padding-right: calc(12% - 6rem);
+    // background-color: rgb(147, 194, 149);
+    background-color: hsl(160, 79%, 15%);
+    display: flex;
+    justify-content: space-between;
+    gap: 4rem;
+    color: white;
+    &-img {
+      height: 38rem;
+      width: 27rem;
+      border-radius: 1rem;
+      position: relative;
+      .image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 38rem;
+        width: 27rem;
+        background-size: cover;
+        background-position: center;
+        padding: 0%;
+        border-radius: 1rem;
+        z-index: 2;
+      }
+      &::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        width: 27rem;
+        height: 27rem;
+        border-radius: 50%;
+        z-index: 1;
+        box-shadow: hsla(160, 79%, 25%, 0.3) 0px 0px 25rem 25rem;
+      }
+    }
+    &-info {
+      width: 75rem;
+      display: flex;
+      flex-flow: column;
+      // gap: 0.5em;
+      z-index: 3;
+      justify-content: space-between;
+      &-top {
+        width: 100%;
+        position: relative;
+      }
+      &-main {
+        width: 85%;
+      }
+      &-rating {
+        width: 15%;
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        .rating {
+          font-size: $large-font-size;
+        }
+        .icon {
+          width: 2.5rem;
+          height: 2.5rem;
+        }
+      }
+      &-title {
+        font-size: $large-font-size;
+        letter-spacing: 0.3rem;
+      }
+      &-author {
+        font-size: $medium-font-size;
+        .subheading {
+          font-size: $small-font-size;
+          color: rgb(190, 190, 190);
+          margin-right: 1rem;
+        }
+      }
+      &-other {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        .otherInfo {
+          font-size: $medium-font-size;
+          width: max-content;
+          display: flex;
+          flex-flow: column;
+          align-items: center;
+          padding: 0rem 2rem;
+          .subheading {
+            font-size: $small-font-size;
+            // color: rgb(71, 71, 71);
+            color: rgb(190, 190, 190);
+          }
+        }
+        .otherInfo:first-child {
+          padding-left: 0;
+        }
+      }
+      &-tags {
+        // margin-top: 2rem;
+        width: 100%;
+        .subheading {
+          font-size: $small-font-size;
+          color: rgb(190, 190, 190);
+          margin-bottom: 0.6rem;
+        }
+        .tags {
+          width: 100%;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 1.5rem;
+        }
+        .tag {
+          color: white;
+          padding: 0.4rem 1rem;
+          border-radius: 0.5rem;
+          font-size: $small-font-size;
+          // background-color: var(--color-primary-dark);
+          background-color: hsla(160, 79%, 10%, 0.5);
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
+        }
+      }
+      &-buttons {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        .btn {
+          font-size: $small-font-size;
+          width: 45%;
+          height: 5rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 1rem;
+          // padding: 1rem 1.5rem;
+          // border-radius: 0.5rem;
+          background-color: hsla(160, 79%, 10%, 0.5);
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
+          letter-spacing: 0.3rem;
+          text-transform: uppercase;
+        }
+        .icon {
+          color: white;
+        }
+      }
+    }
+  }
+  .selection {
+    display: flex;
+    width: 71%;
+    gap: 5rem;
+    .item {
+      font-size: $medium-font-size;
+      font-weight: bold;
+      color: rgb(184, 184, 184);
+      text-transform: uppercase;
+      letter-spacing: 0.3rem;
+    }
+  }
+  .aboutSection {
+    width: calc(71%);
+    height: max-content;
+    font-size: $medium-font-size;
+    letter-spacing: 0.2rem;
+    color: rgb(184, 184, 184);
+    text-align: justify;
+    padding: 5rem;
+    background-color: hsla(0, 0%, 73%, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 2rem;
+    z-index: 2;
+    // box-shadow: hsla(160, 79%, 25%, 0.3) 0px 0px 25rem 25rem;
+    ////box-shadow: hsla(160, 79%, 0%, 0.3) 0px 0px 10px;
+  }
+  .chapterSection {
+    width: calc(71%);
+    height: max-content;
+    color: rgb(184, 184, 184);
+    padding: 5rem;
+    background-color: hsla(0, 0%, 73%, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 2rem;
+    z-index: 2;
+    &-latest {
+      width: max-content;
+      .subheading {
+        font-size: $small-font-size;
+        font-weight: bold;
+      }
+      .chapter {
+        font-size: $medium-font-size;
+        letter-spacing: 0.2rem;
+      }
+    }
+    &-goto {
+      margin-top: 3rem;
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+      .goto {
+        align-items: center;
+        display: flex;
+        gap: 1rem;
+      }
+      .subheading {
+        font-size: $small-font-size;
+        font-weight: bold;
+      }
+      .chapterInput {
+        border: none;
+        outline: none;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        background-color: hsla(0, 0%, 95%, 0.3);
+        color: hsl(160, 79%, 15%);
+        text-align: center;
+        font-size: $small-font-size;
+        font-weight: bold;
+        width: 10rem;
+        &::placeholder {
+          color: hsl(160, 79%, 15%);
+        }
+        &::-webkit-inner-spin-button,
+        &::-webkit-outer-spin-button {
+          -webkit-appearance: none;
+        }
+      }
+      .gotoBtn {
+        font-size: $default-font-size;
+        padding: 1rem 1.5rem;
+        border-radius: 0.5rem;
+        background-color: hsla(160, 79%, 10%, 0.8);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        letter-spacing: 0.3rem;
+        text-transform: uppercase;
+      }
+      .pageChange {
+        display: flex;
+        gap: 1rem;
+        &-icon {
+          padding: 1rem;
+          border-radius: 0.5rem;
+          background-color: hsla(160, 79%, 10%, 0.8);
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
+          width: 4rem;
+          height: 4rem;
+        }
+        .page {
+          font-size: $small-font-size;
+          display: grid;
+          place-items: center;
+        }
+      }
+    }
+    &-chapters {
+      margin-top: 2rem;
+      border-radius: 1rem;
+      padding: 3rem;
+      background-color: hsl(160, 79%, 15%);
+      // box-shadow: hsla(0, 0%, 73%, 0.1) 0px 0px 50px inset;
+      box-shadow: hsla(0, 0%, 0%, 0.2) 0px 0px 20px 5px inset;
+      // border: 1px solid hsl(160, 79%, 15%);
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      //grid-template-rows: max-content;
+      gap: 2rem;
+      .chapter {
+        background-color: hsla(0, 0%, 73%, 0.1);
+        border-radius: 1rem;
+        font-size: $small-font-size;
+        padding: 1rem 2rem;
+        .count {
+          font-size: $default-font-size;
+        }
+        transition: all 0.2s ease;
+        &:hover {
+          cursor: pointer;
+          transform: scale(1.02);
+          box-shadow: hsla(160, 79%, 10%, 0.5) 5px 5px 20px 5px;
+          background-color: hsla(0, 0%, 80%, 0.1);
+        }
+      }
+    }
+  }
+}

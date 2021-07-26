@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { data } from "../mockData";
 import { FaStar } from "react-icons/fa";
+import { Route } from "react-router-dom";
 
 const Home = () => {
   console.log(data);
@@ -12,22 +13,33 @@ const Home = () => {
           {data &&
             data.map((item) => {
               return (
-                <div className="novel">
-                  <div
-                    className="novel-img"
-                    style={{
-                      backgroundImage: `url(${item.img})`,
-                    }}
-                  ></div>
-                  <div className="novel-info">
-                    <div className="novel-info-title">{item.title}</div>
-                    <div className="novel-info-rating">
-                      {item.rating}
-                      <FaStar />
+                <Route
+                  render={({ history }) => (
+                    <div
+                      className="novel"
+                      onClick={() => {
+                        history.push(`/book/book1`);
+                      }}
+                    >
+                      <div
+                        className="novel-img"
+                        style={{
+                          backgroundImage: `url(${item.img})`,
+                        }}
+                      ></div>
+                      <div className="novel-info">
+                        <div className="novel-info-title">{item.title}</div>
+                        <div className="novel-info-rating">
+                          {item.rating}
+                          <FaStar />
+                        </div>
+                        <div className="novel-info-ranking">
+                          Rank: {item.rank}
+                        </div>
+                      </div>
                     </div>
-                    <div className="novel-info-ranking">Rank: {item.rank}</div>
-                  </div>
-                </div>
+                  )}
+                />
               );
             })}
         </div>

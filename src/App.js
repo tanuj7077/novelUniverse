@@ -22,7 +22,7 @@ function App() {
         <Landing />
       </Route>
       <>
-        <SideNav />
+        {/* <SideNav /> */}
         <TopNav />
         <Route path="/home">
           <Home />
