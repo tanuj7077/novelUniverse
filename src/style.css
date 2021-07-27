@@ -569,9 +569,15 @@ a:link, a:visited, a:hover, a:active {
       font-weight: bold;
       color: #b8b8b8;
       text-transform: uppercase;
-      letter-spacing: 0.3rem; }
+      letter-spacing: 0.3rem;
+      transition: all 0.2s linear; }
+      .bookPage .selection .item:hover {
+        cursor: pointer; }
+    .bookPage .selection .currentSelection {
+      transform: scale(1.05);
+      color: white; }
   .bookPage .aboutSection {
-    width: calc(71%);
+    width: 71%;
     height: max-content;
     font-size: 2.5rem;
     letter-spacing: 0.2rem;
@@ -660,13 +666,15 @@ a:link, a:visited, a:hover, a:active {
       box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 20px 5px inset;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 2rem; }
+      gap: 2rem;
+      perspective: 1000px; }
       .bookPage .chapterSection-chapters .chapter {
         background-color: rgba(186, 186, 186, 0.1);
         border-radius: 1rem;
         font-size: 2rem;
+        opacity: 0;
         padding: 1rem 2rem;
-        transition: all 0.2s ease; }
+        transform-origin: center; }
         .bookPage .chapterSection-chapters .chapter .count {
           font-size: 1.6rem; }
         .bookPage .chapterSection-chapters .chapter:hover {
@@ -674,6 +682,12 @@ a:link, a:visited, a:hover, a:active {
           transform: scale(1.02);
           box-shadow: rgba(5, 46, 32, 0.5) 5px 5px 20px 5px;
           background-color: rgba(204, 204, 204, 0.1); }
+      .bookPage .chapterSection-chapters .fadeAway {
+        opacity: 0;
+        transition: all 0.2s linear; }
+      .bookPage .chapterSection-chapters .fadeIn {
+        opacity: 1;
+        transition: all 0.2s linear; }
 
 .sideNav {
   width: 6rem;

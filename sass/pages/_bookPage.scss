@@ -175,10 +175,18 @@
       color: rgb(184, 184, 184);
       text-transform: uppercase;
       letter-spacing: 0.3rem;
+      transition: all 0.2s linear;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    .currentSelection {
+      transform: scale(1.05);
+      color: white;
     }
   }
   .aboutSection {
-    width: calc(71%);
+    width: 71%;
     height: max-content;
     font-size: $medium-font-size;
     letter-spacing: 0.2rem;
@@ -281,22 +289,23 @@
       border-radius: 1rem;
       padding: 3rem;
       background-color: hsl(160, 79%, 15%);
-      // box-shadow: hsla(0, 0%, 73%, 0.1) 0px 0px 50px inset;
       box-shadow: hsla(0, 0%, 0%, 0.2) 0px 0px 20px 5px inset;
-      // border: 1px solid hsl(160, 79%, 15%);
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      //grid-template-rows: max-content;
       gap: 2rem;
+      perspective: 1000px;
       .chapter {
         background-color: hsla(0, 0%, 73%, 0.1);
         border-radius: 1rem;
         font-size: $small-font-size;
+        // transform: scale(0.5);
+        opacity: 0;
         padding: 1rem 2rem;
+        transform-origin: center;
+        // transition: all 0.3s ease;
         .count {
           font-size: $default-font-size;
         }
-        transition: all 0.2s ease;
         &:hover {
           cursor: pointer;
           transform: scale(1.02);
@@ -304,6 +313,18 @@
           background-color: hsla(0, 0%, 80%, 0.1);
         }
       }
+      .fadeAway {
+        // transform: translateZ(-100px);
+        opacity: 0;
+        transition: all 0.2s linear;
+      }
+      .fadeIn {
+        // transform: translateZ(0px);
+        opacity: 1;
+        transition: all 0.2s linear;
+      }
     }
+  }
+  .reviewsSection {
   }
 }

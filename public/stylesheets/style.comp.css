@@ -581,7 +581,8 @@ a:link, a:visited, a:hover, a:active {
     background-color: rgba(186, 186, 186, 0.1);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border-radius: 2rem; }
+    border-radius: 2rem;
+    z-index: 2; }
   .bookPage .chapterSection {
     width: calc(71%);
     height: max-content;
@@ -590,7 +591,124 @@ a:link, a:visited, a:hover, a:active {
     background-color: rgba(186, 186, 186, 0.1);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border-radius: 2rem; }
+    border-radius: 2rem;
+    z-index: 2;
+    /*&-chapters {
+      margin-top: 2rem;
+      border-radius: 1rem;
+      padding: 3rem;
+      background-color: hsl(160, 79%, 15%);
+      box-shadow: hsla(0, 0%, 0%, 0.2) 0px 0px 20px 5px inset;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      .chapter {
+        background-color: hsla(0, 0%, 73%, 0.1);
+        border-radius: 1rem;
+        font-size: $small-font-size;
+        padding: 1rem 2rem;
+        .count {
+          font-size: $default-font-size;
+        }
+        transition: all 0.2s ease;
+        &:hover {
+          cursor: pointer;
+          transform: scale(1.02);
+          box-shadow: hsla(160, 79%, 10%, 0.5) 5px 5px 20px 5px;
+          background-color: hsla(0, 0%, 80%, 0.1);
+        }
+      }
+    }*/ }
+    .bookPage .chapterSection-latest {
+      width: max-content; }
+      .bookPage .chapterSection-latest .subheading {
+        font-size: 2rem;
+        font-weight: bold; }
+      .bookPage .chapterSection-latest .chapter {
+        font-size: 2.5rem;
+        letter-spacing: 0.2rem; }
+    .bookPage .chapterSection-goto {
+      margin-top: 3rem;
+      align-items: center;
+      display: flex;
+      justify-content: space-between; }
+      .bookPage .chapterSection-goto .goto {
+        align-items: center;
+        display: flex;
+        gap: 1rem; }
+      .bookPage .chapterSection-goto .subheading {
+        font-size: 2rem;
+        font-weight: bold; }
+      .bookPage .chapterSection-goto .chapterInput {
+        border: none;
+        outline: none;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        background-color: rgba(242, 242, 242, 0.3);
+        color: #084430;
+        text-align: center;
+        font-size: 2rem;
+        font-weight: bold;
+        width: 10rem; }
+        .bookPage .chapterSection-goto .chapterInput::placeholder {
+          color: #084430; }
+        .bookPage .chapterSection-goto .chapterInput::-webkit-inner-spin-button, .bookPage .chapterSection-goto .chapterInput::-webkit-outer-spin-button {
+          -webkit-appearance: none; }
+      .bookPage .chapterSection-goto .gotoBtn {
+        font-size: 1.6rem;
+        padding: 1rem 1.5rem;
+        border-radius: 0.5rem;
+        background-color: rgba(5, 46, 32, 0.8);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        letter-spacing: 0.3rem;
+        text-transform: uppercase; }
+      .bookPage .chapterSection-goto .pageChange {
+        display: flex;
+        gap: 1rem; }
+        .bookPage .chapterSection-goto .pageChange-icon {
+          padding: 1rem;
+          border-radius: 0.5rem;
+          background-color: rgba(5, 46, 32, 0.8);
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
+          width: 4rem;
+          height: 4rem; }
+        .bookPage .chapterSection-goto .pageChange .page {
+          font-size: 2rem;
+          display: grid;
+          place-items: center; }
+    .bookPage .chapterSection-chapters {
+      margin-top: 2rem;
+      border-radius: 1rem;
+      padding: 3rem;
+      background-color: #084430;
+      box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 20px 5px inset;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem; }
+      .bookPage .chapterSection-chapters .chapter {
+        background-color: rgba(186, 186, 186, 0.1);
+        border-radius: 1rem;
+        font-size: 2rem;
+        transform: scale(0.5);
+        opacity: 0;
+        padding: 1rem 2rem; }
+        .bookPage .chapterSection-chapters .chapter .count {
+          font-size: 1.6rem; }
+        .bookPage .chapterSection-chapters .chapter:hover {
+          cursor: pointer;
+          transform: scale(1.02);
+          box-shadow: rgba(5, 46, 32, 0.5) 5px 5px 20px 5px;
+          background-color: rgba(204, 204, 204, 0.1); }
+      .bookPage .chapterSection-chapters .fadeAway {
+        transform: scale(0.9);
+        opacity: 0;
+        transition: all 1s ease forwards; }
+      .bookPage .chapterSection-chapters .fadeIn {
+        transform: scale(1);
+        opacity: 1;
+        transition: all 1s ease forwards; }
 
 .sideNav {
   width: 6rem;

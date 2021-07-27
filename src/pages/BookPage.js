@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import { FaPlay } from "react-icons/fa";
 import { MdCollectionsBookmark } from "react-icons/md";
 import { FaStar, FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import Chapters from "./BookPage/Chapters";
+import Summary from "./BookPage/Summary";
+import Reviews from "./BookPage/Reviews";
 
 const BookPage = () => {
-  const LIMIT = 8;
-  const [chapters, setChapters] = useState([]);
+  const [selection, setSelection] = useState("summary");
   let novelObj = {
     img: "https://static.lightnovelpub.com/bookcover/158x210/00016-reincarnation-of-the-strongest-sword-god-novel.jpg",
     title: "Reincarnation of the Strongest Swordsman in Universe",
@@ -44,17 +46,6 @@ const BookPage = () => {
     "Random chapter19",
     "Random chapter20",
   ];
-  const paginate = () => {
-    let count = Math.ceil(allChapters.length / LIMIT);
-    let arr = [];
-    for (let i = 0; i < count; i++) {
-      arr.push(allChapters.slice(i * LIMIT, (i + 1) * LIMIT));
-    }
-    setChapters(arr);
-  };
-  useEffect(() => {
-    paginate();
-  }, []);
   return (
     <div className="bookPage">
       <section className="introSection">
@@ -120,55 +111,41 @@ const BookPage = () => {
         </div>
       </section>
       <section className="selection">
-        <div className="item">Summary</div>
-        <div className="item">Chapters</div>
-        <div className="item">Reviews</div>
+        <div
+          className={`item ${
+            selection === "summary" ? "currentSelection" : ""
+          }`}
+          onClick={() => {
+            setSelection("summary");
+          }}
+        >
+          Summary
+        </div>
+        <div
+          className={`item ${
+            selection === "chapters" ? "currentSelection" : ""
+          }`}
+          onClick={() => {
+            setSelection("chapters");
+          }}
+        >
+          Chapters
+        </div>
+        <div
+          className={`item ${
+            selection === "reviews" ? "currentSelection" : ""
+          }`}
+          onClick={() => {
+            setSelection("reviews");
+          }}
+        >
+          Reviews
+        </div>
       </section>
 
-      <section className="chapterSection">
-        <div className="chapterSection-latest">
-          <div className="subheading">Latest Release:</div>
-          <div className="chapter">
-            Chapter {allChapters.length - 1}:{" "}
-            {allChapters[allChapters.length - 1]}
-          </div>
-        </div>
-        <div className="chapterSection-goto">
-          <div className="goto">
-            <p className="subheading">Enter Chapter: </p>
-            <input type="number" className="chapterInput" value="1" />
-            <p className="gotoBtn">Go!</p>
-          </div>
-          <div className="pageChange">
-            <FaChevronLeft className="pageChange-icon" />
-            <div className="page">1 / 3</div>
-            <FaChevronRight className="pageChange-icon" />
-          </div>
-        </div>
-        <div className="chapterSection-chapters">
-          {/* <div className="chapters"> */}
-          {allChapters.map((chapter, index) => {
-            return (
-              <div className="chapter">
-                <p className="count">Chapter: {index + 1}</p>
-                <p className="chapterName">{chapter}</p>
-              </div>
-            );
-          })}
-          {/* </div> */}
-        </div>
-      </section>
-      <section className="aboutSection">
-        Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. Lorem Ipsum has been the industry's standard dummy text ever
-        since the 1500s, when an unknown printer took a galley of type and
-        scrambled it to make a type specimen book. It has survived not only five
-        centuries, but also the leap into electronic typesetting, remaining
-        essentially unchanged. It was popularised in the 1960s with the release
-        of Letraset sheets containing Lorem Ipsum passages, and more recently
-        with desktop publishing software like Aldus PageMaker including versions
-        of Lorem Ipsum.
-      </section>
+      {selection === "summary" && <Summary />}
+      {selection === "chapters" && <Chapters allChapters={allChapters} />}
+      {selection === "reviews" && <Reviews />}
       <section className="commentSection"></section>
       <section className="recommendedSection"></section>
     </div>
