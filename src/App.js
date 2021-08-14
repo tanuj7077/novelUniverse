@@ -7,7 +7,7 @@ import { useGlobalContext } from "./context";
 import Landing from "./pages/Landing";
 import Home from "./pages/Home";
 import Browse from "./pages/Browse";
-import Collection from "./pages/Collection";
+import Collection from "./pages/CollectionPage/Collection";
 import Profile from "./pages/Profile";
 import Contact from "./pages/Contact";
 import BookPage from "./pages/BookPage";
