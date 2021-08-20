@@ -13,6 +13,7 @@ import Contact from "./pages/Contact";
 import BookPage from "./pages/BookPage";
 import SideNav from "./components/Navigation/SideNav";
 import TopNav from "./components/Navigation/TopNav";
+import Chapter from "./components/Chapter/Chapter";
 
 axios.defaults.withCredentials = true;
 function App() {
@@ -20,6 +21,9 @@ function App() {
     <Switch>
       <Route path="/" exact>
         <Landing />
+      </Route>
+      <Route path="/chapter/:id" exact>
+        <Chapter />
       </Route>
       <>
         {/* <SideNav /> */}

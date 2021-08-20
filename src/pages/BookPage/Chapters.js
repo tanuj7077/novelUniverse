@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { Route } from "react-router-dom";
 
 function Chapters({ allChapters }) {
   const LIMIT = 8;
@@ -74,12 +75,23 @@ function Chapters({ allChapters }) {
         {chapters[page - 1] &&
           chapters[page - 1].map((chapter, index) => {
             return (
-              <div className={`chapter ${chapterTransitionStat}`}>
-                <p className="count">
-                  Chapter: {(page - 1) * LIMIT + index + 1}
-                </p>
-                <p className="chapterName">{chapter}</p>
-              </div>
+              <Route
+                render={({ history }) => (
+                  <div
+                    className={`chapter ${chapterTransitionStat}`}
+                    onClick={() => {
+                      history.push(
+                        `/chapter/${(page - 1) * LIMIT + index + 1}`
+                      );
+                    }}
+                  >
+                    <p className="count">
+                      Chapter: {(page - 1) * LIMIT + index + 1}
+                    </p>
+                    <p className="chapterName">{chapter}</p>
+                  </div>
+                )}
+              />
             );
           })}
       </div>

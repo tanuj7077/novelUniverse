@@ -143,10 +143,17 @@ body {
     width: 1.5rem;
   }
   &::-webkit-scrollbar-track {
-    background: hsl(160, 79%, 15%);
+    // background: hsl(160, 79%, 15%);
+    background: transparent;
   }
   &::-webkit-scrollbar-thumb {
-    background: var(--color-primary-dark);
+    //background: var(--color-primary-dark);
+    background: linear-gradient(
+      135deg,
+      rgb(104, 187, 255) 0%,
+      rgb(85, 255, 212) 49%,
+      rgb(133, 255, 109) 100%
+    );
     border-radius: 0.75rem;
   }
 }

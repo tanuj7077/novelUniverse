@@ -100,11 +100,11 @@ const BookPage = () => {
           </div>
           <div className="introSection-info-buttons">
             <div className="add btn">
-              <MdCollectionsBookmark className="icon" />
+              {/* <MdCollectionsBookmark className="icon" /> */}
               <span className="text">Add to Collection</span>
             </div>
             <div className="start btn">
-              <FaPlay className="icon" />
+              {/* <FaPlay className="icon" /> */}
               <span className="text">{novelObj.readStatus}</span>
             </div>
           </div>

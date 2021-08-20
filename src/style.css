@@ -1,1 +1,1461 @@
-*,*::after,*::before{margin:0;padding:0;box-sizing:inherit}.dark{--color-primary-light: #73bbfd;--color-primary-dark: #2d86da;--color-white: hsl(0, 0%, 15%);--color-black: hsl(0, 0%, 80%);--color-boxShadow: rgba(243, 230, 230, 0.3);--color-red-light: rgb(247, 99, 99);--color-blue-light: #73bbfd;--color-topNav: hsla(0, 0%, 0%, 0.26);--color-text: hsl(0, 0%, 80%);--color-text-light: hsl(0, 0%, 70%);--color-text-placeholder: rgb(175, 175, 175);--color-card-bg: hsl(0, 0%, 25%);--color-card-option: hsl(0, 0%, 15%);--color-card-option-voted: hsla(216, 71%, 30%, 0.568);--color-card-option-notVoted: hsl(0, 0%, 30%);--color-card-tag: hsl(0, 0%, 70%);--color-card-tag-text: hsl(0, 0%, 80%);--color-card-tag-bg: hsl(0, 0%, 15%);--color-modal-overlay: hsl(0, 0%, 0%);--color-modal-bg: hsl(0, 0%, 25%);--color-modal-primary: #73bbfd;--color-modal-input: hsl(0, 0%, 19%);--color-button-background: #2d86da;--color-button: #fff;--color-button-bg: #2d86da;--color-icons: hsl(0, 0%, 80%);--color-icons-hover: #2d86da;--color-search-bg: hsl(0, 0%, 20%);--color-search-hover: hsl(0, 0%, 15%);--color-bottomNav-bg: #2d86da;--color-bottomNav-icon: #fff;--color-sideContent-tags: hsl(0, 0%, 25%)}.light{--color-primary-light: #73bbfd;--color-primary-dark: #2d86da;--color-white: #fff;--color-black: #000;--color-boxShadow: rgba(0, 0, 0, 0.3);--color-red-light: rgb(247, 99, 99);--color-blue-light: #73bbfd;--color-topNav: rgba(190, 190, 190, 0.281);--color-text: #000;--color-text-light: rgb(73, 73, 73);--color-text-placeholder: rgb(175, 175, 175);--color-card-bg: #fff;--color-card-option: rgb(219, 219, 219);--color-card-option-voted: #73bbfd;--color-card-option-notVoted: rgb(175, 175, 175);--color-card-tag: rgb(104, 104, 104);--color-card-tag-text: #fff;--color-card-tag-bg: rgb(175, 175, 175);--color-modal-overlay: #000;--color-modal-bg: #fff;--color-modal-primary: #2d86da;--color-modal-input: #fff;--color-button-background: #fff;--color-button: #2d86da;--color-button-bg: transparent;--color-icons: rgb(104, 104, 104);--color-icons-hover: #2d86da;--color-search-bg: #fff;--color-search-hover: hsl(0, 0%, 90%);--color-bottomNav-bg: #fff;--color-bottomNav-icon: #2d86da;--color-sideContent-tags: rgb(219, 219, 219)}html{font-family:"Nunito", sans-serif, courier, arial, helvetica;font-weight:400;font-size:62.5%;--color-primary: hsl(160, 79%, 35%);--color-primary-dark: hsl(160, 79%, 30%)}@media only screen and (max-width: 75em){html{font-size:56.25%}}@media only screen and (max-width: 56.25em){html{font-size:50%}}@media only screen and (min-width: 112.5em){html{font-size:75%}}@media only screen and (min-width: 131.25em){html{font-size:90%}}@media only screen and (min-width: 160em){html{font-size:100%}}@media only screen and (min-width: 192em){html{font-size:120%}}body{box-sizing:border-box;text-transform:none;background-color:var(--color-white);overflow-x:hidden}body::-webkit-scrollbar{width:1.5rem}body::-webkit-scrollbar-track{background:#084430}body::-webkit-scrollbar-thumb{background:var(--color-primary-dark);border-radius:0.75rem}input,textarea{font-family:"Nunito", sans-serif, courier, arial, helvetica}a:link,a:visited,a:hover,a:active{text-decoration:none;color:white}@keyframes landingIntroClip{100%{-webkit-clip-path:polygon(0 0, 100% 0%, 100% 77%, 0% 100%);clip-path:polygon(0 0, 100% 0%, 100% 77%, 0% 100%)}}.landing{width:100vw;min-height:100vh;background-color:white;position:relative;display:flex;flex-flow:column;align-items:center}.landing-top{width:100%}.landing-top-nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 12.5%;background-color:var(--color-primary-dark);position:relative}.landing-top-nav-logo{font-size:3rem;color:white}.landing-top-nav-login{font-size:2rem;color:white}.landing-top-intro{padding:1rem 30%;height:80vh;-webkit-backdrop-filter:blur(10px);display:flex;flex-flow:column;align-items:center;justify-content:center;position:relative;-webkit-clip-path:polygon(0 0, 100% 0%, 100% 100%, 0% 100%);clip-path:polygon(0 0, 100% 0%, 100% 100%, 0% 100%);animation:landingIntroClip 0.3s ease forwards;overflow:hidden}.landing-top-intro-heading{font-size:4rem;color:white;z-index:2}.landing-top-intro-desc{margin-top:1rem;font-size:2.5rem;color:white;text-align:center;z-index:2}.landing-top-intro-cta{margin-top:2rem;font-size:2.5rem;border:2px solid white;padding:0.5rem 3rem;color:var(--color-primary-dark);background-color:white;z-index:2;border-radius:3rem}.landing-top-intro::before{content:"";position:absolute;top:0;left:0;background-color:var(--color-primary-dark);width:100%;height:100%;z-index:1;transform-origin:top left}.homePage{width:100%;min-height:calc(100vh - 6rem);margin-top:6rem;padding:5rem 12%;padding-right:calc(12% - 6rem);background-color:rgba(255,255,255,0.4);display:flex;flex-flow:column;gap:4rem}.homePage-novels{width:100%;height:100%}.homePage-novels-heading{font-size:2.5rem;color:black;margin-bottom:1rem}.homePage-novels-content{display:flex;flex-flow:row;flex-wrap:wrap;width:100%;gap:2rem}.homePage-novels-content .novel{width:15%;height:max-content;border-radius:1rem;overflow:hidden;position:relative}.homePage-novels-content .novel-img{width:100%;padding-top:140%;background-size:cover;background-position:center}.homePage-novels-content .novel-info{position:absolute;bottom:0;left:0;right:0;height:max-content;background-color:rgba(0,0,0,0.7)}.homePage-novels-content .novel-info-title{padding:1rem;color:#d4d4d4;font-size:1.6rem}.homePage-novels-content .novel-info-rating{float:right;padding:0.2rem 1rem;color:#d4d4d4;font-size:1.6rem;display:flex;align-items:center;gap:0.5rem}.homePage-novels-content .novel-info-ranking{float:left;padding:0.2rem 1rem;color:#d4d4d4;font-size:1.6rem}.homePage-novels-more{padding:1rem 0.2rem;font-size:1.6rem}.browsePage{width:100%;min-height:calc(100vh - 6rem);margin-top:6rem;padding:5rem 25%;padding-right:calc(25% - 6rem);background-color:rgba(255,255,255,0.4);display:flex;flex-flow:column;gap:7rem}.browsePage .search{margin-top:3rem;width:100%;height:6rem;border:2px solid var(--color-primary-dark);border-radius:3rem;display:flex;overflow:hidden;align-items:center}.browsePage .search-input{height:100%;width:95%;border:none;outline:none;padding:0 3rem;font-size:2.5rem}.browsePage .search-icon{width:4rem;height:4rem;color:var(--color-primary-dark);margin-right:3rem}.browsePage .genres-heading{text-align:center;font-size:2.5rem;color:black;margin-bottom:1rem}.browsePage .genres-items{display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem}.browsePage .genres-items-item{text-transform:uppercase;font-size:1.6rem;padding:0.5rem 2.5rem;border-left:4px solid var(--color-primary-dark);background-color:#e6e6e6}.browsePage .novels-heading{font-size:2.5rem;color:black;margin-bottom:1rem;text-align:center}.browsePage .novels-list{display:flex;flex-flow:column;gap:2rem}.browsePage .novels-list .novel{height:max-content;width:max-content;display:flex;flex-flow:row;background-color:#e8fcf6;border-radius:1rem;overflow:hidden}.browsePage .novels-list .novel-img{height:27rem;width:20rem;background-size:cover;background-position:center;padding:0%}.browsePage .novels-list .novel-info{width:65rem;padding:2rem 3rem 1rem 3rem;display:flex;flex-flow:column;gap:0.7rem}.browsePage .novels-list .novel-info-top{display:flex;flex-flow:row;justify-content:space-between;align-items:flex-start}.browsePage .novels-list .novel-info-top-title{width:85%;font-size:3rem}.browsePage .novels-list .novel-info-top-rating{margin-top:0.7rem;font-size:2rem;display:flex;flex-flow:row;align-items:center;gap:0.5rem}.browsePage .novels-list .novel-info-top-rating .ratingIcon{padding-bottom:0.2rem}.browsePage .novels-list .novel-info-author{font-size:1.6rem}.browsePage .novels-list .novel-info-author .subHeading{color:#2b2b2b;margin-right:1rem}.browsePage .novels-list .novel-info-chapterStatus{display:flex;flex-flow:row;gap:3rem;align-items:center;font-size:1.6rem}.browsePage .novels-list .novel-info-chapters .subHeading{font-size:1.6rem;color:#2b2b2b;margin-right:1rem}.browsePage .novels-list .novel-info-status .subHeading{font-size:1.6rem;color:#2b2b2b;margin-right:1rem}.browsePage .novels-list .novel-info-desc{font-size:2rem}.bookPage{width:100%;min-height:calc(100vh);display:flex;flex-flow:column;gap:4rem;align-items:center}.bookPage .introSection{width:71%;height:max-content;padding-top:13rem;display:flex;justify-content:space-between;gap:4rem;color:white}.bookPage .introSection-img{height:38rem;width:27rem;border-radius:1rem;position:relative}.bookPage .introSection-img .image{position:absolute;top:0;left:0;height:38rem;width:27rem;background-size:cover;background-position:center;padding:0%;border-radius:1rem;z-index:2}.bookPage .introSection-img::before{content:"";position:absolute;top:50%;left:50%;transform:translateY(-50%);width:2px;height:2px;border-radius:50%;z-index:1;box-shadow:rgba(13,114,81,0.3) 0px 0px 30rem 30rem}.bookPage .introSection-info{width:75rem;display:flex;flex-flow:column;z-index:3;justify-content:space-between}.bookPage .introSection-info-top{width:100%;position:relative}.bookPage .introSection-info-main{width:85%}.bookPage .introSection-info-rating{width:15%;position:absolute;top:0;right:0;display:flex;align-items:center;gap:1rem}.bookPage .introSection-info-rating .rating{font-size:3.5rem}.bookPage .introSection-info-rating .icon{width:2.5rem;height:2.5rem}.bookPage .introSection-info-title{font-size:3.5rem;letter-spacing:0.3rem}.bookPage .introSection-info-author{font-size:2.5rem}.bookPage .introSection-info-author .subheading{font-size:2rem;color:#bebebe;margin-right:1rem}.bookPage .introSection-info-other{display:flex;justify-content:space-between;width:100%}.bookPage .introSection-info-other .otherInfo{font-size:2.5rem;width:max-content;display:flex;flex-flow:column;align-items:center;padding:0rem 2rem}.bookPage .introSection-info-other .otherInfo .subheading{font-size:2rem;color:#bebebe}.bookPage .introSection-info-other .otherInfo:first-child{padding-left:0}.bookPage .introSection-info-tags{width:100%}.bookPage .introSection-info-tags .subheading{font-size:2rem;color:#bebebe;margin-bottom:0.6rem}.bookPage .introSection-info-tags .tags{width:100%;display:flex;flex-wrap:wrap;gap:1.5rem}.bookPage .introSection-info-tags .tag{color:white;padding:0.4rem 1rem;border-radius:0.5rem;font-size:2rem;background-color:rgba(5,46,32,0.5);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}.bookPage .introSection-info-buttons{display:flex;width:100%;justify-content:space-between}.bookPage .introSection-info-buttons .btn{font-size:2rem;width:45%;height:5rem;display:flex;align-items:center;justify-content:center;gap:1rem;background-color:rgba(5,46,32,0.5);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);letter-spacing:0.3rem;text-transform:uppercase}.bookPage .introSection-info-buttons .icon{color:white}.bookPage .selection{display:flex;width:71%;gap:5rem}.bookPage .selection .item{font-size:2.5rem;font-weight:bold;color:#b8b8b8;text-transform:uppercase;letter-spacing:0.3rem;transition:all 0.2s linear}.bookPage .selection .item:hover{cursor:pointer}.bookPage .selection .currentSelection{transform:scale(1.05);color:white}.bookPage .aboutSection{width:71%;height:max-content;font-size:2.5rem;letter-spacing:0.2rem;color:#b8b8b8;text-align:justify;padding:5rem;background-color:rgba(186,186,186,0.1);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-radius:2rem;z-index:2}.bookPage .chapterSection{width:71%;height:max-content;color:#b8b8b8;padding:5rem;background-color:rgba(186,186,186,0.1);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-radius:2rem;z-index:2}.bookPage .chapterSection-latest{width:max-content}.bookPage .chapterSection-latest .subheading{font-size:2rem;font-weight:bold}.bookPage .chapterSection-latest .chapter{font-size:2.5rem;letter-spacing:0.2rem}.bookPage .chapterSection-goto{margin-top:3rem;align-items:center;display:flex;justify-content:space-between}.bookPage .chapterSection-goto .goto{align-items:center;display:flex;gap:1rem}.bookPage .chapterSection-goto .subheading{font-size:2rem;font-weight:bold}.bookPage .chapterSection-goto .chapterInput{border:none;outline:none;padding:0.5rem 1rem;border-radius:0.5rem;background-color:rgba(242,242,242,0.3);color:#084430;text-align:center;font-size:2rem;font-weight:bold;width:10rem}.bookPage .chapterSection-goto .chapterInput::placeholder{color:#084430}.bookPage .chapterSection-goto .chapterInput::-webkit-inner-spin-button,.bookPage .chapterSection-goto .chapterInput::-webkit-outer-spin-button{-webkit-appearance:none}.bookPage .chapterSection-goto .gotoBtn{font-size:1.6rem;padding:1rem 1.5rem;border-radius:0.5rem;background-color:rgba(5,46,32,0.8);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);letter-spacing:0.3rem;text-transform:uppercase}.bookPage .chapterSection-goto .pageChange{display:flex;gap:1rem}.bookPage .chapterSection-goto .pageChange-icon{padding:1rem;border-radius:0.5rem;background-color:rgba(5,46,32,0.8);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);width:4rem;height:4rem}.bookPage .chapterSection-goto .pageChange .page{font-size:2rem;display:grid;place-items:center}.bookPage .chapterSection-chapters{margin-top:2rem;border-radius:1rem;padding:3rem;background-color:#084430;box-shadow:rgba(0,0,0,0.2) 0px 0px 20px 5px inset;display:grid;grid-template-columns:repeat(2, 1fr);gap:2rem;perspective:1000px}.bookPage .chapterSection-chapters .chapter{background-color:rgba(186,186,186,0.1);border-radius:1rem;font-size:2rem;opacity:0;padding:1rem 2rem;transform-origin:center}.bookPage .chapterSection-chapters .chapter .count{font-size:1.6rem}.bookPage .chapterSection-chapters .chapter:hover{cursor:pointer;transform:scale(1.02);box-shadow:rgba(5,46,32,0.5) 5px 5px 20px 5px;background-color:rgba(204,204,204,0.1)}.bookPage .chapterSection-chapters .fadeAway{opacity:0;transition:all 0.2s linear}.bookPage .chapterSection-chapters .fadeIn{opacity:1;transition:all 0.2s linear}.bookPage .reviewSection{width:71%;height:max-content;color:#b8b8b8;padding:5rem;background-color:rgba(186,186,186,0.1);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-radius:2rem;z-index:2;display:FLEX;flex-flow:column;gap:2rem}.bookPage .reviewSection-reviewStats{display:flex;width:100%;align-items:center;justify-content:space-between}.bookPage .reviewSection-reviewStats-count .stars{display:flex;align-items:center;gap:1rem}.bookPage .reviewSection-reviewStats-count .stars .text{font-size:4rem}.bookPage .reviewSection-reviewStats-count .stars .icon{width:3rem;height:3rem;color:#f7b438}.bookPage .reviewSection-reviewStats-count .ratings{font-size:2.5rem;color:#c2c2c2}.bookPage .reviewSection-reviewStats-count .reviews{font-size:2.5rem;color:#c2c2c2}.bookPage .reviewSection-reviewStats-graph{width:50%;display:flex;flex-flow:column}.bookPage .reviewSection-reviewStats-graph .graph{width:100%;display:flex;align-items:center;gap:1rem;font-size:2rem}.bookPage .reviewSection-reviewStats-graph .graph .rating{display:flex;gap:0.5rem;align-items:center}.bookPage .reviewSection-reviewStats-graph .graph .rating .icon{width:1.7rem;height:1.7rem;color:#f7b438}.bookPage .reviewSection-reviewStats-graph .graph .percent{height:2rem;width:80%;background-color:rgba(5,46,32,0.5)}.bookPage .reviewSection-myReview{border-radius:1rem;display:flex;flex-flow:column;overflow:hidden}.bookPage .reviewSection-myReview .titleInput{width:100%;background-color:rgba(5,46,32,0.5);outline:none;border:none;font-size:2rem;color:#c2c2c2;padding:1rem 2rem}.bookPage .reviewSection-myReview .titleInput::placeholder{color:#b8b8b8}.bookPage .reviewSection-myReview .reviewInput{width:100%;height:15rem;padding:1rem 2rem;background-color:rgba(5,46,32,0.5);outline:none;border:none;font-size:2rem;color:#c2c2c2;resize:none;border-top:2px solid rgba(186,186,186,0.1)}.bookPage .reviewSection-myReview .reviewInput::placeholder{color:#b8b8b8}.bookPage .reviewSection-myReview .rate{width:100%;display:flex;align-items:center;gap:1.5rem;background-color:rgba(5,46,32,0.5);padding:1rem 2rem;border-top:2px solid rgba(186,186,186,0.1)}.bookPage .reviewSection-myReview .rate .text{font-size:2.5rem}.bookPage .reviewSection-myReview .rate .stars .icon{height:2.5rem;width:2.5rem;transition:color 0.1s ease;margin-right:1rem}.bookPage .reviewSection-myReview .rate .stars .hovered{color:#f7b438;filter:drop-shadow(0px 0px 2px #f7b438)}.bookPage .reviewSection-myReview .rate .submit{margin-left:auto;outline:none;border:2px solid #b8b8b8;color:#b8b8b8;text-transform:uppercase;font-size:1.6rem;letter-spacing:0.3rem;padding:0.5rem 1rem;background-color:rgba(5,46,32,0.5)}.bookPage .reviewSection-reviews{display:flex;flex-flow:column;background-color:rgba(5,46,32,0.5);border-radius:1rem;overflow:hidden}.bookPage .reviewSection-reviews .review:not(:first-child){border-top:2px solid rgba(186,186,186,0.1)}.bookPage .reviewSection-reviews .review{padding:2rem;display:flex;flex-flow:column;gap:1rem}.bookPage .reviewSection-reviews .review .heading{display:flex;gap:2rem}.bookPage .reviewSection-reviews .review .heading .rated{display:flex;gap:0.5rem;align-items:center;font-size:1.6rem;border:2px solid #b8b8b8;color:#b8b8b8;padding:0 0.5rem}.bookPage .reviewSection-reviews .review .heading .rated .icon{width:1.2rem;height:1.2rem}.bookPage .reviewSection-reviews .review .heading .title{font-size:2rem;font-weight:bold}.bookPage .reviewSection-reviews .review .desc{font-size:1.6rem;letter-spacing:0.2rem;text-align:justify}.bookPage .reviewSection-reviews .review .reviewUser{font-size:1.6rem;color:#c2c2c2}.bookPage .reviewSection-reviews .loadMore{background-color:rgba(5,46,32,0.5);border-top:2px solid rgba(186,186,186,0.1);padding:0.5rem 0;font-size:2.5rem;color:#c2c2c2;text-transform:uppercase;letter-spacing:0.3rem;text-align:center}.bookPage .reviewSection-reviews .loadMore:hover{cursor:pointer}.collectionPage{width:100%;height:calc(100vh - 6rem);margin-top:6rem;background-color:rgba(255,255,255,0.4);display:flex;align-items:center}.collectionPage-leftPane{width:30%;height:calc(100vh - 12rem);display:flex;flex-flow:column;align-items:center;justify-content:center;gap:3rem;border-right:3px solid #bbbbbb}.collectionPage-leftPane::before{content:"";position:fixed;bottom:0;left:0;width:1px;height:1px;border-radius:50%;box-shadow:0px 0px 50vh 50vh rgba(0,0,255,0.2);z-index:1}.collectionPage-leftPane .item{font-size:3.5rem;letter-spacing:0.3rem;transition:all 0.3s ease;z-index:1}.collectionPage-leftPane .item:hover{cursor:pointer;color:#079264;transform:scale(1.1)}.collectionPage-rightPane{padding:8rem 6rem;height:calc(100vh - 6rem);width:70%;display:flex;gap:10rem;flex-flow:column;overflow-y:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch}.collectionPage-rightPane::before{content:"";position:fixed;top:0;right:0;width:1px;height:1px;border-radius:50%;background-color:red;box-shadow:0px 0px 50vh 50vh rgba(255,0,0,0.2);z-index:1}.collectionPage-rightPane .novelSection{z-index:2;height:max-content;display:flex;flex-wrap:wrap;justify-content:space-between;row-gap:3rem}.collectionPage-rightPane .novelSection .novel{width:24%;height:max-content;border-radius:1rem;overflow:hidden;position:relative}.collectionPage-rightPane .novelSection .novel-img{width:100%;padding-top:125%;background-size:cover;background-position:center;transition:all 0.3s ease}.collectionPage-rightPane .novelSection .novel-info{display:flex;justify-content:space-between;flex-flow:column;position:absolute;top:78%;left:0;right:0;height:100%;background-color:rgba(0,0,0,0.6);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);transition:all 0.3s ease}.collectionPage-rightPane .novelSection .novel-info-title{padding:1rem 1.5rem;color:white;font-size:1.6rem;letter-spacing:0.3rem;text-align:center;position:relative}.collectionPage-rightPane .novelSection .novel-info-title::after{content:"";position:absolute;top:100%;border-radius:1px;left:-100%;z-index:10;width:100%;height:2px;background-color:#6fec6f;transition:all 0.3s ease}.collectionPage-rightPane .novelSection .novel-info-other{padding:0rem 1.5rem}.collectionPage-rightPane .novelSection .novel-info-author{color:#d4d4d4;font-size:1.6rem}.collectionPage-rightPane .novelSection .novel-info-desc{color:#d4d4d4;font-size:1.6rem;display:flex;text-align:justify;opacity:0;transition:opacity 0.3s ease}.collectionPage-rightPane .novelSection .novel-info-btns{padding:1.5rem 1.5rem;padding-top:0;display:flex;justify-content:space-between}.collectionPage-rightPane .novelSection .novel-info-btns .btn{width:45%;text-align:center;font-size:1.6rem;border:2px solid white;color:white;text-transform:uppercase;background-color:transparent;padding:0.3rem 1rem;transform:scale(0.5);opacity:0;transition:opacity 0.3s ease, transform 0.3s ease}.collectionPage-rightPane .novelSection .novel-info-btns .btn:hover{cursor:pointer}.collectionPage-rightPane .novelSection .novel:hover .novel-img{transform:scale(1.2)}.collectionPage-rightPane .novelSection .novel:hover .novel-info{backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);top:0%}.collectionPage-rightPane .novelSection .novel:hover .novel-info .novel-info-title::after{box-shadow:0px 0px 3px 3px rgba(111,236,111,0.3);transform:translateX(calc(100% - 1.5rem));transition:all 0.3s 0.3s ease}.collectionPage-rightPane .novelSection .novel:hover .novel-info .novel-info-desc{opacity:1;transition:opacity 0.3s 0.3s ease}.collectionPage-rightPane .novelSection .novel:hover .novel-info .novel-info-btns .btn{opacity:1;transform:scale(1);transition:opacity 0.3s 0.3s ease, transform 0.3s 0.3s ease}.sideNav{width:6rem;height:100vh;position:fixed;top:6rem;left:0;background-color:#108a61;display:flex;flex-flow:column;gap:2rem;padding-top:4rem;overflow:hidden;align-items:center;z-index:1;transition:width 0.2s ease;z-index:3}.sideNav-hamburger{position:fixed;top:0;left:0;width:2rem;height:2rem;margin:2rem;color:#108a61}.sideNav-menuItem{width:max-content}.sideNav-menuItem-icon{color:white;width:3rem;height:3rem;transform:scale(1);transition:opacity 1s ease, transform 1s ease}.sideNav-menuItem-text{font-size:2rem;text-transform:uppercase;color:white;transition:opacity 1s ease}.sideNav-menuItem .hideIcon{display:none;opacity:0;transform:scale(0);transition:opacity 1s ease, transform 1s ease}.sideNav-menuItem .hideText{display:none;opacity:0}.expanded{width:15rem}.topNav{position:fixed;top:0;left:0;right:0;height:6rem;background-color:rgba(209,250,236,0.2);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);display:flex;flex-flow:row;align-items:center;justify-content:space-between;padding:0 5%;border-bottom:1px solid #bbbbbb;z-index:10}.topNav-left{display:flex;gap:4rem;align-items:center;letter-spacing:0.3rem}.topNav-left .item{font-size:1.6rem;color:black}.topNav-logo{color:black;font-size:3rem}.topNav-right{color:black;text-transform:uppercase;font-size:1.6rem;letter-spacing:0.3rem;padding:0.2rem 1rem;border:2px solid black}
+/*
+0-600 phone
+600-900 tablet portrait
+900-1200 tablet landscape
+1200-1800 normal styles
+1800 big desktops
+
+breakpoint argument choices:
+- phone--600px--37.5em
+- tab-port--900px--56.25em
+- tab-land--1200px--75em
+- big-desk--1800px--112.5em
+*/
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
+
+/*Removing every default margin or padding*/
+.dark {
+  --color-primary-light: #73bbfd;
+  --color-primary-dark: #2d86da;
+  --color-white: hsl(0, 0%, 15%);
+  --color-black: hsl(0, 0%, 80%);
+  --color-boxShadow: rgba(243, 230, 230, 0.3);
+  --color-red-light: rgb(247, 99, 99);
+  --color-blue-light: #73bbfd;
+  --color-topNav: hsla(0, 0%, 0%, 0.26);
+  --color-text: hsl(0, 0%, 80%);
+  --color-text-light: hsl(0, 0%, 70%);
+  --color-text-placeholder: rgb(175, 175, 175);
+  --color-card-bg: hsl(0, 0%, 25%);
+  --color-card-option: hsl(0, 0%, 15%);
+  --color-card-option-voted: hsla(216, 71%, 30%, 0.568);
+  --color-card-option-notVoted: hsl(0, 0%, 30%);
+  --color-card-tag: hsl(0, 0%, 70%);
+  --color-card-tag-text: hsl(0, 0%, 80%);
+  --color-card-tag-bg: hsl(0, 0%, 15%);
+  --color-modal-overlay: hsl(0, 0%, 0%);
+  --color-modal-bg: hsl(0, 0%, 25%);
+  --color-modal-primary: #73bbfd;
+  --color-modal-input: hsl(0, 0%, 19%);
+  --color-button-background: #2d86da;
+  --color-button: #fff;
+  --color-button-bg: #2d86da;
+  --color-icons: hsl(0, 0%, 80%);
+  --color-icons-hover: #2d86da;
+  --color-search-bg: hsl(0, 0%, 20%);
+  --color-search-hover: hsl(0, 0%, 15%);
+  --color-bottomNav-bg: #2d86da;
+  --color-bottomNav-icon: #fff;
+  --color-sideContent-tags: hsl(0, 0%, 25%); }
+
+.light {
+  --color-primary-light: #73bbfd;
+  --color-primary-dark: #2d86da;
+  --color-white: #fff;
+  --color-black: #000;
+  --color-boxShadow: rgba(0, 0, 0, 0.3);
+  --color-red-light: rgb(247, 99, 99);
+  --color-blue-light: #73bbfd;
+  --color-topNav: rgba(190, 190, 190, 0.281);
+  --color-text: #000;
+  --color-text-light: rgb(73, 73, 73);
+  --color-text-placeholder: rgb(175, 175, 175);
+  --color-card-bg: #fff;
+  --color-card-option: rgb(219, 219, 219);
+  --color-card-option-voted: #73bbfd;
+  --color-card-option-notVoted: rgb(175, 175, 175);
+  --color-card-tag: rgb(104, 104, 104);
+  --color-card-tag-text: #fff;
+  --color-card-tag-bg: rgb(175, 175, 175);
+  --color-modal-overlay: #000;
+  --color-modal-bg: #fff;
+  --color-modal-primary: #2d86da;
+  --color-modal-input: #fff;
+  --color-button-background: #fff;
+  --color-button: #2d86da;
+  --color-button-bg: transparent;
+  --color-icons: rgb(104, 104, 104);
+  --color-icons-hover: #2d86da;
+  --color-search-bg: #fff;
+  --color-search-hover: hsl(0, 0%, 90%);
+  --color-bottomNav-bg: #fff;
+  --color-bottomNav-icon: #2d86da;
+  --color-sideContent-tags: rgb(219, 219, 219); }
+
+html {
+  font-family: "Nunito", sans-serif, courier, arial, helvetica;
+  font-weight: 400;
+  font-size: 62.5%;
+  /*62.5% of 16px is 10px*/
+  --color-primary: hsl(160, 79%, 35%);
+  --color-primary-dark: hsl(160, 79%, 30%); }
+  @media only screen and (max-width: 75em) {
+    html {
+      font-size: 56.25%; } }
+  @media only screen and (max-width: 56.25em) {
+    html {
+      font-size: 50%; } }
+  @media only screen and (min-width: 112.5em) {
+    html {
+      font-size: 75%; } }
+  @media only screen and (min-width: 131.25em) {
+    html {
+      font-size: 90%; } }
+  @media only screen and (min-width: 160em) {
+    html {
+      font-size: 100%; } }
+  @media only screen and (min-width: 192em) {
+    html {
+      font-size: 120%; } }
+
+body {
+  box-sizing: border-box;
+  text-transform: none;
+  background-color: var(--color-white);
+  overflow-x: hidden; }
+  body::-webkit-scrollbar {
+    width: 1.5rem; }
+  body::-webkit-scrollbar-track {
+    background: transparent; }
+  body::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #68bbff 0%, #55ffd4 49%, #85ff6d 100%);
+    border-radius: 0.75rem; }
+
+input,
+textarea {
+  font-family: "Nunito", sans-serif, courier, arial, helvetica; }
+
+a:link, a:visited, a:hover, a:active {
+  text-decoration: none;
+  color: white; }
+
+@keyframes landingIntroClip {
+  100% {
+    clip-path: polygon(0 0, 100% 0%, 100% 77%, 0% 100%); } }
+
+.landing {
+  width: 100vw;
+  min-height: 100vh;
+  background-color: white;
+  position: relative;
+  display: flex;
+  flex-flow: column;
+  align-items: center; }
+  .landing-top {
+    width: 100%; }
+    .landing-top-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 12.5%;
+      background-color: var(--color-primary-dark);
+      position: relative; }
+      .landing-top-nav-logo {
+        font-size: 3rem;
+        color: white; }
+      .landing-top-nav-login {
+        font-size: 2rem;
+        color: white; }
+    .landing-top-intro {
+      padding: 1rem 30%;
+      height: 80vh;
+      -webkit-backdrop-filter: blur(10px);
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%);
+      animation: landingIntroClip 0.3s ease forwards;
+      overflow: hidden; }
+      .landing-top-intro-heading {
+        font-size: 4rem;
+        color: white;
+        z-index: 2; }
+      .landing-top-intro-desc {
+        margin-top: 1rem;
+        font-size: 2.5rem;
+        color: white;
+        text-align: center;
+        z-index: 2; }
+      .landing-top-intro-cta {
+        margin-top: 2rem;
+        font-size: 2.5rem;
+        border: 2px solid white;
+        padding: 0.5rem 3rem;
+        color: var(--color-primary-dark);
+        background-color: white;
+        z-index: 2;
+        border-radius: 3rem; }
+      .landing-top-intro::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: var(--color-primary-dark);
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        transform-origin: top left; }
+
+.homePage {
+  width: 100%;
+  min-height: calc(100vh - 6rem);
+  margin-top: 6rem;
+  padding: 5rem 12%;
+  padding-right: calc(12% - 6rem);
+  background-color: rgba(255, 255, 255, 0.4);
+  display: flex;
+  flex-flow: column;
+  gap: 4rem;
+  /*&::before {
+    content: "";
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 1px;
+    height: 1px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 50vh 50vh rgba(blue, 0.2);
+    z-index: 1;
+  }
+  &::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 1px;
+    height: 1px;
+    border-radius: 50%;
+    background-color: red;
+    box-shadow: 0px 0px 50vh 50vh rgba(red, 0.2);
+    z-index: 1;
+  }*/ }
+  .homePage::before {
+    content: "";
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 1px;
+    height: 1px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 70vh 70vh rgba(104, 187, 255, 0.4);
+    z-index: 1; }
+  .homePage::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 1px;
+    height: 1px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 70vh 70vh rgba(133, 255, 109, 0.2);
+    z-index: 1; }
+  .homePage-novels {
+    width: 100%;
+    height: 100%;
+    z-index: 2; }
+    .homePage-novels-heading {
+      font-size: 2.5rem;
+      color: black;
+      margin-bottom: 1rem; }
+    .homePage-novels-content {
+      display: flex;
+      flex-flow: row;
+      flex-wrap: wrap;
+      width: 100%;
+      gap: 2rem; }
+      .homePage-novels-content .novel {
+        width: 15%;
+        height: max-content;
+        border-radius: 1rem;
+        overflow: hidden;
+        position: relative; }
+        .homePage-novels-content .novel-img {
+          width: 100%;
+          padding-top: 140%;
+          background-size: cover;
+          background-position: center; }
+        .homePage-novels-content .novel-info {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: max-content;
+          background-color: rgba(0, 0, 0, 0.7); }
+          .homePage-novels-content .novel-info-title {
+            padding: 1rem;
+            color: #d4d4d4;
+            font-size: 1.6rem; }
+          .homePage-novels-content .novel-info-rating {
+            float: right;
+            padding: 0.2rem 1rem;
+            color: #d4d4d4;
+            font-size: 1.6rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem; }
+          .homePage-novels-content .novel-info-ranking {
+            float: left;
+            padding: 0.2rem 1rem;
+            color: #d4d4d4;
+            font-size: 1.6rem; }
+    .homePage-novels-more {
+      padding: 1rem 0.2rem;
+      font-size: 1.6rem; }
+
+.browsePage {
+  width: 100%;
+  min-height: calc(100vh - 6rem);
+  padding: 5rem 25%;
+  padding-top: 12rem;
+  padding-right: calc(25% - 6rem);
+  background-color: rgba(255, 255, 255, 0.9);
+  display: flex;
+  flex-flow: column;
+  gap: 7rem; }
+  .browsePage::before {
+    content: "";
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 1px;
+    height: 1px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 70vh 70vh rgba(104, 187, 255, 0.2);
+    z-index: 1; }
+  .browsePage::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 1px;
+    height: 1px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 70vh 70vh rgba(133, 255, 109, 0.2);
+    z-index: 1; }
+  .browsePage .search {
+    margin-top: 3rem;
+    width: 100%;
+    height: 6rem;
+    border: 2px solid var(--color-primary-dark);
+    border-radius: 3rem;
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+    background-color: white;
+    z-index: 2; }
+    .browsePage .search-input {
+      height: 100%;
+      width: 95%;
+      border: none;
+      outline: none;
+      padding: 0 3rem;
+      font-size: 2.5rem; }
+    .browsePage .search-icon {
+      width: 4rem;
+      height: 4rem;
+      color: var(--color-primary-dark);
+      margin-right: 3rem;
+      background-color: white; }
+  .browsePage .genres {
+    z-index: 2; }
+    .browsePage .genres-heading {
+      text-align: center;
+      font-size: 2.5rem;
+      color: black;
+      margin-bottom: 1rem; }
+    .browsePage .genres-items {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem; }
+      .browsePage .genres-items-item {
+        text-transform: uppercase;
+        font-size: 1.6rem;
+        padding: 0.5rem 2.5rem;
+        background-color: white;
+        border: 2px solid #e6e6e6;
+        border-left: none;
+        position: relative; }
+        .browsePage .genres-items-item:before {
+          content: "";
+          position: absolute;
+          top: -2px;
+          left: -3px;
+          width: 3px;
+          height: calc(100% + 4px);
+          background: linear-gradient(135deg, #58b4ff 0%, #4effd3 49%, #6dff50 100%); }
+  .browsePage .novels {
+    z-index: 2; }
+    .browsePage .novels-heading {
+      font-size: 2.5rem;
+      color: black;
+      margin-bottom: 1rem;
+      text-align: center; }
+    .browsePage .novels-list {
+      display: flex;
+      flex-flow: column;
+      gap: 2rem; }
+      .browsePage .novels-list .novel {
+        height: max-content;
+        width: max-content;
+        display: flex;
+        flex-flow: row;
+        background: linear-gradient(135deg, #aad9ff 0%, #b3ffec 49%, #c7ffbc 100%);
+        border-radius: 1rem;
+        overflow: hidden; }
+        .browsePage .novels-list .novel-img {
+          height: 27rem;
+          width: 20rem;
+          background-size: cover;
+          background-position: center;
+          padding: 0%; }
+        .browsePage .novels-list .novel-info {
+          width: 65rem;
+          padding: 2rem 3rem 1rem 3rem;
+          display: flex;
+          flex-flow: column;
+          gap: 0.7rem; }
+          .browsePage .novels-list .novel-info-top {
+            display: flex;
+            flex-flow: row;
+            justify-content: space-between;
+            align-items: flex-start; }
+            .browsePage .novels-list .novel-info-top-title {
+              width: 85%;
+              font-size: 3rem; }
+            .browsePage .novels-list .novel-info-top-rating {
+              margin-top: 0.7rem;
+              font-size: 2rem;
+              display: flex;
+              flex-flow: row;
+              align-items: center;
+              gap: 0.5rem; }
+              .browsePage .novels-list .novel-info-top-rating .ratingIcon {
+                padding-bottom: 0.2rem; }
+          .browsePage .novels-list .novel-info-author {
+            font-size: 1.6rem; }
+            .browsePage .novels-list .novel-info-author .subHeading {
+              color: #2b2b2b;
+              margin-right: 1rem; }
+          .browsePage .novels-list .novel-info-chapterStatus {
+            display: flex;
+            flex-flow: row;
+            gap: 3rem;
+            align-items: center;
+            font-size: 1.6rem; }
+          .browsePage .novels-list .novel-info-chapters .subHeading {
+            font-size: 1.6rem;
+            color: #2b2b2b;
+            margin-right: 1rem; }
+          .browsePage .novels-list .novel-info-status .subHeading {
+            font-size: 1.6rem;
+            color: #2b2b2b;
+            margin-right: 1rem; }
+          .browsePage .novels-list .novel-info-desc {
+            font-size: 2rem; }
+
+.bookPage {
+  width: 100%;
+  min-height: calc(100vh);
+  display: flex;
+  flex-flow: column;
+  gap: 4rem;
+  align-items: center; }
+  .bookPage::before {
+    content: "";
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 1px;
+    height: 1px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 80vh 80vh rgba(104, 187, 255, 0.2);
+    z-index: 1; }
+  .bookPage::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 1px;
+    height: 1px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 80vh 80vh rgba(133, 255, 109, 0.2);
+    z-index: 1; }
+  .bookPage .introSection {
+    width: 71%;
+    height: max-content;
+    padding-top: 13rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 4rem;
+    color: black;
+    z-index: 2; }
+    .bookPage .introSection-img {
+      height: 38rem;
+      width: 27rem;
+      border-radius: 1rem;
+      position: relative;
+      /*&::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateY(-50%);
+        width: 2px;
+        height: 2px;
+        border-radius: 50%;
+        z-index: 1;
+        box-shadow: hsla(160, 79%, 25%, 0.3) 0px 0px 30rem 30rem;
+      }*/ }
+      .bookPage .introSection-img .image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 38rem;
+        width: 27rem;
+        background-size: cover;
+        background-position: center;
+        padding: 0%;
+        border-radius: 1rem;
+        z-index: 2; }
+    .bookPage .introSection-info {
+      width: 75rem;
+      display: flex;
+      flex-flow: column;
+      z-index: 3;
+      justify-content: space-between; }
+      .bookPage .introSection-info-top {
+        width: 100%;
+        position: relative; }
+      .bookPage .introSection-info-main {
+        width: 85%; }
+      .bookPage .introSection-info-rating {
+        width: 15%;
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: flex;
+        align-items: center;
+        gap: 1rem; }
+        .bookPage .introSection-info-rating .rating {
+          font-size: 3.5rem; }
+        .bookPage .introSection-info-rating .icon {
+          width: 2.5rem;
+          height: 2.5rem;
+          color: #f7b438;
+          filter: drop-shadow(0px 0px 2px #f7b438); }
+      .bookPage .introSection-info-title {
+        font-size: 3.5rem;
+        letter-spacing: 0.3rem; }
+      .bookPage .introSection-info-author {
+        font-size: 2.5rem; }
+        .bookPage .introSection-info-author .subheading {
+          font-size: 2rem;
+          color: #525252;
+          margin-right: 1rem; }
+      .bookPage .introSection-info-other {
+        display: flex;
+        justify-content: space-between;
+        width: 100%; }
+        .bookPage .introSection-info-other .otherInfo {
+          font-size: 2.5rem;
+          width: max-content;
+          display: flex;
+          flex-flow: column;
+          align-items: center;
+          padding: 0rem 2rem; }
+          .bookPage .introSection-info-other .otherInfo .subheading {
+            font-size: 2rem;
+            color: #525252; }
+        .bookPage .introSection-info-other .otherInfo:first-child {
+          padding-left: 0; }
+      .bookPage .introSection-info-tags {
+        width: 100%; }
+        .bookPage .introSection-info-tags .subheading {
+          font-size: 2rem;
+          color: #525252;
+          margin-bottom: 0.6rem; }
+        .bookPage .introSection-info-tags .tags {
+          width: 100%;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 1.5rem; }
+        .bookPage .introSection-info-tags .tag {
+          color: white;
+          padding: 0.4rem 1rem;
+          border-radius: 0.5rem;
+          font-size: 2rem;
+          border: 1px solid black;
+          color: black; }
+      .bookPage .introSection-info-buttons {
+        display: flex;
+        width: 100%;
+        justify-content: space-between; }
+        .bookPage .introSection-info-buttons .btn {
+          font-size: 2rem;
+          width: 45%;
+          height: 5rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 1rem;
+          letter-spacing: 0.3rem;
+          text-transform: uppercase;
+          border: 2px solid black;
+          border-radius: 0.5rem;
+          color: black; }
+        .bookPage .introSection-info-buttons .icon {
+          color: black; }
+  .bookPage .selection {
+    display: flex;
+    width: 71%;
+    gap: 5rem;
+    z-index: 2; }
+    .bookPage .selection .item {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #727272;
+      text-transform: uppercase;
+      letter-spacing: 0.3rem;
+      transition: all 0.2s linear; }
+      .bookPage .selection .item:hover {
+        cursor: pointer; }
+    .bookPage .selection .currentSelection {
+      transform: scale(1.05);
+      color: #222222; }
+  .bookPage .aboutSection {
+    width: 71%;
+    height: max-content;
+    font-size: 2.5rem;
+    letter-spacing: 0.2rem;
+    color: #252525;
+    text-align: justify;
+    padding: 5rem;
+    z-index: 2;
+    background-color: rgba(132, 240, 132, 0.4);
+    background: linear-gradient(45deg, #aad9ff 0%, #b3ffec 49%, #c7ffbc 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 2rem;
+    z-index: 2; }
+  .bookPage .chapterSection {
+    width: 71%;
+    height: max-content;
+    color: #252525;
+    padding: 5rem;
+    background-color: rgba(153, 153, 153, 0.4);
+    background: linear-gradient(45deg, #aad9ff 0%, #b3ffec 49%, #c7ffbc 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 2rem;
+    z-index: 2; }
+    .bookPage .chapterSection-latest {
+      width: max-content; }
+      .bookPage .chapterSection-latest .subheading {
+        font-size: 2rem;
+        font-weight: bold; }
+      .bookPage .chapterSection-latest .chapter {
+        font-size: 2.5rem;
+        letter-spacing: 0.2rem; }
+    .bookPage .chapterSection-goto {
+      margin-top: 3rem;
+      align-items: center;
+      display: flex;
+      justify-content: space-between; }
+      .bookPage .chapterSection-goto .goto {
+        align-items: center;
+        display: flex;
+        gap: 1rem; }
+      .bookPage .chapterSection-goto .subheading {
+        font-size: 2rem;
+        font-weight: bold; }
+      .bookPage .chapterSection-goto .chapterInput {
+        border: none;
+        outline: none;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        background-color: white;
+        color: #084430;
+        text-align: center;
+        font-size: 2rem;
+        font-weight: bold;
+        width: 10rem; }
+        .bookPage .chapterSection-goto .chapterInput::placeholder {
+          color: #084430; }
+        .bookPage .chapterSection-goto .chapterInput::-webkit-inner-spin-button, .bookPage .chapterSection-goto .chapterInput::-webkit-outer-spin-button {
+          -webkit-appearance: none; }
+      .bookPage .chapterSection-goto .gotoBtn {
+        font-size: 1.6rem;
+        padding: 0.7rem 1.5rem;
+        border-radius: 0.5rem;
+        border: 2px solid black;
+        letter-spacing: 0.3rem;
+        text-transform: uppercase; }
+      .bookPage .chapterSection-goto .pageChange {
+        display: flex;
+        gap: 1rem; }
+        .bookPage .chapterSection-goto .pageChange-icon {
+          padding: 1rem;
+          border-radius: 0.5rem;
+          border: 2px solid black;
+          width: 4rem;
+          height: 4rem; }
+        .bookPage .chapterSection-goto .pageChange .page {
+          font-size: 2rem;
+          font-weight: bold;
+          display: grid;
+          place-items: center; }
+    .bookPage .chapterSection-chapters {
+      margin-top: 2rem;
+      border-radius: 1rem;
+      padding: 3rem;
+      background-color: rgba(255, 255, 255, 0.3);
+      box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 30px 5px inset;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      perspective: 1000px; }
+      .bookPage .chapterSection-chapters .chapter {
+        background-color: #99cefa;
+        color: black;
+        border-radius: 1rem;
+        font-size: 2rem;
+        opacity: 0;
+        padding: 1rem 2rem;
+        transform-origin: center; }
+        .bookPage .chapterSection-chapters .chapter .count {
+          font-size: 1.6rem; }
+        .bookPage .chapterSection-chapters .chapter:hover {
+          cursor: pointer;
+          transform: scale(1.02);
+          box-shadow: rgba(0, 0, 0, 0.15) 3px 3px 10px 2px;
+          background-color: #b7ffa8;
+          color: black; }
+      .bookPage .chapterSection-chapters .fadeAway {
+        opacity: 0;
+        transition: all 0.2s linear; }
+      .bookPage .chapterSection-chapters .fadeIn {
+        opacity: 1;
+        transition: all 0.2s linear; }
+  .bookPage .reviewSection {
+    width: 71%;
+    height: max-content;
+    color: #b8b8b8;
+    padding: 5rem;
+    background-color: rgba(186, 186, 186, 0.1);
+    background: linear-gradient(135deg, #aad9ff 0%, #b3ffec 49%, #c7ffbc 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 2rem;
+    z-index: 2;
+    display: FLEX;
+    flex-flow: column;
+    gap: 2rem; }
+    .bookPage .reviewSection-reviewStats {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: space-between; }
+      .bookPage .reviewSection-reviewStats-count .stars {
+        display: flex;
+        align-items: center;
+        gap: 1rem; }
+        .bookPage .reviewSection-reviewStats-count .stars .text {
+          font-size: 4rem;
+          color: black; }
+        .bookPage .reviewSection-reviewStats-count .stars .icon {
+          width: 3rem;
+          height: 3rem;
+          color: black; }
+      .bookPage .reviewSection-reviewStats-count .ratings {
+        font-size: 2.5rem;
+        color: #616161; }
+      .bookPage .reviewSection-reviewStats-count .reviews {
+        font-size: 2.5rem;
+        color: #616161; }
+      .bookPage .reviewSection-reviewStats-graph {
+        width: 50%;
+        display: flex;
+        flex-flow: column; }
+        .bookPage .reviewSection-reviewStats-graph .graph {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          font-size: 2rem;
+          color: #616161; }
+          .bookPage .reviewSection-reviewStats-graph .graph .rating {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center; }
+            .bookPage .reviewSection-reviewStats-graph .graph .rating .icon {
+              width: 1.7rem;
+              height: 1.7rem;
+              color: #616161; }
+          .bookPage .reviewSection-reviewStats-graph .graph .percent {
+            height: 2rem;
+            width: 80%;
+            background-color: white;
+            border-radius: 5px; }
+    .bookPage .reviewSection-myReview {
+      border-radius: 1rem;
+      background-color: transparent;
+      display: flex;
+      gap: 2px;
+      flex-flow: column;
+      overflow: hidden; }
+      .bookPage .reviewSection-myReview .titleInput {
+        width: 100%;
+        background-color: #f3f3f3;
+        outline: none;
+        border: none;
+        font-size: 2rem;
+        color: black;
+        padding: 1rem 2rem; }
+        .bookPage .reviewSection-myReview .titleInput::placeholder {
+          color: #646464; }
+      .bookPage .reviewSection-myReview .reviewInput {
+        width: 100%;
+        height: 15rem;
+        padding: 1rem 2rem;
+        background-color: #f3f3f3;
+        outline: none;
+        border: none;
+        font-size: 2rem;
+        color: black;
+        resize: none; }
+        .bookPage .reviewSection-myReview .reviewInput::placeholder {
+          color: #646464; }
+      .bookPage .reviewSection-myReview .rate {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        background-color: #f3f3f3;
+        padding: 1rem 2rem;
+        border-top: 2px solid rgba(186, 186, 186, 0.1); }
+        .bookPage .reviewSection-myReview .rate .text {
+          font-size: 2.5rem;
+          color: #646464; }
+        .bookPage .reviewSection-myReview .rate .stars .icon {
+          height: 2.5rem;
+          width: 2.5rem;
+          transition: color 0.1s ease;
+          margin-right: 1rem; }
+        .bookPage .reviewSection-myReview .rate .stars .hovered {
+          color: #f7b438;
+          filter: drop-shadow(0px 0px 2px #f7b438); }
+        .bookPage .reviewSection-myReview .rate .submit {
+          margin-left: auto;
+          outline: none;
+          border: 2px solid black;
+          color: black;
+          text-transform: uppercase;
+          font-size: 1.6rem;
+          letter-spacing: 0.3rem;
+          padding: 0.5rem 1rem;
+          background-color: white; }
+    .bookPage .reviewSection-reviews {
+      display: flex;
+      flex-flow: column;
+      gap: 2px;
+      background-color: transparent;
+      border-radius: 1rem;
+      overflow: hidden; }
+      .bookPage .reviewSection-reviews .review {
+        padding: 2rem;
+        display: flex;
+        flex-flow: column;
+        gap: 1rem;
+        background-color: #f3f3f3; }
+        .bookPage .reviewSection-reviews .review .heading {
+          display: flex;
+          gap: 2rem; }
+          .bookPage .reviewSection-reviews .review .heading .rated {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            font-size: 1.6rem;
+            border: 2px solid #4b4b4b;
+            color: #4b4b4b;
+            padding: 0 0.5rem; }
+            .bookPage .reviewSection-reviews .review .heading .rated .icon {
+              width: 1.2rem;
+              height: 1.2rem; }
+          .bookPage .reviewSection-reviews .review .heading .title {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #4b4b4b; }
+        .bookPage .reviewSection-reviews .review .desc {
+          font-size: 1.6rem;
+          letter-spacing: 0.2rem;
+          text-align: justify;
+          color: #313131; }
+        .bookPage .reviewSection-reviews .review .reviewUser {
+          font-size: 1.6rem;
+          color: #313131; }
+      .bookPage .reviewSection-reviews .loadMore {
+        padding: 0.5rem 0;
+        font-size: 2.5rem;
+        text-transform: uppercase;
+        letter-spacing: 0.3rem;
+        text-align: center;
+        color: #a8a8a8;
+        background-color: #555555; }
+        .bookPage .reviewSection-reviews .loadMore:hover {
+          cursor: pointer; }
+
+.collectionPage {
+  width: 100%;
+  height: calc(100vh - 6rem);
+  margin-top: 6rem;
+  background-color: rgba(253, 229, 213, 0.4);
+  display: flex;
+  align-items: center; }
+  .collectionPage::before {
+    content: "";
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 1px;
+    height: 1px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 70vh 70vh rgba(60, 158, 238, 0.4);
+    z-index: 1; }
+  .collectionPage::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 1px;
+    height: 1px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 70vh 70vh rgba(133, 255, 109, 0.3);
+    z-index: 1; }
+  .collectionPage-leftPane {
+    width: 30%;
+    height: calc(100vh - 12rem);
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    border-right: 3px solid #bbbbbb;
+    /*&::before {
+      content: "";
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 1px;
+      height: 1px;
+      border-radius: 50%;
+      box-shadow: 0px 0px 50vh 50vh rgba(blue, 0.2);
+      z-index: 1;
+    }*/ }
+    .collectionPage-leftPane .item {
+      font-size: 3.5rem;
+      letter-spacing: 0.3rem;
+      transition: all 0.3s ease;
+      z-index: 1; }
+      .collectionPage-leftPane .item:hover {
+        cursor: pointer;
+        color: #079264;
+        transform: scale(1.1); }
+  .collectionPage-rightPane {
+    padding: 8rem 6rem;
+    height: calc(100vh - 6rem);
+    width: 70%;
+    display: flex;
+    gap: 10rem;
+    flex-flow: column;
+    overflow-y: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    /*&::before {
+      content: "";
+      position: fixed;
+      top: 20%;
+      right: 20%;
+      width: 1px;
+      height: 1px;
+      border-radius: 50%;
+      box-shadow: 0px 0px 50vh 50vh rgba(red, 0.2);
+      z-index: 1;
+    }*/ }
+    .collectionPage-rightPane .novelSection {
+      z-index: 2;
+      height: max-content;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      row-gap: 3rem; }
+      .collectionPage-rightPane .novelSection .novel {
+        width: 24%;
+        height: max-content;
+        border-radius: 1rem;
+        overflow: hidden;
+        position: relative; }
+        .collectionPage-rightPane .novelSection .novel-img {
+          width: 100%;
+          padding-top: 125%;
+          background-size: cover;
+          background-position: center;
+          transition: all 0.3s ease; }
+        .collectionPage-rightPane .novelSection .novel-info {
+          display: flex;
+          justify-content: space-between;
+          flex-flow: column;
+          position: absolute;
+          top: 78%;
+          left: 0;
+          right: 0;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.6);
+          backdrop-filter: blur(2px);
+          -webkit-backdrop-filter: blur(2px);
+          transition: all 0.3s ease; }
+          .collectionPage-rightPane .novelSection .novel-info-title {
+            padding: 1rem 1.5rem;
+            color: white;
+            font-size: 1.6rem;
+            letter-spacing: 0.3rem;
+            text-align: center;
+            position: relative; }
+            .collectionPage-rightPane .novelSection .novel-info-title::after {
+              content: "";
+              position: absolute;
+              top: 100%;
+              border-radius: 1px;
+              left: -100%;
+              z-index: 10;
+              width: 100%;
+              height: 2px;
+              background-color: #6fec6f;
+              transition: all 0.3s ease; }
+          .collectionPage-rightPane .novelSection .novel-info-other {
+            padding: 0rem 1.5rem; }
+          .collectionPage-rightPane .novelSection .novel-info-author {
+            color: #d4d4d4;
+            font-size: 1.6rem; }
+          .collectionPage-rightPane .novelSection .novel-info-desc {
+            color: #d4d4d4;
+            font-size: 1.6rem;
+            display: flex;
+            text-align: justify;
+            opacity: 0;
+            transition: opacity 0.3s ease; }
+          .collectionPage-rightPane .novelSection .novel-info-btns {
+            padding: 1.5rem 1.5rem;
+            padding-top: 0;
+            display: flex;
+            justify-content: space-between; }
+            .collectionPage-rightPane .novelSection .novel-info-btns .btn {
+              width: 45%;
+              text-align: center;
+              font-size: 1.6rem;
+              border: 2px solid white;
+              color: white;
+              text-transform: uppercase;
+              background-color: transparent;
+              padding: 0.3rem 1rem;
+              transform: scale(0.5);
+              opacity: 0;
+              transition: opacity 0.3s ease, transform 0.3s ease; }
+              .collectionPage-rightPane .novelSection .novel-info-btns .btn:hover {
+                cursor: pointer; }
+        .collectionPage-rightPane .novelSection .novel:hover .novel-img {
+          transform: scale(1.2); }
+        .collectionPage-rightPane .novelSection .novel:hover .novel-info {
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+          top: 0%; }
+        .collectionPage-rightPane .novelSection .novel:hover .novel-info .novel-info-title::after {
+          box-shadow: 0px 0px 3px 3px rgba(111, 236, 111, 0.3);
+          transform: translateX(calc(100% - 1.5rem));
+          transition: all 0.3s 0.3s ease; }
+        .collectionPage-rightPane .novelSection .novel:hover .novel-info .novel-info-desc {
+          opacity: 1;
+          transition: opacity 0.3s 0.3s ease; }
+        .collectionPage-rightPane .novelSection .novel:hover .novel-info .novel-info-btns .btn {
+          opacity: 1;
+          transform: scale(1);
+          transition: opacity 0.3s 0.3s ease, transform 0.3s 0.3s ease; }
+
+.chapterPage {
+  width: 100%; }
+  .chapterPage-top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #3b3b3b;
+    color: white;
+    height: 5rem; }
+    .chapterPage-top .left {
+      position: absolute;
+      top: 50%;
+      left: 3rem;
+      transform: translateY(-50%);
+      display: flex;
+      align-items: center;
+      gap: 2.5rem; }
+      .chapterPage-top .left .logo {
+        width: 4rem;
+        height: 4rem; }
+        .chapterPage-top .left .logo:hover {
+          cursor: pointer; }
+      .chapterPage-top .left .info {
+        font-size: 2rem;
+        letter-spacing: 0.2rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem; }
+        .chapterPage-top .left .info .bookName:hover {
+          cursor: pointer; }
+      .chapterPage-top .left .div {
+        height: 1.4rem;
+        width: 1.4rem; }
+    .chapterPage-top .middle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      align-items: center;
+      font-size: 1.6rem;
+      gap: 2rem; }
+      .chapterPage-top .middle .chapterSelectionPopup {
+        position: absolute;
+        top: 5rem;
+        left: 50%;
+        transform-origin: 0% 0%;
+        transform: scale(0) translateX(-50%);
+        background-color: #3b3b3b;
+        width: 25rem;
+        height: max-content;
+        border-radius: 1rem;
+        padding: 2rem;
+        display: flex;
+        flex-flow: column;
+        gap: 1.5rem;
+        opacity: 0;
+        transition: all 0.3s ease; }
+        .chapterPage-top .middle .chapterSelectionPopup .goto {
+          display: flex;
+          justify-content: space-between; }
+          .chapterPage-top .middle .chapterSelectionPopup .goto .chapterInput {
+            border: none;
+            outline: none;
+            border-radius: 2px;
+            padding: 0.2rem 0.5rem;
+            width: 55%;
+            font-size: 1.6rem; }
+          .chapterPage-top .middle .chapterSelectionPopup .goto .gotoBtn {
+            border: none;
+            outline: none;
+            border-radius: 2px;
+            width: 35%;
+            background-color: #2a83f8;
+            color: white;
+            font-size: 1.6rem;
+            text-transform: uppercase;
+            line-height: 1.6rem;
+            display: grid;
+            place-items: center; }
+        .chapterPage-top .middle .chapterSelectionPopup .chapterList {
+          list-style: none;
+          max-height: 20rem;
+          overflow: hidden;
+          overflow-y: auto;
+          background-color: #4b4b4b;
+          padding: 0.5rem;
+          border-radius: 1rem;
+          border-top-right-radius: 0%;
+          border-bottom-right-radius: 0%; }
+          .chapterPage-top .middle .chapterSelectionPopup .chapterList .chapter {
+            font-size: 1.6rem; }
+          .chapterPage-top .middle .chapterSelectionPopup .chapterList::-webkit-scrollbar {
+            width: 0.5rem; }
+          .chapterPage-top .middle .chapterSelectionPopup .chapterList::-webkit-scrollbar-track {
+            background: transparent; }
+          .chapterPage-top .middle .chapterSelectionPopup .chapterList::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #68bbff 0%, #55ffd4 49%, #85ff6d 100%);
+            border-radius: 0.75rem; }
+      .chapterPage-top .middle .popupVisible {
+        opacity: 1;
+        transform: scale(1) translateX(-50%); }
+    .chapterPage-top .right {
+      position: absolute;
+      top: 50%;
+      right: 3rem;
+      transform: translateY(-50%);
+      display: flex;
+      align-items: center;
+      gap: 3rem; }
+      .chapterPage-top .right .customization {
+        width: 2.5rem;
+        height: 2.5rem; }
+      .chapterPage-top .right .fontPopup {
+        position: absolute;
+        top: 5rem;
+        right: 0;
+        padding: 2rem;
+        border-radius: 1rem;
+        width: max-content;
+        height: max-content;
+        background-color: #3b3b3b;
+        display: flex;
+        flex-flow: column;
+        gap: 1rem;
+        font-size: 1.6rem;
+        opacity: 0;
+        transform: scale(0);
+        transition: all 0.3s ease; }
+        .chapterPage-top .right .fontPopup .fontSize,
+        .chapterPage-top .right .fontPopup .letterSpacing {
+          display: flex;
+          flex-flow: column;
+          gap: 0.5rem; }
+        .chapterPage-top .right .fontPopup input[type="range"] {
+          width: 20rem; }
+      .chapterPage-top .right .popupVisible {
+        opacity: 1;
+        transform: scale(1); }
+  .chapterPage-body {
+    width: 100%;
+    margin-top: 5rem;
+    height: calc(100vh - 5rem);
+    overflow: hidden;
+    overflow-y: auto;
+    padding-top: 5rem;
+    padding-bottom: 7rem;
+    transition: all 0.3s ease; }
+    .chapterPage-body::-webkit-scrollbar {
+      width: 1.5rem; }
+    .chapterPage-body::-webkit-scrollbar-track {
+      background: transparent; }
+    .chapterPage-body::-webkit-scrollbar-thumb {
+      background: linear-gradient(135deg, #68bbff 0%, #55ffd4 49%, #85ff6d 100%);
+      border-radius: 0.75rem; }
+  .chapterPage .darkChapterBody {
+    border-top: 2px solid #7c7c7c;
+    background-color: #3b3b3b;
+    color: #c2c2c2;
+    transition: all 0.3s ease; }
+  .chapterPage-chapter {
+    width: 60%;
+    margin: 4rem auto;
+    font-size: 2rem;
+    text-align: justify;
+    white-space: pre-wrap; }
+    .chapterPage-chapter .smallFont {
+      font-size: 1.2rem; }
+    .chapterPage-chapter .mediumFont {
+      font-size: 1.6rem; }
+    .chapterPage-chapter .largeFont {
+      font-size: 2rem; }
+    .chapterPage-chapter .largestFont {
+      font-size: 2.5rem; }
+  .chapterPage-comments {
+    width: 60%;
+    margin: 0 auto;
+    border-radius: 1rem;
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.1);
+    height: max-content;
+    padding: 2rem;
+    display: flex;
+    flex-flow: column;
+    gap: 3rem; }
+    .chapterPage-comments .heading {
+      font-size: 2.5rem; }
+    .chapterPage-comments .commentInput {
+      width: 100%;
+      height: 10rem;
+      padding: 1rem;
+      background-color: #f3f3f3;
+      outline: none;
+      border: none;
+      font-size: 2rem;
+      color: black;
+      resize: none;
+      border-radius: 1rem; }
+      .chapterPage-comments .commentInput::placeholder {
+        color: #646464; }
+    .chapterPage-comments .commentSubmit {
+      outline: none;
+      border: none;
+      border-radius: 1rem;
+      font-size: 2rem;
+      color: white;
+      background-color: #2a83f8;
+      padding: 0.5rem 1rem;
+      margin-top: 1rem; }
+    .chapterPage-comments .comments {
+      list-style: none;
+      display: flex;
+      flex-flow: column;
+      gap: 1.5rem; }
+      .chapterPage-comments .comments .comment .head {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem; }
+        .chapterPage-comments .comments .comment .head .user {
+          font-size: 1.6rem;
+          font-weight: bold;
+          color: #0c4b9e; }
+        .chapterPage-comments .comments .comment .head .date {
+          font-size: 1.2rem; }
+      .chapterPage-comments .comments .comment .commentText {
+        font-size: 2rem; }
+  .chapterPage .darkComments {
+    box-shadow: 0px 0px 10px 5px rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease; }
+    .chapterPage .darkComments .commentInput {
+      background-color: #616161;
+      color: #c2c2c2; }
+      .chapterPage .darkComments .commentInput::placeholder {
+        color: #999999; }
+    .chapterPage .darkComments .comments .comment .head .user {
+      font-size: 1.6rem;
+      font-weight: bold;
+      color: #3c87e9; }
+
+.sideNav {
+  width: 6rem;
+  height: 100vh;
+  position: fixed;
+  top: 6rem;
+  left: 0;
+  background-color: #108a61;
+  display: flex;
+  flex-flow: column;
+  gap: 2rem;
+  padding-top: 4rem;
+  overflow: hidden;
+  align-items: center;
+  z-index: 1;
+  transition: width 0.2s ease;
+  z-index: 3; }
+  .sideNav-hamburger {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 2rem;
+    height: 2rem;
+    margin: 2rem;
+    color: #108a61; }
+  .sideNav-menuItem {
+    width: max-content; }
+    .sideNav-menuItem-icon {
+      color: white;
+      width: 3rem;
+      height: 3rem;
+      transform: scale(1);
+      transition: opacity 1s ease, transform 1s ease; }
+    .sideNav-menuItem-text {
+      font-size: 2rem;
+      text-transform: uppercase;
+      color: white;
+      transition: opacity 1s ease; }
+    .sideNav-menuItem .hideIcon {
+      display: none;
+      opacity: 0;
+      transform: scale(0);
+      transition: opacity 1s ease, transform 1s ease; }
+    .sideNav-menuItem .hideText {
+      display: none;
+      opacity: 0; }
+
+.expanded {
+  width: 15rem; }
+
+/*.topNav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6rem;
+  background-color: hsla(160, 79%, 100%, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12%;
+  padding-right: calc(12% - 6rem);
+  border-bottom: 1px solid var(--color-primary-dark);
+  z-index: 2;
+  &-logo {
+    color: var(--color-primary-dark);
+    font-size: $logo-small-font-size;
+  }
+  &-login {
+    color: white;
+    text-transform: uppercase;
+    font-size: $default-font-size;
+    border-radius: 15px;
+    padding: 0.5rem 2rem;
+    background-color: var(--color-primary);
+  }
+}*/
+.topNav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5%;
+  border-bottom: 1px solid #bbbbbb;
+  z-index: 10;
+  /*&-menuItems {
+    display: flex;
+    gap: 2rem;
+    font-size: $medium-font-size;
+    color: white;
+  }*/
+  /*&-logo {
+    color: white;
+    font-size: $logo-small-font-size;
+  }
+  &-login {
+    color: white;
+    text-transform: uppercase;
+    font-size: $default-font-size;
+    border-radius: 15px;
+    padding: 0.5rem 2rem;
+    background-color: var(--color-primary);
+  }*/ }
+  .topNav-left {
+    display: flex;
+    gap: 4rem;
+    align-items: center;
+    letter-spacing: 0.3rem; }
+    .topNav-left .item {
+      font-size: 1.6rem;
+      color: black; }
+  .topNav-logo {
+    color: black;
+    font-size: 3rem; }
+  .topNav-right {
+    color: black;
+    text-transform: uppercase;
+    font-size: 1.6rem;
+    letter-spacing: 0.3rem;
+    padding: 0.2rem 1rem;
+    border: 2px solid black; }

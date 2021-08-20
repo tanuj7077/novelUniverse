@@ -1,0 +1,303 @@
+.chapterPage {
+  width: 100%;
+  &-top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgb(59, 59, 59);
+    color: white;
+    height: 5rem;
+    .left {
+      position: absolute;
+      top: 50%;
+      left: 3rem;
+      transform: translateY(-50%);
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      .logo {
+        width: 4rem;
+        height: 4rem;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+      .info {
+        font-size: $small-font-size;
+        letter-spacing: 0.2rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        .bookName {
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+      .div {
+        height: 1.4rem;
+        width: 1.4rem;
+      }
+    }
+    .middle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      align-items: center;
+      font-size: $default-font-size;
+      gap: 2rem;
+      .chapterSelectionPopup {
+        position: absolute;
+        top: 5rem;
+        left: 50%;
+        transform-origin: 0% 0%;
+        transform: scale(0) translateX(-50%);
+        background-color: rgb(59, 59, 59);
+        width: 25rem;
+        height: max-content;
+        border-radius: 1rem;
+        padding: 2rem;
+        display: flex;
+        flex-flow: column;
+        gap: 1.5rem;
+        opacity: 0;
+        transition: all 0.3s ease;
+        .goto {
+          display: flex;
+          justify-content: space-between;
+          .chapterInput {
+            border: none;
+            outline: none;
+            border-radius: 2px;
+            padding: 0.2rem 0.5rem;
+            width: 55%;
+            font-size: $default-font-size;
+          }
+          .gotoBtn {
+            border: none;
+            outline: none;
+            border-radius: 2px;
+            width: 35%;
+            background-color: rgb(42, 131, 248);
+            color: white;
+            font-size: $default-font-size;
+            text-transform: uppercase;
+            line-height: $default-font-size;
+            display: grid;
+            place-items: center;
+          }
+        }
+        .chapterList {
+          list-style: none;
+          max-height: 20rem;
+          overflow: hidden;
+          overflow-y: auto;
+          background-color: rgb(75, 75, 75);
+          padding: 0.5rem;
+          border-radius: 1rem;
+          border-top-right-radius: 0%;
+          border-bottom-right-radius: 0%;
+          .chapter {
+            font-size: $default-font-size;
+          }
+          &::-webkit-scrollbar {
+            width: 0.5rem;
+          }
+          &::-webkit-scrollbar-track {
+            // background: hsl(160, 79%, 15%);
+            background: transparent;
+          }
+          &::-webkit-scrollbar-thumb {
+            //background: var(--color-primary-dark);
+            background: linear-gradient(
+              135deg,
+              rgb(104, 187, 255) 0%,
+              rgb(85, 255, 212) 49%,
+              rgb(133, 255, 109) 100%
+            );
+            border-radius: 0.75rem;
+          }
+        }
+      }
+      .popupVisible {
+        opacity: 1;
+        transform: scale(1) translateX(-50%);
+      }
+    }
+    .right {
+      position: absolute;
+      top: 50%;
+      right: 3rem;
+      transform: translateY(-50%);
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      .customization {
+        width: 2.5rem;
+        height: 2.5rem;
+      }
+      .fontPopup {
+        position: absolute;
+        top: 5rem;
+        right: 0;
+        padding: 2rem;
+        border-radius: 1rem;
+        width: max-content;
+        height: max-content;
+        background-color: rgb(59, 59, 59);
+        display: flex;
+        flex-flow: column;
+        gap: 1rem;
+        font-size: $default-font-size;
+        opacity: 0;
+        transform: scale(0);
+        transition: all 0.3s ease;
+        .fontSize,
+        .letterSpacing {
+          display: flex;
+          flex-flow: column;
+          gap: 0.5rem;
+        }
+        input[type="range"] {
+          width: 20rem;
+        }
+      }
+      .popupVisible {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  }
+  &-body {
+    width: 100%;
+    margin-top: 5rem;
+    height: calc(100vh - 5rem);
+    overflow: hidden;
+    overflow-y: auto;
+    padding-top: 5rem;
+    padding-bottom: 7rem;
+    transition: all 0.3s ease;
+    &::-webkit-scrollbar {
+      width: 1.5rem;
+    }
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: linear-gradient(
+        135deg,
+        rgb(104, 187, 255) 0%,
+        rgb(85, 255, 212) 49%,
+        rgb(133, 255, 109) 100%
+      );
+      border-radius: 0.75rem;
+    }
+  }
+  .darkChapterBody {
+    border-top: 2px solid rgb(124, 124, 124);
+    background-color: rgb(59, 59, 59);
+    color: rgb(194, 194, 194);
+    transition: all 0.3s ease;
+  }
+  &-chapter {
+    width: 60%;
+    margin: 4rem auto;
+    font-size: $small-font-size;
+    text-align: justify;
+    white-space: pre-wrap;
+    .smallFont {
+      font-size: $smaller-font-size;
+    }
+    .mediumFont {
+      font-size: $default-font-size;
+    }
+    .largeFont {
+      font-size: $small-font-size;
+    }
+    .largestFont {
+      font-size: $medium-font-size;
+    }
+  }
+  &-comments {
+    width: 60%;
+    margin: 0 auto;
+    border-radius: 1rem;
+    box-shadow: 0px 0px 10px 5px rgba(black, 0.1);
+    height: max-content;
+    padding: 2rem;
+    display: flex;
+    flex-flow: column;
+    gap: 3rem;
+    .heading {
+      font-size: $medium-font-size;
+    }
+    .commentInput {
+      width: 100%;
+      height: 10rem;
+      padding: 1rem;
+      background-color: rgb(243, 243, 243);
+      outline: none;
+      border: none;
+      font-size: $small-font-size;
+      color: black;
+      resize: none;
+      border-radius: 1rem;
+      &::placeholder {
+        color: rgb(100, 100, 100);
+      }
+    }
+    .commentSubmit {
+      outline: none;
+      border: none;
+      border-radius: 1rem;
+      font-size: $small-font-size;
+      color: white;
+      background-color: rgb(42, 131, 248);
+      padding: 0.5rem 1rem;
+      margin-top: 1rem;
+    }
+    .comments {
+      list-style: none;
+      display: flex;
+      flex-flow: column;
+      gap: 1.5rem;
+      .comment {
+        .head {
+          display: flex;
+          align-items: center;
+          gap: 1.5rem;
+          .user {
+            font-size: $default-font-size;
+            font-weight: bold;
+            color: rgb(12, 75, 158);
+          }
+          .date {
+            font-size: $smaller-font-size;
+          }
+        }
+        .commentText {
+          font-size: $small-font-size;
+        }
+      }
+    }
+  }
+  .darkComments {
+    box-shadow: 0px 0px 10px 5px rgba(white, 0.1);
+    transition: all 0.3s ease;
+    .commentInput {
+      background-color: rgb(97, 97, 97);
+      color: rgb(194, 194, 194);
+      &::placeholder {
+        color: rgb(153, 153, 153);
+      }
+    }
+    .comments .comment .head .user {
+      font-size: $default-font-size;
+      font-weight: bold;
+      color: rgb(60, 135, 233);
+    }
+  }
+}
