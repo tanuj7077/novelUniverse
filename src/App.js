@@ -8,7 +8,7 @@ import Landing from "./pages/Landing";
 import Home from "./pages/Home";
 import Browse from "./pages/Browse";
 import Collection from "./pages/CollectionPage/Collection";
-import Profile from "./pages/Profile";
+import Profile from "./pages/ProfilePage/Profile";
 import Contact from "./pages/Contact";
 import BookPage from "./pages/BookPage";
 import SideNav from "./components/Navigation/SideNav";

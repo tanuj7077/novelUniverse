@@ -1,0 +1,364 @@
+.profilePage {
+  width: 100%;
+  min-height: calc(100vh - 6rem);
+  margin-top: 6rem;
+  display: flex;
+  align-items: center;
+  &-left {
+    width: 20%;
+    height: calc(100vh - 6rem);
+    padding-top: 3rem;
+    //border-right: 3px solid rgb(187, 187, 187);
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    gap: 3rem;
+    .heading {
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      .text {
+        font-size: $small-font-size;
+        //font-weight: bold;
+        letter-spacing: 0.3rem;
+      }
+      .count {
+        font-size: $default-font-size;
+        color: rgb(77, 77, 77);
+      }
+    }
+    .followingList {
+      width: 90%;
+      padding-left: 7%;
+      padding-right: 10%;
+      list-style: none;
+      display: flex;
+      flex-flow: column;
+      gap: 1rem;
+      overflow-y: auto;
+      .user {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        .img {
+          width: 3.5rem;
+          height: 3.5rem;
+          border-radius: 50%;
+          background-size: cover;
+          background-position: center;
+        }
+        .name {
+          font-size: $default-font-size;
+          font-weight: bold;
+        }
+      }
+      &::-webkit-scrollbar {
+        width: 1rem;
+      }
+      &::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: rgb(179, 179, 179);
+        border-radius: 0.75rem;
+      }
+    }
+  }
+  &-right {
+    width: 80%;
+    height: calc(100vh - 6rem);
+    background-color: rgb(223, 223, 223);
+    overflow-y: auto;
+    .contents {
+      height: max-content;
+      width: 100%;
+      padding: 3rem;
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      //gap: 30rem;
+      .top {
+        width: 90%;
+        height: 30rem;
+        position: relative;
+        .bg {
+          position: absolute;
+          width: 100%;
+          height: 20rem;
+          background-size: cover;
+          background-position: center;
+          filter: blur(4px);
+          -webkit-filter: blur(4px);
+        }
+        .profileImg {
+          position: absolute;
+          top: 12rem;
+          left: 8rem;
+          width: 15rem;
+          height: 15rem;
+          border-radius: 50%;
+          background-size: cover;
+          background-position: center;
+          border: 4px solid white;
+        }
+        .name {
+          position: absolute;
+          top: 21rem;
+          left: 25rem;
+          font-size: $medium-font-size;
+        }
+        .userName {
+          position: absolute;
+          top: 24rem;
+          left: 25rem;
+          font-size: $default-font-size;
+          color: rgb(0, 110, 255);
+          font-weight: bold;
+          letter-spacing: 0.2rem;
+        }
+      }
+      .body {
+        width: 90%;
+        height: max-content;
+        display: flex;
+        flex-wrap: wrap;
+        // justify-content: space-between;
+        gap: 6%;
+        row-gap: 4rem;
+        &-item {
+          width: 47%;
+          height: 30rem;
+          border-radius: 10px;
+          background-color: white;
+          padding: 1.5rem 2rem;
+          display: flex;
+          flex-flow: column;
+          align-items: center;
+          gap: 1rem;
+          &-top {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          }
+          &-visibility {
+            width: 2rem;
+            height: 2rem;
+            &:hover {
+              cursor: pointer;
+            }
+          }
+          &-heading {
+            align-self: flex-start;
+            font-size: $small-font-size;
+            font-weight: bold;
+          }
+        }
+        .about {
+          width: 100%;
+          height: max-content;
+          &-content {
+            font-size: $default-font-size;
+          }
+        }
+        .current {
+          &-content {
+            width: 100%;
+            height: 85%;
+            overflow: hidden;
+            overflow-y: auto;
+            padding-right: 1.5rem;
+            &-novels {
+              height: max-content;
+              display: flex;
+              flex-flow: column;
+              gap: 1rem;
+              .novel {
+                width: 100%;
+                padding-top: 0.5rem;
+                display: flex;
+                justify-content: space-between;
+                &-img {
+                  width: 4rem;
+                  height: 4rem;
+                  background-color: blanchedalmond;
+                }
+                &-data {
+                  width: calc(100% - 5.5rem);
+                  display: flex;
+                  flex-flow: column;
+                  &-text {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                  }
+                  &-name {
+                    font-size: $default-font-size;
+                  }
+                  &-time {
+                    font-size: $smaller-font-size;
+                  }
+                  &-progressBar {
+                    height: 1rem;
+                    width: 100%;
+                    border-radius: 0.5rem;
+                    background-color: rgb(223, 223, 223);
+                    overflow: hidden;
+                    position: relative;
+                    .progress {
+                      transition: all 0.4s ease;
+                      position: absolute;
+                      height: 100%;
+                      width: 100%;
+                      left: -100%;
+                      border-radius: 0.5rem;
+                      background-color: rgb(47, 117, 237);
+                    }
+                  }
+                }
+              }
+            }
+            &::-webkit-scrollbar {
+              width: 1rem;
+            }
+            &::-webkit-scrollbar-track {
+              background: transparent;
+            }
+            &::-webkit-scrollbar-thumb {
+              background: rgb(179, 179, 179);
+              border-radius: 0.75rem;
+            }
+          }
+        }
+        .stats {
+          &-content {
+            display: flex;
+            flex-wrap: wrap;
+            //gap: 6%;
+            gap: 1.5rem;
+            justify-content: space-between;
+            .item {
+              width: 47%;
+              display: flex;
+              align-items: center;
+              gap: 1.5rem;
+              background-color: rgb(223, 223, 223);
+              padding: 0.7rem 1rem;
+              border-radius: 1rem;
+              .icon {
+                width: 3.5rem;
+                height: 3.5rem;
+              }
+              .text {
+                display: flex;
+                flex-flow: column;
+                align-items: start;
+                .title {
+                  font-size: $default-font-size;
+                }
+                .count {
+                  font-size: $small-font-size;
+                  font-weight: bold;
+                }
+              }
+            }
+          }
+        }
+        .favGenre {
+          &-content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            .labels {
+              display: flex;
+              flex-flow: column;
+              gap: 1rem;
+              &-label {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                &-color {
+                  height: 1rem;
+                  width: 1rem;
+                  border-radius: 50%;
+                }
+                &-text {
+                  text-transform: capitalize;
+                  font-size: $default-font-size;
+                  color: black;
+                }
+              }
+            }
+            .doughnutChart {
+              width: 20rem;
+              height: 20rem;
+            }
+          }
+        }
+        .favourites {
+          &-content {
+            width: 100%;
+            height: 85%;
+            overflow: hidden;
+            overflow-y: auto;
+            &-novels {
+              display: flex;
+              flex-flow: column;
+              gap: 1rem;
+            }
+            &-novel {
+              display: flex;
+              gap: 1rem;
+              &-img {
+                width: 3.5rem;
+                height: 4rem;
+                background-color: rgb(255, 197, 126);
+              }
+              .text {
+                display: flex;
+                flex-flow: column;
+              }
+              &-name {
+                font-size: $default-font-size;
+              }
+              &-rating {
+                display: flex;
+                align-items: center;
+                height: 1rem;
+                .icon {
+                  color: rgb(255, 217, 0);
+                }
+                .text {
+                }
+              }
+            }
+
+            &::-webkit-scrollbar {
+              width: 1rem;
+            }
+            &::-webkit-scrollbar-track {
+              background: transparent;
+            }
+            &::-webkit-scrollbar-thumb {
+              background: rgb(179, 179, 179);
+              border-radius: 0.75rem;
+            }
+          }
+        }
+      }
+    }
+
+    &::-webkit-scrollbar {
+      width: 1rem;
+    }
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: rgb(179, 179, 179);
+      border-radius: 0.75rem;
+    }
+  }
+}

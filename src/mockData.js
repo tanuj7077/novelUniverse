@@ -228,3 +228,90 @@ export const browseNovels = [
     desc: "u Ijin was the sole survivor of a plane crash when he was little. After becoming a mercenary to survive for 10 years, he returns to his family in his hometown.",
   },
 ];
+export const currentProgress = [
+  {
+    name: "Reincarnation of the Strongest",
+    img: "https://static.lightnovelpub.com/bookcover/158x210/00016-reincarnation-of-the-strongest-sword-god-novel.jpg",
+    progress: 0.71,
+    rating: 4.7,
+  },
+  {
+    name: "Count of Monte Christo",
+    img: "https://static.lightnovelpub.com/bookcover/158x210/00548-the-beginning-after-the-end.jpg",
+    progress: 0.1,
+    rating: 4.4,
+  },
+  {
+    name: "Mercenary Enrollment",
+    img: "https://static.lightnovelpub.com/bookcover/158x210/00707-my-vampire-system-wnovel.jpg",
+    progress: 0.23,
+    rating: 4.9,
+  },
+  {
+    name: "Eleceed",
+    img: "https://static.lightnovelpub.com/bookcover/158x210/00091-super-god-gene-novel.jpg",
+    progress: 0.89,
+    rating: 4.1,
+  },
+  {
+    name: "Guilty Trigger",
+    img: "https://static.lightnovelpub.com/bookcover/158x210/00045-trash-count-novel.jpg",
+    progress: 0.44,
+    rating: 4.6,
+  },
+  {
+    name: "The Boxer",
+    img: "https://static.lightnovelpub.com/bookcover/158x210/00016-reincarnation-of-the-strongest-sword-god-novel.jpg",
+    progress: 0.75,
+    rating: 4.3,
+  },
+];
+export const favGenre = {
+  labels: [
+    "action",
+    "adventure",
+    "psychological",
+    "horror",
+    "comedy",
+    "others",
+  ],
+  datasets: [
+    {
+      data: [200, 300, 150, 250, 130, 50],
+      backgroundColor: [
+        "rgb(70, 219, 80)",
+        "rgb(81, 187, 232)",
+        "rgb(242, 149, 87)",
+        "rgb(59, 95, 255)",
+        "rgb(207, 107, 250)",
+        "rgb(255, 88, 77)",
+      ],
+    },
+  ],
+};
+export const following = [
+  "James Cameron",
+  "Mahatma Gandhi",
+  "Ellie Williams",
+  "Paul Rudd",
+  "Satoshi",
+  "John Morrison",
+  "Kim Jong Un",
+  "Joe Biden",
+  "James Cameron",
+  "Mahatma Gandhi",
+  "Ellie Williams",
+  "Paul Rudd",
+  "Beuterik",
+  "Drake",
+  "Kim Jong Un",
+  "Joe Biden",
+  "James Cameron",
+  "Mahatma Gandhi",
+  "Ellie Williams",
+  "Paul Rudd",
+  "John Cena",
+  "K Nakamoto",
+  "Kim Jong Un",
+  "Joe Biden",
+];

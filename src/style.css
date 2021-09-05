@@ -212,50 +212,7 @@ a:link, a:visited, a:hover, a:active {
   background-color: rgba(255, 255, 255, 0.4);
   display: flex;
   flex-flow: column;
-  gap: 4rem;
-  /*&::before {
-    content: "";
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 1px;
-    height: 1px;
-    border-radius: 50%;
-    box-shadow: 0px 0px 50vh 50vh rgba(blue, 0.2);
-    z-index: 1;
-  }
-  &::after {
-    content: "";
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 1px;
-    height: 1px;
-    border-radius: 50%;
-    background-color: red;
-    box-shadow: 0px 0px 50vh 50vh rgba(red, 0.2);
-    z-index: 1;
-  }*/ }
-  .homePage::before {
-    content: "";
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 1px;
-    height: 1px;
-    border-radius: 50%;
-    box-shadow: 0px 0px 70vh 70vh rgba(104, 187, 255, 0.4);
-    z-index: 1; }
-  .homePage::after {
-    content: "";
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 1px;
-    height: 1px;
-    border-radius: 50%;
-    box-shadow: 0px 0px 70vh 70vh rgba(133, 255, 109, 0.2);
-    z-index: 1; }
+  gap: 4rem; }
   .homePage-novels {
     width: 100%;
     height: 100%;
@@ -319,26 +276,6 @@ a:link, a:visited, a:hover, a:active {
   display: flex;
   flex-flow: column;
   gap: 7rem; }
-  .browsePage::before {
-    content: "";
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 1px;
-    height: 1px;
-    border-radius: 50%;
-    box-shadow: 0px 0px 70vh 70vh rgba(104, 187, 255, 0.2);
-    z-index: 1; }
-  .browsePage::after {
-    content: "";
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 1px;
-    height: 1px;
-    border-radius: 50%;
-    box-shadow: 0px 0px 70vh 70vh rgba(133, 255, 109, 0.2);
-    z-index: 1; }
   .browsePage .search {
     margin-top: 3rem;
     width: 100%;
@@ -467,8 +404,8 @@ a:link, a:visited, a:hover, a:active {
   display: flex;
   flex-flow: column;
   gap: 4rem;
-  align-items: center; }
-  .bookPage::before {
+  align-items: center;
+  /*&::before {
     content: "";
     position: fixed;
     bottom: 0;
@@ -477,8 +414,9 @@ a:link, a:visited, a:hover, a:active {
     height: 1px;
     border-radius: 50%;
     box-shadow: 0px 0px 80vh 80vh rgba(104, 187, 255, 0.2);
-    z-index: 1; }
-  .bookPage::after {
+    z-index: 1;
+  }
+  &::after {
     content: "";
     position: fixed;
     top: 0;
@@ -487,7 +425,8 @@ a:link, a:visited, a:hover, a:active {
     height: 1px;
     border-radius: 50%;
     box-shadow: 0px 0px 80vh 80vh rgba(133, 255, 109, 0.2);
-    z-index: 1; }
+    z-index: 1;
+  }*/ }
   .bookPage .introSection {
     width: 71%;
     height: max-content;
@@ -916,10 +855,9 @@ a:link, a:visited, a:hover, a:active {
   width: 100%;
   height: calc(100vh - 6rem);
   margin-top: 6rem;
-  background-color: rgba(253, 229, 213, 0.4);
   display: flex;
-  align-items: center; }
-  .collectionPage::before {
+  align-items: center;
+  /*&::before {
     content: "";
     position: fixed;
     bottom: 0;
@@ -928,8 +866,9 @@ a:link, a:visited, a:hover, a:active {
     height: 1px;
     border-radius: 50%;
     box-shadow: 0px 0px 70vh 70vh rgba(60, 158, 238, 0.4);
-    z-index: 1; }
-  .collectionPage::after {
+    z-index: 1;
+  }
+  &::after {
     content: "";
     position: fixed;
     top: 0;
@@ -938,7 +877,8 @@ a:link, a:visited, a:hover, a:active {
     height: 1px;
     border-radius: 50%;
     box-shadow: 0px 0px 70vh 70vh rgba(133, 255, 109, 0.3);
-    z-index: 1; }
+    z-index: 1;
+  }*/ }
   .collectionPage-leftPane {
     width: 30%;
     height: calc(100vh - 12rem);
@@ -1327,6 +1267,288 @@ a:link, a:visited, a:hover, a:active {
       font-size: 1.6rem;
       font-weight: bold;
       color: #3c87e9; }
+
+.profilePage {
+  width: 100%;
+  min-height: calc(100vh - 6rem);
+  margin-top: 6rem;
+  display: flex;
+  align-items: center; }
+  .profilePage-left {
+    width: 20%;
+    height: calc(100vh - 6rem);
+    padding-top: 3rem;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    gap: 3rem; }
+    .profilePage-left .heading {
+      display: flex;
+      flex-flow: column;
+      align-items: center; }
+      .profilePage-left .heading .text {
+        font-size: 2rem;
+        letter-spacing: 0.3rem; }
+      .profilePage-left .heading .count {
+        font-size: 1.6rem;
+        color: #4d4d4d; }
+    .profilePage-left .followingList {
+      width: 90%;
+      padding-left: 7%;
+      padding-right: 10%;
+      list-style: none;
+      display: flex;
+      flex-flow: column;
+      gap: 1rem;
+      overflow-y: auto; }
+      .profilePage-left .followingList .user {
+        display: flex;
+        align-items: center;
+        gap: 1rem; }
+        .profilePage-left .followingList .user .img {
+          width: 3.5rem;
+          height: 3.5rem;
+          border-radius: 50%;
+          background-size: cover;
+          background-position: center; }
+        .profilePage-left .followingList .user .name {
+          font-size: 1.6rem;
+          font-weight: bold; }
+      .profilePage-left .followingList::-webkit-scrollbar {
+        width: 1rem; }
+      .profilePage-left .followingList::-webkit-scrollbar-track {
+        background: transparent; }
+      .profilePage-left .followingList::-webkit-scrollbar-thumb {
+        background: #b3b3b3;
+        border-radius: 0.75rem; }
+  .profilePage-right {
+    width: 80%;
+    height: calc(100vh - 6rem);
+    background-color: #dfdfdf;
+    overflow-y: auto; }
+    .profilePage-right .contents {
+      height: max-content;
+      width: 100%;
+      padding: 3rem;
+      display: flex;
+      flex-flow: column;
+      align-items: center; }
+      .profilePage-right .contents .top {
+        width: 90%;
+        height: 30rem;
+        position: relative; }
+        .profilePage-right .contents .top .bg {
+          position: absolute;
+          width: 100%;
+          height: 20rem;
+          background-size: cover;
+          background-position: center;
+          filter: blur(4px);
+          -webkit-filter: blur(4px); }
+        .profilePage-right .contents .top .profileImg {
+          position: absolute;
+          top: 12rem;
+          left: 8rem;
+          width: 15rem;
+          height: 15rem;
+          border-radius: 50%;
+          background-size: cover;
+          background-position: center;
+          border: 4px solid white; }
+        .profilePage-right .contents .top .name {
+          position: absolute;
+          top: 21rem;
+          left: 25rem;
+          font-size: 2.5rem; }
+        .profilePage-right .contents .top .userName {
+          position: absolute;
+          top: 24rem;
+          left: 25rem;
+          font-size: 1.6rem;
+          color: #006eff;
+          font-weight: bold;
+          letter-spacing: 0.2rem; }
+      .profilePage-right .contents .body {
+        width: 90%;
+        height: max-content;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6%;
+        row-gap: 4rem; }
+        .profilePage-right .contents .body-item {
+          width: 47%;
+          height: 30rem;
+          border-radius: 10px;
+          background-color: white;
+          padding: 1.5rem 2rem;
+          display: flex;
+          flex-flow: column;
+          align-items: center;
+          gap: 1rem; }
+          .profilePage-right .contents .body-item-top {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center; }
+          .profilePage-right .contents .body-item-visibility {
+            width: 2rem;
+            height: 2rem; }
+            .profilePage-right .contents .body-item-visibility:hover {
+              cursor: pointer; }
+          .profilePage-right .contents .body-item-heading {
+            align-self: flex-start;
+            font-size: 2rem;
+            font-weight: bold; }
+        .profilePage-right .contents .body .about {
+          width: 100%;
+          height: max-content; }
+          .profilePage-right .contents .body .about-content {
+            font-size: 1.6rem; }
+        .profilePage-right .contents .body .current-content {
+          width: 100%;
+          height: 85%;
+          overflow: hidden;
+          overflow-y: auto;
+          padding-right: 1.5rem; }
+          .profilePage-right .contents .body .current-content-novels {
+            height: max-content;
+            display: flex;
+            flex-flow: column;
+            gap: 1rem; }
+            .profilePage-right .contents .body .current-content-novels .novel {
+              width: 100%;
+              padding-top: 0.5rem;
+              display: flex;
+              justify-content: space-between; }
+              .profilePage-right .contents .body .current-content-novels .novel-img {
+                width: 4rem;
+                height: 4rem;
+                background-color: blanchedalmond; }
+              .profilePage-right .contents .body .current-content-novels .novel-data {
+                width: calc(100% - 5.5rem);
+                display: flex;
+                flex-flow: column; }
+                .profilePage-right .contents .body .current-content-novels .novel-data-text {
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center; }
+                .profilePage-right .contents .body .current-content-novels .novel-data-name {
+                  font-size: 1.6rem; }
+                .profilePage-right .contents .body .current-content-novels .novel-data-time {
+                  font-size: 1.2rem; }
+                .profilePage-right .contents .body .current-content-novels .novel-data-progressBar {
+                  height: 1rem;
+                  width: 100%;
+                  border-radius: 0.5rem;
+                  background-color: #dfdfdf;
+                  overflow: hidden;
+                  position: relative; }
+                  .profilePage-right .contents .body .current-content-novels .novel-data-progressBar .progress {
+                    transition: all 0.4s ease;
+                    position: absolute;
+                    height: 100%;
+                    width: 100%;
+                    left: -100%;
+                    border-radius: 0.5rem;
+                    background-color: #2f75ed; }
+          .profilePage-right .contents .body .current-content::-webkit-scrollbar {
+            width: 1rem; }
+          .profilePage-right .contents .body .current-content::-webkit-scrollbar-track {
+            background: transparent; }
+          .profilePage-right .contents .body .current-content::-webkit-scrollbar-thumb {
+            background: #b3b3b3;
+            border-radius: 0.75rem; }
+        .profilePage-right .contents .body .stats-content {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 1.5rem;
+          justify-content: space-between; }
+          .profilePage-right .contents .body .stats-content .item {
+            width: 47%;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            background-color: #dfdfdf;
+            padding: 0.7rem 1rem;
+            border-radius: 1rem; }
+            .profilePage-right .contents .body .stats-content .item .icon {
+              width: 3.5rem;
+              height: 3.5rem; }
+            .profilePage-right .contents .body .stats-content .item .text {
+              display: flex;
+              flex-flow: column;
+              align-items: start; }
+              .profilePage-right .contents .body .stats-content .item .text .title {
+                font-size: 1.6rem; }
+              .profilePage-right .contents .body .stats-content .item .text .count {
+                font-size: 2rem;
+                font-weight: bold; }
+        .profilePage-right .contents .body .favGenre-content {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: space-around; }
+          .profilePage-right .contents .body .favGenre-content .labels {
+            display: flex;
+            flex-flow: column;
+            gap: 1rem; }
+            .profilePage-right .contents .body .favGenre-content .labels-label {
+              display: flex;
+              align-items: center;
+              gap: 1rem; }
+              .profilePage-right .contents .body .favGenre-content .labels-label-color {
+                height: 1rem;
+                width: 1rem;
+                border-radius: 50%; }
+              .profilePage-right .contents .body .favGenre-content .labels-label-text {
+                text-transform: capitalize;
+                font-size: 1.6rem;
+                color: black; }
+          .profilePage-right .contents .body .favGenre-content .doughnutChart {
+            width: 20rem;
+            height: 20rem; }
+        .profilePage-right .contents .body .favourites-content {
+          width: 100%;
+          height: 85%;
+          overflow: hidden;
+          overflow-y: auto; }
+          .profilePage-right .contents .body .favourites-content-novels {
+            display: flex;
+            flex-flow: column;
+            gap: 1rem; }
+          .profilePage-right .contents .body .favourites-content-novel {
+            display: flex;
+            gap: 1rem; }
+            .profilePage-right .contents .body .favourites-content-novel-img {
+              width: 3.5rem;
+              height: 4rem;
+              background-color: #ffc57e; }
+            .profilePage-right .contents .body .favourites-content-novel .text {
+              display: flex;
+              flex-flow: column; }
+            .profilePage-right .contents .body .favourites-content-novel-name {
+              font-size: 1.6rem; }
+            .profilePage-right .contents .body .favourites-content-novel-rating {
+              display: flex;
+              align-items: center;
+              height: 1rem; }
+              .profilePage-right .contents .body .favourites-content-novel-rating .icon {
+                color: #ffd900; }
+          .profilePage-right .contents .body .favourites-content::-webkit-scrollbar {
+            width: 1rem; }
+          .profilePage-right .contents .body .favourites-content::-webkit-scrollbar-track {
+            background: transparent; }
+          .profilePage-right .contents .body .favourites-content::-webkit-scrollbar-thumb {
+            background: #b3b3b3;
+            border-radius: 0.75rem; }
+    .profilePage-right::-webkit-scrollbar {
+      width: 1rem; }
+    .profilePage-right::-webkit-scrollbar-track {
+      background: transparent; }
+    .profilePage-right::-webkit-scrollbar-thumb {
+      background: #b3b3b3;
+      border-radius: 0.75rem; }
 
 .sideNav {
   width: 6rem;

@@ -19,7 +19,6 @@ const TopNav = () => {
                 history.push(`/home`);
               }}
             >
-              {" "}
               Home
             </span>
           )}
@@ -32,7 +31,6 @@ const TopNav = () => {
                 history.push(`/browse`);
               }}
             >
-              {" "}
               Browse
             </span>
           )}

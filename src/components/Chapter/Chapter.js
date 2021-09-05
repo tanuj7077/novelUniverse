@@ -4,7 +4,7 @@ import { BsChevronRight } from "react-icons/bs";
 import { AiOutlineFontSize } from "react-icons/ai";
 import { IoMdColorPalette } from "react-icons/io";
 import { CgDarkMode } from "react-icons/cg";
-import { useParams } from "react-router-dom";
+import { useParams, Route } from "react-router-dom";
 
 const Chapter = () => {
   const { id } = useParams();
@@ -88,7 +88,17 @@ const Chapter = () => {
     <div className="chapterPage">
       <div className="chapterPage-top">
         <section className="left">
-          <CgDarkMode className="logo" />
+          <Route
+            render={({ history }) => (
+              <CgDarkMode
+                className="logo"
+                onClick={() => {
+                  history.push(`/home`);
+                }}
+              />
+            )}
+          />
+
           <p className="info">
             <span className="bookName">{book}</span>
             <BsChevronRight className="div" />
