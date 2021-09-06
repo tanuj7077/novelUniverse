@@ -9,7 +9,7 @@ import Reviews from "./BookPage/Reviews";
 const BookPage = () => {
   const [selection, setSelection] = useState("summary");
   let novelObj = {
-    img: "https://static.lightnovelpub.com/bookcover/158x210/00016-reincarnation-of-the-strongest-sword-god-novel.jpg",
+    img: "https://mangageko.com/media/manga_covers/cover_1_DrJkaWz.jpg",
     title: "Reincarnation of the Strongest Swordsman in Universe",
     author: "Kim Yohan",
     chapters: 145,

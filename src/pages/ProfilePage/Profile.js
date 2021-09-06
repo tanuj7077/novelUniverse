@@ -3,6 +3,7 @@ import blank from "../../assets/blankProfile.png";
 import background from "../../assets/digital.jpg";
 import { FaCentercode, FaStar } from "react-icons/fa";
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
+import { MdEdit } from "react-icons/md";
 import { Doughnut } from "react-chartjs-2";
 import { following, currentProgress, favGenre } from "../../mockData";
 const Profile = () => {
@@ -44,7 +45,12 @@ const Profile = () => {
                 backgroundImage: `url(${blank})`,
               }}
             ></span>
-            <p className="name">James Cameron</p>
+            <p className="name">
+              <span>James Cameron</span>
+              <span>
+                <MdEdit className="editIcon" />
+              </span>
+            </p>
             <p className="userName">@Jamie</p>
           </div>
           <div className="body">

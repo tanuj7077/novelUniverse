@@ -28,7 +28,7 @@
     z-index: 1;
   }*/
   &-leftPane {
-    width: 30%;
+    width: 22%;
     height: calc(100vh - 12rem);
     display: flex;
     flex-flow: column;
@@ -48,7 +48,7 @@
       z-index: 1;
     }*/
     .item {
-      font-size: $large-font-size;
+      font-size: $logo-small-font-size;
       letter-spacing: 0.3rem;
       transition: all 0.3s ease;
       z-index: 1;
@@ -58,30 +58,24 @@
         transform: scale(1.1);
       }
     }
+    .current {
+      color: hsl(160, 91%, 30%);
+      transform: scale(1.1);
+    }
   }
   &-rightPane {
     padding: 8rem 6rem;
     height: calc(100vh - 6rem);
-    width: 70%;
+    width: 78%;
     display: flex;
     gap: 10rem;
     flex-flow: column;
+    scroll-snap-type: y mandatory;
     overflow-y: auto;
-    scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-    /*&::before {
-      content: "";
-      position: fixed;
-      top: 20%;
-      right: 20%;
-      width: 1px;
-      height: 1px;
-      border-radius: 50%;
-      box-shadow: 0px 0px 50vh 50vh rgba(red, 0.2);
-      z-index: 1;
-    }*/
+    //-webkit-overflow-scrolling: touch;
     .novelSection {
+      scroll-snap-align: start;
       z-index: 2;
       height: max-content;
       //min-height: calc(100vh - 6rem);
@@ -89,6 +83,8 @@
       flex-wrap: wrap;
       justify-content: space-between;
       row-gap: 3rem;
+      padding-top: 3rem;
+      padding-bottom: 10rem;
       .novel {
         width: 24%;
         height: max-content;
@@ -198,6 +194,16 @@
           transition: opacity 0.3s 0.3s ease, transform 0.3s 0.3s ease;
         }
       }
+    }
+    &::-webkit-scrollbar {
+      width: 1rem;
+    }
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: rgb(179, 179, 179);
+      border-radius: 0.75rem;
     }
   }
 }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { data } from "../mockData";
+import { data, browseNovels } from "../mockData";
 import { FaStar } from "react-icons/fa";
 import { Route } from "react-router-dom";
 
@@ -9,9 +9,9 @@ const Home = () => {
     <div className="homePage">
       <div className="homePage-novels">
         <p className="homePage-novels-heading">New Releases</p>
-        <div className="homePage-novels-content">
-          {data &&
-            data.map((item) => {
+        <div className="novelSection">
+          {browseNovels &&
+            browseNovels.map((item) => {
               return (
                 <Route
                   render={({ history }) => (
@@ -29,12 +29,20 @@ const Home = () => {
                       ></div>
                       <div className="novel-info">
                         <div className="novel-info-title">{item.title}</div>
-                        <div className="novel-info-rating">
-                          {item.rating}
-                          <FaStar />
+                        <div className="novel-info-other">
+                          {/* <div className="novel-info-author">
+                            Author: {item.author}
+                          </div> */}
+                          <div className="novel-info-desc">
+                            {item.desc.length >= 180
+                              ? item.desc.substring(0, 180) + "..."
+                              : item.desc}
+                          </div>
                         </div>
-                        <div className="novel-info-ranking">
-                          Rank: {item.rank}
+
+                        <div className="novel-info-btns">
+                          <span className="btn">Start</span>
+                          <span className="btn">Resume</span>
                         </div>
                       </div>
                     </div>
@@ -43,6 +51,7 @@ const Home = () => {
               );
             })}
         </div>
+
         <p className="homePage-novels-more">View More...</p>
       </div>
       <div className="homePage-novels">

@@ -6,8 +6,8 @@ import { Route } from "react-router-dom";
 
 const Browse = () => {
   let novelObj = {
-    img: "https://static.lightnovelpub.com/bookcover/158x210/00016-reincarnation-of-the-strongest-sword-god-novel.jpg",
-    title: "Reincarnation of the Strongest Swordsman in Universe",
+    img: "https://mangageko.com/media/manga_covers/cover_1_DrJkaWz.jpg",
+    title: "Sword Sheath's Child",
     author: "Kim Yohan",
     chapters: "145",
     status: "Completed",

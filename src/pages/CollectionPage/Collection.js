@@ -1,17 +1,31 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { browseNovels } from "../../mockData";
 import { FaStar } from "react-icons/fa";
 import { Route } from "react-router-dom";
+import useOnScreen from "../../components/Utilities/useOnScreen";
 const Collection = () => {
+  const [current, setCurrent] = useState("bookmarked");
+  const bookmarkedRef = useRef();
+  const bookmarkedIsVisible = useOnScreen(bookmarkedRef);
+  const ongoingRef = useRef();
+  const ongoingIsVisible = useOnScreen(ongoingRef);
+  const completedRef = useRef();
+  const completedRefIsVisible = useOnScreen(completedRef);
   return (
     <div className="collectionPage">
       <div className="collectionPage-leftPane">
-        <div className="item">Bookmarked</div>
-        <div className="item">Continue Reading</div>
-        <div className="item">Completed</div>
+        <div className={`item ${bookmarkedIsVisible ? "current" : ""}`}>
+          Bookmarked
+        </div>
+        <div className={`item ${ongoingIsVisible ? "current" : ""}`}>
+          Ongoing
+        </div>
+        <div className={`item ${completedRefIsVisible ? "current" : ""}`}>
+          Completed
+        </div>
       </div>
       <div className="collectionPage-rightPane">
-        <div className="novelSection">
+        <div className="novelSection" ref={bookmarkedRef}>
           {browseNovels &&
             browseNovels.map((item) => {
               return (
@@ -53,7 +67,7 @@ const Collection = () => {
               );
             })}
         </div>
-        <div className="novelSection">
+        <div className="novelSection" ref={ongoingRef}>
           {browseNovels &&
             browseNovels.map((item) => {
               return (
@@ -95,7 +109,7 @@ const Collection = () => {
               );
             })}
         </div>
-        <div className="novelSection">
+        <div className="novelSection" ref={completedRef}>
           {browseNovels &&
             browseNovels.map((item) => {
               return (
