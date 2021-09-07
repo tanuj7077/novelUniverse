@@ -10,22 +10,45 @@ const Collection = () => {
   const ongoingRef = useRef();
   const ongoingIsVisible = useOnScreen(ongoingRef);
   const completedRef = useRef();
-  const completedRefIsVisible = useOnScreen(completedRef);
+  const completedIsVisible = useOnScreen(completedRef);
+  const moveToBookmarked = () => {
+    document.getElementById("bookmarked").scrollIntoView(true);
+  };
+  const moveToOngoing = () => {
+    document.getElementById("ongoing").scrollIntoView(true);
+  };
+  const moveToCompleted = () => {
+    document.getElementById("completed").scrollIntoView(true);
+  };
   return (
     <div className="collectionPage">
       <div className="collectionPage-leftPane">
-        <div className={`item ${bookmarkedIsVisible ? "current" : ""}`}>
-          Bookmarked
+        <div
+          className={`item ${bookmarkedIsVisible ? "current" : ""}`}
+          onClick={moveToBookmarked}
+        >
+          <p id="bookmarkedText">Bookmarked</p>
         </div>
-        <div className={`item ${ongoingIsVisible ? "current" : ""}`}>
-          Ongoing
+        <div
+          className={`item ${ongoingIsVisible ? "current" : ""}`}
+          onClick={moveToOngoing}
+        >
+          <p id="ongoingText">Ongoing</p>
         </div>
-        <div className={`item ${completedRefIsVisible ? "current" : ""}`}>
-          Completed
+        <div
+          className={`item ${completedIsVisible ? "current" : ""}`}
+          onClick={moveToCompleted}
+        >
+          <p id="completedText">Completed</p>
         </div>
       </div>
-      <div className="collectionPage-rightPane">
-        <div className="novelSection" ref={bookmarkedRef}>
+      <div
+        className={`collectionPage-rightPane ${
+          bookmarkedIsVisible ? "collectionPage-rightPane-bookmarked" : ""
+        } ${ongoingIsVisible ? "collectionPage-rightPane-ongoing" : ""}
+        ${completedIsVisible ? "collectionPage-rightPane-completed" : ""}`}
+      >
+        <div className="novelSection" id="bookmarked" ref={bookmarkedRef}>
           {browseNovels &&
             browseNovels.map((item) => {
               return (
@@ -67,7 +90,7 @@ const Collection = () => {
               );
             })}
         </div>
-        <div className="novelSection" ref={ongoingRef}>
+        <div className="novelSection" id="ongoing" ref={ongoingRef}>
           {browseNovels &&
             browseNovels.map((item) => {
               return (
@@ -109,7 +132,7 @@ const Collection = () => {
               );
             })}
         </div>
-        <div className="novelSection" ref={completedRef}>
+        <div className="novelSection" id="completed" ref={completedRef}>
           {browseNovels &&
             browseNovels.map((item) => {
               return (
@@ -152,24 +175,6 @@ const Collection = () => {
             })}
         </div>
       </div>
-      {/* <div className="collectionSection">
-        <div className="collectionSection-leftPane">
-          <div className="heading">Continue Reading</div>
-        </div>
-        <div className="collectionSection-rightPane"></div>
-      </div>
-      <div className="collectionSection">
-        <div className="collectionSection-leftPane">
-          <div className="heading">Continue Reading</div>
-        </div>
-        <div className="collectionSection-rightPane"></div>
-      </div>
-      <div className="collectionSection">
-        <div className="collectionSection-leftPane">
-          <div className="heading">Continue Reading</div>
-        </div>
-        <div className="collectionSection-rightPane"></div>
-      </div> */}
     </div>
   );
 };

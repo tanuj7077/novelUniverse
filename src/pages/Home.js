@@ -7,6 +7,7 @@ const Home = () => {
   console.log(data);
   return (
     <div className="homePage">
+      <div className="homePage-carousel">Carousel</div>
       <div className="homePage-novels">
         <p className="homePage-novels-heading">New Releases</p>
         <div className="novelSection">
@@ -51,8 +52,6 @@ const Home = () => {
               );
             })}
         </div>
-
-        <p className="homePage-novels-more">View More...</p>
       </div>
       <div className="homePage-novels">
         <p className="homePage-novels-heading">Most Viewed Today</p>
