@@ -1,16 +1,118 @@
 .homePage {
   width: 100%;
-  min-height: calc(100vh - 6rem);
+  // min-height: calc(100vh - 6rem);
+  //height: calc(100vh - 6rem);
   margin-top: 6rem;
-  padding: 5rem 12%;
-  padding-right: calc(12% - 6rem);
+  overflow: hidden;
   background-color: hsla(160, 79%, 100%, 0.4);
-  display: flex;
-  flex-flow: column;
-  gap: 4rem;
+  &-container {
+    height: calc(100vh - 6rem);
+    overflow: hidden;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+      width: 1.5rem;
+    }
+    &::-webkit-scrollbar-track {
+      background: rgb(216, 216, 216);
+    }
+    &::-webkit-scrollbar-thumb {
+      background: rgb(119, 119, 119);
+      border-radius: 0.75rem;
+    }
+  }
+  /*&-carousel {
+    height: 55vh;
+    width: 100vw;
+    position: relative;
+    &-container {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      overflow-x: scroll;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      position: relative;
+      &-item {
+        width: 100vw;
+        height: 100%;
+        scroll-snap-align: start;
+        flex-shrink: 0;
+        background-size: cover;
+        background-position: center;
+      }
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+    &-navigation {
+      position: absolute;
+      width: max-content;
+      height: max-content;
+      bottom: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 2rem;
+      &-btn {
+        width: 1rem;
+        height: 1rem;
+        background-color: rgb(173, 173, 173);
+        border-radius: 50%;
+        transition: all 0.3s ease;
+      }
+      .current {
+        transform: scale(1.2);
+        background-color: white;
+      }
+    }
+  }*/
+  &-carousel {
+    height: 55vh;
+    width: 100vw;
+    position: relative;
+    &-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: all 1s ease;
+      &-visible {
+        opacity: 1;
+        transition: all 1s ease;
+      }
+    }
+    &-navigation {
+      position: absolute;
+      width: max-content;
+      height: max-content;
+      bottom: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 2rem;
+      &-btn {
+        width: 1rem;
+        height: 1rem;
+        background-color: rgb(173, 173, 173);
+        border-radius: 50%;
+        transition: all 0.3s ease;
+      }
+      .current {
+        transform: scale(1.2);
+        background-color: white;
+      }
+    }
+  }
   &-novels {
+    padding: 5rem 12%;
     width: 100%;
-    height: 100%;
+    //height: 100%;
     z-index: 2;
     &-heading {
       font-size: $medium-font-size;
@@ -171,7 +273,8 @@
         }
         &:hover .novel-info .novel-info-title::after {
           box-shadow: 0px 0px 3px 3px rgba(111, 236, 111, 0.3);
-          transform: translateX(calc(100% - 1.5rem));
+          // transform: translateX(calc(100% - 1.5rem));
+          transform: translateX(100%);
           transition: all 0.3s 0.3s ease;
         }
         &:hover .novel-info .novel-info-desc {

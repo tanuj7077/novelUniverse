@@ -4,7 +4,6 @@ import { FaStar } from "react-icons/fa";
 import { Route } from "react-router-dom";
 import useOnScreen from "../../components/Utilities/useOnScreen";
 const Collection = () => {
-  const [current, setCurrent] = useState("bookmarked");
   const bookmarkedRef = useRef();
   const bookmarkedIsVisible = useOnScreen(bookmarkedRef);
   const ongoingRef = useRef();

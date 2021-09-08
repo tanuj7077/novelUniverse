@@ -121,7 +121,7 @@ body {
   body::-webkit-scrollbar {
     width: 1.5rem; }
   body::-webkit-scrollbar-track {
-    background: transparent; }
+    background: #b9b9b9; }
   body::-webkit-scrollbar-thumb {
     background: linear-gradient(135deg, #68bbff 0%, #55ffd4 49%, #85ff6d 100%);
     border-radius: 0.75rem; }
@@ -205,17 +205,106 @@ a:link, a:visited, a:hover, a:active {
 
 .homePage {
   width: 100%;
-  min-height: calc(100vh - 6rem);
   margin-top: 6rem;
-  padding: 5rem 12%;
-  padding-right: calc(12% - 6rem);
+  overflow: hidden;
   background-color: rgba(255, 255, 255, 0.4);
-  display: flex;
-  flex-flow: column;
-  gap: 4rem; }
+  /*&-carousel {
+    height: 55vh;
+    width: 100vw;
+    position: relative;
+    &-container {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      overflow-x: scroll;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      position: relative;
+      &-item {
+        width: 100vw;
+        height: 100%;
+        scroll-snap-align: start;
+        flex-shrink: 0;
+        background-size: cover;
+        background-position: center;
+      }
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+    &-navigation {
+      position: absolute;
+      width: max-content;
+      height: max-content;
+      bottom: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 2rem;
+      &-btn {
+        width: 1rem;
+        height: 1rem;
+        background-color: rgb(173, 173, 173);
+        border-radius: 50%;
+        transition: all 0.3s ease;
+      }
+      .current {
+        transform: scale(1.2);
+        background-color: white;
+      }
+    }
+  }*/ }
+  .homePage-container {
+    height: calc(100vh - 6rem);
+    overflow: hidden;
+    overflow-y: auto; }
+    .homePage-container::-webkit-scrollbar {
+      width: 1.5rem; }
+    .homePage-container::-webkit-scrollbar-track {
+      background: #d8d8d8; }
+    .homePage-container::-webkit-scrollbar-thumb {
+      background: #777777;
+      border-radius: 0.75rem; }
+  .homePage-carousel {
+    height: 55vh;
+    width: 100vw;
+    position: relative; }
+    .homePage-carousel-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: all 1s ease; }
+      .homePage-carousel-slide-visible {
+        opacity: 1;
+        transition: all 1s ease; }
+    .homePage-carousel-navigation {
+      position: absolute;
+      width: max-content;
+      height: max-content;
+      bottom: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 2rem; }
+      .homePage-carousel-navigation-btn {
+        width: 1rem;
+        height: 1rem;
+        background-color: #adadad;
+        border-radius: 50%;
+        transition: all 0.3s ease; }
+      .homePage-carousel-navigation .current {
+        transform: scale(1.2);
+        background-color: white; }
   .homePage-novels {
+    padding: 5rem 12%;
     width: 100%;
-    height: 100%;
     z-index: 2; }
     .homePage-novels-heading {
       font-size: 2.5rem;
@@ -351,7 +440,7 @@ a:link, a:visited, a:hover, a:active {
           top: 0%; }
         .homePage-novels .novelSection .novel:hover .novel-info .novel-info-title::after {
           box-shadow: 0px 0px 3px 3px rgba(111, 236, 111, 0.3);
-          transform: translateX(calc(100% - 1.5rem));
+          transform: translateX(100%);
           transition: all 0.3s 0.3s ease; }
         .homePage-novels .novelSection .novel:hover .novel-info .novel-info-desc {
           opacity: 1;
