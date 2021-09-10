@@ -109,6 +109,7 @@ export const browseNovels = [
     status: "Completed",
     rating: 4.5,
     rank: 1,
+    bookmarked: 208,
     desc: "u Ijin was the sole survivor of a plane crash when he was little. After becoming a mercenary to survive for 10 years, he returns to his family in his hometown.",
   },
   {
@@ -119,6 +120,7 @@ export const browseNovels = [
     status: "Completed",
     rating: 4.5,
     rank: 2,
+    bookmarked: 208,
     desc: "u Ijin was the sole survivor of a plane crash when he was little. After becoming a mercenary to survive for 10 years, he returns to his family in his hometown.",
   },
   {
@@ -129,6 +131,7 @@ export const browseNovels = [
     status: "Completed",
     rating: 4.5,
     rank: 2,
+    bookmarked: 208,
     desc: "u Ijin was the sole survivor of a plane crash when he was little. After becoming a mercenary to survive for 10 years, he returns to his family in his hometown.",
   },
   {
@@ -139,6 +142,7 @@ export const browseNovels = [
     status: "Completed",
     rating: 4.5,
     rank: 4,
+    bookmarked: 208,
     desc: "u Ijin was the sole survivor of a plane crash when he was little. After becoming a mercenary to survive for 10 years, he returns to his family in his hometown.",
   },
   {
@@ -149,16 +153,18 @@ export const browseNovels = [
     chapters: "145",
     status: "Completed",
     rank: 5,
+    bookmarked: 208,
     desc: "u Ijin was the sole survivor of a plane crash when he was little. After becoming a mercenary to survive for 10 years, he returns to his family in his hometown.",
   },
   {
-    img: "https://mangageko.com/media/manga_covers/xxlarge_F2NUb1S.jpg",
+    img: "https://mangageko.com/media/manga_covers/3b1124c5-f877-4e3b-9e24-0ad3932c7922_z.jpg",
     title: "The Live",
     author: "Kim Yohan",
     chapters: "145",
     status: "Completed",
     rating: 4.5,
     rank: 6,
+    bookmarked: 208,
     desc: "u Ijin was the sole survivor of a plane crash when he was little. After becoming a mercenary to survive for 10 years, he returns to his family in his hometown.",
   },
   {
@@ -169,6 +175,7 @@ export const browseNovels = [
     status: "Completed",
     rating: 4.5,
     rank: 7,
+    bookmarked: 208,
     desc: "u Ijin was the sole survivor of a plane crash when he was little. After becoming a mercenary to survive for 10 years, he returns to his family in his hometown.",
   },
   {
@@ -179,6 +186,7 @@ export const browseNovels = [
     status: "Completed",
     rating: 4.5,
     rank: 8,
+    bookmarked: 208,
     desc: "u Ijin was the sole survivor of a plane crash when he was little. After becoming a mercenary to survive for 10 years, he returns to his family in his hometown.",
   },
   {
@@ -189,6 +197,7 @@ export const browseNovels = [
     status: "Completed",
     rating: 4.5,
     rank: 9,
+    bookmarked: 208,
     desc: "u Ijin was the sole survivor of a plane crash when he was little. After becoming a mercenary to survive for 10 years, he returns to his family in his hometown.",
   },
   {
@@ -199,6 +208,7 @@ export const browseNovels = [
     status: "Completed",
     rating: 4.5,
     rank: 10,
+    bookmarked: 208,
     desc: "u Ijin was the sole survivor of a plane crash when he was little. After becoming a mercenary to survive for 10 years, he returns to his family in his hometown.",
   },
   {
@@ -209,16 +219,18 @@ export const browseNovels = [
     status: "Completed",
     rating: 4.5,
     rank: 11,
+    bookmarked: 208,
     desc: "u Ijin was the sole survivor of a plane crash when he was little. After becoming a mercenary to survive for 10 years, he returns to his family in his hometown.",
   },
   {
-    img: "https://mangageko.com/media/manga_covers/cover_2_weWbhL4.jpg",
+    img: "https://mangageko.com/media/manga_covers/61000.jpg",
     title: "1 Second",
     author: "Kim Yohan",
     chapters: "145",
     status: "Completed",
     rating: 4.5,
     rank: 12,
+    bookmarked: 208,
     desc: "u Ijin was the sole survivor of a plane crash when he was little. After becoming a mercenary to survive for 10 years, he returns to his family in his hometown.",
   },
   {
@@ -229,6 +241,7 @@ export const browseNovels = [
     status: "Completed",
     rating: 4.5,
     rank: 13,
+    bookmarked: 208,
     desc: "u Ijin was the sole survivor of a plane crash when he was little. After becoming a mercenary to survive for 10 years, he returns to his family in his hometown.",
   },
 ];

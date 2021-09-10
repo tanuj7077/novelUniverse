@@ -106,7 +106,7 @@ const Home = () => {
           </div>
         </div>
         <div className="homePage-novels">
-          <p className="homePage-novels-heading">Most Viwed Today</p>
+          <p className="homePage-novels-heading">Most Viewed Today</p>
           <div className="novelSection">
             {browseNovels &&
               browseNovels.map((item) => {

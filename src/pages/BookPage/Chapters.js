@@ -35,16 +35,14 @@ function Chapters({ allChapters }) {
   }, []);
   return (
     <section className="chapterSection">
-      <div className="chapterSection-latest">
-        <div className="subheading">Latest Release:</div>
-        <div className="chapter">
-          Chapter {allChapters.length - 1}:{" "}
-          {allChapters[allChapters.length - 1]}
-        </div>
-      </div>
+      <p className="chapterSection-subheading">Chapters</p>
+      <p className="chapterSection-latest">
+        <span className="subheading">Latest Release:</span>
+        <span className="chapter">{allChapters[allChapters.length - 1]}</span>
+      </p>
       <div className="chapterSection-goto">
         <div className="goto">
-          <p className="subheading">Enter Chapter: </p>
+          {/* <p className="subheading">Enter Chapter: </p> */}
           <input
             type="number"
             className="chapterInput"

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { FaPlay } from "react-icons/fa";
 import { BiStats } from "react-icons/bi";
 import { MdCollectionsBookmark } from "react-icons/md";
@@ -7,11 +7,14 @@ import Chapters from "./BookPage/Chapters";
 import Summary from "./BookPage/Summary";
 import Reviews from "./BookPage/Reviews";
 import bg1 from "../assets/bg-3.jpg";
+import useOnScreen from "../components/Utilities/useOnScreen";
 
 const BookPage = () => {
+  const introRef = useRef();
+  const introVisible = useOnScreen(introRef);
   const [selection, setSelection] = useState("summary");
   let novelObj = {
-    img: "https://mangageko.com/media/manga_covers/trickster.jpeg",
+    img: "https://mangageko.com/media/manga_covers/cover_1_DrJkaWz.jpg",
     title: "Reincarnation of the Strongest Swordsman in Universe",
     author: "Kim Yohan",
     chapters: 145,
@@ -51,7 +54,7 @@ const BookPage = () => {
   return (
     <div className="bookPage">
       <div className="bookPage-container">
-        <div className="introSection">
+        <div className="introSection" ref={introRef}>
           <span
             className="introSection-bgImg"
             style={{
@@ -112,17 +115,26 @@ const BookPage = () => {
               </div>
 
               <div className="introSection-container-content-buttons">
-                <div className="add btn">
-                  <span className="text">Add to Collection</span>
-                </div>
                 <div className="start btn">
                   <span className="text">{novelObj.readStatus}</span>
+                </div>
+                <div className="add btn">
+                  <span className="text">Bookmark</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <section className="selection">
+        <div
+          className={`contentSection ${
+            !introVisible ? "contentSection-alignRight" : ""
+          }`}
+        >
+          <Summary />
+          <Chapters allChapters={allChapters} />
+          <Reviews />
+        </div>
+        {/* <section className="selection">
           <div
             className={`item ${
               selection === "summary" ? "currentSelection" : ""
@@ -153,76 +165,15 @@ const BookPage = () => {
           >
             Reviews
           </div>
-        </section>
+        </section> */}
 
-        {selection === "summary" && <Summary />}
+        {/* {selection === "summary" && <Summary />}
         {selection === "chapters" && <Chapters allChapters={allChapters} />}
-        {selection === "reviews" && <Reviews />}
+        {selection === "reviews" && <Reviews />} */}
+
         <section className="commentSection"></section>
         <section className="recommendedSection"></section>
       </div>
-
-      {/* <section className="introSection">
-        <div className="introSection-img">
-          <div
-            className="image"
-            style={{
-              backgroundImage: `url(${novelObj.img})`,
-            }}
-          ></div>
-        </div>
-        <div className="introSection-info">
-          <div className="introSection-info-top">
-            <div className="introSection-info-main">
-              <p className="introSection-info-title">{novelObj.title}</p>
-              <p className="introSection-info-author">
-                <span className="subheading">Author: </span>
-                {novelObj.author}
-              </p>
-            </div>
-            <div className="introSection-info-rating">
-              <div className="rating">{novelObj.rating.rating}</div>
-              <FaStar className="icon" />
-            </div>
-          </div>
-
-          <div className="introSection-info-other">
-            <p className="otherInfo">
-              <span className="subheading">Chapters</span>
-              <span className="content">{novelObj.chapters}</span>
-            </p>
-            <p className="otherInfo">
-              <span className="subheading">Rank</span>
-              <span className="content">{novelObj.rank}</span>
-            </p>
-            <p className="otherInfo">
-              <span className="subheading">Status</span>
-              <span className="content">{novelObj.status}</span>
-            </p>
-            <p className="otherInfo">
-              <span className="subheading">Bookmarked</span>
-              <span className="content">{novelObj.bookmarked}</span>
-            </p>
-          </div>
-          <div className="introSection-info-tags">
-            <p className="subheading">Categories</p>
-            <div className="tags">
-              {novelObj.tags.map((tag) => {
-                return <p className="tag">{tag}</p>;
-              })}
-            </div>
-          </div>
-          <div className="introSection-info-buttons">
-            <div className="add btn">
-              <span className="text">Add to Collection</span>
-            </div>
-            <div className="start btn">
-              <span className="text">{novelObj.readStatus}</span>
-            </div>
-          </div>
-        </div>
-      </section>
-       */}
     </div>
   );
 };

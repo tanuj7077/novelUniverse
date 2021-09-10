@@ -49,14 +49,21 @@ function Reviews() {
   useEffect(() => {}, []);
   return (
     <section className="reviewSection">
+      <p className="reviewSection-subheading">Reviews</p>
       <div className="reviewSection-reviewStats">
         <div className="reviewSection-reviewStats-count">
           <div className="stars">
             <p className="text">{reviewObj.star}</p>
             <FaStar className="icon" />
           </div>
-          <div className="ratings">{reviewObj.ratingCount} Ratings</div>
-          <div className="reviews">{reviewObj.reviewCount} Reviews</div>
+          <p className="ratings">
+            <span>{reviewObj.ratingCount}</span>
+            <span className="text">Ratings</span>{" "}
+          </p>
+          <p className="reviews">
+            <span>{reviewObj.reviewCount}</span>
+            <span className="text">Reviews</span>{" "}
+          </p>
         </div>
         <div className="reviewSection-reviewStats-graph">
           <span className="graph">

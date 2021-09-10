@@ -5,13 +5,15 @@
   height: calc(100vh - 6rem);
   overflow: hidden;
   overflow-y: auto;
+  background-color: #2f2f35;
   &-container {
     display: flex;
     flex-flow: column;
     gap: 4rem;
-    align-items: center;
+    position: relative;
+    //align-items: center;
     .introSection {
-      width: 110%;
+      width: 100%;
       height: 45rem;
       background-color: black;
       position: relative;
@@ -180,9 +182,410 @@
         }
       }
     }
+    .contentSection {
+      position: absolute;
+      top: 50rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 95rem;
+      display: flex;
+      flex-flow: column;
+      gap: 4rem;
+      align-items: center;
+      transition: all 1s ease;
+      .aboutSection {
+        width: 95rem;
+        height: max-content;
+        padding: 3rem;
+        background-color: rgba(63, 63, 63, 0.856);
+        border-radius: 1rem;
+        z-index: 2;
+        &-subheading {
+          text-transform: uppercase;
+          letter-spacing: 0.3rem;
+          color: white;
+          font-size: $small-font-size;
+          font-weight: bold;
+          margin-bottom: 2rem;
+        }
+        &-content {
+          letter-spacing: 0.1rem;
+          font-size: $default-font-size;
+          color: rgb(190, 190, 190);
+          text-align: justify;
+        }
+      }
+      .chapterSection {
+        //width: 71%;
+        width: 95rem;
+        height: max-content;
+        //color: rgb(245, 231, 231);
+        padding: 3rem;
+        background-color: rgba(63, 63, 63, 0.856);
+        border-radius: 1rem;
+        z-index: 2;
+        &-subheading {
+          text-transform: uppercase;
+          letter-spacing: 0.3rem;
+          color: white;
+          font-size: $small-font-size;
+          font-weight: bold;
+          margin-bottom: 2rem;
+        }
+        &-latest {
+          width: max-content;
+          color: rgb(190, 190, 190);
+          font-size: $default-font-size;
+          .chapter {
+            margin-left: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2rem;
+          }
+        }
+        &-goto {
+          margin-top: 2rem;
+          align-items: center;
+          display: flex;
+          justify-content: space-between;
+          .goto {
+            align-items: center;
+            display: flex;
+            gap: 1rem;
+          }
+          .chapterInput {
+            border: none;
+            outline: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            //background-color: hsla(0, 0%, 95%, 0.3);
+            background-color: #50505a;
+            color: white;
+            //color: hsl(160, 79%, 15%);
+            text-align: center;
+            font-size: $default-font-size;
+            font-weight: bold;
+            width: 10rem;
+            &::placeholder {
+              //color: hsl(160, 79%, 15%);
+              color: rgb(190, 190, 190);
+            }
+            &::-webkit-inner-spin-button,
+            &::-webkit-outer-spin-button {
+              -webkit-appearance: none;
+            }
+          }
+          .gotoBtn {
+            font-size: $default-font-size;
+            padding: 0.5rem 1.5rem;
+            border-radius: 0.5rem;
+            //border: 2px solid black;
+            background-color: rgb(32, 158, 74);
+            color: white;
+            letter-spacing: 0.3rem;
+            text-transform: uppercase;
+          }
+          .pageChange {
+            display: flex;
+            gap: 1rem;
+            &-icon {
+              padding: 1rem;
+              border-radius: 0.5rem;
+              //border: 2px solid black;
+              background-color: rgb(32, 158, 74);
+              color: white;
+              width: 3rem;
+              height: 3rem;
+            }
+            .page {
+              color: white;
+              font-size: $default-font-size;
+              font-weight: bold;
+              display: grid;
+              place-items: center;
+            }
+          }
+        }
+        &-chapters {
+          margin-top: 2rem;
+          border-radius: 1rem;
+          padding: 3rem;
+          background-color: #2f2f35;
+          //background-color: rgba(255, 255, 255, 0.3);
+          box-shadow: hsla(0, 0%, 0%, 0.2) 0px 0px 30px 5px inset;
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 2rem;
+          perspective: 1000px;
+          .chapter {
+            background-color: rgba(73, 73, 73, 0.856);
+            // background-color: rgba(87, 87, 87, 0.856);
+            color: rgb(190, 190, 190);
+            border-radius: 5px;
+            font-size: $default-font-size;
+            opacity: 0;
+            padding: 1rem 2rem;
+            transform-origin: center;
+            .count {
+              font-size: $smaller-font-size;
+            }
+            &:hover {
+              cursor: pointer;
+              transform: scale(1.02);
+              box-shadow: hsla(0, 0%, 0%, 0.15) 3px 3px 10px 2px;
+              background-color: rgba(87, 87, 87, 0.856);
+              color: white;
+            }
+          }
+          .fadeAway {
+            opacity: 0;
+            transition: all 0.2s linear;
+          }
+          .fadeIn {
+            opacity: 1;
+            transition: all 0.2s linear;
+          }
+        }
+      }
+      .reviewSection {
+        width: 95rem;
+        height: max-content;
+        color: rgb(184, 184, 184);
+        padding: 3rem;
+        background-color: rgba(63, 63, 63, 0.856);
+        border-radius: 1rem;
+        z-index: 2;
+        display: flex;
+        flex-flow: column;
+        gap: 2rem;
+        margin-bottom: 4rem;
+        &-subheading {
+          text-transform: uppercase;
+          letter-spacing: 0.3rem;
+          color: white;
+          font-size: $small-font-size;
+          font-weight: bold;
+          //margin-bottom: 2rem;
+        }
+        &-reviewStats {
+          display: flex;
+          width: 100%;
+          align-items: center;
+          justify-content: space-between;
+          color: rgb(190, 190, 190);
+          &-count {
+            .stars {
+              display: flex;
+              align-items: center;
+              gap: 1rem;
+              .text {
+                font-size: $logo-font-size;
+              }
+              .icon {
+                width: 3rem;
+                height: 3rem;
+                color: rgb(247, 180, 56);
+                filter: drop-shadow(0px 0px 2px rgb(247, 180, 56));
+              }
+            }
+            .ratings {
+              display: flex;
+              gap: 1rem;
+              align-items: center;
+              font-size: $small-font-size;
+              .text {
+                font-size: $default-font-size;
+                text-transform: uppercase;
+                letter-spacing: 0.2rem;
+              }
+            }
+            .reviews {
+              display: flex;
+              gap: 1rem;
+              align-items: center;
+              font-size: $small-font-size;
+              .text {
+                font-size: $default-font-size;
+                text-transform: uppercase;
+                letter-spacing: 0.2rem;
+              }
+            }
+          }
+          &-graph {
+            width: 50%;
+            display: flex;
+            flex-flow: column;
+            gap: 0.2rem;
+            color: rgb(190, 190, 190);
+            .graph {
+              width: 100%;
+              display: flex;
+              align-items: center;
+              gap: 1rem;
+              font-size: $smaller-font-size;
+              .rating {
+                display: flex;
+                gap: 0.5rem;
+                align-items: center;
+                .icon {
+                  width: 1.7rem;
+                  height: 1.7rem;
+                  color: rgb(97, 97, 97);
+                }
+              }
+              .percent {
+                height: 1rem;
+                width: 80%;
+                background-color: rgb(97, 97, 97);
+                border-radius: 5px;
+              }
+            }
+          }
+        }
+        &-myReview {
+          border-radius: 1rem;
+          background-color: transparent;
+          display: flex;
+          gap: 2px;
+          flex-flow: column;
+          overflow: hidden;
+          .titleInput {
+            width: 100%;
+            background-color: #2f2f35;
+            outline: none;
+            border: none;
+            font-size: $small-font-size;
+            color: rgb(190, 190, 190);
+            padding: 1rem 2rem;
+            &::placeholder {
+              color: rgb(126, 126, 126);
+            }
+          }
+          .reviewInput {
+            width: 100%;
+            height: 15rem;
+            padding: 1rem 2rem;
+            background-color: #2f2f35;
+            outline: none;
+            border: none;
+            font-size: $small-font-size;
+            // color: rgb(194, 194, 194);
+            color: rgb(190, 190, 190);
+            resize: none;
+            &::placeholder {
+              color: rgb(126, 126, 126);
+            }
+          }
+          .rate {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            background-color: #2f2f35;
+            padding: 1rem 2rem;
+            .text {
+              font-size: $small-font-size;
+              color: rgb(190, 190, 190);
+            }
+            .stars {
+              .icon {
+                height: 2rem;
+                width: 2rem;
+                transition: color 0.1s ease;
+                margin-right: 1rem;
+              }
+              .hovered {
+                color: rgb(247, 180, 56);
+                filter: drop-shadow(0px 0px 2px rgb(247, 180, 56));
+              }
+            }
+            .submit {
+              margin-left: auto;
+              outline: none;
+              border: none;
+              border-radius: 5px;
+              font-weight: bold;
+              color: white;
+              text-transform: uppercase;
+              font-size: $smaller-font-size;
+              letter-spacing: 0.2rem;
+              padding: 1rem 1.5rem;
+              background-color: rgb(32, 158, 74);
+            }
+          }
+        }
+        &-reviews {
+          display: flex;
+          flex-flow: column;
+          gap: 2px;
+          background-color: transparent;
+          border-radius: 1rem;
+          overflow: hidden;
+          .review {
+            padding: 2rem;
+            display: flex;
+            flex-flow: column;
+            gap: 1rem;
+            background-color: #2f2f35;
+            .heading {
+              display: flex;
+              gap: 2rem;
+              .rated {
+                display: flex;
+                gap: 0.5rem;
+                align-items: center;
+                font-size: $default-font-size;
+                // border: 2px solid rgb(184, 184, 184);
+                border: 2px solid rgb(190, 190, 190);
+                color: rgb(190, 190, 190);
+                padding: 0 0.5rem;
+                .icon {
+                  width: 1.2rem;
+                  height: 1.2rem;
+                }
+              }
+              .title {
+                font-size: $small-font-size;
+                font-weight: bold;
+              }
+            }
+            .desc {
+              font-size: $default-font-size;
+              letter-spacing: 0.2rem;
+              text-align: justify;
+              color: rgb(190, 190, 190);
+            }
+            .reviewUser {
+              font-size: $default-font-size;
+              //color: rgb(194, 194, 194);
+              color: rgb(190, 190, 190);
+            }
+          }
+          .loadMore {
+            //background-color: hsla(160, 79%, 10%, 0.5);
+            //border-top: 2px solid hsla(0, 0%, 73%, 0.1);
+            padding: 0.5rem 0;
+            //border-radius: 1rem;
+            font-size: $medium-font-size;
+            //color: rgb(194, 194, 194);
+            text-transform: uppercase;
+            letter-spacing: 0.3rem;
+            text-align: center;
+            color: rgb(168, 168, 168);
+            background-color: rgb(85, 85, 85);
+            &:hover {
+              cursor: pointer;
+            }
+          }
+        }
+      }
+      // &-alignRight {
+      //   transition: all 1s ease;
+      //   transform: translateX(-30%);
+      // }
+    }
     .selection {
       display: flex;
-      width: 71%;
+      width: 95rem;
       gap: 5rem;
       z-index: 2;
       .item {
@@ -201,426 +604,6 @@
         color: rgb(34, 34, 34);
       }
     }
-    .aboutSection {
-      width: 71%;
-      height: max-content;
-      font-size: $medium-font-size;
-      letter-spacing: 0.2rem;
-      // color: rgb(184, 184, 184);
-      //color: rgb(255, 255, 255);
-      color: rgb(37, 37, 37);
-      text-align: justify;
-      padding: 5rem;
-      z-index: 2;
-      //background-color: hsla(0, 0%, 73%, 0.1);
-      // background-color: hsla(0, 0%, 60%, 0.4);
-      background-color: hsla(120, 78%, 73%, 0.4);
-      //background: rgb(113, 191, 255);
-      background: linear-gradient(
-        45deg,
-        rgb(170, 217, 255) 0%,
-        rgb(179, 255, 236) 49%,
-        rgb(199, 255, 188) 100%
-      );
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-radius: 2rem;
-      z-index: 2;
-      // box-shadow: hsla(160, 79%, 25%, 0.3) 0px 0px 25rem 25rem;
-      ////box-shadow: hsla(160, 79%, 0%, 0.3) 0px 0px 10px;
-    }
-    .chapterSection {
-      width: 71%;
-      height: max-content;
-      //color: rgb(184, 184, 184);
-      color: rgb(37, 37, 37);
-      padding: 5rem;
-      //background-color: hsla(0, 0%, 73%, 0.1);
-      background-color: hsla(0, 0%, 60%, 0.4);
-      background: linear-gradient(
-        45deg,
-        rgb(170, 217, 255) 0%,
-        rgb(179, 255, 236) 49%,
-        rgb(199, 255, 188) 100%
-      );
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-radius: 2rem;
-      z-index: 2;
-      &-latest {
-        width: max-content;
-        .subheading {
-          font-size: $small-font-size;
-          font-weight: bold;
-        }
-        .chapter {
-          font-size: $medium-font-size;
-          letter-spacing: 0.2rem;
-        }
-      }
-      &-goto {
-        margin-top: 3rem;
-        align-items: center;
-        display: flex;
-        justify-content: space-between;
-        .goto {
-          align-items: center;
-          display: flex;
-          gap: 1rem;
-        }
-        .subheading {
-          font-size: $small-font-size;
-          font-weight: bold;
-        }
-        .chapterInput {
-          border: none;
-          outline: none;
-          padding: 0.5rem 1rem;
-          border-radius: 0.5rem;
-          //background-color: hsla(0, 0%, 95%, 0.3);
-          background-color: white;
-          color: hsl(160, 79%, 15%);
-          text-align: center;
-          font-size: $small-font-size;
-          font-weight: bold;
-          width: 10rem;
-          &::placeholder {
-            color: hsl(160, 79%, 15%);
-          }
-          &::-webkit-inner-spin-button,
-          &::-webkit-outer-spin-button {
-            -webkit-appearance: none;
-          }
-        }
-        .gotoBtn {
-          font-size: $default-font-size;
-          padding: 0.7rem 1.5rem;
-          border-radius: 0.5rem;
-          //background-color: hsla(160, 79%, 10%, 0.8);
-          border: 2px solid black;
-          // backdrop-filter: blur(20px);
-          // -webkit-backdrop-filter: blur(20px);
-          letter-spacing: 0.3rem;
-          text-transform: uppercase;
-        }
-        .pageChange {
-          display: flex;
-          gap: 1rem;
-          &-icon {
-            padding: 1rem;
-            border-radius: 0.5rem;
-            //background-color: hsla(160, 79%, 10%, 0.8);
-            // backdrop-filter: blur(20px);
-            // -webkit-backdrop-filter: blur(20px);
-            border: 2px solid black;
-            width: 4rem;
-            height: 4rem;
-          }
-          .page {
-            font-size: $small-font-size;
-            font-weight: bold;
-            display: grid;
-            place-items: center;
-          }
-        }
-      }
-      &-chapters {
-        margin-top: 2rem;
-        border-radius: 1rem;
-        //border: 2px solid rgb(150, 150, 150);
-        padding: 3rem;
-        //background-color: hsl(160, 79%, 15%);
-        background-color: rgba(255, 255, 255, 0.3);
-        box-shadow: hsla(0, 0%, 0%, 0.2) 0px 0px 30px 5px inset;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2rem;
-        perspective: 1000px;
-        .chapter {
-          // background-color: hsla(0, 0%, 73%, 0.1);
-          //background-color: hsl(0, 0%, 87%);
-          //background-color: rgb(59, 122, 204);
-          // background: linear-gradient(
-          //   45deg,
-          //   rgb(153, 206, 250) 0%,
-          //   rgb(154, 252, 227) 49%,
-          //   rgb(183, 255, 168) 100%
-          // );
-          background-color: rgb(153, 206, 250);
-          color: black;
-          //color: white;
-          border-radius: 1rem;
-          font-size: $small-font-size;
-          // transform: scale(0.5);
-          opacity: 0;
-          padding: 1rem 2rem;
-          transform-origin: center;
-          // transition: all 0.3s ease;
-          .count {
-            font-size: $default-font-size;
-          }
-          &:hover {
-            cursor: pointer;
-            transform: scale(1.02);
-            // box-shadow: hsla(160, 79%, 10%, 0.5) 5px 5px 20px 5px;
-            // background-color: hsla(0, 0%, 80%, 0.1);
-            box-shadow: hsla(0, 0%, 0%, 0.15) 3px 3px 10px 2px;
-            // background-color: hsla(0, 0%, 80%, 0.1);
-            //background-color: rgb(255, 255, 255);
-            background-color: rgb(183, 255, 168);
-            color: black;
-          }
-        }
-        .fadeAway {
-          // transform: translateZ(-100px);
-          opacity: 0;
-          transition: all 0.2s linear;
-        }
-        .fadeIn {
-          // transform: translateZ(0px);
-          opacity: 1;
-          transition: all 0.2s linear;
-        }
-      }
-    }
-    .reviewSection {
-      width: 71%;
-      height: max-content;
-      color: rgb(184, 184, 184);
-      padding: 5rem;
-      background-color: hsla(0, 0%, 73%, 0.1);
-      background: linear-gradient(
-        135deg,
-        rgb(170, 217, 255) 0%,
-        rgb(179, 255, 236) 49%,
-        rgb(199, 255, 188) 100%
-      );
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-radius: 2rem;
-      z-index: 2;
-      display: FLEX;
-      flex-flow: column;
-      gap: 2rem;
-
-      &-reviewStats {
-        display: flex;
-        width: 100%;
-        align-items: center;
-        justify-content: space-between;
-        &-count {
-          .stars {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            .text {
-              font-size: $logo-font-size;
-              color: black;
-            }
-            .icon {
-              width: 3rem;
-              height: 3rem;
-              color: black;
-            }
-          }
-          .ratings {
-            font-size: $medium-font-size;
-            // color: rgb(194, 194, 194);
-            color: rgb(97, 97, 97);
-          }
-          .reviews {
-            font-size: $medium-font-size;
-            color: rgb(97, 97, 97);
-          }
-        }
-        &-graph {
-          width: 50%;
-          display: flex;
-          flex-flow: column;
-
-          .graph {
-            width: 100%;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            font-size: $small-font-size;
-            color: rgb(97, 97, 97);
-            .rating {
-              display: flex;
-              gap: 0.5rem;
-              align-items: center;
-              .icon {
-                width: 1.7rem;
-                height: 1.7rem;
-                // color: rgb(247, 180, 56);
-                color: rgb(97, 97, 97);
-              }
-            }
-            .percent {
-              height: 2rem;
-              width: 80%;
-              // background-color: hsla(160, 79%, 10%, 0.5);
-              //background-color: rgb(95, 95, 95);
-              background-color: white;
-              border-radius: 5px;
-            }
-          }
-        }
-      }
-      &-myReview {
-        border-radius: 1rem;
-        background-color: transparent;
-        display: flex;
-        gap: 2px;
-        flex-flow: column;
-        overflow: hidden;
-        .titleInput {
-          width: 100%;
-          //background-color: hsla(160, 79%, 10%, 0.5);
-          //background-color: rgba(0, 0, 0, 0.74);
-          background-color: rgb(243, 243, 243);
-          outline: none;
-          border: none;
-          font-size: $small-font-size;
-          // color: rgb(194, 194, 194);
-          color: black;
-          padding: 1rem 2rem;
-          &::placeholder {
-            //color: rgb(184, 184, 184);
-            color: rgb(100, 100, 100);
-          }
-        }
-        .reviewInput {
-          width: 100%;
-          height: 15rem;
-          padding: 1rem 2rem;
-          //background-color: hsla(160, 79%, 10%, 0.5);
-          //background-color: rgba(0, 0, 0, 0.74);
-          background-color: rgb(243, 243, 243);
-          outline: none;
-          border: none;
-          font-size: $small-font-size;
-          // color: rgb(194, 194, 194);
-          color: black;
-          resize: none;
-          //border-top: 2px solid hsla(0, 0%, 73%, 0.1);
-          //border-top: 2px solid rgb(159, 241, 255);
-          &::placeholder {
-            // color: rgb(184, 184, 184);
-            color: rgb(100, 100, 100);
-          }
-        }
-        .rate {
-          width: 100%;
-          display: flex;
-          align-items: center;
-          gap: 1.5rem;
-          //background-color: hsla(160, 79%, 10%, 0.5);
-          //background-color: rgba(0, 0, 0, 0.74);
-          background-color: rgb(243, 243, 243);
-          padding: 1rem 2rem;
-          border-top: 2px solid hsla(0, 0%, 73%, 0.1);
-          .text {
-            font-size: $medium-font-size;
-            color: rgb(100, 100, 100);
-          }
-          .stars {
-            .icon {
-              height: 2.5rem;
-              width: 2.5rem;
-              transition: color 0.1s ease;
-              margin-right: 1rem;
-            }
-            .hovered {
-              color: rgb(247, 180, 56);
-              filter: drop-shadow(0px 0px 2px rgb(247, 180, 56));
-            }
-          }
-          .submit {
-            margin-left: auto;
-            outline: none;
-            //border: 2px solid rgb(184, 184, 184);
-            border: 2px solid black;
-            //color: rgb(184, 184, 184);
-            color: black;
-            text-transform: uppercase;
-            font-size: $default-font-size;
-            letter-spacing: 0.3rem;
-            padding: 0.5rem 1rem;
-            //background-color: hsla(160, 79%, 10%, 0.5);
-            background-color: white;
-          }
-        }
-      }
-      &-reviews {
-        display: flex;
-        flex-flow: column;
-        gap: 2px;
-        //background-color: hsla(160, 79%, 10%, 0.5);
-        //background-color: rgba(0, 0, 0, 0.74);
-        background-color: transparent;
-        border-radius: 1rem;
-        overflow: hidden;
-        .review {
-          padding: 2rem;
-          display: flex;
-          flex-flow: column;
-          gap: 1rem;
-          background-color: rgb(243, 243, 243);
-          .heading {
-            display: flex;
-            gap: 2rem;
-            .rated {
-              display: flex;
-              gap: 0.5rem;
-              align-items: center;
-              font-size: $default-font-size;
-              // border: 2px solid rgb(184, 184, 184);
-              border: 2px solid rgb(75, 75, 75);
-              //color: rgb(184, 184, 184);
-              color: rgb(75, 75, 75);
-              padding: 0 0.5rem;
-              .icon {
-                width: 1.2rem;
-                height: 1.2rem;
-              }
-            }
-            .title {
-              font-size: $small-font-size;
-              font-weight: bold;
-              color: rgb(75, 75, 75);
-            }
-          }
-          .desc {
-            font-size: $default-font-size;
-            letter-spacing: 0.2rem;
-            text-align: justify;
-            color: rgb(49, 49, 49);
-          }
-          .reviewUser {
-            font-size: $default-font-size;
-            //color: rgb(194, 194, 194);
-            color: rgb(49, 49, 49);
-          }
-        }
-        .loadMore {
-          //background-color: hsla(160, 79%, 10%, 0.5);
-          //border-top: 2px solid hsla(0, 0%, 73%, 0.1);
-          padding: 0.5rem 0;
-          //border-radius: 1rem;
-          font-size: $medium-font-size;
-          //color: rgb(194, 194, 194);
-          text-transform: uppercase;
-          letter-spacing: 0.3rem;
-          text-align: center;
-          color: rgb(168, 168, 168);
-          background-color: rgb(85, 85, 85);
-          &:hover {
-            cursor: pointer;
-          }
-        }
-      }
-    }
   }
   &::-webkit-scrollbar {
     width: 1.5rem;
@@ -632,140 +615,4 @@
     background: rgb(119, 119, 119);
     border-radius: 0.75rem;
   }
-  /*.introSection {
-    width: 71%;
-    height: max-content;
-    padding-top: 13rem;
-    display: flex;
-    justify-content: space-between;
-    gap: 4rem;
-    color: black;
-    z-index: 2;
-    &-img {
-      height: 38rem;
-      width: 27rem;
-      border-radius: 1rem;
-      position: relative;
-      .image {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 38rem;
-        width: 27rem;
-        background-size: cover;
-        background-position: center;
-        padding: 0%;
-        border-radius: 1rem;
-        z-index: 2;
-      }
-    }
-    &-info {
-      width: 75rem;
-      display: flex;
-      flex-flow: column;
-      z-index: 3;
-      justify-content: space-between;
-      &-top {
-        width: 100%;
-        position: relative;
-      }
-      &-main {
-        width: 85%;
-      }
-      &-rating {
-        width: 15%;
-        position: absolute;
-        top: 0;
-        right: 0;
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        .rating {
-          font-size: $large-font-size;
-        }
-        .icon {
-          width: 2.5rem;
-          height: 2.5rem;
-          color: rgb(247, 180, 56);
-          filter: drop-shadow(0px 0px 2px rgb(247, 180, 56));
-        }
-      }
-      &-title {
-        font-size: $large-font-size;
-        letter-spacing: 0.3rem;
-      }
-      &-author {
-        font-size: $medium-font-size;
-        .subheading {
-          font-size: $small-font-size;
-          color: rgb(82, 82, 82);
-          margin-right: 1rem;
-        }
-      }
-      &-other {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-        .otherInfo {
-          font-size: $medium-font-size;
-          width: max-content;
-          display: flex;
-          flex-flow: column;
-          align-items: center;
-          padding: 0rem 2rem;
-          .subheading {
-            font-size: $small-font-size;
-            color: rgb(82, 82, 82);
-          }
-        }
-        .otherInfo:first-child {
-          padding-left: 0;
-        }
-      }
-      &-tags {
-        width: 100%;
-        .subheading {
-          font-size: $small-font-size;
-          color: rgb(82, 82, 82);
-          margin-bottom: 0.6rem;
-        }
-        .tags {
-          width: 100%;
-          display: flex;
-          flex-wrap: wrap;
-          gap: 1.5rem;
-        }
-        .tag {
-          color: white;
-          padding: 0.4rem 1rem;
-          border-radius: 0.5rem;
-          font-size: $small-font-size;
-          border: 1px solid black;
-          color: black;
-        }
-      }
-      &-buttons {
-        display: flex;
-        width: 100%;
-        justify-content: space-between;
-        .btn {
-          font-size: $small-font-size;
-          width: 45%;
-          height: 5rem;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 1rem;
-          letter-spacing: 0.3rem;
-          text-transform: uppercase;
-          border: 2px solid black;
-          border-radius: 0.5rem;
-          color: black;
-        }
-        .icon {
-          color: black;
-        }
-      }
-    }
-  }*/
 }
