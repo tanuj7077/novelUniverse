@@ -2,10 +2,10 @@
   width: 100%;
   min-height: calc(100vh - 6rem);
   overflow: hidden;
-  overflow: hidden;
   overflow-y: auto;
   background-color: black;
   &-bg {
+    display: block;
     position: fixed;
     top: 0;
     left: 0;
@@ -14,6 +14,9 @@
     background-size: cover;
     background-position: center;
     filter: blur(10px);
+    -webkit-animation: BgAnim 40s ease-in-out infinite;
+    -moz-animation: BgAnim 40s ease-in-out infinite;
+    animation: BgAnim 40s ease-in-out infinite;
   }
   &-container {
     display: flex;
@@ -104,9 +107,25 @@
                 height: 100%;
                 background-color: rgb(35, 109, 170);
               }
-              &:hover::before {
-                background-color: rgb(34, 202, 90);
+              &:hover {
+                cursor: pointer;
                 color: white;
+              }
+              &-add {
+                &::before {
+                  background-color: rgb(34, 202, 90);
+                }
+                &hover::before {
+                  background-color: rgb(34, 202, 90);
+                }
+              }
+              &-remove {
+                &::before {
+                  background-color: rgb(202, 34, 34);
+                }
+                &hover::before {
+                  background-color: rgb(202, 34, 34);
+                }
               }
             }
           }
@@ -144,6 +163,7 @@
         border-radius: 1rem;
         overflow: hidden;
         &-img {
+          display: block;
           height: 30rem;
           width: 23rem;
           background-size: cover;

@@ -4,6 +4,7 @@ import { FaStar } from "react-icons/fa";
 import { Route } from "react-router-dom";
 import carousel1 from "../assets/carousel1.jpg";
 import carousel2 from "../assets/carousel2.jpg";
+import carousel3 from "../assets/carousel3.png";
 const Home = () => {
   const totalSlides = 2;
   const count = useRef(0);
@@ -29,18 +30,55 @@ const Home = () => {
             className={`homePage-carousel-slide ${
               currentSlide === 1 ? "homePage-carousel-slide-visible" : ""
             }`}
-            style={{
-              backgroundImage: `url(${carousel1})`,
-            }}
-          ></div>
+            // style={{
+            //   backgroundImage: `url(${carousel1})`,
+            // }}
+          >
+            <div
+              className="homePage-carousel-slide-bg"
+              style={{
+                backgroundImage: `url(${carousel3})`,
+              }}
+            ></div>
+            <div className="homePage-carousel-slide-content">
+              <div className="homePage-carousel-slide-heading">
+                Read Light Novel and Web Novel Translations Online
+              </div>
+              <div className="homePage-carousel-slide-desc">
+                Ultimate Biblio is a platform where you can read the translated
+                versions of world famous Japanese, Chinese and Korean light
+                novels in English. Every new chapters published by the author is
+                updated instantly on the website and notification service is
+                provided to the readers.
+              </div>
+              <div className="homePage-carousel-slide-cta">Explore</div>
+            </div>
+          </div>
           <div
             className={`homePage-carousel-slide ${
               currentSlide === 2 ? "homePage-carousel-slide-visible" : ""
             }`}
-            style={{
-              backgroundImage: `url(${carousel2})`,
-            }}
-          ></div>
+          >
+            <div
+              className="homePage-carousel-slide-bg"
+              style={{
+                backgroundImage: `url(${carousel2})`,
+              }}
+            ></div>
+            <div className="homePage-carousel-slide-content">
+              <div className="homePage-carousel-slide-heading">
+                Why sign up?
+              </div>
+              <div className="homePage-carousel-slide-desc">
+                Ultimate Biblio is a platform where you can read the translated
+                versions of world famous Japanese, Chinese and Korean light
+                novels in English. Every new chapters published by the author is
+                updated instantly on the website and notification service is
+                provided to the readers.
+              </div>
+              <div className="homePage-carousel-slide-cta">Sign Up</div>
+            </div>
+          </div>
 
           <div className="homePage-carousel-navigation">
             <span

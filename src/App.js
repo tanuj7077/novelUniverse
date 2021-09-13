@@ -14,6 +14,7 @@ import BookPage from "./pages/BookPage";
 import SideNav from "./components/Navigation/SideNav";
 import TopNav from "./components/Navigation/TopNav";
 import Chapter from "./components/Chapter/Chapter";
+import Background from "./components/Background/Background";
 
 axios.defaults.withCredentials = true;
 function App() {
@@ -28,10 +29,13 @@ function App() {
       <>
         {/* <SideNav /> */}
         <TopNav />
+        {/* <Background /> */}
         <Route path="/home">
+          <Background />
           <Home />
         </Route>
         <Route path="/browse">
+          <Background />
           <Browse />
         </Route>
         <Route path="/collection">

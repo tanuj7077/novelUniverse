@@ -1,25 +1,28 @@
 .bookPage {
   width: 100%;
-  margin-top: 6rem;
-  overflow: hidden;
-  height: calc(100vh - 6rem);
-  overflow: hidden;
-  overflow-y: auto;
+  height: max-content;
+  // min-height: calc(100vh - 6rem);
+  // margin-top: 6rem;
+  //padding-top: 6rem;
+  //overflow: hidden;
+  //overflow-y: auto;
   background-color: #2f2f35;
   &-container {
     display: flex;
     flex-flow: column;
     gap: 4rem;
+    align-items: center;
     position: relative;
     //align-items: center;
     .introSection {
       width: 100%;
-      height: 45rem;
+      height: 50rem;
       background-color: black;
       position: relative;
       overflow: hidden;
       z-index: 2;
       &-bgImg {
+        display: block;
         position: absolute;
         top: 0;
         left: 0;
@@ -32,7 +35,7 @@
       }
       &-container {
         position: absolute;
-        top: 50%;
+        top: 55%;
         left: 50%;
         transform: translate(-50%, -50%);
         width: 95rem;
@@ -47,6 +50,7 @@
           background-size: cover;
           background-position: center;
           border-radius: 1rem;
+          display: block;
         }
         &-content {
           width: calc(100% - 30rem);
@@ -171,7 +175,7 @@
               letter-spacing: 0.2rem;
               color: white;
               //background-color: rgba(0, 0, 0, 0.39);
-              background-color: rgb(32, 158, 74);
+              background-color: rgb(32, 121, 194);
               display: grid;
               place-items: center;
               gap: 6%;
@@ -183,10 +187,6 @@
       }
     }
     .contentSection {
-      position: absolute;
-      top: 50rem;
-      left: 50%;
-      transform: translateX(-50%);
       width: 95rem;
       display: flex;
       flex-flow: column;
@@ -279,7 +279,7 @@
             padding: 0.5rem 1.5rem;
             border-radius: 0.5rem;
             //border: 2px solid black;
-            background-color: rgb(32, 158, 74);
+            background-color: rgb(32, 121, 194);
             color: white;
             letter-spacing: 0.3rem;
             text-transform: uppercase;
@@ -291,7 +291,7 @@
               padding: 1rem;
               border-radius: 0.5rem;
               //border: 2px solid black;
-              background-color: rgb(32, 158, 74);
+              background-color: rgb(32, 121, 194);
               color: white;
               width: 3rem;
               height: 3rem;
@@ -357,7 +357,7 @@
         display: flex;
         flex-flow: column;
         gap: 2rem;
-        margin-bottom: 4rem;
+        margin-bottom: 2rem;
         &-subheading {
           text-transform: uppercase;
           letter-spacing: 0.3rem;
@@ -509,7 +509,7 @@
               font-size: $smaller-font-size;
               letter-spacing: 0.2rem;
               padding: 1rem 1.5rem;
-              background-color: rgb(32, 158, 74);
+              background-color: rgb(32, 121, 194);
             }
           }
         }
@@ -578,10 +578,6 @@
           }
         }
       }
-      // &-alignRight {
-      //   transition: all 1s ease;
-      //   transform: translateX(-30%);
-      // }
     }
     .selection {
       display: flex;

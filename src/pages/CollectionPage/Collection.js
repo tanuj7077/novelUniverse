@@ -3,6 +3,7 @@ import { browseNovels } from "../../mockData";
 import { FaStar } from "react-icons/fa";
 import { Route } from "react-router-dom";
 import useOnScreen from "../../components/Utilities/useOnScreen";
+import bg1 from "../../assets/abstract/1.jpg";
 const Collection = () => {
   const bookmarkedRef = useRef();
   const bookmarkedIsVisible = useOnScreen(bookmarkedRef);
@@ -21,6 +22,12 @@ const Collection = () => {
   };
   return (
     <div className="collectionPage">
+      <div
+        className="collectionPage-background"
+        style={{
+          backgroundImage: `url(${bg1})`,
+        }}
+      ></div>
       <div className="collectionPage-leftPane">
         <div
           className={`item ${bookmarkedIsVisible ? "current" : ""}`}

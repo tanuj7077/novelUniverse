@@ -1,14 +1,10 @@
 .homePage {
   width: 100%;
-  // min-height: calc(100vh - 6rem);
-  //height: calc(100vh - 6rem);
-  margin-top: 6rem;
+  //margin-top: 6rem;
   overflow: hidden;
-  //background-color: hsla(160, 79%, 100%, 0.4);
-  // background-color: #2f2f35;
-  background-color: #2f2f35;
+  background-color: black;
   &-container {
-    height: calc(100vh - 6rem);
+    //height: calc(100vh - 6rem);
     overflow: hidden;
     overflow-y: auto;
     &::-webkit-scrollbar {
@@ -71,22 +67,67 @@
     }
   }*/
   &-carousel {
-    height: 55vh;
+    height: 45rem;
     width: 100vw;
     position: relative;
     &-slide {
+      display: block;
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background-size: cover;
-      background-position: center;
+      // background-size: cover;
+      // background-position: center;
       opacity: 0;
       transition: all 1s ease;
+      //padding: 10rem;
       &-visible {
         opacity: 1;
         transition: all 1s ease;
+      }
+      &-bg {
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        display: block;
+        filter: blur(5px);
+      }
+      &-content {
+        position: absolute;
+        top: 55%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 76%;
+        height: max-content;
+        display: flex;
+        flex-flow: column;
+        gap: 2rem;
+      }
+      &-heading {
+        font-size: $medium-font-size;
+        letter-spacing: 0.2rem;
+        color: white;
+        font-weight: bold;
+      }
+      &-desc {
+        font-size: $default-font-size;
+        color: white;
+        width: 60%;
+      }
+      &-cta {
+        height: 3rem;
+        width: 12rem;
+        font-size: $default-font-size;
+        text-transform: uppercase;
+        letter-spacing: 0.2rem;
+        color: white;
+        background-color: rgb(32, 121, 194);
+        display: grid;
+        place-items: center;
+        border-radius: 5px;
+        font-weight: bold;
       }
     }
     &-navigation {
@@ -112,19 +153,18 @@
     }
   }
   &-novels {
+    margin-top: 6rem;
     padding: 5rem 12%;
     width: 100%;
     z-index: 2;
-    // &-heading {
-    //   font-size: $medium-font-size;
-    //   color: black;
-    //   margin-bottom: 1rem;
-    // }
+    position: relative;
 
     &-heading {
+      position: absolute;
+      top: 0;
+      z-index: 2;
       text-transform: uppercase;
       letter-spacing: 0.3rem;
-      word-spacing: 0.6rem;
       color: white;
       font-size: $small-font-size;
       font-weight: bold;

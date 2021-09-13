@@ -3,20 +3,70 @@ import { genres, browseNovels } from "../mockData";
 import { AiOutlineSearch } from "react-icons/ai";
 import { FaStar } from "react-icons/fa";
 import { Route } from "react-router-dom";
-import bg1 from "../assets/abstract/12.jpg";
+import bg1 from "../assets/abstract/1.jpg";
 //1,2,3,6,7,9,11,12
 
 const Browse = () => {
-  let status = ["All", "Completed", "Ongoing"];
-  let order = ["Views", "New", "Ratings"];
+  const [tagAdded, setTagAdded] = useState([]);
+  const [tagRemoved, setTagRemoved] = useState([]);
+  const checkTagAddedPresense = (tag) => {
+    return tagAdded.includes(tag);
+  };
+  const checkTagRemovedPresense = (tag) => {
+    return tagRemoved.includes(tag);
+  };
+  const toggleItem = (tag) => {
+    //if item in tagAdded, remove from tagAdded and add item to tagRemoved
+    //else if item in tagRemoved, remove from tagRemoved
+    //else add item to tagAdded
+    if (tagAdded.includes(tag)) {
+      let newList = [...tagAdded];
+      let index;
+      newList.forEach((item, i) => {
+        if (item === tag) {
+          index = i;
+        }
+      });
+      newList.splice(index, 1);
+      setTagAdded(newList);
+      console.log("removed from tagAdded");
+      newList = [...tagRemoved];
+      newList.push(tag);
+      setTagRemoved(newList);
+      console.log("added to tagRemoved");
+      return;
+    } else if (tagRemoved.includes(tag)) {
+      let newList = [...tagRemoved];
+      let index;
+      newList.forEach((item, i) => {
+        if (item === tag) {
+          index = i;
+        }
+      });
+      newList.splice(index, 1);
+      setTagRemoved(newList);
+      console.log("removed from tagRemoved");
+      return;
+    } else {
+      let newList = [...tagAdded];
+      newList.push(tag);
+      setTagAdded(newList);
+      console.log("added to tagAdded");
+      return;
+    }
+  };
+  const [currentStatus, setCurrentStatus] = useState("all");
+  const [currentOrder, setCurrentOrder] = useState("new");
+  let status = ["all", "completed", "ongoing"];
+  let order = ["new", "views", "ratings"];
   return (
     <div className="browsePage">
-      <span
+      {/* <span
         className="browsePage-bg"
         style={{
           backgroundImage: `url(${bg1})`,
         }}
-      ></span>
+      ></span> */}
       <div className="browsePage-container">
         <div className="browsePage-container-top">
           <div className="search">
@@ -29,7 +79,20 @@ const Browse = () => {
               <div className="genres-items">
                 {genres &&
                   genres.map((genre) => {
-                    return <div className="genres-items-item">{genre}</div>;
+                    return (
+                      <div
+                        className={`genres-items-item ${
+                          checkTagAddedPresense(genre)
+                            ? "genres-items-item-add"
+                            : checkTagRemovedPresense(genre)
+                            ? "genres-items-item-remove"
+                            : ""
+                        }`}
+                        onClick={() => toggleItem(genre)}
+                      >
+                        {genre}
+                      </div>
+                    );
                   })}
               </div>
             </div>
@@ -38,7 +101,16 @@ const Browse = () => {
               <div className="genres-items">
                 {genres &&
                   status.map((item) => {
-                    return <div className="genres-items-item">{item}</div>;
+                    return (
+                      <div
+                        className={`genres-items-item ${
+                          item === currentStatus ? "genres-items-item-add" : ""
+                        }`}
+                        onClick={() => setCurrentStatus(item)}
+                      >
+                        {item}
+                      </div>
+                    );
                   })}
               </div>
             </div>
@@ -47,7 +119,16 @@ const Browse = () => {
               <div className="genres-items">
                 {genres &&
                   order.map((item) => {
-                    return <div className="genres-items-item">{item}</div>;
+                    return (
+                      <div
+                        className={`genres-items-item ${
+                          item === currentOrder ? "genres-items-item-add" : ""
+                        }`}
+                        onClick={() => setCurrentOrder(item)}
+                      >
+                        {item}
+                      </div>
+                    );
                   })}
               </div>
             </div>

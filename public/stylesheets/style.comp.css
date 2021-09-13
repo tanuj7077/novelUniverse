@@ -138,6 +138,30 @@ a:link, a:visited, a:hover, a:active {
   100% {
     clip-path: polygon(0 0, 100% 0%, 100% 77%, 0% 100%); } }
 
+@-webkit-keyframes BgAnim {
+  0% {
+    transform: scale(1); }
+  50% {
+    transform: scale(1.3); }
+  100% {
+    transform: scale(1); } }
+
+@-moz-keyframes BgAnim {
+  0% {
+    transform: scale(1); }
+  50% {
+    transform: scale(1.3); }
+  100% {
+    transform: scale(1); } }
+
+@keyframes BgAnim {
+  0% {
+    transform: scale(1); }
+  50% {
+    transform: scale(1.3); }
+  100% {
+    transform: scale(1); } }
+
 .landing {
   width: 100vw;
   min-height: 100vh;
@@ -205,9 +229,8 @@ a:link, a:visited, a:hover, a:active {
 
 .homePage {
   width: 100%;
-  margin-top: 6rem;
   overflow: hidden;
-  background-color: #2f2f35;
+  background-color: black;
   /*&-carousel {
     height: 55vh;
     width: 100vw;
@@ -257,7 +280,6 @@ a:link, a:visited, a:hover, a:active {
     }
   }*/ }
   .homePage-container {
-    height: calc(100vh - 6rem);
     overflow: hidden;
     overflow-y: auto; }
     .homePage-container::-webkit-scrollbar {
@@ -268,22 +290,59 @@ a:link, a:visited, a:hover, a:active {
       background: #777777;
       border-radius: 0.75rem; }
   .homePage-carousel {
-    height: 55vh;
+    height: 45rem;
     width: 100vw;
     position: relative; }
     .homePage-carousel-slide {
+      display: block;
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background-size: cover;
-      background-position: center;
       opacity: 0;
       transition: all 1s ease; }
       .homePage-carousel-slide-visible {
         opacity: 1;
         transition: all 1s ease; }
+      .homePage-carousel-slide-bg {
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        display: block;
+        filter: blur(5px); }
+      .homePage-carousel-slide-content {
+        position: absolute;
+        top: 55%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 76%;
+        height: max-content;
+        display: flex;
+        flex-flow: column;
+        gap: 2rem; }
+      .homePage-carousel-slide-heading {
+        font-size: 2.5rem;
+        letter-spacing: 0.2rem;
+        color: white;
+        font-weight: bold; }
+      .homePage-carousel-slide-desc {
+        font-size: 1.6rem;
+        color: white;
+        width: 60%; }
+      .homePage-carousel-slide-cta {
+        height: 3rem;
+        width: 12rem;
+        font-size: 1.6rem;
+        text-transform: uppercase;
+        letter-spacing: 0.2rem;
+        color: white;
+        background-color: #2079c2;
+        display: grid;
+        place-items: center;
+        border-radius: 5px;
+        font-weight: bold; }
     .homePage-carousel-navigation {
       position: absolute;
       width: max-content;
@@ -303,13 +362,17 @@ a:link, a:visited, a:hover, a:active {
         transform: scale(1.2);
         background-color: white; }
   .homePage-novels {
+    margin-top: 6rem;
     padding: 5rem 12%;
     width: 100%;
-    z-index: 2; }
+    z-index: 2;
+    position: relative; }
     .homePage-novels-heading {
+      position: absolute;
+      top: 0;
+      z-index: 2;
       text-transform: uppercase;
       letter-spacing: 0.3rem;
-      word-spacing: 0.6rem;
       color: white;
       font-size: 2rem;
       font-weight: bold;
@@ -461,12 +524,11 @@ a:link, a:visited, a:hover, a:active {
 .browsePage {
   width: 100%;
   min-height: calc(100vh - 6rem);
-  margin-top: 6rem;
-  overflow: hidden;
   overflow: hidden;
   overflow-y: auto;
   background-color: black; }
   .browsePage-bg {
+    display: block;
     position: fixed;
     top: 0;
     left: 0;
@@ -474,7 +536,10 @@ a:link, a:visited, a:hover, a:active {
     height: 100%;
     background-size: cover;
     background-position: center;
-    filter: blur(10px); }
+    filter: blur(10px);
+    -webkit-animation: BgAnim 40s ease-in-out infinite;
+    -moz-animation: BgAnim 40s ease-in-out infinite;
+    animation: BgAnim 40s ease-in-out infinite; }
   .browsePage-container {
     display: flex;
     width: 100%;
@@ -482,7 +547,7 @@ a:link, a:visited, a:hover, a:active {
     align-items: center;
     gap: 4rem; }
     .browsePage-container-top {
-      padding-top: 8rem;
+      padding-top: 12rem;
       padding-bottom: 5rem;
       display: flex;
       width: 100%;
@@ -520,108 +585,149 @@ a:link, a:visited, a:hover, a:active {
           margin-right: 3rem;
           background-color: #494949;
           color: #868686; }
-      .browsePage-container-top .filters .genres {
-        width: 95rem;
-        z-index: 2; }
-        .browsePage-container-top .filters .genres-heading {
-          text-align: center;
-          text-transform: uppercase;
-          letter-spacing: 0.3rem;
-          color: white;
-          font-size: 2rem;
-          font-weight: bold;
-          margin-bottom: 2rem; }
-        .browsePage-container-top .filters .genres-items {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
-          gap: 2rem; }
-          .browsePage-container-top .filters .genres-items-item {
+      .browsePage-container-top .filters {
+        display: flex;
+        flex-flow: column;
+        gap: 3rem; }
+        .browsePage-container-top .filters .genres {
+          width: 95rem;
+          z-index: 2; }
+          .browsePage-container-top .filters .genres-heading {
             text-transform: uppercase;
-            font-size: 1.6rem;
-            padding: 0.5rem 2.5rem;
-            background-color: #444444;
-            color: #c4c4c4;
-            border-left: none;
-            position: relative;
-            letter-spacing: 0.2rem; }
-            .browsePage-container-top .filters .genres-items-item::before {
-              content: "";
-              position: absolute;
-              top: 0px;
-              left: -3px;
-              width: 3px;
-              height: 100%;
-              background-color: #236daa; }
+            letter-spacing: 0.3rem;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 2rem; }
+          .browsePage-container-top .filters .genres-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem; }
+            .browsePage-container-top .filters .genres-items-item {
+              text-transform: uppercase;
+              font-size: 1.6rem;
+              padding: 0.5rem 2.5rem;
+              background-color: #444444;
+              color: #c4c4c4;
+              border-left: none;
+              position: relative;
+              letter-spacing: 0.2rem; }
+              .browsePage-container-top .filters .genres-items-item::before {
+                content: "";
+                position: absolute;
+                top: 0px;
+                left: -3px;
+                width: 5px;
+                height: 100%;
+                background-color: #236daa; }
+              .browsePage-container-top .filters .genres-items-item:hover {
+                cursor: pointer;
+                color: white; }
+              .browsePage-container-top .filters .genres-items-item-add::before {
+                background-color: #22ca5a; }
+              .browsePage-container-top .filters .genres-items-item-addhover::before {
+                background-color: #22ca5a; }
+              .browsePage-container-top .filters .genres-items-item-remove::before {
+                background-color: #ca2222; }
+              .browsePage-container-top .filters .genres-items-item-removehover::before {
+                background-color: #ca2222; }
   .browsePage .novels {
     z-index: 2; }
     .browsePage .novels-heading {
-      font-size: 2.5rem;
-      color: black;
-      margin-bottom: 1rem;
-      text-align: center; }
+      text-transform: uppercase;
+      letter-spacing: 0.3rem;
+      color: white;
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 2rem; }
     .browsePage .novels-list {
       display: flex;
       flex-flow: column;
-      gap: 2rem; }
+      gap: 3rem; }
       .browsePage .novels-list .novel {
         height: max-content;
-        width: max-content;
+        width: 95rem;
         display: flex;
         flex-flow: row;
-        background: linear-gradient(135deg, #aad9ff 0%, #b3ffec 49%, #c7ffbc 100%);
+        justify-content: space-between;
+        background-color: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(40px);
+        border: 1px solid #363636;
         border-radius: 1rem;
         overflow: hidden; }
         .browsePage .novels-list .novel-img {
-          height: 27rem;
-          width: 20rem;
+          display: block;
+          height: 30rem;
+          width: 23rem;
           background-size: cover;
           background-position: center;
           padding: 0%; }
         .browsePage .novels-list .novel-info {
-          width: 65rem;
-          padding: 2rem 3rem 1rem 3rem;
+          height: 30rem;
+          width: calc(100% - 23rem);
+          padding: 2rem;
           display: flex;
           flex-flow: column;
-          gap: 0.7rem; }
+          justify-content: space-between; }
           .browsePage .novels-list .novel-info-top {
             display: flex;
             flex-flow: row;
             justify-content: space-between;
             align-items: flex-start; }
             .browsePage .novels-list .novel-info-top-title {
-              width: 85%;
-              font-size: 3rem; }
+              width: 85%; }
+              .browsePage .novels-list .novel-info-top-title .name {
+                font-size: 2.5rem;
+                letter-spacing: 0.2rem;
+                color: white; }
+              .browsePage .novels-list .novel-info-top-title .author {
+                font-size: 1.6rem;
+                color: #bebebe; }
             .browsePage .novels-list .novel-info-top-rating {
-              margin-top: 0.7rem;
-              font-size: 2rem;
+              font-size: 2.5rem;
               display: flex;
               flex-flow: row;
               align-items: center;
-              gap: 0.5rem; }
+              gap: 0.5rem;
+              color: #bebebe; }
               .browsePage .novels-list .novel-info-top-rating .ratingIcon {
-                padding-bottom: 0.2rem; }
-          .browsePage .novels-list .novel-info-author {
-            font-size: 1.6rem; }
-            .browsePage .novels-list .novel-info-author .subHeading {
-              color: #2b2b2b;
-              margin-right: 1rem; }
-          .browsePage .novels-list .novel-info-chapterStatus {
+                width: 2.5rem;
+                height: 2.5rem;
+                color: #f7b438;
+                filter: drop-shadow(0px 0px 2px #f7b438); }
+          .browsePage .novels-list .novel-info-stats {
             display: flex;
             flex-flow: row;
-            gap: 3rem;
+            gap: 4rem;
             align-items: center;
             font-size: 1.6rem; }
-          .browsePage .novels-list .novel-info-chapters .subHeading {
-            font-size: 1.6rem;
-            color: #2b2b2b;
-            margin-right: 1rem; }
-          .browsePage .novels-list .novel-info-status .subHeading {
-            font-size: 1.6rem;
-            color: #2b2b2b;
-            margin-right: 1rem; }
+          .browsePage .novels-list .novel-info-item {
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            color: #c2c2c2; }
+            .browsePage .novels-list .novel-info-item .count {
+              font-size: 2.5rem; }
           .browsePage .novels-list .novel-info-desc {
-            font-size: 2rem; }
+            color: #c2c2c2;
+            font-size: 1.6rem; }
+          .browsePage .novels-list .novel-info-buttons {
+            width: 100%;
+            display: flex;
+            justify-content: space-between; }
+            .browsePage .novels-list .novel-info-buttons .btn {
+              width: 47%;
+              height: 4rem;
+              font-size: 1.6rem;
+              text-transform: uppercase;
+              letter-spacing: 0.2rem;
+              color: white;
+              background-color: #2079c2;
+              display: grid;
+              place-items: center;
+              gap: 6%;
+              border-radius: 5px;
+              font-weight: bold; }
   .browsePage::-webkit-scrollbar {
     width: 1.5rem; }
   .browsePage::-webkit-scrollbar-track {
@@ -632,25 +738,23 @@ a:link, a:visited, a:hover, a:active {
 
 .bookPage {
   width: 100%;
-  margin-top: 6rem;
-  overflow: hidden;
-  height: calc(100vh - 6rem);
-  overflow: hidden;
-  overflow-y: auto;
+  height: max-content;
   background-color: #2f2f35; }
   .bookPage-container {
     display: flex;
     flex-flow: column;
     gap: 4rem;
+    align-items: center;
     position: relative; }
     .bookPage-container .introSection {
       width: 100%;
-      height: 45rem;
+      height: 50rem;
       background-color: black;
       position: relative;
       overflow: hidden;
       z-index: 2; }
       .bookPage-container .introSection-bgImg {
+        display: block;
         position: absolute;
         top: 0;
         left: 0;
@@ -662,7 +766,7 @@ a:link, a:visited, a:hover, a:active {
         z-index: 1; }
       .bookPage-container .introSection-container {
         position: absolute;
-        top: 50%;
+        top: 55%;
         left: 50%;
         transform: translate(-50%, -50%);
         width: 95rem;
@@ -676,7 +780,8 @@ a:link, a:visited, a:hover, a:active {
           height: 100%;
           background-size: cover;
           background-position: center;
-          border-radius: 1rem; }
+          border-radius: 1rem;
+          display: block; }
         .bookPage-container .introSection-container-content {
           width: calc(100% - 30rem);
           height: 100%;
@@ -778,17 +883,13 @@ a:link, a:visited, a:hover, a:active {
               text-transform: uppercase;
               letter-spacing: 0.2rem;
               color: white;
-              background-color: #209e4a;
+              background-color: #2079c2;
               display: grid;
               place-items: center;
               gap: 6%;
               border-radius: 5px;
               font-weight: bold; }
     .bookPage-container .contentSection {
-      position: absolute;
-      top: 50rem;
-      left: 50%;
-      transform: translateX(-50%);
       width: 95rem;
       display: flex;
       flex-flow: column;
@@ -864,7 +965,7 @@ a:link, a:visited, a:hover, a:active {
             font-size: 1.6rem;
             padding: 0.5rem 1.5rem;
             border-radius: 0.5rem;
-            background-color: #209e4a;
+            background-color: #2079c2;
             color: white;
             letter-spacing: 0.3rem;
             text-transform: uppercase; }
@@ -874,7 +975,7 @@ a:link, a:visited, a:hover, a:active {
             .bookPage-container .contentSection .chapterSection-goto .pageChange-icon {
               padding: 1rem;
               border-radius: 0.5rem;
-              background-color: #209e4a;
+              background-color: #2079c2;
               color: white;
               width: 3rem;
               height: 3rem; }
@@ -927,7 +1028,7 @@ a:link, a:visited, a:hover, a:active {
         display: flex;
         flex-flow: column;
         gap: 2rem;
-        margin-bottom: 4rem; }
+        margin-bottom: 2rem; }
         .bookPage-container .contentSection .reviewSection-subheading {
           text-transform: uppercase;
           letter-spacing: 0.3rem;
@@ -1052,7 +1153,7 @@ a:link, a:visited, a:hover, a:active {
               font-size: 1.2rem;
               letter-spacing: 0.2rem;
               padding: 1rem 1.5rem;
-              background-color: #209e4a; }
+              background-color: #2079c2; }
         .bookPage-container .contentSection .reviewSection-reviews {
           display: flex;
           flex-flow: column;
@@ -1131,29 +1232,20 @@ a:link, a:visited, a:hover, a:active {
   height: calc(100vh - 6rem);
   margin-top: 6rem;
   display: flex;
-  align-items: center;
-  /*&::before {
-    content: "";
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 1px;
-    height: 1px;
-    border-radius: 50%;
-    box-shadow: 0px 0px 70vh 70vh rgba(60, 158, 238, 0.4);
-    z-index: 1;
-  }
-  &::after {
-    content: "";
+  align-items: center; }
+  .collectionPage-background {
+    display: block;
     position: fixed;
     top: 0;
-    right: 0;
-    width: 1px;
-    height: 1px;
-    border-radius: 50%;
-    box-shadow: 0px 0px 70vh 70vh rgba(133, 255, 109, 0.3);
-    z-index: 1;
-  }*/ }
+    left: 22%;
+    width: 88%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    -webkit-animation: BgAnim 40s ease-in-out infinite;
+    -moz-animation: BgAnim 40s ease-in-out infinite;
+    animation: BgAnim 40s ease-in-out infinite; }
   .collectionPage-leftPane {
     width: 22%;
     height: calc(100vh - 6rem);
@@ -1161,7 +1253,8 @@ a:link, a:visited, a:hover, a:active {
     flex-flow: column;
     align-items: center;
     justify-content: center;
-    gap: 3rem; }
+    gap: 3rem;
+    background-color: white; }
     .collectionPage-leftPane .item {
       font-size: 3rem;
       font-weight: bold;
@@ -1195,7 +1288,8 @@ a:link, a:visited, a:hover, a:active {
     scroll-snap-type: y mandatory;
     overflow-y: auto;
     scroll-behavior: smooth;
-    transition: all 1s ease; }
+    transition: all 1s ease;
+    backdrop-filter: blur(5px); }
     .collectionPage-rightPane::before {
       transition: all 1s ease; }
     .collectionPage-rightPane .novelSection {
@@ -1219,7 +1313,8 @@ a:link, a:visited, a:hover, a:active {
           padding-top: 125%;
           background-size: cover;
           background-position: center;
-          transition: all 0.3s ease; }
+          transition: all 0.3s ease;
+          display: block; }
         .collectionPage-rightPane .novelSection .novel-info {
           display: flex;
           justify-content: space-between;
@@ -1304,53 +1399,14 @@ a:link, a:visited, a:hover, a:active {
     .collectionPage-rightPane::-webkit-scrollbar-track {
       background: transparent; }
     .collectionPage-rightPane::-webkit-scrollbar-thumb {
-      background: #b3b3b3;
+      background: #797979;
       border-radius: 0.75rem; }
     .collectionPage-rightPane-bookmarked {
-      background-color: rgba(7, 146, 100, 0.55);
-      /*&::before {
-        content: "";
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        width: 1px;
-        height: 1px;
-        border-radius: 50%;
-        box-shadow: 0px 0px 90vh 90vh hsla(160, 91%, 30%, 0.4);
-        // box-shadow: 0px 0px 50vh 50vh rgba(blue, 0.2);
-        z-index: 1;
-      }*/ }
+      background-color: rgba(7, 146, 100, 0.55); }
     .collectionPage-rightPane-ongoing {
-      background-color: rgba(240, 102, 102, 0.55);
-      /*&::before {
-        content: "";
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        width: 1px;
-        height: 1px;
-        border-radius: 50%;
-        box-shadow: 0px 0px 50vh 50vh hsla(0, 82%, 67%, 0.4);
-        // box-shadow: 0px 0px 50vh 50vh rgba(blue, 0.2);
-        z-index: 1;
-      }*/ }
+      background-color: rgba(240, 102, 102, 0.55); }
     .collectionPage-rightPane-completed {
-      background-color: rgba(34, 105, 185, 0.55);
-      /*&::before {
-        content: "";
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        width: 1px;
-        height: 1px;
-        border-radius: 50%;
-        box-shadow: 0px 0px 50vh 50vh hsla(212, 69%, 43%, 0.4);
-        // box-shadow: 0px 0px 50vh 50vh rgba(blue, 0.2);
-        z-index: 1;
-      }*/ }
+      background-color: rgba(34, 105, 185, 0.55); }
 
 .chapterPage {
   width: 100%; }
@@ -1633,7 +1689,8 @@ a:link, a:visited, a:hover, a:active {
           height: 3.5rem;
           border-radius: 50%;
           background-size: cover;
-          background-position: center; }
+          background-position: center;
+          display: block; }
         .profilePage-left .followingList .user .name {
           font-size: 1.6rem;
           font-weight: bold; }
@@ -1647,7 +1704,7 @@ a:link, a:visited, a:hover, a:active {
   .profilePage-right {
     width: 80%;
     height: calc(100vh - 6rem);
-    background-color: #dfdfdf;
+    background-color: #2f2f35;
     overflow-y: auto; }
     .profilePage-right .contents {
       height: max-content;
@@ -1665,6 +1722,7 @@ a:link, a:visited, a:hover, a:active {
           width: 100%;
           height: 20rem;
           background-size: cover;
+          display: block;
           background-position: center;
           filter: blur(4px);
           -webkit-filter: blur(4px); }
@@ -1677,12 +1735,15 @@ a:link, a:visited, a:hover, a:active {
           border-radius: 50%;
           background-size: cover;
           background-position: center;
-          border: 4px solid white; }
+          border: 4px solid white;
+          display: block; }
         .profilePage-right .contents .top .name {
           position: absolute;
           top: 21rem;
           left: 25rem;
-          font-size: 2.5rem; }
+          font-size: 2.5rem;
+          color: white;
+          font-weight: bold; }
         .profilePage-right .contents .top .editIcon {
           margin-left: 0.5rem;
           height: 2rem;
@@ -1693,7 +1754,7 @@ a:link, a:visited, a:hover, a:active {
           top: 24rem;
           left: 25rem;
           font-size: 1.6rem;
-          color: #006eff;
+          color: #338afd;
           font-weight: bold;
           letter-spacing: 0.2rem; }
       .profilePage-right .contents .body {
@@ -1707,8 +1768,10 @@ a:link, a:visited, a:hover, a:active {
           width: 47%;
           height: 30rem;
           border-radius: 10px;
-          background-color: white;
-          padding: 1.5rem 2rem;
+          background-color: rgba(63, 63, 63, 0.856);
+          border: 1px solid #474747;
+          color: #bebebe;
+          padding: 2rem;
           display: flex;
           flex-flow: column;
           align-items: center;
@@ -1725,7 +1788,10 @@ a:link, a:visited, a:hover, a:active {
               cursor: pointer; }
           .profilePage-right .contents .body-item-heading {
             align-self: flex-start;
-            font-size: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3rem;
+            color: white;
+            font-size: 1.6rem;
             font-weight: bold; }
         .profilePage-right .contents .body .about {
           width: 100%;
@@ -1753,9 +1819,10 @@ a:link, a:visited, a:hover, a:active {
                 height: 4rem;
                 background-color: blanchedalmond; }
               .profilePage-right .contents .body .current-content-novels .novel-data {
-                width: calc(100% - 5.5rem);
+                width: 100%;
                 display: flex;
-                flex-flow: column; }
+                flex-flow: column;
+                gap: 0.5rem; }
                 .profilePage-right .contents .body .current-content-novels .novel-data-text {
                   display: flex;
                   justify-content: space-between;
@@ -1811,12 +1878,32 @@ a:link, a:visited, a:hover, a:active {
               .profilePage-right .contents .body .stats-content .item .text .count {
                 font-size: 2rem;
                 font-weight: bold; }
+        .profilePage-right .contents .body .stats2 {
+          justify-content: space-between; }
+          .profilePage-right .contents .body .stats2-content {
+            width: 100%;
+            height: 80%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            justify-items: center;
+            row-gap: 2rem; }
+            .profilePage-right .contents .body .stats2-content .item {
+              width: 29%;
+              display: flex;
+              flex-flow: column;
+              align-items: center; }
+              .profilePage-right .contents .body .stats2-content .item .count {
+                font-size: 3rem; }
+              .profilePage-right .contents .body .stats2-content .item .title {
+                font-size: 1.2rem;
+                text-transform: uppercase; }
         .profilePage-right .contents .body .favGenre-content {
           width: 100%;
           height: 100%;
           display: flex;
           align-items: center;
-          justify-content: space-around; }
+          justify-content: space-evenly; }
           .profilePage-right .contents .body .favGenre-content .labels {
             display: flex;
             flex-flow: column;
@@ -1830,9 +1917,10 @@ a:link, a:visited, a:hover, a:active {
                 width: 1rem;
                 border-radius: 50%; }
               .profilePage-right .contents .body .favGenre-content .labels-label-text {
-                text-transform: capitalize;
-                font-size: 1.6rem;
-                color: black; }
+                text-transform: uppercase;
+                font-size: 1.2rem;
+                color: #c2c2c2;
+                letter-spacing: 0.2rem; }
           .profilePage-right .contents .body .favGenre-content .doughnutChart {
             width: 20rem;
             height: 20rem; }
@@ -1927,77 +2015,35 @@ a:link, a:visited, a:hover, a:active {
 .expanded {
   width: 15rem; }
 
-/*.topNav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 6rem;
-  background-color: hsla(160, 79%, 100%, 0.7);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  display: flex;
-  flex-flow: row;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 12%;
-  padding-right: calc(12% - 6rem);
-  border-bottom: 1px solid var(--color-primary-dark);
-  z-index: 2;
-  &-logo {
-    color: var(--color-primary-dark);
-    font-size: $logo-small-font-size;
-  }
-  &-login {
-    color: white;
-    text-transform: uppercase;
-    font-size: $default-font-size;
-    border-radius: 15px;
-    padding: 0.5rem 2rem;
-    background-color: var(--color-primary);
-  }
-}*/
 .topNav {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   height: 6rem;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.9);
   backdrop-filter: blur(40px);
   -webkit-backdrop-filter: blur(40px);
   display: flex;
   flex-flow: row;
   align-items: center;
   justify-content: space-between;
-  padding: 0 5%;
-  z-index: 10;
-  /*&-menuItems {
-    display: flex;
-    gap: 2rem;
-    font-size: $medium-font-size;
-    color: white;
-  }*/
-  /*&-logo {
-    color: white;
-    font-size: $logo-small-font-size;
-  }
-  &-login {
-    color: white;
-    text-transform: uppercase;
-    font-size: $default-font-size;
-    border-radius: 15px;
-    padding: 0.5rem 2rem;
-    background-color: var(--color-primary);
-  }*/ }
+  padding: 0 12%;
+  z-index: 10; }
   .topNav-left {
     display: flex;
     gap: 4rem;
     align-items: center;
     letter-spacing: 0.3rem; }
     .topNav-left .item {
-      font-size: 1.6rem;
-      color: white; }
+      text-transform: uppercase;
+      font-size: 1.2rem;
+      color: white;
+      transition: all 0.3s ease; }
+      .topNav-left .item:hover {
+        cursor: pointer; }
+    .topNav-left .active {
+      color: #52acf7; }
   .topNav-logo {
     color: white;
     font-size: 3rem; }
@@ -2008,3 +2054,57 @@ a:link, a:visited, a:hover, a:active {
     letter-spacing: 0.3rem;
     padding: 0.2rem 1rem;
     border: 2px solid white; }
+
+/*.topNav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6rem;
+  background-color: rgba(black, 0.9);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5%;
+  z-index: 10;
+  &-left {
+    display: flex;
+    gap: 4rem;
+    align-items: center;
+    letter-spacing: 0.3rem;
+    .item {
+      text-transform: uppercase;
+      font-size: $smaller-font-size;
+      color: white;
+    }
+  }
+  &-logo {
+    color: white;
+    font-size: $logo-small-font-size;
+  }
+  &-right {
+    color: white;
+    text-transform: uppercase;
+    font-size: $default-font-size;
+    letter-spacing: 0.3rem;
+    padding: 0.2rem 1rem;
+    border: 2px solid white;
+  }
+}
+*/
+.background {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  filter: blur(10px);
+  -webkit-animation: BgAnim 40s ease-in-out infinite;
+  -moz-animation: BgAnim 40s ease-in-out infinite;
+  animation: BgAnim 40s ease-in-out infinite; }

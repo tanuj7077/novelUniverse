@@ -1,6 +1,6 @@
 import React from "react";
 import blank from "../../assets/blankProfile.png";
-import background from "../../assets/digital.jpg";
+import background from "../../assets/abstract/12.jpg";
 import { FaCentercode, FaStar } from "react-icons/fa";
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 import { MdEdit } from "react-icons/md";
@@ -84,7 +84,7 @@ const Profile = () => {
                       return (
                         <div className="novel">
                           {/* <img src={item.img} alt="" className="novel-img" /> */}
-                          <span className="novel-img"></span>
+                          {/* <span className="novel-img"></span> */}
                           <div className="novel-data">
                             <span className="novel-data-text">
                               <p className="novel-data-name">{item.name}</p>
@@ -105,56 +105,39 @@ const Profile = () => {
                 </div>
               </div>
             </div>
-            <div className="body-item stats">
+            <div className="body-item stats2">
               <div className="body-item-top">
                 <div className="body-item-heading">Stats</div>
                 <AiOutlineEye className="body-item-visibility" />
               </div>
-              <div className="stats-content">
+              <div className="stats2-content">
                 <p className="item">
-                  <FaCentercode className="icon" />
-                  <p className="text">
-                    <span className="title">Comments</span>
-                    <span className="count">12</span>
-                  </p>
+                  <span className="count">120</span>
+                  <span className="title">Comments</span>
                 </p>
                 <p className="item">
-                  <FaCentercode className="icon" />
-                  <p className="text">
-                    <span className="title">Reviews</span>
-                    <span className="count">12</span>
-                  </p>
+                  <span className="count">12</span>
+                  <span className="title">Reviews</span>
                 </p>
                 <p className="item">
-                  <FaCentercode className="icon" />
-                  <p className="text">
-                    <span className="title">Followers</span>
-                    <span className="count">12</span>
-                  </p>
+                  <span className="count">4.5k</span>
+                  <span className="title">Followers</span>
                 </p>
                 <p className="item">
-                  <FaCentercode className="icon" />
-                  <p className="text">
-                    <span className="title">Upvotes</span>
-                    <span className="count">12</span>
-                  </p>
+                  <span className="count">5.5k</span>
+                  <span className="title">Upvotes</span>
                 </p>
                 <p className="item">
-                  <FaCentercode className="icon" />
-                  <p className="text">
-                    <span className="title">Completed</span>
-                    <span className="count">12</span>
-                  </p>
+                  <span className="count">31</span>
+                  <span className="title">Completed</span>
                 </p>
                 <p className="item">
-                  <FaCentercode className="icon" />
-                  <p className="text">
-                    <span className="title">Upvotes</span>
-                    <span className="count">12</span>
-                  </p>
+                  <span className="count">12</span>
+                  <span className="title">Following</span>
                 </p>
               </div>
             </div>
+
             <div className="body-item favGenre">
               <div className="body-item-top">
                 <div className="body-item-heading">Favourite Genre</div>
@@ -220,6 +203,57 @@ const Profile = () => {
                 </div>
               </div>
             </div>
+            {/* <div className="body-item stats">
+              <div className="body-item-top">
+                <div className="body-item-heading">Stats</div>
+                <AiOutlineEye className="body-item-visibility" />
+              </div>
+              <div className="stats-content">
+                <p className="item">
+                  <FaCentercode className="icon" />
+                  <p className="text">
+                    <span className="title">Comments</span>
+                    <span className="count">12</span>
+                  </p>
+                </p>
+                <p className="item">
+                  <FaCentercode className="icon" />
+                  <p className="text">
+                    <span className="title">Reviews</span>
+                    <span className="count">12</span>
+                  </p>
+                </p>
+                <p className="item">
+                  <FaCentercode className="icon" />
+                  <p className="text">
+                    <span className="title">Followers</span>
+                    <span className="count">12</span>
+                  </p>
+                </p>
+                <p className="item">
+                  <FaCentercode className="icon" />
+                  <p className="text">
+                    <span className="title">Upvotes</span>
+                    <span className="count">12</span>
+                  </p>
+                </p>
+                <p className="item">
+                  <FaCentercode className="icon" />
+                  <p className="text">
+                    <span className="title">Completed</span>
+                    <span className="count">12</span>
+                  </p>
+                </p>
+                <p className="item">
+                  <FaCentercode className="icon" />
+                  <p className="text">
+                    <span className="title">Upvotes</span>
+                    <span className="count">12</span>
+                  </p>
+                </p>
+              </div>
+            </div>
+           */}
           </div>
         </div>
       </div>

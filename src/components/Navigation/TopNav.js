@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { AiFillHome, AiOutlineSearch } from "react-icons/ai";
-import { MdCollectionsBookmark } from "react-icons/md"; //collection
-import { CgProfile } from "react-icons/cg";
-import { SiGmail } from "react-icons/si";
-import { IoMdLogIn } from "react-icons/io";
+import { useLocation } from "react-router-dom";
 import { Route } from "react-router-dom";
 const TopNav = () => {
+  const windowUrl = window.location.pathname;
+  const location = useLocation();
+  const [tab, setTab] = useState();
+  console.log(location);
+  useEffect(() => {
+    let arr = location.pathname.split("/").map(String);
+    if (arr.length > 1) {
+      setTab(arr[1]);
+    }
+  }, [location]);
   return (
     <div className="topNav">
       <div className="topNav-left">
@@ -14,7 +20,7 @@ const TopNav = () => {
         <Route
           render={({ history }) => (
             <span
-              className="item"
+              className={`item ${tab === "home" ? "active" : ""}`}
               onClick={() => {
                 history.push(`/home`);
               }}
@@ -26,7 +32,7 @@ const TopNav = () => {
         <Route
           render={({ history }) => (
             <span
-              className="item"
+              className={`item ${tab === "browse" ? "active" : ""}`}
               onClick={() => {
                 history.push(`/browse`);
               }}
@@ -38,7 +44,7 @@ const TopNav = () => {
         <Route
           render={({ history }) => (
             <span
-              className="item"
+              className={`item ${tab === "collection" ? "active" : ""}`}
               onClick={() => {
                 history.push(`/collection`);
               }}
@@ -50,7 +56,7 @@ const TopNav = () => {
         <Route
           render={({ history }) => (
             <span
-              className="item"
+              className={`item ${tab === "profile" ? "active" : ""}`}
               onClick={() => {
                 history.push(`/profile`);
               }}
@@ -62,7 +68,7 @@ const TopNav = () => {
         <Route
           render={({ history }) => (
             <span
-              className="item"
+              className={`item ${tab === "contact" ? "active" : ""}`}
               onClick={() => {
                 history.push(`/contact`);
               }}
