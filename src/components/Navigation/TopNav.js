@@ -2,10 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { Route } from "react-router-dom";
 const TopNav = () => {
-  const windowUrl = window.location.pathname;
   const location = useLocation();
   const [tab, setTab] = useState();
-  console.log(location);
   useEffect(() => {
     let arr = location.pathname.split("/").map(String);
     if (arr.length > 1) {

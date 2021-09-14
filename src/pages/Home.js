@@ -30,9 +30,6 @@ const Home = () => {
             className={`homePage-carousel-slide ${
               currentSlide === 1 ? "homePage-carousel-slide-visible" : ""
             }`}
-            // style={{
-            //   backgroundImage: `url(${carousel1})`,
-            // }}
           >
             <div
               className="homePage-carousel-slide-bg"
@@ -188,49 +185,6 @@ const Home = () => {
               })}
           </div>
         </div>
-
-        {/* <div className="homePage-carousel">
-          <div className="homePage-carousel-container">
-            <div
-              className="homePage-carousel-container-item"
-              id="carousel1"
-              style={{
-                backgroundImage: `url(${carousel1})`,
-              }}
-            ></div>
-            <div
-              className="homePage-carousel-container-item"
-              id="carousel2"
-              style={{
-                backgroundImage: `url(${carousel2})`,
-              }}
-            ></div>
-          </div>
-
-          <div className="homePage-carousel-navigation">
-            <span
-              className={`homePage-carousel-navigation-btn ${
-                currentSlide.current === 1 ? "current" : ""
-              }`}
-              id="carBtn1"
-              onClick={() => {
-                currentSlide.current = 1;
-                slideCarousel(1);
-              }}
-            ></span>
-            <span
-              className={`homePage-carousel-navigation-btn ${
-                currentSlide.current === 2 ? "current" : ""
-              }`}
-              id="carBtn2"
-              onClick={() => {
-                currentSlide.current = 2;
-                slideCarousel(2);
-              }}
-            ></span>
-          </div>
-        </div>
-         */}
       </div>
     </div>
   );

@@ -15,6 +15,7 @@ import SideNav from "./components/Navigation/SideNav";
 import TopNav from "./components/Navigation/TopNav";
 import Chapter from "./components/Chapter/Chapter";
 import Background from "./components/Background/Background";
+import AddContent from "./pages/AddContent";
 
 axios.defaults.withCredentials = true;
 function App() {
@@ -26,6 +27,7 @@ function App() {
       <Route path="/chapter/:id" exact>
         <Chapter />
       </Route>
+
       <>
         {/* <SideNav /> */}
         <TopNav />
@@ -49,6 +51,9 @@ function App() {
         </Route>
         <Route path="/book/:id">
           <BookPage />
+        </Route>
+        <Route path="/add">
+          <AddContent />
         </Route>
       </>
     </Switch>

@@ -1,0 +1,77 @@
+.addContentPage {
+  margin-top: 6rem;
+  color: black;
+  font-size: $medium-font-size;
+  padding: 4rem 12%;
+  &-addContent {
+    margin-bottom: 4rem;
+    border: 1px solid black;
+    padding: 3rem;
+    display: flex;
+    flex-flow: column;
+    gap: 2rem;
+    &-formGrp {
+      display: flex;
+      flex-flow: column;
+      gap: 0.5rem;
+      label {
+        font-size: $default-font-size;
+      }
+      .text {
+        font-size: $default-font-size;
+        padding: 0.5rem 1rem;
+      }
+      .categoryList {
+        border: 1px solid black;
+        display: flex;
+        flex-wrap: wrap;
+        padding: 1rem;
+        height: max-content;
+        gap: 1rem;
+        .listItem {
+          font-size: $smaller-font-size;
+          text-transform: uppercase;
+          padding: 0.2rem 0.5rem;
+          background-color: rgb(216, 216, 216);
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+      .selectedCategories {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        .category {
+          font-size: $smaller-font-size;
+          text-transform: uppercase;
+          &:hover {
+            cursor: pointer;
+            color: red;
+          }
+        }
+      }
+      .textarea {
+        height: 30rem;
+        font-size: $default-font-size;
+        padding: 0.5rem 1rem;
+      }
+    }
+    .uploadedImg {
+      height: 20rem;
+      width: 14rem;
+      background-size: cover;
+      background-position: center;
+    }
+    &-submitBtn {
+      outline: none;
+      border: none;
+      border-radius: 5px;
+      background-color: rgb(32, 121, 194);
+      color: white;
+      font-weight: bold;
+      font-size: $small-font-size;
+      padding: 1rem;
+    }
+  }
+}

@@ -36,3 +36,21 @@
     transform: scale(1);
   }
 }
+@-webkit-keyframes FadeIn {
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@-moz-keyframes FadeIn {
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes FadeIn {
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
