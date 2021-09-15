@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import firebase from "firebase/app";
 import "firebase/storage";
 import { categoryList } from "../mockData";
+import axios from "axios";
 var config = {
   apiKey: process.env.REACT_APP_API_KEY,
   authDomain: process.env.REACT_APP_AUTH_DOMAIN,
@@ -19,6 +20,10 @@ if (!firebase.apps.length) {
 var storage = firebase.storage();
 
 function AddContent() {
+  //book inputs
+  const [bookName, setBookName] = useState("");
+  const [bookDescription, setBookDescription] = useState("");
+  const [bookAuthor, setBookAuthor] = useState("");
   const [bookImage, setBookImage] = useState("");
   const [toSendBookImage, setToSendBookImage] = useState("");
   const [isBookImageUploaded, setIsBookImageUploaded] = useState(false);
@@ -57,6 +62,7 @@ function AddContent() {
     setCategories(newList);
   };
   async function handleSubmit() {
+    console.log("Submit pressed");
     let currentImageName = "image-" + Date.now();
     let uploadImage = storage
       .ref(`bookPhotos/${currentImageName}`)
@@ -67,6 +73,33 @@ function AddContent() {
       (snapshot) => {},
       (error) => {
         alert(error);
+      },
+      () => {
+        console.log("sent to firebase");
+        storage
+          .ref("bookPhotos")
+          .child(currentImageName)
+          .getDownloadURL()
+          .then((url) => {
+            console.log("url received");
+            const Book = {
+              name: bookName,
+              author: bookAuthor,
+              description: bookDescription,
+              imageUrl: url,
+              categories: categories,
+            };
+            // cons
+            axios
+              .post("http://localhost:8000/book/addBook", Book)
+              .then((res) => {
+                console.log("sent to server");
+                console.log(res);
+              });
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       }
     );
   }
@@ -76,11 +109,33 @@ function AddContent() {
         <p className="addContentPage-addContent-heading">Add Book</p>
         <div className="addContentPage-addContent-formGrp">
           <label>Book Name</label>
-          <input type="text" className="text" />
+          <input
+            type="text"
+            className="text"
+            onChange={(e) => {
+              setBookName(e.target.value);
+            }}
+          />
+        </div>
+        <div className="addContentPage-addContent-formGrp">
+          <label>Author</label>
+          <input
+            type="text"
+            className="text"
+            onChange={(e) => {
+              setBookAuthor(e.target.value);
+            }}
+          />
         </div>
         <div className="addContentPage-addContent-formGrp">
           <label>Description</label>
-          <input type="text" className="text" />
+          <input
+            type="text"
+            className="text"
+            onChange={(e) => {
+              setBookDescription(e.target.value);
+            }}
+          />
         </div>
         <div className="addContentPage-addContent-formGrp">
           <label>Add categories</label>
@@ -133,7 +188,6 @@ function AddContent() {
             onChange={handleImage}
           />
           {isBookImageUploaded && (
-            // <img src={bookImage} alt="" className="uploadedImg" />
             <div
               className="uploadedImg"
               style={{ backgroundImage: `url(${bookImage})` }}
