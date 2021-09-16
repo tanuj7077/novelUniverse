@@ -29,8 +29,15 @@ function AddContent() {
   const [isBookImageUploaded, setIsBookImageUploaded] = useState(false);
 
   const [category, setCategory] = useState("");
+  const [categoryListItems, setCategoryListItems] = useState(categoryList);
   const [categoriesVisible, setCategoriesVisible] = useState(false);
   const [categories, setCategories] = useState([]);
+  //chapterInputs
+  const [searchText, setSearchText] = useState("");
+  const [searchResult, setSearchResult] = useState([]);
+  const [selectedBook, setSelectedBook] = useState();
+  const [chapterTitle, setChapterTitle] = useState("");
+  const [chapterContent, setChapterContent] = useState("");
   const handleImage = (e) => {
     if (e.target.files && e.target.files[0]) {
       let reader = new FileReader();
@@ -50,6 +57,24 @@ function AddContent() {
       setCategories(newList);
     }
   };
+  const changeCategoryListItem = (e) => {
+    setCategory(e.target.value);
+    let newList = [];
+    categoryList.forEach((item) => {
+      if (item.includes(e.target.value)) {
+        newList.push(item);
+      }
+    });
+    setCategoryListItems(newList);
+  };
+  const handleSearch = (text) => {
+    setSearchText(text);
+    axios.get(`http://localhost:8000/book/searchBook/${text}`).then((res) => {
+      if (res.data.data.bookList.length > 0) {
+        setSearchResult(res.data.data.bookList);
+      }
+    });
+  };
   const removeFromCategories = (tag) => {
     let newList = [...categories];
     let index;
@@ -61,7 +86,7 @@ function AddContent() {
     newList.splice(index, 1);
     setCategories(newList);
   };
-  async function handleSubmit() {
+  const submitBook = async () => {
     console.log("Submit pressed");
     let currentImageName = "image-" + Date.now();
     let uploadImage = storage
@@ -102,7 +127,23 @@ function AddContent() {
           });
       }
     );
-  }
+  };
+  const submitChapter = async () => {
+    let Chapter = {
+      bookId: selectedBook._id,
+      name: chapterTitle,
+      number: selectedBook.chapters.length + 1,
+      story: chapterContent,
+    };
+    axios
+      .post("http://localhost:8000/chapter/addChapter", Chapter)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <div className="addContentPage">
       <div className="addContentPage-addContent">
@@ -144,7 +185,7 @@ function AddContent() {
             className="text"
             value={category}
             onChange={(e) => {
-              setCategory(e.target.value);
+              changeCategoryListItem(e);
             }}
             onClick={() => {
               setCategoriesVisible(true);
@@ -152,7 +193,7 @@ function AddContent() {
           />
           {categoriesVisible && (
             <div className="categoryList">
-              {categoryList.map((item) => {
+              {categoryListItems.map((item) => {
                 return (
                   <div
                     className="listItem"
@@ -196,7 +237,7 @@ function AddContent() {
         </div>
         <button
           className="addContentPage-addContent-submitBtn"
-          onClick={handleSubmit}
+          onClick={submitBook}
         >
           Submit
         </button>
@@ -205,17 +246,66 @@ function AddContent() {
         <p className="addContentPage-addContent-heading">Add Chapter</p>
         <div className="addContentPage-addContent-formGrp">
           <label>Search Book</label>
-          <input type="text" className="text" />
+          <input
+            type="text"
+            className="text"
+            onChange={(e) => handleSearch(e.target.value)}
+          />
+        </div>
+        <div className="addContentPage-addContent-formGrp">
+          <label>Search Result</label>
+          <div className="searchResult">
+            {searchResult.map((book) => {
+              return (
+                <div
+                  className="searchResult-content"
+                  onClick={() => setSelectedBook(book)}
+                >
+                  {book.name}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+        <div className="addContentPage-addContent-formGrp">
+          <label>Selected Book</label>
+          {selectedBook && (
+            <div className="selectedBook">
+              <span
+                className="selectedBook-img"
+                style={{ backgroundImage: `url(${selectedBook.imageUrl})` }}
+              ></span>
+              <p className="selectedBook-text">
+                <span className="name">{selectedBook.name}</span>
+                <span className="chapters">
+                  Chapters: {selectedBook.chapters.length}
+                </span>
+              </p>
+            </div>
+          )}
         </div>
         <div className="addContentPage-addContent-formGrp">
           <label>Chapter Title</label>
-          <input type="text" className="text" />
+          <input
+            type="text"
+            className="text"
+            onChange={(e) => setChapterTitle(e.target.value)}
+          />
         </div>
         <div className="addContentPage-addContent-formGrp">
           <label>Chapter Content</label>
-          <textarea type="text" className="textarea"></textarea>
+          <textarea
+            type="text"
+            className="textarea"
+            onChange={(e) => setChapterContent(e.target.value)}
+          ></textarea>
         </div>
-        <button className="addContentPage-addContent-submitBtn">Submit</button>
+        <button
+          className="addContentPage-addContent-submitBtn"
+          onClick={submitChapter}
+        >
+          Submit
+        </button>
       </div>
     </div>
   );

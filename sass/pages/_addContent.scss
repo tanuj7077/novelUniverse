@@ -56,6 +56,30 @@
         font-size: $default-font-size;
         padding: 0.5rem 1rem;
       }
+      .selectedBook {
+        height: 7rem;
+        display: flex;
+        gap: 2rem;
+        &-img {
+          height: 7rem;
+          width: 6rem;
+          background-size: cover;
+          background-position: center;
+          display: block;
+        }
+        &-text {
+          height: 7rem;
+          display: flex;
+          flex-flow: column;
+          justify-content: space-evenly;
+          .name {
+            font-size: $medium-font-size;
+          }
+          .chapters {
+            font-size: $default-font-size;
+          }
+        }
+      }
     }
     .uploadedImg {
       height: 20rem;
