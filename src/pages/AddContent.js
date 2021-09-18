@@ -72,6 +72,8 @@ function AddContent() {
     axios.get(`http://localhost:8000/book/searchBook/${text}`).then((res) => {
       if (res.data.data.bookList.length > 0) {
         setSearchResult(res.data.data.bookList);
+      } else {
+        setSearchResult([]);
       }
     });
   };
@@ -170,13 +172,13 @@ function AddContent() {
         </div>
         <div className="addContentPage-addContent-formGrp">
           <label>Description</label>
-          <input
+          <textarea
             type="text"
-            className="text"
+            className="textarea"
             onChange={(e) => {
               setBookDescription(e.target.value);
             }}
-          />
+          ></textarea>
         </div>
         <div className="addContentPage-addContent-formGrp">
           <label>Add categories</label>

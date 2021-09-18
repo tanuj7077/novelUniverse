@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { Route } from "react-router-dom";
 
-function Chapters({ allChapters, Chapters }) {
-  console.log(typeof allChapters);
+function ChapterSection({ allChapters, Chapters }) {
   const LIMIT = 8;
   const [chapterInput, setChapterInput] = useState("1");
   const [chapters, setChapters] = useState([]);
@@ -11,11 +10,11 @@ function Chapters({ allChapters, Chapters }) {
   const [totalPage, setTotalPage] = useState(1);
   const [chapterTransitionStat, setChapterTransitionStat] = useState("");
   const paginate = () => {
-    let count = Math.ceil(allChapters.length / LIMIT);
+    let count = Math.ceil(Chapters.length / LIMIT);
     setTotalPage(count);
     let arr = [];
     for (let i = 0; i < count; i++) {
-      arr.push(allChapters.slice(i * LIMIT, (i + 1) * LIMIT));
+      arr.push(Chapters.slice(i * LIMIT, (i + 1) * LIMIT));
     }
     setChapters(arr);
   };
@@ -43,7 +42,6 @@ function Chapters({ allChapters, Chapters }) {
       </p>
       <div className="chapterSection-goto">
         <div className="goto">
-          {/* <p className="subheading">Enter Chapter: </p> */}
           <input
             type="number"
             className="chapterInput"
@@ -72,22 +70,18 @@ function Chapters({ allChapters, Chapters }) {
       </div>
       <div className="chapterSection-chapters">
         {chapters[page - 1] &&
-          chapters[page - 1].map((chapter, index) => {
+          chapters[page - 1].map((item) => {
             return (
               <Route
                 render={({ history }) => (
                   <div
                     className={`chapter ${chapterTransitionStat}`}
                     onClick={() => {
-                      history.push(
-                        `/chapter/${(page - 1) * LIMIT + index + 1}`
-                      );
+                      history.push(`/chapter/${item.id}`);
                     }}
                   >
-                    <p className="count">
-                      Chapter: {(page - 1) * LIMIT + index + 1}
-                    </p>
-                    <p className="chapterName">{chapter}</p>
+                    <p className="count">Chapter: {item.number}</p>
+                    <p className="chapterName">{item.name}</p>
                   </div>
                 )}
               />
@@ -98,4 +92,4 @@ function Chapters({ allChapters, Chapters }) {
   );
 }
 
-export default Chapters;
+export default ChapterSection;

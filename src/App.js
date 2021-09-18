@@ -49,7 +49,7 @@ function App() {
         <Route path="/contact">
           <Contact />
         </Route>
-        <Route path="/book/:id">
+        <Route path="/book/:bookId">
           <BookPage />
         </Route>
         <Route path="/add">
