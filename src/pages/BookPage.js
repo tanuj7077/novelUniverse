@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import { FaStar } from "react-icons/fa";
-import Chapters from "./BookPage/Chapters";
 import Summary from "./BookPage/Summary";
 import Reviews from "./BookPage/Reviews";
 import bg1 from "../assets/bg-3.jpg";

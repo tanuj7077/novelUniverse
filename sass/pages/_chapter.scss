@@ -202,6 +202,12 @@
     color: rgb(194, 194, 194);
     transition: all 0.3s ease;
   }
+  &-title {
+    font-size: $large-font-size;
+    font-weight: bold;
+    width: 60%;
+    margin: 4rem auto;
+  }
   &-chapter {
     width: 60%;
     margin: 4rem auto;

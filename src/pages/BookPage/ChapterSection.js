@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { Route } from "react-router-dom";
 
-function ChapterSection({ allChapters, Chapters }) {
+function ChapterSection({ Chapters }) {
   const LIMIT = 8;
   const [chapterInput, setChapterInput] = useState("1");
   const [chapters, setChapters] = useState([]);
@@ -38,7 +38,11 @@ function ChapterSection({ allChapters, Chapters }) {
       <p className="chapterSection-subheading">Chapters</p>
       <p className="chapterSection-latest">
         <span className="subheading">Latest Release:</span>
-        <span className="chapter">{allChapters[allChapters.length - 1]}</span>
+        <span className="chapter">
+          Chapter {Chapters[Chapters.length - 1].number}
+          {": "}
+          {Chapters[Chapters.length - 1].name}
+        </span>
       </p>
       <div className="chapterSection-goto">
         <div className="goto">
@@ -47,7 +51,7 @@ function ChapterSection({ allChapters, Chapters }) {
             className="chapterInput"
             value={chapterInput}
             onChange={(e) => {
-              if (+e.target.value <= allChapters.length) {
+              if (+e.target.value <= Chapters.length) {
                 setChapterInput(e.target.value);
               }
             }}
