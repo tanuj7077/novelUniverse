@@ -624,49 +624,133 @@ a:link, a:visited, a:hover, a:active {
       .browsePage-container-top .filters {
         display: flex;
         flex-flow: column;
-        gap: 3rem; }
-        .browsePage-container-top .filters .genres {
-          width: 95rem;
-          z-index: 2; }
-          .browsePage-container-top .filters .genres-heading {
-            text-transform: uppercase;
-            letter-spacing: 0.3rem;
-            color: white;
-            font-size: 2rem;
-            font-weight: bold;
-            margin-bottom: 2rem; }
-          .browsePage-container-top .filters .genres-items {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem; }
-            .browsePage-container-top .filters .genres-items-item {
+        align-items: start;
+        gap: 3rem;
+        width: 95rem; }
+        .browsePage-container-top .filters-heading {
+          text-transform: uppercase;
+          letter-spacing: 0.3rem;
+          color: white;
+          font-size: 2rem;
+          font-weight: bold;
+          display: flex;
+          gap: 1rem; }
+          .browsePage-container-top .filters-heading .infoIcon {
+            width: 2.5rem;
+            height: 2.5rem; }
+        .browsePage-container-top .filters-content {
+          display: flex;
+          flex-flow: column;
+          gap: 3rem; }
+          .browsePage-container-top .filters-content .genres {
+            width: 95rem;
+            z-index: 2; }
+            .browsePage-container-top .filters-content .genres-heading {
+              width: max-content;
               text-transform: uppercase;
+              letter-spacing: 0.3rem;
+              color: white;
               font-size: 1.6rem;
-              padding: 0.5rem 2.5rem;
-              background-color: #444444;
-              color: #c4c4c4;
-              border-left: none;
-              position: relative;
-              letter-spacing: 0.2rem; }
-              .browsePage-container-top .filters .genres-items-item::before {
-                content: "";
+              font-weight: bold;
+              margin-bottom: 2rem;
+              display: flex;
+              gap: 1rem;
+              position: relative; }
+              .browsePage-container-top .filters-content .genres-heading .infoIcon {
+                width: 2rem;
+                height: 2rem; }
+              .browsePage-container-top .filters-content .genres-heading .filterPopup {
+                padding: 2rem;
                 position: absolute;
-                top: 0px;
-                left: -3px;
-                width: 5px;
-                height: 100%;
-                background-color: #236daa; }
-              .browsePage-container-top .filters .genres-items-item:hover {
-                cursor: pointer;
-                color: white; }
-              .browsePage-container-top .filters .genres-items-item-add::before {
-                background-color: #22ca5a; }
-              .browsePage-container-top .filters .genres-items-item-addhover::before {
-                background-color: #22ca5a; }
-              .browsePage-container-top .filters .genres-items-item-remove::before {
-                background-color: #ca2222; }
-              .browsePage-container-top .filters .genres-items-item-removehover::before {
-                background-color: #ca2222; }
+                top: -1.5rem;
+                left: calc(100% + 1.5rem);
+                display: flex;
+                flex-flow: column;
+                gap: 2rem;
+                opacity: 0;
+                visibility: hidden;
+                background-color: #202020;
+                border-radius: 1rem;
+                border: 2px solid #555555;
+                z-index: 10; }
+                .browsePage-container-top .filters-content .genres-heading .filterPopup .item {
+                  width: max-content;
+                  display: flex;
+                  align-items: center;
+                  gap: 1.5rem; }
+                  .browsePage-container-top .filters-content .genres-heading .filterPopup .item .genre {
+                    height: max-content;
+                    text-transform: uppercase;
+                    font-size: 1.2rem;
+                    padding: 0.5rem 1.5rem;
+                    background-color: #444444;
+                    color: #c4c4c4;
+                    border-left: none;
+                    position: relative;
+                    letter-spacing: 0.2rem; }
+                    .browsePage-container-top .filters-content .genres-heading .filterPopup .item .genre::before {
+                      content: "";
+                      position: absolute;
+                      top: 0px;
+                      left: -3px;
+                      width: 5px;
+                      height: 100%;
+                      background-color: #236daa; }
+                    .browsePage-container-top .filters-content .genres-heading .filterPopup .item .genre-inc::before {
+                      background-color: #22ca5a; }
+                    .browsePage-container-top .filters-content .genres-heading .filterPopup .item .genre-exc::before {
+                      background-color: #ca2222; }
+                  .browsePage-container-top .filters-content .genres-heading .filterPopup .item .desc {
+                    font-size: 1.2rem;
+                    font-weight: normal;
+                    text-transform: none; }
+                .browsePage-container-top .filters-content .genres-heading .filterPopup-visible {
+                  opacity: 1;
+                  visibility: visible; }
+            .browsePage-container-top .filters-content .genres-items {
+              display: flex;
+              flex-wrap: wrap;
+              gap: 2rem; }
+              .browsePage-container-top .filters-content .genres-items-item {
+                text-transform: uppercase;
+                font-size: 1.2rem;
+                padding: 0.5rem 1.5rem;
+                background-color: #444444;
+                color: #c4c4c4;
+                border-left: none;
+                position: relative;
+                letter-spacing: 0.2rem; }
+                .browsePage-container-top .filters-content .genres-items-item::before {
+                  content: "";
+                  position: absolute;
+                  top: 0px;
+                  left: -3px;
+                  width: 5px;
+                  height: 100%;
+                  background-color: #236daa; }
+                .browsePage-container-top .filters-content .genres-items-item:hover {
+                  cursor: pointer;
+                  color: white; }
+                .browsePage-container-top .filters-content .genres-items-item-add::before {
+                  background-color: #22ca5a; }
+                .browsePage-container-top .filters-content .genres-items-item-addhover::before {
+                  background-color: #22ca5a; }
+                .browsePage-container-top .filters-content .genres-items-item-remove::before {
+                  background-color: #ca2222; }
+                .browsePage-container-top .filters-content .genres-items-item-removehover::before {
+                  background-color: #ca2222; }
+          .browsePage-container-top .filters-content .submitBtn {
+            width: max-content;
+            padding: 0.5rem 1rem;
+            font-size: 1.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2rem;
+            color: white;
+            background-color: #2079c2;
+            display: grid;
+            place-items: center;
+            gap: 6%;
+            border-radius: 5px; }
   .browsePage .novels {
     z-index: 2; }
     .browsePage .novels-heading {

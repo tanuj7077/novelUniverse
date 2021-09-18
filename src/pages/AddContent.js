@@ -309,6 +309,63 @@ function AddContent() {
           Submit
         </button>
       </div>
+      <div className="addContentPage-addContent">
+        <p className="addContentPage-addContent-heading">Set Status</p>
+        <div className="addContentPage-addContent-formGrp">
+          <label>Search Book</label>
+          <input
+            type="text"
+            className="text"
+            onChange={(e) => handleSearch(e.target.value)}
+          />
+        </div>
+        <div className="addContentPage-addContent-formGrp">
+          <label>Search Result</label>
+          <div className="searchResult">
+            {searchResult.map((book) => {
+              return (
+                <div
+                  className="searchResult-content"
+                  onClick={() => setSelectedBook(book)}
+                >
+                  {book.name}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+        <div className="addContentPage-addContent-formGrp">
+          <label>Selected Book</label>
+          {selectedBook && (
+            <div className="selectedBook">
+              <span
+                className="selectedBook-img"
+                style={{ backgroundImage: `url(${selectedBook.imageUrl})` }}
+              ></span>
+              <p className="selectedBook-text">
+                <span className="name">{selectedBook.name}</span>
+                <span className="chapters">
+                  Chapters: {selectedBook.chapters.length}
+                </span>
+              </p>
+            </div>
+          )}
+        </div>
+        <div className="addContentPage-addContent-formGrp">
+          <label>Status(Completed/Ongoing):</label>
+          <input
+            type="text"
+            className="text"
+            onChange={(e) => setChapterTitle(e.target.value)}
+          />
+        </div>
+        <button
+          className="addContentPage-addContent-submitBtn"
+          onClick={submitChapter}
+        >
+          Submit
+        </button>
+      </div>
     </div>
   );
 }

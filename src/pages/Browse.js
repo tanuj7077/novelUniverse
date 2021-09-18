@@ -1,14 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { genres, browseNovels } from "../mockData";
+import { categoryList, browseNovels } from "../mockData";
 import { AiOutlineSearch } from "react-icons/ai";
 import { FaStar } from "react-icons/fa";
 import { Route } from "react-router-dom";
 import bg1 from "../assets/abstract/1.jpg";
+import {
+  IoInformationCircleOutline,
+  IoAddCircleOutline,
+} from "react-icons/io5";
 //1,2,3,6,7,9,11,12
 
 const Browse = () => {
   const [tagAdded, setTagAdded] = useState([]);
   const [tagRemoved, setTagRemoved] = useState([]);
+  const [advancedSearchVisible, setAdvancedSearchVisible] = useState(false);
+  const [filterInfoVisible, setFilterInfoVisible] = useState(false);
+
   const checkTagAddedPresense = (tag) => {
     return tagAdded.includes(tag);
   };
@@ -61,12 +68,6 @@ const Browse = () => {
   let order = ["new", "views", "ratings"];
   return (
     <div className="browsePage">
-      {/* <span
-        className="browsePage-bg"
-        style={{
-          backgroundImage: `url(${bg1})`,
-        }}
-      ></span> */}
       <div className="browsePage-container">
         <div className="browsePage-container-top">
           <div className="search">
@@ -74,64 +75,104 @@ const Browse = () => {
             <AiOutlineSearch className="search-icon" />
           </div>
           <div className="filters">
-            <div className="genres">
-              <div className="genres-heading">Genre</div>
-              <div className="genres-items">
-                {genres &&
-                  genres.map((genre) => {
-                    return (
-                      <div
-                        className={`genres-items-item ${
-                          checkTagAddedPresense(genre)
-                            ? "genres-items-item-add"
-                            : checkTagRemovedPresense(genre)
-                            ? "genres-items-item-remove"
-                            : ""
-                        }`}
-                        onClick={() => toggleItem(genre)}
-                      >
-                        {genre}
+            <p
+              className="filters-heading"
+              onClick={() => setAdvancedSearchVisible(!advancedSearchVisible)}
+            >
+              <span>Advanced Search</span>
+              <span>
+                <IoAddCircleOutline className="infoIcon" />
+              </span>
+            </p>
+            {advancedSearchVisible && (
+              <div className="filters-content">
+                <div className="genres">
+                  <p className="genres-heading">
+                    <span>Genre</span>
+                    <span>
+                      <IoInformationCircleOutline
+                        className="infoIcon"
+                        onClick={() => setFilterInfoVisible(!filterInfoVisible)}
+                      />
+                    </span>
+                    <span
+                      className={`filterPopup ${
+                        filterInfoVisible ? "filterPopup-visible" : ""
+                      }`}
+                    >
+                      <div className="item">
+                        <div className="genre genre-inc">Action</div>
+                        <p className="desc">: Genre included</p>
                       </div>
-                    );
-                  })}
-              </div>
-            </div>
-            <div className="genres">
-              <div className="genres-heading">Status</div>
-              <div className="genres-items">
-                {genres &&
-                  status.map((item) => {
-                    return (
-                      <div
-                        className={`genres-items-item ${
-                          item === currentStatus ? "genres-items-item-add" : ""
-                        }`}
-                        onClick={() => setCurrentStatus(item)}
-                      >
-                        {item}
+                      <div className="item">
+                        <div className="genre genre-exc">Action</div>
+                        <p className="desc">: Genre Excluded</p>
                       </div>
-                    );
-                  })}
+                    </span>
+                  </p>
+                  <div className="genres-items">
+                    {categoryList &&
+                      categoryList.map((genre) => {
+                        return (
+                          <div
+                            className={`genres-items-item ${
+                              checkTagAddedPresense(genre)
+                                ? "genres-items-item-add"
+                                : checkTagRemovedPresense(genre)
+                                ? "genres-items-item-remove"
+                                : ""
+                            }`}
+                            onClick={() => toggleItem(genre)}
+                          >
+                            {genre}
+                          </div>
+                        );
+                      })}
+                  </div>
+                </div>
+                <div className="genres">
+                  <div className="genres-heading">Status</div>
+                  <div className="genres-items">
+                    {categoryList &&
+                      status.map((item) => {
+                        return (
+                          <div
+                            className={`genres-items-item ${
+                              item === currentStatus
+                                ? "genres-items-item-add"
+                                : ""
+                            }`}
+                            onClick={() => setCurrentStatus(item)}
+                          >
+                            {item}
+                          </div>
+                        );
+                      })}
+                  </div>
+                </div>
+                <div className="genres">
+                  <div className="genres-heading">Order By</div>
+                  <div className="genres-items">
+                    {categoryList &&
+                      order.map((item) => {
+                        return (
+                          <div
+                            className={`genres-items-item ${
+                              item === currentOrder
+                                ? "genres-items-item-add"
+                                : ""
+                            }`}
+                            onClick={() => setCurrentOrder(item)}
+                          >
+                            {item}
+                          </div>
+                        );
+                      })}
+                  </div>
+                </div>
+                <div className="submitBtn">Apply</div>
               </div>
-            </div>
-            <div className="genres">
-              <div className="genres-heading">Order By</div>
-              <div className="genres-items">
-                {genres &&
-                  order.map((item) => {
-                    return (
-                      <div
-                        className={`genres-items-item ${
-                          item === currentOrder ? "genres-items-item-add" : ""
-                        }`}
-                        onClick={() => setCurrentOrder(item)}
-                      >
-                        {item}
-                      </div>
-                    );
-                  })}
-              </div>
-            </div>
+            )}
           </div>
         </div>
         <div className="novels">

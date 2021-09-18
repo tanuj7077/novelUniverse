@@ -71,63 +71,165 @@
       .filters {
         display: flex;
         flex-flow: column;
+        align-items: start;
         gap: 3rem;
-        .genres {
-          width: 95rem;
-          z-index: 2;
-          &-heading {
-            //text-align: center;
-            text-transform: uppercase;
-            letter-spacing: 0.3rem;
-            color: white;
-            font-size: $small-font-size;
-            font-weight: bold;
-            margin-bottom: 2rem;
+        width: 95rem;
+        &-heading {
+          text-transform: uppercase;
+          letter-spacing: 0.3rem;
+          color: white;
+          font-size: $small-font-size;
+          font-weight: bold;
+          display: flex;
+          gap: 1rem;
+          .infoIcon {
+            width: 2.5rem;
+            height: 2.5rem;
           }
-          &-items {
-            display: flex;
-            flex-wrap: wrap;
-            //justify-content: center;
-            gap: 2rem;
-            &-item {
+        }
+        &-content {
+          display: flex;
+          flex-flow: column;
+          gap: 3rem;
+          .genres {
+            width: 95rem;
+            z-index: 2;
+            &-heading {
+              width: max-content;
+              //text-align: center;
               text-transform: uppercase;
+              letter-spacing: 0.3rem;
+              color: white;
               font-size: $default-font-size;
-              padding: 0.5rem 2.5rem;
-              background-color: rgb(68, 68, 68);
-              color: rgb(196, 196, 196);
-              border-left: none;
+              font-weight: bold;
+              margin-bottom: 2rem;
+              display: flex;
+              gap: 1rem;
               position: relative;
-              letter-spacing: 0.2rem;
-              &::before {
-                content: "";
+              .infoIcon {
+                width: 2rem;
+                height: 2rem;
+              }
+              .filterPopup {
+                padding: 2rem;
                 position: absolute;
-                top: 0px;
-                left: -3px;
-                width: 5px;
-                height: 100%;
-                background-color: rgb(35, 109, 170);
-              }
-              &:hover {
-                cursor: pointer;
-                color: white;
-              }
-              &-add {
-                &::before {
-                  background-color: rgb(34, 202, 90);
+                top: -1.5rem;
+                left: calc(100% + 1.5rem);
+                display: flex;
+                flex-flow: column;
+                gap: 2rem;
+                opacity: 0;
+                visibility: hidden;
+                background-color: rgb(32, 32, 32);
+                border-radius: 1rem;
+                border: 2px solid rgb(85, 85, 85);
+                z-index: 10;
+                .item {
+                  width: max-content;
+                  display: flex;
+                  align-items: center;
+                  gap: 1.5rem;
+                  .genre {
+                    height: max-content;
+                    text-transform: uppercase;
+                    font-size: $smaller-font-size;
+                    padding: 0.5rem 1.5rem;
+                    background-color: rgb(68, 68, 68);
+                    color: rgb(196, 196, 196);
+                    border-left: none;
+                    position: relative;
+                    letter-spacing: 0.2rem;
+                    &::before {
+                      content: "";
+                      position: absolute;
+                      top: 0px;
+                      left: -3px;
+                      width: 5px;
+                      height: 100%;
+                      background-color: rgb(35, 109, 170);
+                    }
+                    &-inc {
+                      &::before {
+                        background-color: rgb(34, 202, 90);
+                      }
+                    }
+                    &-exc {
+                      &::before {
+                        background-color: rgb(202, 34, 34);
+                      }
+                    }
+                  }
+                  .desc {
+                    font-size: $smaller-font-size;
+                    font-weight: normal;
+                    text-transform: none;
+                  }
                 }
-                &hover::before {
-                  background-color: rgb(34, 202, 90);
-                }
-              }
-              &-remove {
-                &::before {
-                  background-color: rgb(202, 34, 34);
-                }
-                &hover::before {
-                  background-color: rgb(202, 34, 34);
+                &-visible {
+                  opacity: 1;
+                  visibility: visible;
                 }
               }
             }
+            &-items {
+              display: flex;
+              flex-wrap: wrap;
+              gap: 2rem;
+              &-item {
+                text-transform: uppercase;
+                font-size: $smaller-font-size;
+                padding: 0.5rem 1.5rem;
+                background-color: rgb(68, 68, 68);
+                color: rgb(196, 196, 196);
+                border-left: none;
+                position: relative;
+                letter-spacing: 0.2rem;
+                &::before {
+                  content: "";
+                  position: absolute;
+                  top: 0px;
+                  left: -3px;
+                  width: 5px;
+                  height: 100%;
+                  background-color: rgb(35, 109, 170);
+                }
+                &:hover {
+                  cursor: pointer;
+                  color: white;
+                }
+                &-add {
+                  &::before {
+                    background-color: rgb(34, 202, 90);
+                  }
+                  &hover::before {
+                    background-color: rgb(34, 202, 90);
+                  }
+                }
+                &-remove {
+                  &::before {
+                    background-color: rgb(202, 34, 34);
+                  }
+                  &hover::before {
+                    background-color: rgb(202, 34, 34);
+                  }
+                }
+              }
+            }
+          }
+          .submitBtn {
+            width: max-content;
+            padding: 0.5rem 1rem;
+            font-size: $default-font-size;
+            text-transform: uppercase;
+            letter-spacing: 0.2rem;
+            color: white;
+            //background-color: rgba(0, 0, 0, 0.39);
+            //background-color: rgb(32, 158, 74);
+            background-color: rgb(32, 121, 194);
+            display: grid;
+            place-items: center;
+            gap: 6%;
+            border-radius: 5px;
           }
         }
       }
