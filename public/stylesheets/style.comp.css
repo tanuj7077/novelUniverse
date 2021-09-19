@@ -593,6 +593,14 @@ a:link, a:visited, a:hover, a:active {
       background-color: rgba(0, 0, 0, 0.5);
       backdrop-filter: blur(40px);
       -webkit-backdrop-filter: blur(40px); }
+      .browsePage-container-top .closeIcon {
+        position: fixed;
+        top: 3rem;
+        right: 3rem;
+        width: 5rem;
+        height: 5rem;
+        color: white;
+        opacity: 0; }
       .browsePage-container-top .search {
         margin-top: 3rem;
         width: 95rem;
@@ -621,52 +629,175 @@ a:link, a:visited, a:hover, a:active {
           margin-right: 3rem;
           background-color: #494949;
           color: #868686; }
+      .browsePage-container-top .searchList {
+        width: 95rem;
+        height: max-content;
+        display: flex;
+        flex-flow: column;
+        gap: 2.5rem;
+        color: white;
+        list-style: none; }
+        .browsePage-container-top .searchList-item {
+          display: flex;
+          gap: 2rem;
+          align-items: flex-start; }
+          .browsePage-container-top .searchList-item-img {
+            width: 6rem;
+            height: 8rem;
+            border-radius: 0.5rem;
+            background-size: cover;
+            background-position: center; }
+          .browsePage-container-top .searchList-item-text {
+            display: flex;
+            flex-flow: column;
+            gap: 0.5rem; }
+            .browsePage-container-top .searchList-item-text-title {
+              font-size: 2.5rem; }
+            .browsePage-container-top .searchList-item-text-chapters {
+              font-size: 2rem; }
+          .browsePage-container-top .searchList-item:hover {
+            cursor: pointer; }
       .browsePage-container-top .filters {
         display: flex;
         flex-flow: column;
-        gap: 3rem; }
-        .browsePage-container-top .filters .genres {
-          width: 95rem;
-          z-index: 2; }
-          .browsePage-container-top .filters .genres-heading {
-            text-transform: uppercase;
-            letter-spacing: 0.3rem;
-            color: white;
-            font-size: 2rem;
-            font-weight: bold;
-            margin-bottom: 2rem; }
-          .browsePage-container-top .filters .genres-items {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem; }
-            .browsePage-container-top .filters .genres-items-item {
+        align-items: start;
+        gap: 3rem;
+        width: 95rem; }
+        .browsePage-container-top .filters-heading {
+          text-transform: uppercase;
+          letter-spacing: 0.3rem;
+          color: white;
+          font-size: 2rem;
+          font-weight: bold;
+          display: flex;
+          gap: 1rem; }
+          .browsePage-container-top .filters-heading .infoIcon {
+            width: 2.5rem;
+            height: 2.5rem; }
+        .browsePage-container-top .filters-content {
+          display: flex;
+          flex-flow: column;
+          gap: 3rem; }
+          .browsePage-container-top .filters-content .genres {
+            width: 95rem;
+            z-index: 2; }
+            .browsePage-container-top .filters-content .genres-heading {
+              width: max-content;
               text-transform: uppercase;
+              letter-spacing: 0.3rem;
+              color: white;
               font-size: 1.6rem;
-              padding: 0.5rem 2.5rem;
-              background-color: #444444;
-              color: #c4c4c4;
-              border-left: none;
-              position: relative;
-              letter-spacing: 0.2rem; }
-              .browsePage-container-top .filters .genres-items-item::before {
-                content: "";
+              font-weight: bold;
+              margin-bottom: 2rem;
+              display: flex;
+              gap: 1rem;
+              position: relative; }
+              .browsePage-container-top .filters-content .genres-heading .infoIcon {
+                width: 2rem;
+                height: 2rem; }
+              .browsePage-container-top .filters-content .genres-heading .filterPopup {
+                padding: 2rem;
                 position: absolute;
-                top: 0px;
-                left: -3px;
-                width: 5px;
-                height: 100%;
-                background-color: #236daa; }
-              .browsePage-container-top .filters .genres-items-item:hover {
-                cursor: pointer;
-                color: white; }
-              .browsePage-container-top .filters .genres-items-item-add::before {
-                background-color: #22ca5a; }
-              .browsePage-container-top .filters .genres-items-item-addhover::before {
-                background-color: #22ca5a; }
-              .browsePage-container-top .filters .genres-items-item-remove::before {
-                background-color: #ca2222; }
-              .browsePage-container-top .filters .genres-items-item-removehover::before {
-                background-color: #ca2222; }
+                top: -1.5rem;
+                left: calc(100% + 1.5rem);
+                display: flex;
+                flex-flow: column;
+                gap: 2rem;
+                opacity: 0;
+                visibility: hidden;
+                background-color: #202020;
+                border-radius: 1rem;
+                border: 2px solid #555555;
+                z-index: 10; }
+                .browsePage-container-top .filters-content .genres-heading .filterPopup .item {
+                  width: max-content;
+                  display: flex;
+                  align-items: center;
+                  gap: 1.5rem; }
+                  .browsePage-container-top .filters-content .genres-heading .filterPopup .item .genre {
+                    height: max-content;
+                    text-transform: uppercase;
+                    font-size: 1.2rem;
+                    padding: 0.5rem 1.5rem;
+                    background-color: #444444;
+                    color: #c4c4c4;
+                    border-left: none;
+                    position: relative;
+                    letter-spacing: 0.2rem; }
+                    .browsePage-container-top .filters-content .genres-heading .filterPopup .item .genre::before {
+                      content: "";
+                      position: absolute;
+                      top: 0px;
+                      left: -3px;
+                      width: 5px;
+                      height: 100%;
+                      background-color: #236daa; }
+                    .browsePage-container-top .filters-content .genres-heading .filterPopup .item .genre-inc::before {
+                      background-color: #22ca5a; }
+                    .browsePage-container-top .filters-content .genres-heading .filterPopup .item .genre-exc::before {
+                      background-color: #ca2222; }
+                  .browsePage-container-top .filters-content .genres-heading .filterPopup .item .desc {
+                    font-size: 1.2rem;
+                    font-weight: normal;
+                    text-transform: none; }
+                .browsePage-container-top .filters-content .genres-heading .filterPopup-visible {
+                  opacity: 1;
+                  visibility: visible; }
+            .browsePage-container-top .filters-content .genres-items {
+              display: flex;
+              flex-wrap: wrap;
+              gap: 2rem; }
+              .browsePage-container-top .filters-content .genres-items-item {
+                text-transform: uppercase;
+                font-size: 1.2rem;
+                padding: 0.5rem 1.5rem;
+                background-color: #444444;
+                color: #c4c4c4;
+                border-left: none;
+                position: relative;
+                letter-spacing: 0.2rem; }
+                .browsePage-container-top .filters-content .genres-items-item::before {
+                  content: "";
+                  position: absolute;
+                  top: 0px;
+                  left: -3px;
+                  width: 5px;
+                  height: 100%;
+                  background-color: #236daa; }
+                .browsePage-container-top .filters-content .genres-items-item:hover {
+                  cursor: pointer;
+                  color: white; }
+                .browsePage-container-top .filters-content .genres-items-item-add::before {
+                  background-color: #22ca5a; }
+                .browsePage-container-top .filters-content .genres-items-item-addhover::before {
+                  background-color: #22ca5a; }
+                .browsePage-container-top .filters-content .genres-items-item-remove::before {
+                  background-color: #ca2222; }
+                .browsePage-container-top .filters-content .genres-items-item-removehover::before {
+                  background-color: #ca2222; }
+          .browsePage-container-top .filters-content .submitBtn {
+            width: max-content;
+            padding: 0.5rem 1rem;
+            font-size: 1.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2rem;
+            color: white;
+            background-color: #2079c2;
+            display: grid;
+            place-items: center;
+            gap: 6%;
+            border-radius: 5px; }
+    .browsePage-container-top-searchMode {
+      position: fixed;
+      top: 0;
+      z-index: 10;
+      height: 100vh;
+      gap: 4rem; }
+      .browsePage-container-top-searchMode .closeIcon {
+        opacity: 1;
+        transition: all 0.3s linear; }
+      .browsePage-container-top-searchMode .filters {
+        display: none; }
   .browsePage .novels {
     z-index: 2; }
     .browsePage .novels-heading {
@@ -1605,6 +1736,11 @@ a:link, a:visited, a:hover, a:active {
     background-color: #3b3b3b;
     color: #c2c2c2;
     transition: all 0.3s ease; }
+  .chapterPage-title {
+    font-size: 3.5rem;
+    font-weight: bold;
+    width: 60%;
+    margin: 4rem auto; }
   .chapterPage-chapter {
     width: 60%;
     margin: 4rem auto;
@@ -2173,6 +2309,8 @@ a:link, a:visited, a:hover, a:active {
     letter-spacing: 0.3rem;
     padding: 0.2rem 1rem;
     border: 2px solid white; }
+    .topNav-right:hover {
+      cursor: pointer; }
 
 /*.topNav {
   position: fixed;
@@ -2227,3 +2365,19 @@ a:link, a:visited, a:hover, a:active {
   -webkit-animation: BgAnim 40s ease-in-out infinite;
   -moz-animation: BgAnim 40s ease-in-out infinite;
   animation: BgAnim 40s ease-in-out infinite; }
+
+.loginModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+  z-index: 100; }
+  .loginModal-closeIcon {
+    position: absolute;
+    top: 3rem;
+    right: 3rem;
+    width: 3.5rem;
+    height: 3.5rem;
+    color: black; }

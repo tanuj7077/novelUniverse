@@ -140,6 +140,8 @@ function AddContent() {
     axios
       .post("http://localhost:8000/chapter/addChapter", Chapter)
       .then((res) => {
+        setSearchResult([]);
+        setSelectedBook(null);
         console.log(res);
       })
       .catch((err) => {

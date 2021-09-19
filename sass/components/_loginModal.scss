@@ -1,0 +1,17 @@
+.loginModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+  z-index: 100;
+  &-closeIcon {
+    position: absolute;
+    top: 3rem;
+    right: 3rem;
+    width: 3.5rem;
+    height: 3.5rem;
+    color: black;
+  }
+}

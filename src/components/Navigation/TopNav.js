@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { Route } from "react-router-dom";
+import { useGlobalContext } from "../../context";
 const TopNav = () => {
   const location = useLocation();
   const [tab, setTab] = useState();
+  const { toggleLoginModalVisibility } = useGlobalContext();
   useEffect(() => {
     let arr = location.pathname.split("/").map(String);
     if (arr.length > 1) {
@@ -77,7 +79,9 @@ const TopNav = () => {
         />
         {/* </div> */}
       </div>
-      <div className="topNav-right">Login</div>
+      <div className="topNav-right" onClick={toggleLoginModalVisibility}>
+        Login
+      </div>
     </div>
     // {<div className="topNav">
     //   <div className="topNav-logo">Ultimate Biblio</div>

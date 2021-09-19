@@ -38,11 +38,13 @@ function ChapterSection({ Chapters }) {
       <p className="chapterSection-subheading">Chapters</p>
       <p className="chapterSection-latest">
         <span className="subheading">Latest Release:</span>
-        <span className="chapter">
-          Chapter {Chapters[Chapters.length - 1].number}
-          {": "}
-          {Chapters[Chapters.length - 1].name}
-        </span>
+        {Chapters.length > 0 && (
+          <span className="chapter">
+            Chapter {Chapters[Chapters.length - 1].number}
+            {": "}
+            {Chapters[Chapters.length - 1].name}
+          </span>
+        )}
       </p>
       <div className="chapterSection-goto">
         <div className="goto">

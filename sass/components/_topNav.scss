@@ -42,6 +42,9 @@
     letter-spacing: 0.3rem;
     padding: 0.2rem 1rem;
     border: 2px solid white;
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
 /*.topNav {

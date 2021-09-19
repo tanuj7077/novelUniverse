@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { categoryList, browseNovels } from "../mockData";
+import { Route, useHistory } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
-import { FaStar } from "react-icons/fa";
-import { Route } from "react-router-dom";
+import { IoCloseOutline } from "react-icons/io5";
 import bg1 from "../assets/abstract/1.jpg";
+import DataThumb from "../components/NovelThumb/DataThumb";
+import axios from "axios";
 import {
   IoInformationCircleOutline,
   IoAddCircleOutline,
@@ -15,6 +17,10 @@ const Browse = () => {
   const [tagRemoved, setTagRemoved] = useState([]);
   const [advancedSearchVisible, setAdvancedSearchVisible] = useState(false);
   const [filterInfoVisible, setFilterInfoVisible] = useState(false);
+  const [searchMode, setSearchMode] = useState(false);
+  const [searchText, setSearchText] = useState("");
+  const [searchResult, setSearchResult] = useState([]);
+  const history = useHistory();
 
   const checkTagAddedPresense = (tag) => {
     return tagAdded.includes(tag);
@@ -62,6 +68,24 @@ const Browse = () => {
       return;
     }
   };
+  const handleSearch = (text) => {
+    setSearchText(text);
+    if (text.length === 0) {
+      setSearchResult([]);
+      return;
+    }
+    axios.get(`http://localhost:8000/book/searchBook/${text}`).then((res) => {
+      if (res.data.data.bookList.length > 0) {
+        console.log(res.data.data.bookList);
+        setSearchResult(res.data.data.bookList);
+      } else {
+        setSearchResult([]);
+      }
+    });
+  };
+  const goToNovel = (id) => {
+    history.push(`book/${id}`);
+  };
   const [currentStatus, setCurrentStatus] = useState("all");
   const [currentOrder, setCurrentOrder] = useState("new");
   let status = ["all", "completed", "ongoing"];
@@ -69,11 +93,55 @@ const Browse = () => {
   return (
     <div className="browsePage">
       <div className="browsePage-container">
-        <div className="browsePage-container-top">
+        <div
+          className={`browsePage-container-top ${
+            searchMode ? "browsePage-container-top-searchMode" : ""
+          }`}
+        >
+          <IoCloseOutline
+            className="closeIcon"
+            onClick={() => {
+              setSearchMode(false);
+              setSearchResult([]);
+              setSearchText("");
+            }}
+          />
           <div className="search">
-            <input type="text" className="search-input" placeholder="Search" />
+            <input
+              type="text"
+              className="search-input"
+              placeholder="Search"
+              value={searchText}
+              onChange={(e) => handleSearch(e.target.value)}
+              onClick={() => setSearchMode(true)}
+            />
             <AiOutlineSearch className="search-icon" />
           </div>
+          {searchResult.length > 0 && (
+            <ul className="searchList">
+              {searchResult.map((book) => {
+                return (
+                  <li
+                    className="searchList-item"
+                    onClick={() => goToNovel(book._id)}
+                  >
+                    <span
+                      className="searchList-item-img"
+                      style={{ backgroundImage: `url(${book.imageUrl})` }}
+                    ></span>
+                    <p className="searchList-item-text">
+                      <span className="searchList-item-text-title">
+                        {book.name}
+                      </span>
+                      <span className="searchList-item-text-chapters">
+                        Chapters {book.chapters.length}
+                      </span>
+                    </p>
+                  </li>
+                );
+              })}
+            </ul>
+          )}
           <div className="filters">
             <p
               className="filters-heading"
@@ -130,6 +198,7 @@ const Browse = () => {
                       })}
                   </div>
                 </div>
+                <div className="submitBtn">Apply Filters</div>
                 <div className="genres">
                   <div className="genres-heading">Status</div>
                   <div className="genres-items">
@@ -170,76 +239,15 @@ const Browse = () => {
                       })}
                   </div>
                 </div>
-                <div className="submitBtn">Apply</div>
               </div>
             )}
           </div>
         </div>
         <div className="novels">
           <div className="novels-heading">Novels List</div>
-          <div className="novels-filters"></div>
           <div className="novels-list">
             {browseNovels.map((item) => {
-              return (
-                <div className="novel">
-                  <div
-                    className="novel-img"
-                    style={{
-                      backgroundImage: `url(${item.img})`,
-                    }}
-                  ></div>
-                  <div className="novel-info">
-                    <div className="novel-info-top">
-                      <div className="novel-info-top-title">
-                        <Route
-                          render={({ history }) => (
-                            <div
-                              className="name"
-                              onClick={() => {
-                                history.push(`/book/book1`);
-                              }}
-                            >
-                              {item.title}
-                            </div>
-                          )}
-                        />
-                        <p className="author">{item.author}</p>
-                      </div>
-
-                      <div className="novel-info-top-rating">
-                        <div className="ratingText">{item.rating}</div>
-                        <FaStar className="ratingIcon" />
-                      </div>
-                    </div>
-
-                    <div className="novel-info-stats">
-                      <div className="novel-info-item">
-                        <span className="subHeading">Chapters</span>
-                        <span className="count">{item.chapters}</span>
-                      </div>
-                      <div className="novel-info-item">
-                        <span className="subHeading">Rank</span>
-                        <span className="count">{item.rank}</span>
-                      </div>
-                      <div className="novel-info-item">
-                        <span className="subHeading">Bookmarked</span>
-                        <span className="count">{item.bookmarked}</span>
-                      </div>
-                      <div className="novel-info-item">
-                        <span className="subHeading">Status</span>
-                        <span className="count">{item.status}</span>
-                      </div>
-                    </div>
-                    <div className="novel-info-desc">
-                      {item.desc.substring(0, 200)}...
-                    </div>
-                    <div className="novel-info-buttons">
-                      <div className="btn">Read</div>
-                      <div className="btn">Bookmark</div>
-                    </div>
-                  </div>
-                </div>
-              );
+              return <DataThumb novel={item} />;
             })}
           </div>
         </div>

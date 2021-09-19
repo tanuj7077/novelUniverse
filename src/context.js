@@ -4,18 +4,25 @@ import axios from "axios";
 const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
-    return (
-        <AppContext.Provider
-            value={{
-            }}
-        >
-            {children}
-        </AppContext.Provider>
-    );
+  const [loginModalVisible, setLoginModalVisible] = useState(false);
+
+  const toggleLoginModalVisibility = () => {
+    setLoginModalVisible(!loginModalVisible);
+  };
+  return (
+    <AppContext.Provider
+      value={{
+        loginModalVisible,
+        toggleLoginModalVisibility,
+      }}
+    >
+      {children}
+    </AppContext.Provider>
+  );
 };
 
 export const useGlobalContext = () => {
-    return useContext(AppContext);
+  return useContext(AppContext);
 };
 
 export { AppContext, AppProvider };

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import axios from "axios";
 
-import { useGlobalContext } from "./context";
+import LoginModal from "./components/Modals/LoginModal";
 
 import Landing from "./pages/Landing";
 import Home from "./pages/Home";
@@ -31,6 +31,7 @@ function App() {
       <>
         {/* <SideNav /> */}
         <TopNav />
+        <LoginModal />
         {/* <Background /> */}
         <Route path="/home">
           <Background />
