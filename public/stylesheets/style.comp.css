@@ -2366,18 +2366,54 @@ a:link, a:visited, a:hover, a:active {
   -moz-animation: BgAnim 40s ease-in-out infinite;
   animation: BgAnim 40s ease-in-out infinite; }
 
-.loginModal {
+.loginModalContainer {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
+  z-index: 11;
+  background-color: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); }
+
+.loginModal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70vw;
+  height: 80vh;
   background-color: white;
-  z-index: 100; }
+  border-radius: 1rem;
+  z-index: 11;
+  overflow: hidden;
+  /*&::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(32, 121, 194);
+  }*/ }
   .loginModal-closeIcon {
     position: absolute;
-    top: 3rem;
-    right: 3rem;
+    top: 2rem;
+    right: 2rem;
     width: 3.5rem;
     height: 3.5rem;
     color: black; }
+  .loginModal-login {
+    /*&::before {
+      left: -50%;
+    }*/ }
+  .loginModal-signup {
+    /*&::before {
+      transform: translateX(50%);
+    }*/ }
+  .loginModal .loginSection {
+    width: 50%;
+    height: 100%; }
+  .loginModal .signupSection {
+    width: 50%;
+    height: 100%; }
