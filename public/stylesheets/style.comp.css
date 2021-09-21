@@ -2388,6 +2388,7 @@ a:link, a:visited, a:hover, a:active {
   border-radius: 1rem;
   z-index: 11;
   overflow: hidden;
+  display: flex;
   /*&::before {
     content: "";
     position: absolute;

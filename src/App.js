@@ -16,9 +16,23 @@ import TopNav from "./components/Navigation/TopNav";
 import Chapter from "./components/Chapter/Chapter";
 import Background from "./components/Background/Background";
 import AddContent from "./pages/AddContent";
+import { useGlobalContext } from "./context";
 
 axios.defaults.withCredentials = true;
 function App() {
+  const { setIsLoggedIn, setUserData, isLoggedIn } = useGlobalContext();
+  const getLoggedIn = async () => {
+    const loggedInRes = await axios.get("http://localhost:8000/auth/loggedIn");
+    if (loggedInRes.data.loggedIn) {
+      console.log(loggedInRes.data);
+      setIsLoggedIn(true);
+      setUserData(loggedInRes.data.userData);
+    }
+  };
+
+  useEffect(() => {
+    getLoggedIn();
+  }, []);
   return (
     <Switch>
       <Route path="/" exact>
