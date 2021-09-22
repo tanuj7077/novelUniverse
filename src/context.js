@@ -11,6 +11,27 @@ const AppProvider = ({ children }) => {
   const toggleLoginModalVisibility = () => {
     setLoginModalVisible(!loginModalVisible);
   };
+
+  const login = (loginUsername, loginPassword) => {
+    const data = {
+      username: loginUsername,
+      password: loginPassword,
+    };
+    axios.post("http://localhost:8000/auth/signin", data).then((res) => {
+      setUserData(res.data.userData);
+      setIsLoggedIn(true);
+      console.log(res.data);
+    });
+  };
+  const signup = (registerUsername, registerPassword) => {
+    const data = {
+      username: registerUsername,
+      password: registerPassword,
+    };
+    axios.post("http://localhost:8000/auth/signup", data).then((res) => {
+      console.log(res.data);
+    });
+  };
   const logout = async () => {
     try {
       await axios.get("http://localhost:8000/auth/signout").then((res) => {
@@ -35,6 +56,8 @@ const AppProvider = ({ children }) => {
         setUserData,
         isLoggedIn,
         setIsLoggedIn,
+        login,
+        signup,
         logout,
       }}
     >

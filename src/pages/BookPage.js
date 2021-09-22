@@ -38,28 +38,6 @@ const BookPage = () => {
     readStatus: "Start",
     desc: "U Ijin was the sole survivor of a plane crash when he was little. After becoming a mercenary to survive for 10 years, he returns to his family in his hometown.",
   };
-  let allChapters = [
-    "Random chapter1",
-    "Random chapter2",
-    "Random chapter3",
-    "Random chapter4",
-    "Random chapter5",
-    "Random chapter6",
-    "Random chapter7",
-    "Random chapter8",
-    "Random chapter9",
-    "Random chapter10",
-    "Random chapter11",
-    "Random chapter12",
-    "Random chapter13",
-    "Random chapter14",
-    "Random chapter15",
-    "Random chapter16",
-    "Random chapter17",
-    "Random chapter18",
-    "Random chapter19",
-    "Random chapter20",
-  ];
   return (
     <div className="bookPage">
       <div className="bookPage-container">
@@ -150,15 +128,12 @@ const BookPage = () => {
         >
           {novelData && <Summary content={novelData.description} />}
           {novelData && novelData.chapters && (
-            <ChapterSection
-              allChapters={allChapters}
-              Chapters={novelData.chapters}
-            />
+            <ChapterSection Chapters={novelData.chapters} />
           )}
           {/* {novelData && novelData.chapters && (
             <Chapters allChapters={allChapters} Chapters={novelData.chapters} />
           )} */}
-          {novelData && <Reviews />}
+          {novelData && <Reviews book={bookId} />}
         </div>
         <section className="commentSection"></section>
         <section className="recommendedSection"></section>

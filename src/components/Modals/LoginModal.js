@@ -4,31 +4,32 @@ import { useGlobalContext } from "../../context";
 import axios from "axios";
 
 const LoginModal = () => {
-  const { loginModalVisible, toggleLoginModalVisibility } = useGlobalContext();
+  const { loginModalVisible, toggleLoginModalVisibility, login, signup } =
+    useGlobalContext();
   const [loginMode, setLoginMode] = useState(false);
   const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [registerUsername, setRegisterUsername] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
 
-  const login = () => {
-    const data = {
-      username: loginUsername,
-      password: loginPassword,
-    };
-    axios.post("http://localhost:8000/auth/signin", data).then((res) => {
-      console.log(res.data);
-    });
-  };
-  const signup = () => {
-    const data = {
-      username: registerUsername,
-      password: registerPassword,
-    };
-    axios.post("http://localhost:8000/auth/signup", data).then((res) => {
-      console.log(res.data);
-    });
-  };
+  // const login = () => {
+  //   const data = {
+  //     username: loginUsername,
+  //     password: loginPassword,
+  //   };
+  //   axios.post("http://localhost:8000/auth/signin", data).then((res) => {
+  //     console.log(res.data);
+  //   });
+  // };
+  // const signup = () => {
+  //   const data = {
+  //     username: registerUsername,
+  //     password: registerPassword,
+  //   };
+  //   axios.post("http://localhost:8000/auth/signup", data).then((res) => {
+  //     console.log(res.data);
+  //   });
+  // };
 
   return (
     <>
@@ -60,7 +61,10 @@ const LoginModal = () => {
                   onChange={(e) => setLoginPassword(e.target.value)}
                 />
               </div>
-              <button className="loginFormGrp-btn" onClick={login}>
+              <button
+                className="loginFormGrp-btn"
+                onClick={() => login(loginUsername, loginPassword)}
+              >
                 Login
               </button>
             </section>
@@ -81,7 +85,10 @@ const LoginModal = () => {
                   onChange={(e) => setRegisterPassword(e.target.value)}
                 />
               </div>
-              <button className="loginFormGrp-btn" onClick={signup}>
+              <button
+                className="loginFormGrp-btn"
+                onClick={() => signup(registerUsername, registerPassword)}
+              >
                 Sign up
               </button>
             </section>

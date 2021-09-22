@@ -31,7 +31,9 @@ function App() {
   };
 
   useEffect(() => {
-    getLoggedIn();
+    if (!isLoggedIn) {
+      getLoggedIn();
+    }
   }, []);
   return (
     <Switch>

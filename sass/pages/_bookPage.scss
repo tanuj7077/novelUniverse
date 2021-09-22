@@ -509,7 +509,12 @@
               font-size: $smaller-font-size;
               letter-spacing: 0.2rem;
               padding: 1rem 1.5rem;
-              background-color: rgb(32, 121, 194);
+              &-disabled {
+                background-color: rgb(122, 122, 122);
+              }
+              &-enabled {
+                background-color: rgb(32, 121, 194);
+              }
             }
           }
         }

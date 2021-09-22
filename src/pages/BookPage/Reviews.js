@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { FaStar } from "react-icons/fa";
+import axios from "axios";
+import { useGlobalContext } from "../../context";
 
-function Reviews() {
+function Reviews({ book }) {
+  const { userData, isLoggedIn } = useGlobalContext();
+  console.log(userData);
   let reviewObj = {
     star: 4.3,
     ratingCount: 34,
@@ -46,6 +50,23 @@ function Reviews() {
   };
   const [hoveredStar, setHoveredStar] = useState(0);
   const [rated, setRated] = useState(0);
+
+  const [reviewTitleInput, setReviewTitleInput] = useState("");
+  const [reviewInput, setReviewInput] = useState("");
+
+  const addReview = () => {
+    const Review = {
+      title: reviewTitleInput,
+      description: reviewInput,
+      rating: rated,
+      user: userData._id,
+      book: book,
+    };
+    axios.post("http://localhost:8000/review/addReview", Review).then((res) => {
+      console.log(res.data);
+    });
+  };
+
   useEffect(() => {}, []);
   return (
     <section className="reviewSection">
@@ -109,12 +130,17 @@ function Reviews() {
         </div>
       </div>
       <div className="reviewSection-myReview">
-        {/* <p className="subheading">Give review</p> */}
-        <input type="text" className="titleInput" placeholder="Review title" />
+        <input
+          type="text"
+          className="titleInput"
+          placeholder="Review title"
+          onChange={(e) => setReviewTitleInput(e.target.value)}
+        />
         <textarea
           type="text"
           className="reviewInput"
           placeholder="Write review here"
+          onChange={(e) => setReviewInput(e.target.value)}
         ></textarea>
         <div className="rate">
           <div className="text">Rating: </div>
@@ -144,7 +170,16 @@ function Reviews() {
                 );
               })}
           </div>
-          <button className="submit">Submit</button>
+          <button
+            className={`submit ${
+              reviewTitleInput && reviewInput && rated > 0 && isLoggedIn
+                ? "submit-enabled"
+                : "submit-disabled"
+            }`}
+            onClick={addReview}
+          >
+            Submit
+          </button>
         </div>
         {/* <button className="submitReview">Submit</button> */}
       </div>
