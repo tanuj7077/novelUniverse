@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { FaStar } from "react-icons/fa";
 import axios from "axios";
 import { useGlobalContext } from "../../context";
+import Review from "../../components/Review/Review";
 
 function Reviews({ book }) {
   const { userData, isLoggedIn } = useGlobalContext();
-  console.log(userData);
   let reviewObj = {
     star: 4.3,
     ratingCount: 34,
@@ -53,6 +53,7 @@ function Reviews({ book }) {
 
   const [reviewTitleInput, setReviewTitleInput] = useState("");
   const [reviewInput, setReviewInput] = useState("");
+  const [reviews, setReviews] = useState([]);
 
   const addReview = () => {
     const Review = {
@@ -60,14 +61,49 @@ function Reviews({ book }) {
       description: reviewInput,
       rating: rated,
       user: userData._id,
-      book: book,
+      username: userData.username,
+      book: book._id,
     };
     axios.post("http://localhost:8000/review/addReview", Review).then((res) => {
       console.log(res.data);
     });
   };
 
-  useEffect(() => {}, []);
+  const getReviews = async () => {
+    axios
+      .get("http://localhost:8000/review/getReviews/" + book._id)
+      .then((res) => {
+        setReviews(res.data.data);
+      });
+  };
+
+  const getUserReview = (rev) => {
+    axios.get("http://localhost:8000/review/getReview/" + rev).then((res) => {
+      let novelData = res.data.data;
+      setRated(novelData.rating);
+      setReviewTitleInput(novelData.title);
+      setReviewInput(novelData.description);
+    });
+  };
+
+  const checkReviewGiven = () => {
+    userData.books.forEach((item) => {
+      if (item.book === book._id) {
+        if (book.reviews) {
+          book.reviews.forEach((rev) => {
+            if (rev === item.review) {
+              getUserReview(rev);
+            }
+          });
+        }
+      }
+    });
+  };
+
+  useEffect(() => {
+    getReviews();
+    checkReviewGiven();
+  }, []);
   return (
     <section className="reviewSection">
       <p className="reviewSection-subheading">Reviews</p>
@@ -134,12 +170,14 @@ function Reviews({ book }) {
           type="text"
           className="titleInput"
           placeholder="Review title"
+          value={reviewTitleInput}
           onChange={(e) => setReviewTitleInput(e.target.value)}
         />
         <textarea
           type="text"
           className="reviewInput"
           placeholder="Write review here"
+          value={reviewInput}
           onChange={(e) => setReviewInput(e.target.value)}
         ></textarea>
         <div className="rate">
@@ -184,25 +222,8 @@ function Reviews({ book }) {
         {/* <button className="submitReview">Submit</button> */}
       </div>
       <div className="reviewSection-reviews">
-        {reviewObj.reviews.map((review) => {
-          return (
-            <div className="review">
-              <div className="heading">
-                <div className="rated">
-                  <p className="count">{review.rating}</p>
-                  <FaStar className="icon" />
-                </div>
-                <p className="title">{review.title}</p>
-              </div>
-              <span className="desc">
-                <p className="text">
-                  {review.desc}
-                  <span className="more">Read more</span>
-                </p>
-              </span>
-              <div className="reviewUser">{review.user}</div>
-            </div>
-          );
+        {reviews.map((review) => {
+          return <Review review={review} />;
         })}
         <p className="loadMore">View More...</p>
       </div>

@@ -1319,10 +1319,11 @@ a:link, a:visited, a:hover, a:active {
               text-transform: uppercase;
               font-size: 1.2rem;
               letter-spacing: 0.2rem;
-              padding: 1rem 1.5rem;
-              background-color: #2079c2; }
+              padding: 1rem 1.5rem; }
               .bookPage-container .contentSection .reviewSection-myReview .rate .submit-disabled {
                 background-color: #7a7a7a; }
+              .bookPage-container .contentSection .reviewSection-myReview .rate .submit-enabled {
+                background-color: #2079c2; }
         .bookPage-container .contentSection .reviewSection-reviews {
           display: flex;
           flex-flow: column;

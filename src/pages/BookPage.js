@@ -133,7 +133,7 @@ const BookPage = () => {
           {/* {novelData && novelData.chapters && (
             <Chapters allChapters={allChapters} Chapters={novelData.chapters} />
           )} */}
-          {novelData && <Reviews book={bookId} />}
+          {novelData && <Reviews book={novelData} />}
         </div>
         <section className="commentSection"></section>
         <section className="recommendedSection"></section>
