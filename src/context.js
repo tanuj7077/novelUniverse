@@ -12,6 +12,14 @@ const AppProvider = ({ children }) => {
     setLoginModalVisible(!loginModalVisible);
   };
 
+  const getUpdatedUserData = () => {
+    axios
+      .get(`http://localhost:8000/user/getUpdatedUserData/${userData._id}`)
+      .then((res) => {
+        setUserData(res.data);
+      });
+  };
+
   const login = (loginUsername, loginPassword) => {
     const data = {
       username: loginUsername,
@@ -59,6 +67,7 @@ const AppProvider = ({ children }) => {
         login,
         signup,
         logout,
+        getUpdatedUserData,
       }}
     >
       {children}

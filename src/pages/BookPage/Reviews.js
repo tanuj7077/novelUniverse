@@ -5,7 +5,7 @@ import { useGlobalContext } from "../../context";
 import Review from "../../components/Review/Review";
 
 function Reviews({ book }) {
-  const { userData, isLoggedIn } = useGlobalContext();
+  const { userData, isLoggedIn, getUpdatedUserData } = useGlobalContext();
   let reviewObj = {
     star: 4.3,
     ratingCount: 34,
@@ -59,7 +59,7 @@ function Reviews({ book }) {
     const Review = {
       title: reviewTitleInput,
       description: reviewInput,
-      rating: rated,
+      //rating: rated,
       user: userData._id,
       username: userData.username,
       book: book._id,
@@ -67,6 +67,20 @@ function Reviews({ book }) {
     axios.post("http://localhost:8000/review/addReview", Review).then((res) => {
       console.log(res.data);
     });
+  };
+
+  const addRating = (rate) => {
+    let data = {
+      rating: rate,
+      userId: userData._id,
+      bookId: book._id,
+    };
+    axios.post("http://localhost:8000/review/addRating", data).then((res) => {
+      console.log(res.data);
+      setRated(rate);
+      getUpdatedUserData();
+    });
+    //
   };
 
   const getReviews = async () => {
@@ -80,24 +94,25 @@ function Reviews({ book }) {
   const getUserReview = (rev) => {
     axios.get("http://localhost:8000/review/getReview/" + rev).then((res) => {
       let novelData = res.data.data;
-      setRated(novelData.rating);
+      //setRated(novelData.rating);
       setReviewTitleInput(novelData.title);
       setReviewInput(novelData.description);
     });
   };
 
   const checkReviewGiven = () => {
-    userData.books.forEach((item) => {
-      if (item.book === book._id) {
-        if (book.reviews) {
-          book.reviews.forEach((rev) => {
-            if (rev === item.review) {
-              getUserReview(rev);
-            }
-          });
+    userData &&
+      userData.books.forEach((item) => {
+        if (item.book === book._id) {
+          if (book.reviews) {
+            book.reviews.forEach((rev) => {
+              if (rev === item.review) {
+                getUserReview(rev);
+              }
+            });
+          }
         }
-      }
-    });
+      });
   };
 
   useEffect(() => {
@@ -196,7 +211,7 @@ function Reviews({ book }) {
                       setHoveredStar(0);
                     }}
                     onClick={() => {
-                      setRated(id + 1);
+                      addRating(id + 1);
                     }}
                     className={`icon ${
                       (hoveredStar > 0 && id + 1 <= hoveredStar) ||
@@ -210,7 +225,7 @@ function Reviews({ book }) {
           </div>
           <button
             className={`submit ${
-              reviewTitleInput && reviewInput && rated > 0 && isLoggedIn
+              reviewTitleInput && reviewInput && isLoggedIn
                 ? "submit-enabled"
                 : "submit-disabled"
             }`}

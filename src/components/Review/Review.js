@@ -9,10 +9,10 @@ function Review({ review }) {
   return (
     <div className="review">
       <div className="heading">
-        <div className="rated">
+        {/* <div className="rated">
           <p className="count">{review.rating}</p>
           <FaStar className="icon" />
-        </div>
+        </div> */}
         <p className="title">{review.title}</p>
       </div>
       <span className="desc">
