@@ -60,7 +60,7 @@ function App() {
         <Route path="/collection">
           <Collection />
         </Route>
-        <Route path="/profile">
+        <Route path="/profile/:username">
           <Profile />
         </Route>
         <Route path="/contact">
