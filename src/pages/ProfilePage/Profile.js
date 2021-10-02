@@ -4,25 +4,47 @@ import background from "../../assets/abstract/12.jpg";
 import { FaCentercode, FaStar } from "react-icons/fa";
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 import { MdEdit } from "react-icons/md";
+import { IoMdClose } from "react-icons/io";
 import { Doughnut } from "react-chartjs-2";
 import { following, currentProgress, favGenre } from "../../mockData";
 import { useGlobalContext } from "../../context";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import firebase from "firebase/app";
+import "firebase/storage";
+var config = {
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
+};
+// Initialize Firebase
+if (!firebase.apps.length) {
+  firebase.initializeApp(config);
+} else {
+  firebase.app(); // if already initialized, use that one
+}
+var storage = firebase.storage();
+
 const Profile = () => {
   //followers get new recommendations notifications
   const { username } = useParams();
   const { userData, isLoggedIn, getUpdatedUserData } = useGlobalContext();
-  const profileDataStructure = {
-    userName: "",
-    userImage: "",
-    about: "",
-    currentVisibility: false,
-    statsVisibility: false,
-    favGenreVisibility: false,
-    recommendedVisibility: false,
-  };
+
+  const [aboutModal, setAboutModal] = useState(false);
+  const [usernameModal, setUsernameModal] = useState(false);
+  const [profilePicModal, setProfilePicModal] = useState(false);
   const [userProfileData, setUserProfileData] = useState();
+
+  const [aboutInput, setAboutInput] = useState("");
+  const [userInput, setUserInput] = useState("");
+
+  const [bookImage, setBookImage] = useState("");
+  const [toSendProfileImage, setToSendProfileImage] = useState("");
+  const [isBookImageUploaded, setIsBookImageUploaded] = useState(false);
+
   const changeCurrentVisibility = async () => {
     await axios
       .post(`http://localhost:8000/user/updateUserProfile/${userData._id}`, {
@@ -75,12 +97,91 @@ const Profile = () => {
         setUserProfileData(res.data.userData);
       });
   };
+  const updateAbout = async () => {
+    await axios
+      .post(`http://localhost:8000/user/updateUserProfile/${userData._id}`, {
+        about: aboutInput,
+      })
+      .then((res) => {
+        console.log("About Added", res.data);
+        setUserProfileData(res.data.userData);
+      });
+  };
+  const updateUserName = async () => {
+    await axios
+      .post(`http://localhost:8000/user/updateUserProfile/${userData._id}`, {
+        userName: userInput,
+      })
+      .then((res) => {
+        console.log("Username changed", res.data);
+        if (res.data.message.type === "success") {
+          setUserProfileData(res.data.userData);
+        } else {
+          console.log("username exists");
+        }
+      });
+  };
+  const updateProfilePic = async () => {
+    let currentImageName = userData._id;
+    let uploadImage = storage
+      .ref(`profilePic/${currentImageName}`)
+      .put(toSendProfileImage);
+
+    uploadImage.on(
+      "state-changed",
+      (snapshot) => {},
+      (error) => {
+        alert(error);
+      },
+      () => {
+        console.log("sent to firebase");
+        storage
+          .ref("profilePic")
+          .child(currentImageName)
+          .getDownloadURL()
+          .then((url) => {
+            axios
+              .post(
+                `http://localhost:8000/user/updateUserProfile/${userData._id}`,
+                {
+                  userImage: url,
+                }
+              )
+              .then((res) => {
+                console.log("sent to server");
+                setUserProfileData(res.data.userData);
+              });
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
+    );
+  };
+  const handleImage = (e) => {
+    if (e.target.files && e.target.files[0]) {
+      let reader = new FileReader();
+      setToSendProfileImage(e.target.files[0]);
+
+      reader.onload = (e) => {
+        setBookImage(e.target.result);
+        setIsBookImageUploaded(true);
+      };
+      reader.readAsDataURL(e.target.files[0]);
+    }
+  };
   const fetchUserData = async (username) => {
     await axios.get(`http://localhost:8000/user/${username}`).then((res) => {
       console.log("fetched User Data");
       setUserProfileData(res.data.userData);
+      console.log(res.data.userData);
+      if (res.data.userData && res.data.userData.profileData.about) {
+        setAboutInput(res.data.userData.profileData.about);
+        setUserInput(res.data.userData.username);
+      }
     });
   };
+
   useEffect(() => {
     fetchUserData(username);
   }, []);
@@ -120,34 +221,59 @@ const Profile = () => {
               <span
                 className="profileImg"
                 style={{
-                  backgroundImage: `url(${blank})`,
+                  backgroundImage: `url(${
+                    userProfileData && userProfileData.profilePic
+                      ? userProfileData.profilePic
+                      : blank
+                  })`,
                 }}
-              ></span>
-              <p className="name">
-                <span>James Cameron</span>
-                <span>
-                  <MdEdit className="editIcon" />
-                </span>
-              </p>
-              <p className="userName">@Jamie</p>
+              >
+                {isLoggedIn && (
+                  <span
+                    className="profileImg-edit"
+                    onClick={() => {
+                      setProfilePicModal(!profilePicModal);
+                    }}
+                  >
+                    <MdEdit className="profileImg-edit-icon" />
+                  </span>
+                )}
+              </span>
+              {userProfileData && (
+                <p className="name">
+                  <span>{userProfileData.username}</span>
+                  <span>
+                    <MdEdit
+                      className="editIcon"
+                      onClick={() => {
+                        setUsernameModal(!usernameModal);
+                      }}
+                    />
+                  </span>
+                </p>
+              )}
+              {/* <p className="userName">@Jamie</p> */}
             </div>
             <div className="body">
               <div className="body-item about">
                 <div className="body-item-top">
                   <div className="body-item-heading">About Me</div>
+                  <MdEdit
+                    className="body-item-visibility"
+                    onClick={() => {
+                      setAboutModal(!aboutModal);
+                    }}
+                  />
                 </div>
-                <div className="about-content">
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown
-                  printer took a galley of type and scrambled it to make a type
-                  specimen book. It has survived not only five centuries, but
-                  also the leap into electronic typesetting, remaining
-                  essentially unchanged. It was popularised in the 1960s with
-                  the release of Letraset sheets containing Lorem Ipsum
-                  passages, and more recently with desktop publishing software
-                  like Aldus PageMaker including versions of Lorem Ipsum.
-                </div>
+                {userProfileData.profileData.about ? (
+                  <div className="about-content">
+                    {userProfileData.profileData.about}
+                  </div>
+                ) : (
+                  <div className="about-content about-content-null">
+                    You have not mentioned anything about yourself
+                  </div>
+                )}
               </div>
               <div className="body-item current">
                 <div className="body-item-top">
@@ -343,6 +469,105 @@ const Profile = () => {
             </div>
           </div>
         </div>
+        {aboutModal && (
+          <section className="modals">
+            <div
+              className="modals-backdrop"
+              onClick={() => {
+                setAboutModal(!aboutModal);
+              }}
+            ></div>
+            <div className="modals-modal">
+              <IoMdClose
+                className="modals-modal-close"
+                onClick={() => {
+                  setAboutModal(!aboutModal);
+                }}
+              />
+              <div className="modals-modal-formGrp">
+                <label>About</label>
+                <textarea
+                  type="text"
+                  onChange={(e) => {
+                    setAboutInput(e.target.value);
+                  }}
+                  value={aboutInput}
+                ></textarea>
+              </div>
+              <div className="modals-modal-formGrp">
+                <button onClick={updateAbout}>Submit</button>
+              </div>
+            </div>
+          </section>
+        )}
+        {usernameModal && (
+          <section className="modals">
+            <div
+              className="modals-backdrop"
+              onClick={() => {
+                setUsernameModal(!usernameModal);
+              }}
+            ></div>
+            <div className="modals-modal">
+              <IoMdClose
+                className="modals-modal-close"
+                onClick={() => {
+                  setUsernameModal(!usernameModal);
+                }}
+              />
+              <div className="modals-modal-formGrp">
+                <label className="modals-modal-form-grp-label">Username</label>
+                <input
+                  type="text"
+                  className="modals-modal-formGrp-text"
+                  value={userInput}
+                  onChange={(e) => {
+                    setUserInput(e.target.value);
+                  }}
+                />
+              </div>
+              <div className="modals-modal-formGrp">
+                <button onClick={updateUserName}>Submit</button>
+              </div>
+            </div>
+          </section>
+        )}
+        {profilePicModal && (
+          <section className="modals">
+            <div
+              className="modals-backdrop"
+              onClick={() => {
+                setProfilePicModal(!profilePicModal);
+              }}
+            ></div>
+            <div className="modals-modal">
+              <IoMdClose
+                className="modals-modal-close"
+                onClick={() => {
+                  setProfilePicModal(!profilePicModal);
+                }}
+              />
+              <div className="modals-modal-formGrp">
+                <label>Username</label>
+                <input
+                  id="fileInput"
+                  type="file"
+                  accept=".jpg,.jpeg,.png"
+                  onChange={handleImage}
+                />
+                {isBookImageUploaded && (
+                  <div
+                    className="modals-modal-formGrp-uploadedImg"
+                    style={{ backgroundImage: `url(${bookImage})` }}
+                  ></div>
+                )}
+              </div>
+              <div className="modals-modal-formGrp">
+                <button onClick={updateProfilePic}>Submit</button>
+              </div>
+            </div>
+          </section>
+        )}
       </div>
     );
   } else {
@@ -381,34 +606,34 @@ const Profile = () => {
               <span
                 className="profileImg"
                 style={{
-                  backgroundImage: `url(${blank})`,
+                  backgroundImage: `url(${
+                    userProfileData && userProfileData.profilePic
+                      ? userProfileData.profilePic
+                      : blank
+                  })`,
                 }}
               ></span>
-              <p className="name">
-                <span>James Cameron</span>
-                <span>
-                  <MdEdit className="editIcon" />
-                </span>
-              </p>
-              <p className="userName">@Jamie</p>
+              {userProfileData && (
+                <p className="name">
+                  <span>{userProfileData.username}</span>
+                </p>
+              )}
+              {/* <p className="userName">@Jamie</p> */}
             </div>
             <div className="body">
               <div className="body-item about">
                 <div className="body-item-top">
                   <div className="body-item-heading">About Me</div>
                 </div>
-                <div className="about-content">
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown
-                  printer took a galley of type and scrambled it to make a type
-                  specimen book. It has survived not only five centuries, but
-                  also the leap into electronic typesetting, remaining
-                  essentially unchanged. It was popularised in the 1960s with
-                  the release of Letraset sheets containing Lorem Ipsum
-                  passages, and more recently with desktop publishing software
-                  like Aldus PageMaker including versions of Lorem Ipsum.
-                </div>
+                {userProfileData && userProfileData.profileData.about ? (
+                  <div className="about-content">
+                    {userProfileData.profileData.about}
+                  </div>
+                ) : (
+                  <div className="about-content about-content-null">
+                    User has not written anything about himself
+                  </div>
+                )}
               </div>
               {userProfileData &&
                 userProfileData.profileData.currentProgressVis && (

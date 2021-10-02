@@ -1911,19 +1911,38 @@ a:link, a:visited, a:hover, a:active {
           background-size: cover;
           background-position: center;
           border: 4px solid white;
+          overflow: hidden;
           display: block; }
+          .profilePage-right .contents .top .profileImg-edit {
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: grid;
+            place-items: center; }
+            .profilePage-right .contents .top .profileImg-edit-icon {
+              width: 4rem;
+              height: 4rem;
+              color: #aaaaaa; }
+          .profilePage-right .contents .top .profileImg:hover {
+            cursor: pointer; }
+          .profilePage-right .contents .top .profileImg:hover .profileImg-edit {
+            opacity: 1; }
         .profilePage-right .contents .top .name {
           position: absolute;
           top: 21rem;
-          left: 25rem;
-          font-size: 2.5rem;
+          left: 27rem;
+          font-size: 3rem;
           color: white;
           font-weight: bold; }
         .profilePage-right .contents .top .editIcon {
-          margin-left: 0.5rem;
+          margin-left: 2rem;
           height: 2rem;
           width: 2rem;
-          color: #525050; }
+          color: #818181; }
         .profilePage-right .contents .top .userName {
           position: absolute;
           top: 24rem;
@@ -1972,7 +1991,9 @@ a:link, a:visited, a:hover, a:active {
           width: 100%;
           height: max-content; }
           .profilePage-right .contents .body .about-content {
-            font-size: 1.6rem; }
+            width: 100%;
+            font-size: 1.6rem;
+            text-align: justify; }
         .profilePage-right .contents .body .current-content {
           width: 100%;
           height: 85%;
@@ -2140,6 +2161,48 @@ a:link, a:visited, a:hover, a:active {
     .profilePage-right::-webkit-scrollbar-thumb {
       background: #b3b3b3;
       border-radius: 0.75rem; }
+
+.modals {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh; }
+  .modals-backdrop {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); }
+  .modals-modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 1px solid #474747;
+    border-radius: 1rem;
+    width: 65rem;
+    height: max-content;
+    padding: 3rem; }
+    .modals-modal-close {
+      position: absolute;
+      top: 2.5rem;
+      right: 2.5rem;
+      width: 2.5rem;
+      height: 2.5rem; }
+    .modals-modal-formGrp {
+      display: flex;
+      flex-flow: column;
+      gap: 0.6rem;
+      padding: 0.5rem; }
+      .modals-modal-formGrp label {
+        font-size: 1.6rem; }
+      .modals-modal-formGrp textarea {
+        height: 20rem;
+        font-size: 1.6rem;
+        padding: 0.5rem 1rem; }
+      .modals-modal-formGrp-text {
+        font-size: 1.6rem;
+        padding: 0.5rem 1rem; }
 
 .addContentPage {
   margin-top: 6rem;
