@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import { Route } from "react-router-dom";
+import { Route, useHistory } from "react-router-dom";
 
 function ChapterSection({ Chapters }) {
   const LIMIT = 8;
@@ -9,6 +9,7 @@ function ChapterSection({ Chapters }) {
   const [page, setPage] = useState(1);
   const [totalPage, setTotalPage] = useState(1);
   const [chapterTransitionStat, setChapterTransitionStat] = useState("");
+  const history = useHistory();
   const paginate = () => {
     let count = Math.ceil(Chapters.length / LIMIT);
     setTotalPage(count);
@@ -28,6 +29,13 @@ function ChapterSection({ Chapters }) {
       }
       setChapterTransitionStat("fadeIn");
     }, 200);
+  };
+  const goto = () => {
+    Chapters.forEach((chapter) => {
+      if (chapterInput === chapter.number.toString()) {
+        history.push(`/chapter/${chapter.id}`);
+      }
+    });
   };
   useEffect(() => {
     paginate();
@@ -58,7 +66,9 @@ function ChapterSection({ Chapters }) {
               }
             }}
           />
-          <p className="gotoBtn">Go!</p>
+          <p className="gotoBtn" onClick={goto}>
+            Go!
+          </p>
         </div>
         <div className="pageChange">
           <FaChevronLeft

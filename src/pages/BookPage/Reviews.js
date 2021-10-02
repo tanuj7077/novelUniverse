@@ -54,12 +54,21 @@ function Reviews({ book }) {
   const [reviewTitleInput, setReviewTitleInput] = useState("");
   const [reviewInput, setReviewInput] = useState("");
   const [reviews, setReviews] = useState([]);
+  const [ratingPercentages, setRatingPercentages] = useState({
+    1: 0,
+    2: 0,
+    3: 0,
+    4: 0,
+    5: 0,
+  });
+  const [ratings, setRatings] = useState();
+  const [totalRatings, setTotalRatings] = useState(0);
+  const [averageRating, setAverageRating] = useState(0);
 
   const addReview = () => {
     const Review = {
       title: reviewTitleInput,
       description: reviewInput,
-      //rating: rated,
       user: userData._id,
       username: userData.username,
       book: book._id,
@@ -70,17 +79,18 @@ function Reviews({ book }) {
   };
 
   const addRating = (rate) => {
-    let data = {
-      rating: rate,
-      userId: userData._id,
-      bookId: book._id,
-    };
-    axios.post("http://localhost:8000/review/addRating", data).then((res) => {
-      console.log(res.data);
-      setRated(rate);
-      getUpdatedUserData();
-    });
-    //
+    if (userData && isLoggedIn) {
+      let data = {
+        rating: rate,
+        userId: userData._id,
+        bookId: book._id,
+      };
+      axios.post("http://localhost:8000/review/addRating", data).then((res) => {
+        console.log(res.data);
+        setRated(rate);
+        getUpdatedUserData();
+      });
+    }
   };
 
   const getReviews = async () => {
@@ -115,9 +125,43 @@ function Reviews({ book }) {
       });
   };
 
+  const calculateRatingPercentages = () => {
+    let total = 0;
+    let ratings = [];
+    if (book) {
+      for (let k in book.rating) {
+        total += book.rating[k];
+        ratings.push({ rating: k, count: book.rating[k] });
+      }
+      ratings.forEach((item) => {
+        item.percentage = Math.ceil((item.count / total) * 100);
+      });
+      setRatings(ratings.reverse());
+    }
+  };
+  const calculateAverageRating = () => {
+    let total = 0;
+    let ratingTotal = 0;
+    if (book) {
+      for (let k in book.rating) {
+        total += book.rating[k];
+        ratingTotal += parseInt(k) * book.rating[k];
+      }
+    }
+    setTotalRatings(total);
+    if (total === 0) {
+      setAverageRating(0);
+    } else {
+      let averageRating = Math.round((ratingTotal / total) * 10) / 10;
+      setAverageRating(averageRating);
+    }
+  };
+
   useEffect(() => {
     getReviews();
     checkReviewGiven();
+    calculateRatingPercentages();
+    calculateAverageRating();
   }, []);
   return (
     <section className="reviewSection">
@@ -125,59 +169,37 @@ function Reviews({ book }) {
       <div className="reviewSection-reviewStats">
         <div className="reviewSection-reviewStats-count">
           <div className="stars">
-            <p className="text">{reviewObj.star}</p>
+            <p className="text">{averageRating}</p>
             <FaStar className="icon" />
           </div>
           <p className="ratings">
-            <span>{reviewObj.ratingCount}</span>
+            <span>{totalRatings}</span>
             <span className="text">Ratings</span>{" "}
           </p>
           <p className="reviews">
-            <span>{reviewObj.reviewCount}</span>
+            <span>{book.reviews.length}</span>
             <span className="text">Reviews</span>{" "}
           </p>
         </div>
         <div className="reviewSection-reviewStats-graph">
-          <span className="graph">
-            <p className="rating">
-              <span className="num">5</span>
-              <FaStar className="icon" />
-            </p>
-            <span className="percent"></span>
-            <p className="count">50</p>
-          </span>
-          <span className="graph">
-            <p className="rating">
-              <span className="num">4</span>
-              <FaStar className="icon" />
-            </p>
-            <span className="percent"></span>
-            <p className="count">40</p>
-          </span>
-          <span className="graph">
-            <p className="rating">
-              <span className="num">3</span>
-              <FaStar className="icon" />
-            </p>
-            <span className="percent"></span>
-            <p className="count">20</p>
-          </span>
-          <span className="graph">
-            <p className="rating">
-              <span className="num">2</span>
-              <FaStar className="icon" />
-            </p>
-            <span className="percent"></span>
-            <p className="count">8</p>
-          </span>
-          <span className="graph">
-            <p className="rating">
-              <span className="num">1</span>
-              <FaStar className="icon" />
-            </p>
-            <span className="percent"></span>
-            <p className="count">3</p>
-          </span>
+          {ratings &&
+            ratings.map((item) => {
+              return (
+                <span className="graph">
+                  <p className="rating">
+                    <span className="num">{item.rating}</span>
+                    <FaStar className="icon" />
+                  </p>
+                  <span className="percent">
+                    <span
+                      className="percent-covered"
+                      style={{ width: `${item.percentage}%` }}
+                    ></span>
+                  </span>
+                  <p className="count">{item.count}</p>
+                </span>
+              );
+            })}
         </div>
       </div>
       <div className="reviewSection-myReview">

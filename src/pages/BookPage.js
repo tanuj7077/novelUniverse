@@ -14,9 +14,11 @@ const BookPage = () => {
   const introVisible = useOnScreen(introRef);
   const { bookId } = useParams();
   const [novelData, setNovelData] = useState();
+  const [averageRating, setAverageRating] = useState(0);
   const fetchBookData = (id) => {
     axios.get(`http://localhost:8000/book/${id}`).then((res) => {
       setNovelData(res.data.data.novel);
+      calculateAverageRating(res.data.data.novel);
     });
   };
   useEffect(() => {
@@ -37,6 +39,22 @@ const BookPage = () => {
     tags: ["Psychology", "Action", "Horror", "Tragedy"],
     readStatus: "Start",
     desc: "U Ijin was the sole survivor of a plane crash when he was little. After becoming a mercenary to survive for 10 years, he returns to his family in his hometown.",
+  };
+  const calculateAverageRating = (novel) => {
+    let total = 0;
+    let ratingTotal = 0;
+    if (novel) {
+      for (let k in novel.rating) {
+        total += novel.rating[k];
+        ratingTotal += parseInt(k) * novel.rating[k];
+      }
+    }
+    if (total === 0) {
+      setAverageRating(0);
+    } else {
+      let averageRating = Math.round((ratingTotal / total) * 10) / 10;
+      setAverageRating(averageRating);
+    }
   };
   return (
     <div className="bookPage">
@@ -63,14 +81,7 @@ const BookPage = () => {
                     <span className="authorName">{novelData.author}</span>
                   </p>
                   <div className="ratingSection">
-                    <div className="rating">
-                      {(novelData.rating["1"].length +
-                        novelData.rating["2"].length +
-                        novelData.rating["3"].length +
-                        novelData.rating["4"].length +
-                        novelData.rating["5"].length) /
-                        5}
-                    </div>
+                    <div className="rating">{averageRating}</div>
                     <FaStar className="icon" />
                   </div>
                 </div>
@@ -135,7 +146,6 @@ const BookPage = () => {
           )} */}
           {novelData && <Reviews book={novelData} />}
         </div>
-        <section className="commentSection"></section>
         <section className="recommendedSection"></section>
       </div>
     </div>

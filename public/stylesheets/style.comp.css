@@ -1261,7 +1261,17 @@ a:link, a:visited, a:hover, a:active {
                 height: 1rem;
                 width: 80%;
                 background-color: #616161;
-                border-radius: 5px; }
+                border-radius: 5px;
+                position: relative;
+                overflow: hidden; }
+                .bookPage-container .contentSection .reviewSection-reviewStats-graph .graph .percent-covered {
+                  position: absolute;
+                  width: 75%;
+                  height: 100%;
+                  top: 0;
+                  left: 0;
+                  background-color: #f7b438;
+                  background-color: #2079c2; }
         .bookPage-container .contentSection .reviewSection-myReview {
           border-radius: 1rem;
           background-color: transparent;
@@ -1908,6 +1918,7 @@ a:link, a:visited, a:hover, a:active {
           width: 15rem;
           height: 15rem;
           border-radius: 50%;
+          background-color: black;
           background-size: cover;
           background-position: center;
           border: 4px solid white;
@@ -2203,6 +2214,11 @@ a:link, a:visited, a:hover, a:active {
       .modals-modal-formGrp-text {
         font-size: 1.6rem;
         padding: 0.5rem 1rem; }
+      .modals-modal-formGrp-uploadedImg {
+        height: 14rem;
+        width: 14rem;
+        background-size: cover;
+        background-position: center; }
 
 .addContentPage {
   margin-top: 6rem;

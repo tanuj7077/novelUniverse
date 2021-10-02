@@ -1241,7 +1241,7 @@ a:link, a:visited, a:hover, a:active {
             width: 50%;
             display: flex;
             flex-flow: column;
-            gap: 0.2rem;
+            gap: 0.5rem;
             color: #bebebe; }
             .bookPage-container .contentSection .reviewSection-reviewStats-graph .graph {
               width: 100%;
@@ -1261,7 +1261,17 @@ a:link, a:visited, a:hover, a:active {
                 height: 1rem;
                 width: 80%;
                 background-color: #616161;
-                border-radius: 5px; }
+                border-radius: 5px;
+                position: relative;
+                overflow: hidden; }
+                .bookPage-container .contentSection .reviewSection-reviewStats-graph .graph .percent-covered {
+                  position: absolute;
+                  width: 0;
+                  height: 100%;
+                  top: 0;
+                  left: 0;
+                  background-color: #f7b438;
+                  background-color: #bb9857; }
         .bookPage-container .contentSection .reviewSection-myReview {
           border-radius: 1rem;
           background-color: transparent;
