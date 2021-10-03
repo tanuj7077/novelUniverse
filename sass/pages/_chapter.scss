@@ -231,6 +231,8 @@
     width: 60%;
     margin: 0 auto;
     border-radius: 1rem;
+    background-color: white; //were not present
+    color: black; //were not present
     box-shadow: 0px 0px 10px 5px rgba(black, 0.1);
     height: max-content;
     padding: 2rem;
@@ -258,7 +260,7 @@
     .commentSubmit {
       outline: none;
       border: none;
-      border-radius: 1rem;
+      border-radius: 0.5rem;
       font-size: $small-font-size;
       color: white;
       background-color: rgb(42, 131, 248);
@@ -286,6 +288,18 @@
         }
         .commentText {
           font-size: $small-font-size;
+        }
+        .editText {
+          font-size: $small-font-size;
+          padding: 0.5rem;
+        }
+        .options {
+          display: flex;
+          gap: 1rem;
+          &-item {
+            font-size: $smaller-font-size;
+            color: rgb(73, 73, 73);
+          }
         }
       }
     }

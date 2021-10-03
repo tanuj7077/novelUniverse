@@ -6,61 +6,13 @@ import Review from "../../components/Review/Review";
 
 function Reviews({ book }) {
   const { userData, isLoggedIn, getUpdatedUserData } = useGlobalContext();
-  let reviewObj = {
-    star: 4.3,
-    ratingCount: 34,
-    reviewCount: 10,
-    reviews: [
-      {
-        user: "John Blake",
-        rating: 5,
-        title: "Excellent story",
-        desc: "Product is very good, But the installation person not followed flipkart precautions like wearig the mask fulltime during installation, Opened the box roughly, the plastics mounted in the box (for repacking ) was teared from the box,we can not re use the box fully.During the payment the HDFC Card shows NOCOST EMI ,But while ordering NO COST EMI was not considered .",
-        date: "12/07/2020",
-      },
-      {
-        user: "John Blake",
-        rating: 4,
-        title: "Excellent story",
-        desc: "Product is very good, But the installation person not followed flipkart precautions like wearig the mask fulltime during installation, Opened the box roughly, the plastics mounted in the box (for repacking ) was teared from the box,we can not re use the box fully.During the payment the HDFC Card shows NOCOST EMI ,But while ordering NO COST EMI was not considered .",
-        date: "12/07/2020",
-      },
-      {
-        user: "John Blake",
-        rating: 3,
-        title: "Excellent story",
-        desc: "Product is very good, But the installation person not followed flipkart precautions like wearig the mask fulltime during installation, Opened the box roughly, the plastics mounted in the box (for repacking ) was teared from the box,we can not re use the box fully.During the payment the HDFC Card shows NOCOST EMI ,But while ordering NO COST EMI was not considered .",
-        date: "12/07/2020",
-      },
-      {
-        user: "John Blake",
-        rating: 2,
-        title: "Excellent story",
-        desc: "Product is very good, But the installation person not followed flipkart precautions like wearig the mask fulltime during installation, Opened the box roughly, the plastics mounted in the box (for repacking ) was teared from the box,we can not re use the box fully.During the payment the HDFC Card shows NOCOST EMI ,But while ordering NO COST EMI was not considered .",
-        date: "12/07/2020",
-      },
-      {
-        user: "John Blake",
-        rating: 1,
-        title: "Excellent story",
-        desc: "Product is very good, But the installation person not followed flipkart precautions like wearig the mask fulltime during installation, Opened the box roughly, the plastics mounted in the box (for repacking ) was teared from the box,we can not re use the box fully.During the payment the HDFC Card shows NOCOST EMI ,But while ordering NO COST EMI was not considered .",
-        date: "12/07/2020",
-      },
-    ],
-  };
+
   const [hoveredStar, setHoveredStar] = useState(0);
   const [rated, setRated] = useState(0);
 
   const [reviewTitleInput, setReviewTitleInput] = useState("");
   const [reviewInput, setReviewInput] = useState("");
   const [reviews, setReviews] = useState([]);
-  const [ratingPercentages, setRatingPercentages] = useState({
-    1: 0,
-    2: 0,
-    3: 0,
-    4: 0,
-    5: 0,
-  });
   const [ratings, setRatings] = useState();
   const [totalRatings, setTotalRatings] = useState(0);
   const [averageRating, setAverageRating] = useState(0);

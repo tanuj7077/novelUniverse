@@ -7,9 +7,10 @@ import { CgDarkMode } from "react-icons/cg";
 import { useParams, Route, useHistory } from "react-router-dom";
 import axios from "axios";
 
+import Comments from "./Comments/Comments";
+
 const Chapter = () => {
   const { id } = useParams();
-  const [current, setCurrent] = useState();
   const [chapterInput, setChapterInput] = useState("1");
   const [chapterSelectionPopupVis, setChapterSelectionPopupVis] =
     useState(false);
@@ -20,7 +21,7 @@ const Chapter = () => {
   const [myComment, setMyComment] = useState("");
   const [darkMode, setDarkMode] = useState(0);
   const history = useHistory();
-
+  /*
   let comments = [
     {
       name: "Bruh",
@@ -43,7 +44,7 @@ const Chapter = () => {
       comment: "I like this",
       date: "12/01/2020",
     },
-  ];
+  ];*/
   const handleFontSize = () => {
     if (fontSizeVal == 0) {
       setFontSize("smallFont");
@@ -95,6 +96,7 @@ const Chapter = () => {
   useEffect(() => {
     getChapterDetails();
   }, [id]);
+
   return (
     <div className="chapterPage">
       <div className="chapterPage-top">
@@ -213,8 +215,8 @@ const Chapter = () => {
             </div>
           )}
         </div>
-
-        <div
+        {chapterData && <Comments chapterInfo={chapterData} />}
+        {/* <div
           className={`chapterPage-comments ${darkMode ? "darkComments" : ""}`}
         >
           <p className="heading">Comments</p>
@@ -244,6 +246,7 @@ const Chapter = () => {
             })}
           </ul>
         </div>
+      */}
       </div>
     </div>
   );

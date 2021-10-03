@@ -8,10 +8,18 @@ const AppProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userData, setUserData] = useState();
 
+  const [alert, setAlert] = useState({});
+  const [showAlert, setShowAlert] = useState(0);
+
   const toggleLoginModalVisibility = () => {
+    console.log("loginModal visibility toggled");
     setLoginModalVisible(!loginModalVisible);
   };
 
+  const changeAlert = (msg) => {
+    setAlert(msg);
+    setShowAlert(1);
+  };
   const getUpdatedUserData = () => {
     axios
       .get(`http://localhost:8000/user/getUpdatedUserData/${userData._id}`)
@@ -68,6 +76,10 @@ const AppProvider = ({ children }) => {
         signup,
         logout,
         getUpdatedUserData,
+        alert,
+        setAlert,
+        setShowAlert,
+        changeAlert,
       }}
     >
       {children}

@@ -38,9 +38,11 @@ function App() {
   return (
     <Switch>
       <Route path="/" exact>
+        <LoginModal />
         <Landing />
       </Route>
       <Route path="/chapter/:id" exact>
+        <LoginModal />
         <Chapter />
       </Route>
 

@@ -1241,7 +1241,7 @@ a:link, a:visited, a:hover, a:active {
             width: 50%;
             display: flex;
             flex-flow: column;
-            gap: 0.2rem;
+            gap: 0.5rem;
             color: #bebebe; }
             .bookPage-container .contentSection .reviewSection-reviewStats-graph .graph {
               width: 100%;
@@ -1266,12 +1266,12 @@ a:link, a:visited, a:hover, a:active {
                 overflow: hidden; }
                 .bookPage-container .contentSection .reviewSection-reviewStats-graph .graph .percent-covered {
                   position: absolute;
-                  width: 75%;
+                  width: 0;
                   height: 100%;
                   top: 0;
                   left: 0;
                   background-color: #f7b438;
-                  background-color: #2079c2; }
+                  background-color: #bb9857; }
         .bookPage-container .contentSection .reviewSection-myReview {
           border-radius: 1rem;
           background-color: transparent;
@@ -1772,6 +1772,8 @@ a:link, a:visited, a:hover, a:active {
     width: 60%;
     margin: 0 auto;
     border-radius: 1rem;
+    background-color: white;
+    color: black;
     box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.1);
     height: max-content;
     padding: 2rem;
@@ -1796,7 +1798,7 @@ a:link, a:visited, a:hover, a:active {
     .chapterPage-comments .commentSubmit {
       outline: none;
       border: none;
-      border-radius: 1rem;
+      border-radius: 0.5rem;
       font-size: 2rem;
       color: white;
       background-color: #2a83f8;
@@ -2500,3 +2502,41 @@ a:link, a:visited, a:hover, a:active {
   .loginModal .signupSection {
     width: 50%;
     height: 100%; }
+
+.alertBox {
+  position: relative;
+  z-index: 2000;
+  position: fixed;
+  top: 9vh;
+  left: 50%;
+  transform: translateX(-50%);
+  width: minmax(max-content, 30rem);
+  height: max-content;
+  padding: 1rem 2rem;
+  padding-right: 3.5rem;
+  border-radius: 5px;
+  display: flex;
+  flex-flow: column; }
+  .alertBox-error {
+    background-color: #e69494; }
+  .alertBox-success {
+    background-color: #7cd89b; }
+
+.alertText {
+  font-size: 1.4rem; }
+  .alertText-error {
+    color: #8a0000;
+    font-weight: 500; }
+  .alertText-success {
+    color: #004200; }
+
+.alertClose {
+  position: absolute;
+  top: 1.2rem;
+  right: 1rem;
+  color: #3d3b3b;
+  width: 1.6rem;
+  height: 1.6rem; }
+  .alertClose:hover {
+    color: #c40000;
+    cursor: pointer; }
