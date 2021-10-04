@@ -1821,6 +1821,15 @@ a:link, a:visited, a:hover, a:active {
           font-size: 1.2rem; }
       .chapterPage-comments .comments .comment .commentText {
         font-size: 2rem; }
+      .chapterPage-comments .comments .comment .editText {
+        font-size: 2rem;
+        padding: 0.5rem; }
+      .chapterPage-comments .comments .comment .options {
+        display: flex;
+        gap: 1rem; }
+        .chapterPage-comments .comments .comment .options-item {
+          font-size: 1.2rem;
+          color: #494949; }
   .chapterPage .darkComments {
     box-shadow: 0px 0px 10px 5px rgba(255, 255, 255, 0.1);
     transition: all 0.3s ease; }

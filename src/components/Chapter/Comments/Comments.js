@@ -26,7 +26,7 @@ function Comments({ chapterInfo }) {
       axios
         .post("http://localhost:8000/comment/addComment", data)
         .then((res) => {
-          getComments();
+          //getComments();
         });
     }
   };
@@ -35,6 +35,7 @@ function Comments({ chapterInfo }) {
     axios
       .get("http://localhost:8000/comment/getComments/" + chapterInfo.id)
       .then((res) => {
+        console.log(res.data);
         setComments(res.data.data);
       });
   };
@@ -60,7 +61,7 @@ function Comments({ chapterInfo }) {
       </section>
       <ul className="comments">
         {comments.map((comment) => {
-          return <Comment comment={comment} chapterId={chapterInfo.id} />;
+          return <Comment commentId={comment} chapterId={chapterInfo.id} />;
         })}
       </ul>
     </div>

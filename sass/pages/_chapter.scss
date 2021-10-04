@@ -273,6 +273,9 @@
       flex-flow: column;
       gap: 1.5rem;
       .comment {
+        display: flex;
+        flex-flow: column;
+        gap: 0.5rem;
         .head {
           display: flex;
           align-items: center;
@@ -299,6 +302,17 @@
           &-item {
             font-size: $smaller-font-size;
             color: rgb(73, 73, 73);
+          }
+        }
+        .replies {
+          align-self: flex-end;
+          width: calc(100% - 5rem);
+          display: flex;
+          flex-flow: column;
+          gap: 0.5rem;
+          &-input {
+            font-size: $small-font-size;
+            padding: 0.5rem;
           }
         }
       }

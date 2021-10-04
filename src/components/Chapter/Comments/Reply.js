@@ -1,22 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { useGlobalContext } from "../../../context";
 import axios from "axios";
-import Replies from "./Replies";
 
-function Comment({ commentId }) {
+function Reply({ commentId }) {
+  console.log(commentId);
   const { userData, isLoggedIn } = useGlobalContext();
+  const [editedComment, setEditedComment] = useState();
   const [comment, setComment] = useState();
   const [username, setUsername] = useState();
-  const [editedComment, setEditedComment] = useState();
   const [edit, setEdit] = useState(false);
   const [newComment, setNewComment] = useState();
-  const [repliesVisible, setRepliesVisible] = useState(false);
-  const toggleRepliesVisibility = () => {
-    setRepliesVisible(!repliesVisible);
-  };
+
   const getComment = () => {
     axios
-      .get(`http://localhost:8000/comment/getComment/${commentId}`)
+      .get(`http://localhost:8000/comment/getReply/${commentId}`)
       .then((res) => {
         setComment(res.data.data);
         setEditedComment(res.data.data.text);
@@ -27,6 +24,7 @@ function Comment({ commentId }) {
     axios
       .get(`http://localhost:8000/user/getUpdatedUserData/${userId}`)
       .then((res) => {
+        console.log(res.data.userData.username);
         setUsername(res.data.userData.username);
       });
   };
@@ -86,17 +84,11 @@ function Comment({ commentId }) {
                 </p>
               </div>
             )}
-            <div className="options-item">
-              <p className="text" onClick={toggleRepliesVisibility}>
-                Replies
-              </p>
-            </div>
           </div>
-          {repliesVisible && <Replies comment={comment} />}
         </li>
       )}
     </>
   );
 }
 
-export default Comment;
+export default Reply;
