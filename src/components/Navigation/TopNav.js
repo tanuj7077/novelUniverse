@@ -2,10 +2,17 @@ import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { Route } from "react-router-dom";
 import { useGlobalContext } from "../../context";
+import Notification from "../Notification/Notification";
 const TopNav = () => {
   const location = useLocation();
   const [tab, setTab] = useState();
-  const { toggleLoginModalVisibility, isLoggedIn, logout } = useGlobalContext();
+  const {
+    toggleLoginModalVisibility,
+    toggleNotificationVisibility,
+    notificationVisibility,
+    isLoggedIn,
+    logout,
+  } = useGlobalContext();
   useEffect(() => {
     let arr = location.pathname.split("/").map(String);
     if (arr.length > 1) {
@@ -21,19 +28,19 @@ const TopNav = () => {
       <div className="topNav-right">
         <Route
           render={({ history }) => (
-            <span
+            <p
               className={`topNav-right-item ${tab === "home" ? "active" : ""}`}
               onClick={() => {
                 history.push(`/home`);
               }}
             >
               Home
-            </span>
+            </p>
           )}
         />
         <Route
           render={({ history }) => (
-            <span
+            <p
               className={`topNav-right-item ${
                 tab === "browse" ? "active" : ""
               }`}
@@ -42,13 +49,13 @@ const TopNav = () => {
               }}
             >
               Browse
-            </span>
+            </p>
           )}
         />
         {isLoggedIn && (
           <Route
             render={({ history }) => (
-              <span
+              <p
                 className={`topNav-right-item ${
                   tab === "collection" ? "active" : ""
                 }`}
@@ -57,14 +64,14 @@ const TopNav = () => {
                 }}
               >
                 Collection
-              </span>
+              </p>
             )}
           />
         )}
         {isLoggedIn && (
           <Route
             render={({ history }) => (
-              <span
+              <p
                 className={`topNav-right-item ${
                   tab === "profile" ? "active" : ""
                 }`}
@@ -73,37 +80,30 @@ const TopNav = () => {
                 }}
               >
                 Profile
-              </span>
+              </p>
             )}
           />
         )}
         {isLoggedIn && (
-          <Route
-            render={({ history }) => (
-              <span
-                className={`topNav-right-item ${
-                  tab === "contact" ? "active" : ""
-                }`}
-                onClick={() => {
-                  history.push(`/contact`);
-                }}
-              >
-                Notification
-              </span>
-            )}
-          />
+          <p
+            className="topNav-right-item"
+            onClick={toggleNotificationVisibility}
+          >
+            <span>Notification</span>
+            {notificationVisibility && <Notification />}
+          </p>
         )}
         {isLoggedIn ? (
-          <span className="topNav-right-login-item" onClick={logout}>
+          <p className="topNav-right-login-item" onClick={logout}>
             Logout
-          </span>
+          </p>
         ) : (
-          <span
+          <p
             className="topNav-right-login-item"
             onClick={toggleLoginModalVisibility}
           >
             Login
-          </span>
+          </p>
         )}
       </div>
     </div>
