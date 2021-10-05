@@ -12,11 +12,11 @@ const AppProvider = ({ children }) => {
   const [showAlert, setShowAlert] = useState(0);
 
   const toggleLoginModalVisibility = () => {
-    console.log("loginModal visibility toggled");
     setLoginModalVisible(!loginModalVisible);
   };
 
   const changeAlert = (msg) => {
+    console.log("alert triggered");
     setAlert(msg);
     setShowAlert(1);
   };
@@ -34,9 +34,10 @@ const AppProvider = ({ children }) => {
       password: loginPassword,
     };
     axios.post("http://localhost:8000/auth/signin", data).then((res) => {
+      changeAlert(res.data.msg);
       setUserData(res.data.userData);
       setIsLoggedIn(true);
-      console.log(res.data);
+      setLoginModalVisible(false);
     });
   };
   const signup = (registerUsername, registerPassword) => {
@@ -51,8 +52,8 @@ const AppProvider = ({ children }) => {
   const logout = async () => {
     try {
       await axios.get("http://localhost:8000/auth/signout").then((res) => {
-        console.log(res.data);
         if (res.data.success) {
+          changeAlert(res.data.msg);
           setUserData({});
           setIsLoggedIn(false);
           //changeAlert(res.data.message);
@@ -78,6 +79,7 @@ const AppProvider = ({ children }) => {
         getUpdatedUserData,
         alert,
         setAlert,
+        showAlert,
         setShowAlert,
         changeAlert,
       }}

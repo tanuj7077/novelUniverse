@@ -6,7 +6,6 @@ import { IoMdColorPalette } from "react-icons/io";
 import { CgDarkMode } from "react-icons/cg";
 import { useParams, Route, useHistory } from "react-router-dom";
 import axios from "axios";
-
 import Comments from "./Comments/Comments";
 
 const Chapter = () => {

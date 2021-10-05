@@ -36,54 +36,35 @@
     font-size: $logo-small-font-size;
   }
   &-right {
-    color: white;
-    text-transform: uppercase;
-    font-size: $default-font-size;
-    letter-spacing: 0.3rem;
-    padding: 0.2rem 1rem;
-    border: 2px solid white;
-    &:hover {
-      cursor: pointer;
-    }
-  }
-}
-/*.topNav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 6rem;
-  background-color: rgba(black, 0.9);
-  backdrop-filter: blur(40px);
-  -webkit-backdrop-filter: blur(40px);
-  display: flex;
-  flex-flow: row;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 5%;
-  z-index: 10;
-  &-left {
     display: flex;
     gap: 4rem;
     align-items: center;
     letter-spacing: 0.3rem;
-    .item {
+    &-item {
       text-transform: uppercase;
-      font-size: $smaller-font-size;
+      font-size: $smallest-font-size;
       color: white;
+      transition: all 0.3s ease;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    .active {
+      color: rgb(82, 172, 247);
+    }
+    &-login-item {
+      color: white;
+      text-transform: uppercase;
+      background-color: rgb(3, 103, 234);
+      border-radius: 0.5rem;
+      font-size: $smaller-font-size;
+      letter-spacing: 0.3rem;
+      padding: 0.7rem 1rem;
+      font-weight: bold;
+      //border: 2px solid white;
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
-  &-logo {
-    color: white;
-    font-size: $logo-small-font-size;
-  }
-  &-right {
-    color: white;
-    text-transform: uppercase;
-    font-size: $default-font-size;
-    letter-spacing: 0.3rem;
-    padding: 0.2rem 1rem;
-    border: 2px solid white;
-  }
 }
-*/

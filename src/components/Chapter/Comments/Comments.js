@@ -4,12 +4,8 @@ import axios from "axios";
 import Comment from "./Comment";
 
 function Comments({ chapterInfo }) {
-  const {
-    userData,
-    isLoggedIn,
-    getUpdatedUserData,
-    toggleLoginModalVisibility,
-  } = useGlobalContext();
+  const { userData, isLoggedIn, toggleLoginModalVisibility, changeAlert } =
+    useGlobalContext();
 
   const [myComment, setMyComment] = useState("");
   const [comments, setComments] = useState([]);
@@ -26,7 +22,11 @@ function Comments({ chapterInfo }) {
       axios
         .post("http://localhost:8000/comment/addComment", data)
         .then((res) => {
+          console.log(res.data);
           //getComments();
+          //console.log()
+          setComments([...comments, res.data.comment]);
+          changeAlert(res.data.msg);
         });
     }
   };

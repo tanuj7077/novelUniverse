@@ -22,8 +22,7 @@ function Replies({ comment }) {
       axios
         .post(`http://localhost:8000/comment/addReply/${comment._id}`, data)
         .then((res) => {
-          //getComments();
-          console.log(res.data);
+          setReplies([...replies, res.data.reply]);
         });
     }
   };

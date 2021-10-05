@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { IoClose } from "react-icons/io5";
-import { useGlobalContext } from "../../../context";
+import { useGlobalContext } from "../../context";
 
 const Alert = () => {
   const { alert, showAlert, setShowAlert } = useGlobalContext();
@@ -8,13 +8,14 @@ const Alert = () => {
   useEffect(() => {
     if (showAlert) {
       setTimeout(() => {
+        console.log("closed alert");
         setShowAlert(0);
       }, 3000);
     }
   }, [showAlert]);
   return (
     <>
-      {showAlert && alert && (
+      {showAlert && alert ? (
         <div
           className={`alertBox ${
             alert.type === "error" ? "alertBox-error" : "alertBox-success"
@@ -36,6 +37,8 @@ const Alert = () => {
           })}
           <IoClose className="alertClose" onClick={() => setShowAlert(0)} />
         </div>
+      ) : (
+        <div></div>
       )}
     </>
   );

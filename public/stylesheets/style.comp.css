@@ -1809,27 +1809,40 @@ a:link, a:visited, a:hover, a:active {
       display: flex;
       flex-flow: column;
       gap: 1.5rem; }
-      .chapterPage-comments .comments .comment .head {
+      .chapterPage-comments .comments .comment {
         display: flex;
-        align-items: center;
-        gap: 1.5rem; }
-        .chapterPage-comments .comments .comment .head .user {
-          font-size: 1.6rem;
-          font-weight: bold;
-          color: #0c4b9e; }
-        .chapterPage-comments .comments .comment .head .date {
-          font-size: 1.2rem; }
-      .chapterPage-comments .comments .comment .commentText {
-        font-size: 2rem; }
-      .chapterPage-comments .comments .comment .editText {
-        font-size: 2rem;
-        padding: 0.5rem; }
-      .chapterPage-comments .comments .comment .options {
-        display: flex;
-        gap: 1rem; }
-        .chapterPage-comments .comments .comment .options-item {
-          font-size: 1.2rem;
-          color: #494949; }
+        flex-flow: column;
+        gap: 0.5rem; }
+        .chapterPage-comments .comments .comment .head {
+          display: flex;
+          align-items: center;
+          gap: 1.5rem; }
+          .chapterPage-comments .comments .comment .head .user {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: #0c4b9e; }
+          .chapterPage-comments .comments .comment .head .date {
+            font-size: 1.2rem; }
+        .chapterPage-comments .comments .comment .commentText {
+          font-size: 2rem; }
+        .chapterPage-comments .comments .comment .editText {
+          font-size: 2rem;
+          padding: 0.5rem; }
+        .chapterPage-comments .comments .comment .options {
+          display: flex;
+          gap: 1rem; }
+          .chapterPage-comments .comments .comment .options-item {
+            font-size: 1.2rem;
+            color: #494949; }
+        .chapterPage-comments .comments .comment .replies {
+          align-self: flex-end;
+          width: calc(100% - 5rem);
+          display: flex;
+          flex-flow: column;
+          gap: 0.5rem; }
+          .chapterPage-comments .comments .comment .replies-input {
+            font-size: 2rem;
+            padding: 0.5rem; }
   .chapterPage .darkComments {
     box-shadow: 0px 0px 10px 5px rgba(255, 255, 255, 0.1);
     transition: all 0.3s ease; }

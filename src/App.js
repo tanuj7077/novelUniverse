@@ -16,6 +16,7 @@ import TopNav from "./components/Navigation/TopNav";
 import Chapter from "./components/Chapter/Chapter";
 import Background from "./components/Background/Background";
 import AddContent from "./pages/AddContent";
+import Alert from "./components/Alert/Alert";
 import { useGlobalContext } from "./context";
 
 axios.defaults.withCredentials = true;
@@ -38,11 +39,13 @@ function App() {
   return (
     <Switch>
       <Route path="/" exact>
+        <Alert />
         <LoginModal />
         <Landing />
       </Route>
       <Route path="/chapter/:id" exact>
         <LoginModal />
+        <Alert />
         <Chapter />
       </Route>
 
@@ -50,6 +53,7 @@ function App() {
         {/* <SideNav /> */}
         <TopNav />
         <LoginModal />
+        <Alert />
         {/* <Background /> */}
         <Route path="/home">
           <Background />
