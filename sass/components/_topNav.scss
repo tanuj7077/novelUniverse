@@ -46,8 +46,10 @@
       color: white;
       transition: all 0.3s ease;
       position: relative;
-      &:hover {
-        cursor: pointer;
+      .text {
+        &:hover {
+          cursor: pointer;
+        }
       }
       .notification {
         position: absolute;
@@ -64,6 +66,10 @@
         align-items: center;
         //gap: 1rem;
         overflow: hidden;
+        opacity: 0;
+        transform: scale(0);
+        transform-origin: 100% 0%;
+        transition: all 0.3s ease;
         &-items {
           max-height: 30rem;
           margin: 1rem 1rem;
@@ -116,6 +122,10 @@
           text-align: center;
           background-color: rgb(44, 44, 44);
           font-size: $smaller-font-size;
+        }
+        &-visible {
+          opacity: 1;
+          transform: scale(1);
         }
       }
     }

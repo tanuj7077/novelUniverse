@@ -20,8 +20,8 @@ const Thumbnail = ({ novel }) => {
             <div className="novel-info-title">{novel.name}</div>
             <div className="novel-info-other">
               <div className="novel-info-desc">
-                {novel.description.length >= 180
-                  ? novel.description.substring(0, 180) + "..."
+                {novel.description.length >= 160
+                  ? novel.description.substring(0, 160) + "..."
                   : novel.description}
               </div>
             </div>

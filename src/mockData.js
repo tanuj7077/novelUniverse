@@ -114,7 +114,7 @@ export const browseNovels = [
   },
   {
     img: "https://mangageko.com/media/manga_covers/420_uLWgqEt.jpg",
-    title: "The Heavenly Docter",
+    title: "The Beginning After the End",
     author: "Kim Yohan",
     chapters: "145",
     status: "Completed",
@@ -125,7 +125,7 @@ export const browseNovels = [
   },
   {
     img: "https://mangageko.com/media/manga_covers/return-of-the-8th-class-magician.jpg",
-    title: "Reincarnation of the Strongest",
+    title: "Reincarnation of the Strongest Swordsman",
     author: "Kim Yohan",
     chapters: "145",
     status: "Completed",

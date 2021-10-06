@@ -2,8 +2,14 @@ import React from "react";
 import { useGlobalContext } from "../../context";
 
 function Notification() {
+  const { toggleNotificationVisibility, notificationVisibility } =
+    useGlobalContext();
   return (
-    <section className="notification">
+    <section
+      className={`notification ${
+        notificationVisibility ? "notification-visible" : ""
+      }`}
+    >
       {/* <div className="notification-empty">You don't have any notification</div> */}
       <div className="notification-items">
         <div className="notification-items-item">

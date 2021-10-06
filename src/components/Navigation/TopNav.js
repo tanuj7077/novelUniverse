@@ -34,7 +34,7 @@ const TopNav = () => {
                 history.push(`/home`);
               }}
             >
-              Home
+              <span className="text">Home</span>
             </p>
           )}
         />
@@ -48,7 +48,7 @@ const TopNav = () => {
                 history.push(`/browse`);
               }}
             >
-              Browse
+              <span className="text">Browse</span>
             </p>
           )}
         />
@@ -63,7 +63,7 @@ const TopNav = () => {
                   history.push(`/collection`);
                 }}
               >
-                Collection
+                <span className="text">Collection</span>
               </p>
             )}
           />
@@ -79,18 +79,18 @@ const TopNav = () => {
                   history.push(`/profile`);
                 }}
               >
-                Profile
+                <span className="text">Profile</span>
               </p>
             )}
           />
         )}
         {isLoggedIn && (
-          <p
-            className="topNav-right-item"
-            onClick={toggleNotificationVisibility}
-          >
-            <span>Notification</span>
-            {notificationVisibility && <Notification />}
+          <p className="topNav-right-item">
+            <span className="text" onClick={toggleNotificationVisibility}>
+              Notification
+            </span>
+            <Notification />
+            {/* {notificationVisibility && <Notification />} */}
           </p>
         )}
         {isLoggedIn ? (
