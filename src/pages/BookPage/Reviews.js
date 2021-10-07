@@ -5,10 +5,14 @@ import { useGlobalContext } from "../../context";
 import Review from "../../components/Review/Review";
 
 function Reviews({ book }) {
-  const { userData, isLoggedIn, getUpdatedUserData } = useGlobalContext();
+  const { userData, isLoggedIn, getUpdatedUserData, changeAlert } =
+    useGlobalContext();
 
   const [hoveredStar, setHoveredStar] = useState(0);
   const [rated, setRated] = useState(0);
+
+  const [givenReviewTitle, setGivenReviewTitle] = useState("");
+  const [givenReviewDesc, setGivenReviewDesc] = useState("");
 
   const [reviewTitleInput, setReviewTitleInput] = useState("");
   const [reviewInput, setReviewInput] = useState("");
@@ -16,18 +20,32 @@ function Reviews({ book }) {
   const [ratings, setRatings] = useState();
   const [totalRatings, setTotalRatings] = useState(0);
   const [averageRating, setAverageRating] = useState(0);
+  const [givenReview, setGivenReview] = useState();
 
   const addReview = () => {
     const Review = {
       title: reviewTitleInput,
       description: reviewInput,
       user: userData._id,
-      username: userData.username,
       book: book._id,
     };
     axios.post("http://localhost:8000/review/addReview", Review).then((res) => {
       console.log(res.data);
+      getReviews();
     });
+  };
+  const editReview = () => {
+    const Review = {
+      title: reviewTitleInput,
+      description: reviewInput,
+      reviewId: givenReview._id,
+    };
+    axios
+      .post("http://localhost:8000/review/editReview", Review)
+      .then((res) => {
+        console.log(res.data);
+        getReviews();
+      });
   };
 
   const addRating = (rate) => {
@@ -54,15 +72,18 @@ function Reviews({ book }) {
   };
 
   const getUserReview = (rev) => {
+    console.log("getUser Reviews");
     axios.get("http://localhost:8000/review/getReview/" + rev).then((res) => {
+      console.log(res.data.data);
       let novelData = res.data.data;
-      //setRated(novelData.rating);
-      setReviewTitleInput(novelData.title);
-      setReviewInput(novelData.description);
+      setGivenReview(novelData);
+      setGivenReviewTitle(novelData.title);
+      setGivenReviewDesc(novelData.description);
     });
   };
 
   const checkReviewGiven = () => {
+    console.log("check review given");
     userData &&
       userData.books.forEach((item) => {
         if (item.book === book._id) {
@@ -111,9 +132,9 @@ function Reviews({ book }) {
 
   useEffect(() => {
     getReviews();
-    checkReviewGiven();
     calculateRatingPercentages();
     calculateAverageRating();
+    checkReviewGiven();
   }, []);
   return (
     <section className="reviewSection">
@@ -154,65 +175,131 @@ function Reviews({ book }) {
             })}
         </div>
       </div>
-      <div className="reviewSection-myReview">
-        <input
-          type="text"
-          className="titleInput"
-          placeholder="Review title"
-          value={reviewTitleInput}
-          onChange={(e) => setReviewTitleInput(e.target.value)}
-        />
-        <textarea
-          type="text"
-          className="reviewInput"
-          placeholder="Write review here"
-          value={reviewInput}
-          onChange={(e) => setReviewInput(e.target.value)}
-        ></textarea>
-        <div className="rate">
-          <div className="text">Rating: </div>
-          <div className="stars">
-            {Array(5)
-              .fill(0)
-              .map((_, id) => {
-                return (
-                  <FaStar
-                    key={`star${id}`}
-                    onMouseEnter={() => {
-                      setHoveredStar(id + 1);
-                    }}
-                    onMouseLeave={() => {
-                      setHoveredStar(0);
-                    }}
-                    onClick={() => {
-                      addRating(id + 1);
-                    }}
-                    className={`icon ${
-                      (hoveredStar > 0 && id + 1 <= hoveredStar) ||
-                      (rated > 0 && id + 1 <= rated)
-                        ? "hovered"
-                        : ""
-                    }`}
-                  />
-                );
-              })}
+
+      {givenReview ? (
+        <div className="reviewSection-myReview">
+          <p className="reviewSection-myReview-heading">Edit Review</p>
+          <div className="reviewSection-myReview-content">
+            <input
+              type="text"
+              className="titleInput"
+              placeholder="Review title"
+              value={givenReviewTitle}
+              onChange={(e) => setGivenReviewTitle(e.target.value)}
+            />
+            <textarea
+              type="text"
+              className="reviewInput"
+              placeholder="Write review here"
+              value={givenReviewDesc}
+              onChange={(e) => setGivenReviewDesc(e.target.value)}
+            ></textarea>
+            <div className="rate">
+              <div className="text">Rating: </div>
+              <div className="stars">
+                {Array(5)
+                  .fill(0)
+                  .map((_, id) => {
+                    return (
+                      <FaStar
+                        key={`star${id}`}
+                        onMouseEnter={() => {
+                          setHoveredStar(id + 1);
+                        }}
+                        onMouseLeave={() => {
+                          setHoveredStar(0);
+                        }}
+                        onClick={() => {
+                          addRating(id + 1);
+                        }}
+                        className={`icon ${
+                          (hoveredStar > 0 && id + 1 <= hoveredStar) ||
+                          (rated > 0 && id + 1 <= rated)
+                            ? "hovered"
+                            : ""
+                        }`}
+                      />
+                    );
+                  })}
+              </div>
+              <button
+                className={`submit ${
+                  givenReviewTitle && givenReviewDesc && isLoggedIn
+                    ? "submit-enabled"
+                    : "submit-disabled"
+                }`}
+                onClick={editReview}
+              >
+                Edit
+              </button>
+            </div>
+            {/* <button className="submitReview">Submit</button> */}
           </div>
-          <button
-            className={`submit ${
-              reviewTitleInput && reviewInput && isLoggedIn
-                ? "submit-enabled"
-                : "submit-disabled"
-            }`}
-            onClick={addReview}
-          >
-            Submit
-          </button>
         </div>
-        {/* <button className="submitReview">Submit</button> */}
-      </div>
+      ) : (
+        <div className="reviewSection-myReview">
+          <p className="reviewSection-myReview-heading">Write Review</p>
+          <div className="reviewSection-myReview-content">
+            <input
+              type="text"
+              className="titleInput"
+              placeholder="Review title"
+              value={reviewTitleInput}
+              onChange={(e) => setReviewTitleInput(e.target.value)}
+            />
+            <textarea
+              type="text"
+              className="reviewInput"
+              placeholder="Write review here"
+              value={reviewInput}
+              onChange={(e) => setReviewInput(e.target.value)}
+            ></textarea>
+            <div className="rate">
+              <div className="text">Rating: </div>
+              <div className="stars">
+                {Array(5)
+                  .fill(0)
+                  .map((_, id) => {
+                    return (
+                      <FaStar
+                        key={`star${id}`}
+                        onMouseEnter={() => {
+                          setHoveredStar(id + 1);
+                        }}
+                        onMouseLeave={() => {
+                          setHoveredStar(0);
+                        }}
+                        onClick={() => {
+                          addRating(id + 1);
+                        }}
+                        className={`icon ${
+                          (hoveredStar > 0 && id + 1 <= hoveredStar) ||
+                          (rated > 0 && id + 1 <= rated)
+                            ? "hovered"
+                            : ""
+                        }`}
+                      />
+                    );
+                  })}
+              </div>
+              <button
+                className={`submit ${
+                  reviewTitleInput && reviewInput && isLoggedIn
+                    ? "submit-enabled"
+                    : "submit-disabled"
+                }`}
+                onClick={addReview}
+              >
+                Submit
+              </button>
+            </div>
+            {/* <button className="submitReview">Submit</button> */}
+          </div>
+        </div>
+      )}
       <div className="reviewSection-reviews">
         {reviews.map((review) => {
-          return <Review review={review} />;
+          return <Review reviewId={review} />;
         })}
         <p className="loadMore">View More...</p>
       </div>

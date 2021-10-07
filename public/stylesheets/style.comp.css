@@ -248,7 +248,11 @@ a:link, a:visited, a:hover, a:active {
   background-color: black; }
   .homePage-container {
     overflow: hidden;
-    overflow-y: auto; }
+    overflow-y: auto;
+    padding-bottom: 6rem;
+    display: flex;
+    flex-flow: column;
+    align-items: center; }
     .homePage-container::-webkit-scrollbar {
       width: 1.5rem; }
     .homePage-container::-webkit-scrollbar-track {
@@ -351,8 +355,8 @@ a:link, a:visited, a:hover, a:active {
         background-color: white; }
   .homePage-novels {
     margin-top: 6rem;
-    padding: 5rem 12%;
-    width: 100%;
+    padding-bottom: 0;
+    width: 76%;
     z-index: 2;
     position: relative; }
     .homePage-novels-heading {
@@ -420,12 +424,7 @@ a:link, a:visited, a:hover, a:active {
             font-size: 1.6rem; }
     .homePage-novels-slider {
       position: relative;
-      height: max-content;
-      margin-bottom: 5rem;
-      width: 100%;
-      overflow: hidden;
-      overflow-x: auto;
-      background-color: antiquewhite; }
+      margin-bottom: 5rem; }
       .homePage-novels-slider .leftButton {
         z-index: 2;
         position: absolute;
@@ -521,21 +520,25 @@ a:link, a:visited, a:hover, a:active {
           width: 30rem;
           border-radius: 5px;
           background-color: #666666; }
+      .homePage-novels-slider .novels {
+        position: relative;
+        margin-bottom: 5rem;
+        border-radius: 1rem;
+        overflow: hidden;
+        overflow-x: scroll;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch; }
+        .homePage-novels-slider .novels::-webkit-scrollbar {
+          display: none; }
     .homePage-novels .novelSection {
       width: max-content;
       z-index: 2;
       display: flex;
       flex-flow: row;
-      gap: 1rem;
-      overflow-x: scroll;
-      scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch; }
-      .homePage-novels .novelSection::-webkit-scrollbar {
-        display: none; }
+      gap: 1rem; }
       .homePage-novels .novelSection .novel {
         scroll-snap-align: start;
         width: 23rem;
-        border-radius: 1rem;
         overflow: hidden;
         position: relative; }
         .homePage-novels .novelSection .novel-img {
@@ -569,7 +572,6 @@ a:link, a:visited, a:hover, a:active {
               content: "";
               position: absolute;
               top: 100%;
-              border-radius: 1px;
               left: -100%;
               z-index: 10;
               width: 100%;
@@ -627,6 +629,72 @@ a:link, a:visited, a:hover, a:active {
     .homePage-novels-more {
       padding: 1rem 0.2rem;
       font-size: 1.6rem; }
+  .homePage-novelList {
+    width: 100%;
+    z-index: 2;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap: 1.5rem; }
+    .homePage-novelList-novel {
+      height: max-content;
+      width: 37rem;
+      display: flex;
+      flex-flow: row;
+      justify-content: space-between;
+      background-color: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(40px);
+      border: 1px solid #363636;
+      border-radius: 1rem;
+      overflow: hidden; }
+      .homePage-novelList-novel .img {
+        display: block;
+        height: 15rem;
+        width: 11.5rem;
+        background-size: cover;
+        background-position: center;
+        padding: 0%; }
+      .homePage-novelList-novel .info {
+        height: 15rem;
+        width: calc(100% - 11.5rem);
+        padding: 1rem;
+        display: flex;
+        flex-flow: column;
+        justify-content: space-between; }
+        .homePage-novelList-novel .info-content {
+          display: flex;
+          flex-flow: column;
+          gap: 0.5rem; }
+        .homePage-novelList-novel .info-title {
+          font-size: 1.6rem;
+          color: #e9e9e9; }
+        .homePage-novelList-novel .info-chapter {
+          font-size: 1.2rem;
+          color: #dadada; }
+        .homePage-novelList-novel .info-updated {
+          font-size: 1rem;
+          color: #52acf7;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem; }
+          .homePage-novelList-novel .info-updated-icon {
+            width: 1.7rem;
+            height: 1.7rem; }
+        .homePage-novelList-novel .info-buttons {
+          display: flex;
+          justify-content: space-between; }
+          .homePage-novelList-novel .info-buttons-btn {
+            width: calc(50% - 0.5rem);
+            color: white;
+            text-transform: uppercase;
+            text-align: center;
+            background-color: #1c65c4;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            letter-spacing: 0.2rem;
+            padding: 0.7rem 1rem; }
+            .homePage-novelList-novel .info-buttons-btn:hover {
+              cursor: pointer; }
 
 .browsePage {
   width: 100%;
@@ -1488,8 +1556,8 @@ a:link, a:visited, a:hover, a:active {
     display: block;
     position: fixed;
     top: 0;
-    left: 22%;
-    width: 88%;
+    left: 0;
+    width: 100%;
     height: 100%;
     background-size: cover;
     background-position: center;
@@ -1505,13 +1573,15 @@ a:link, a:visited, a:hover, a:active {
     align-items: center;
     justify-content: center;
     gap: 3rem;
-    background-color: white; }
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px); }
     .collectionPage-leftPane .item {
       font-size: 3rem;
-      font-weight: bold;
       letter-spacing: 0.3rem;
       transition: all 0.3s ease;
-      z-index: 1; }
+      z-index: 1;
+      color: #b3b3b3; }
       .collectionPage-leftPane .item:hover {
         cursor: pointer;
         transform: scale(1.15); }
@@ -1540,7 +1610,17 @@ a:link, a:visited, a:hover, a:active {
     overflow-y: auto;
     scroll-behavior: smooth;
     transition: all 1s ease;
-    backdrop-filter: blur(5px); }
+    backdrop-filter: blur(5px);
+    /*
+    &-bookmarked {
+      background-color: hsla(160, 91%, 30%, 0.55);
+    }
+    &-ongoing {
+      background-color: hsla(0, 82%, 67%, 0.55);
+    }
+    &-completed {
+      background-color: hsla(212, 69%, 43%, 0.55);
+    }*/ }
     .collectionPage-rightPane::before {
       transition: all 1s ease; }
     .collectionPage-rightPane .novelSection {
@@ -1652,12 +1732,6 @@ a:link, a:visited, a:hover, a:active {
     .collectionPage-rightPane::-webkit-scrollbar-thumb {
       background: #797979;
       border-radius: 0.75rem; }
-    .collectionPage-rightPane-bookmarked {
-      background-color: rgba(7, 146, 100, 0.55); }
-    .collectionPage-rightPane-ongoing {
-      background-color: rgba(240, 102, 102, 0.55); }
-    .collectionPage-rightPane-completed {
-      background-color: rgba(34, 105, 185, 0.55); }
 
 .chapterPage {
   width: 100%; }

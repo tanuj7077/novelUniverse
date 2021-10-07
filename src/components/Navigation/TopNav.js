@@ -10,6 +10,7 @@ const TopNav = () => {
     toggleLoginModalVisibility,
     toggleNotificationVisibility,
     notificationVisibility,
+    userData,
     isLoggedIn,
     logout,
   } = useGlobalContext();
@@ -76,7 +77,7 @@ const TopNav = () => {
                   tab === "profile" ? "active" : ""
                 }`}
                 onClick={() => {
-                  history.push(`/profile`);
+                  history.push(`/profile/${userData.username}`);
                 }}
               >
                 <span className="text">Profile</span>

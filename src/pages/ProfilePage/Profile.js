@@ -171,6 +171,7 @@ const Profile = () => {
     }
   };
   const fetchUserData = async (username) => {
+    console.log(username);
     await axios.get(`http://localhost:8000/user/${username}`).then((res) => {
       console.log("fetched User Data");
       setUserProfileData(res.data.userData);
@@ -184,7 +185,7 @@ const Profile = () => {
 
   useEffect(() => {
     fetchUserData(username);
-  }, []);
+  }, [username]);
   if (userData && username === userData.username) {
     return (
       <div className="profilePage">
@@ -265,7 +266,7 @@ const Profile = () => {
                     }}
                   />
                 </div>
-                {userProfileData.profileData.about ? (
+                {userProfileData && userProfileData.profileData.about ? (
                   <div className="about-content">
                     {userProfileData.profileData.about}
                   </div>

@@ -8,8 +8,10 @@
     display: block;
     position: fixed;
     top: 0;
-    left: 22%;
-    width: 88%;
+    left: 0;
+    width: 100%;
+    //left: 22%;
+    //width: 88%;
     height: 100%;
     background-size: cover;
     background-position: center;
@@ -26,16 +28,19 @@
     align-items: center;
     justify-content: center;
     gap: 3rem;
-    background-color: white;
+    background-color: rgba(black, 0.5);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
     //border-right: 3px solid rgb(187, 187, 187);
     //z-index: 3;
     //background-color: white;
     .item {
       font-size: $logo-small-font-size;
-      font-weight: bold;
+      //font-weight: bold;
       letter-spacing: 0.3rem;
       transition: all 0.3s ease;
       z-index: 1;
+      color: rgb(179, 179, 179);
       &:hover {
         cursor: pointer;
         transform: scale(1.15);
@@ -211,6 +216,7 @@
       background: rgb(121, 121, 121);
       border-radius: 0.75rem;
     }
+    /*
     &-bookmarked {
       background-color: hsla(160, 91%, 30%, 0.55);
     }
@@ -219,6 +225,6 @@
     }
     &-completed {
       background-color: hsla(212, 69%, 43%, 0.55);
-    }
+    }*/
   }
 }
