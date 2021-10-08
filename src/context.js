@@ -21,7 +21,6 @@ const AppProvider = ({ children }) => {
   };
 
   const changeAlert = (msg) => {
-    console.log("alert triggered");
     setAlert(msg);
     setShowAlert(1);
   };

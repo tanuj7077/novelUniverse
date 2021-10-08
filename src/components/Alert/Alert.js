@@ -8,7 +8,6 @@ const Alert = () => {
   useEffect(() => {
     if (showAlert) {
       setTimeout(() => {
-        console.log("closed alert");
         setShowAlert(0);
       }, 3000);
     }

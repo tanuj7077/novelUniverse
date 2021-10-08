@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { FaStar } from "react-icons/fa";
+import { GoArrowUp } from "react-icons/go";
 import axios from "axios";
+import { useGlobalContext } from "../../context";
 
 function Review({ reviewId }) {
+  const { userData, isLoggedIn, changeAlert } = useGlobalContext();
   const [review, setReview] = useState();
   const [expanded, setExpanded] = useState(false);
   const [username, setUsername] = useState("");
@@ -15,7 +18,6 @@ function Review({ reviewId }) {
       .then((res) => {
         setReview(res.data.data);
         getUsername(res.data.data.user);
-        //checkReviewGiven();
       });
   };
   const getUsername = (userId) => {
@@ -25,6 +27,31 @@ function Review({ reviewId }) {
         setUsername(res.data.userData.username);
       });
   };
+  const upvote = () => {
+    if (isLoggedIn && review) {
+      if (review.user === userData._id) {
+        changeAlert({
+          type: "error",
+          messages: ["You can't upvote your own review"],
+        });
+      } else if (review.upvotes.includes(userData._id)) {
+        changeAlert({
+          type: "error",
+          messages: ["Review already upvoted"],
+        });
+      } else {
+        axios
+          .post("http://localhost:8000/review/upvote/" + reviewId, {
+            user: userData._id,
+          })
+          .then((res) => {
+            console.log(res.data);
+            changeAlert(res.data.message);
+            getReview();
+          });
+      }
+    }
+  };
   useEffect(() => {
     getReview();
   }, []);
@@ -33,7 +60,10 @@ function Review({ reviewId }) {
       {review ? (
         <div className="review">
           <div className="heading">
-            <p className="title">{review.title}</p>
+            <p className="heading-title">{review.title}</p>
+            <p className="heading-time">
+              {new Date(review.date).toLocaleString()}
+            </p>
           </div>
           <span className="desc">
             {!expanded ? (
@@ -58,7 +88,13 @@ function Review({ reviewId }) {
               </p>
             )}
           </span>
-          <div className="reviewUser">{username}</div>
+          <div className="info">
+            <div className="info-reviewUser">{username}</div>
+            <div className="info-upvotes">
+              <GoArrowUp className="info-upvotes-icon" onClick={upvote} />
+              <p className="info-upvotes-count">{review.upvotes.length}</p>
+            </div>
+          </div>
         </div>
       ) : (
         <div className="review-notLoaded"></div>

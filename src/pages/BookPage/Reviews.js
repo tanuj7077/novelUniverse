@@ -7,6 +7,7 @@ import Review from "../../components/Review/Review";
 function Reviews({ book }) {
   const { userData, isLoggedIn, getUpdatedUserData, changeAlert } =
     useGlobalContext();
+  const REVIEWS_LIMIT = 8;
 
   const [hoveredStar, setHoveredStar] = useState(0);
   const [rated, setRated] = useState(0);
@@ -17,6 +18,7 @@ function Reviews({ book }) {
   const [reviewTitleInput, setReviewTitleInput] = useState("");
   const [reviewInput, setReviewInput] = useState("");
   const [reviews, setReviews] = useState([]);
+  const [page, setPage] = useState(1);
   const [ratings, setRatings] = useState();
   const [totalRatings, setTotalRatings] = useState(0);
   const [averageRating, setAverageRating] = useState(0);
@@ -36,14 +38,13 @@ function Reviews({ book }) {
   };
   const editReview = () => {
     const Review = {
-      title: reviewTitleInput,
-      description: reviewInput,
+      title: givenReviewTitle,
+      description: givenReviewDesc,
       reviewId: givenReview._id,
     };
     axios
       .post("http://localhost:8000/review/editReview", Review)
       .then((res) => {
-        console.log(res.data);
         getReviews();
       });
   };
@@ -67,6 +68,8 @@ function Reviews({ book }) {
     axios
       .get("http://localhost:8000/review/getReviews/" + book._id)
       .then((res) => {
+        console.log("executed");
+        console.log(res.data.data);
         setReviews(res.data.data);
       });
   };
@@ -84,7 +87,13 @@ function Reviews({ book }) {
 
   const checkReviewGiven = () => {
     console.log("check review given");
+    if (!userData || !userData.books) {
+      setGivenReview(null);
+      setGivenReviewTitle("");
+      setGivenReviewDesc("");
+    }
     userData &&
+      userData.books &&
       userData.books.forEach((item) => {
         if (item.book === book._id) {
           if (book.reviews) {
@@ -134,8 +143,11 @@ function Reviews({ book }) {
     getReviews();
     calculateRatingPercentages();
     calculateAverageRating();
-    checkReviewGiven();
   }, []);
+
+  useEffect(() => {
+    checkReviewGiven();
+  }, [userData]);
   return (
     <section className="reviewSection">
       <p className="reviewSection-subheading">Reviews</p>
@@ -298,10 +310,17 @@ function Reviews({ book }) {
         </div>
       )}
       <div className="reviewSection-reviews">
-        {reviews.map((review) => {
-          return <Review reviewId={review} />;
-        })}
-        <p className="loadMore">View More...</p>
+        <p className="reviewSection-reviews-heading">Given Reviews</p>
+        <div className="reviewSection-reviews-content">
+          {reviews.slice(0, page * REVIEWS_LIMIT).map((review) => {
+            return <Review reviewId={review} />;
+          })}
+          {reviews.slice(0, page * REVIEWS_LIMIT).length < reviews.length && (
+            <p className="loadMore" onClick={() => setPage(page + 1)}>
+              View More...
+            </p>
+          )}
+        </div>
       </div>
     </section>
   );
