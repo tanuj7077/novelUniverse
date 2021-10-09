@@ -1480,49 +1480,62 @@ a:link, a:visited, a:hover, a:active {
                 background-color: #7a7a7a; }
               .bookPage-container .contentSection .reviewSection-myReview-content .rate .submit-enabled {
                 background-color: #2079c2; }
-        .bookPage-container .contentSection .reviewSection-reviews {
+        .bookPage-container .contentSection .reviewSection-reviews-heading {
+          font-size: 1.6rem;
+          text-transform: uppercase;
+          margin-bottom: 1rem;
+          padding-left: 0.5rem; }
+        .bookPage-container .contentSection .reviewSection-reviews-content {
           display: flex;
           flex-flow: column;
           gap: 2px;
           background-color: transparent;
           border-radius: 1rem;
           overflow: hidden; }
-          .bookPage-container .contentSection .reviewSection-reviews .review {
+          .bookPage-container .contentSection .reviewSection-reviews-content .review {
             padding: 2rem;
             display: flex;
             flex-flow: column;
             gap: 1rem;
             background-color: #2f2f35; }
-            .bookPage-container .contentSection .reviewSection-reviews .review .heading {
+            .bookPage-container .contentSection .reviewSection-reviews-content .review .heading {
               display: flex;
-              gap: 2rem; }
-              .bookPage-container .contentSection .reviewSection-reviews .review .heading .rated {
-                display: flex;
-                gap: 0.5rem;
-                align-items: center;
-                font-size: 1.6rem;
-                border: 2px solid #bebebe;
-                color: #bebebe;
-                padding: 0 0.5rem; }
-                .bookPage-container .contentSection .reviewSection-reviews .review .heading .rated .icon {
-                  width: 1.2rem;
-                  height: 1.2rem; }
-              .bookPage-container .contentSection .reviewSection-reviews .review .heading .title {
+              justify-content: space-between; }
+              .bookPage-container .contentSection .reviewSection-reviews-content .review .heading-title {
                 font-size: 2rem;
                 font-weight: bold; }
-            .bookPage-container .contentSection .reviewSection-reviews .review .desc {
+              .bookPage-container .contentSection .reviewSection-reviews-content .review .heading-time {
+                font-size: 1.6rem;
+                color: #bebebe; }
+            .bookPage-container .contentSection .reviewSection-reviews-content .review .desc {
               font-size: 1.6rem;
               letter-spacing: 0.2rem;
               text-align: justify;
               color: #bebebe; }
-              .bookPage-container .contentSection .reviewSection-reviews .review .desc .more {
+              .bookPage-container .contentSection .reviewSection-reviews-content .review .desc .more {
                 margin-left: 1rem;
                 font-size: 1.2rem;
                 color: #3088cf; }
-            .bookPage-container .contentSection .reviewSection-reviews .review .reviewUser {
-              font-size: 1.6rem;
-              color: #bebebe; }
-          .bookPage-container .contentSection .reviewSection-reviews .loadMore {
+                .bookPage-container .contentSection .reviewSection-reviews-content .review .desc .more:hover {
+                  cursor: pointer; }
+            .bookPage-container .contentSection .reviewSection-reviews-content .review .info {
+              display: flex;
+              gap: 2rem; }
+              .bookPage-container .contentSection .reviewSection-reviews-content .review .info-reviewUser {
+                font-size: 1.6rem;
+                color: #bebebe; }
+              .bookPage-container .contentSection .reviewSection-reviews-content .review .info-upvotes {
+                display: flex;
+                align-items: center; }
+                .bookPage-container .contentSection .reviewSection-reviews-content .review .info-upvotes-icon {
+                  width: 2rem;
+                  height: 2rem; }
+                  .bookPage-container .contentSection .reviewSection-reviews-content .review .info-upvotes-icon:hover {
+                    cursor: pointer; }
+                .bookPage-container .contentSection .reviewSection-reviews-content .review .info-upvotes-count {
+                  font-size: 1.6rem;
+                  color: #bebebe; }
+          .bookPage-container .contentSection .reviewSection-reviews-content .loadMore {
             padding: 0.5rem 0;
             font-size: 2.5rem;
             text-transform: uppercase;
@@ -1530,7 +1543,7 @@ a:link, a:visited, a:hover, a:active {
             text-align: center;
             color: #a8a8a8;
             background-color: #555555; }
-            .bookPage-container .contentSection .reviewSection-reviews .loadMore:hover {
+            .bookPage-container .contentSection .reviewSection-reviews-content .loadMore:hover {
               cursor: pointer; }
     .bookPage-container .selection {
       display: flex;

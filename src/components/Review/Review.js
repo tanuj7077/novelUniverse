@@ -5,7 +5,8 @@ import axios from "axios";
 import { useGlobalContext } from "../../context";
 
 function Review({ reviewId }) {
-  const { userData, isLoggedIn, changeAlert } = useGlobalContext();
+  const { userData, isLoggedIn, changeAlert, toggleLoginModalVisibility } =
+    useGlobalContext();
   const [review, setReview] = useState();
   const [expanded, setExpanded] = useState(false);
   const [username, setUsername] = useState("");
@@ -28,6 +29,13 @@ function Review({ reviewId }) {
       });
   };
   const upvote = () => {
+    if (!isLoggedIn) {
+      changeAlert({
+        type: "error",
+        messages: ["You need to login first"],
+      });
+      toggleLoginModalVisibility();
+    }
     if (isLoggedIn && review) {
       if (review.user === userData._id) {
         changeAlert({

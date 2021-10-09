@@ -32,7 +32,6 @@ function Reviews({ book }) {
       book: book._id,
     };
     axios.post("http://localhost:8000/review/addReview", Review).then((res) => {
-      console.log(res.data);
       getReviews();
     });
   };
@@ -46,20 +45,52 @@ function Reviews({ book }) {
       .post("http://localhost:8000/review/editReview", Review)
       .then((res) => {
         getReviews();
+        changeAlert(res.data.message);
       });
   };
 
+  const checkRatingGiven = () => {
+    let c = 0;
+    userData &&
+      userData.books &&
+      userData.books.forEach((item) => {
+        if (item.book === book._id && item.rating > 0) {
+          c++;
+        }
+      });
+    if (c) {
+      return true;
+    }
+    return false;
+  };
   const addRating = (rate) => {
-    if (userData && isLoggedIn) {
+    if (isLoggedIn) {
       let data = {
         rating: rate,
         userId: userData._id,
         bookId: book._id,
       };
-      axios.post("http://localhost:8000/review/addRating", data).then((res) => {
-        console.log(res.data);
-        setRated(rate);
-        getUpdatedUserData();
+      if (checkRatingGiven()) {
+        axios
+          .post("http://localhost:8000/review/editRating", data)
+          .then((res) => {
+            changeAlert(res.data.message);
+            setRated(rate);
+            getUpdatedUserData();
+          });
+      } else {
+        axios
+          .post("http://localhost:8000/review/addRating", data)
+          .then((res) => {
+            changeAlert(res.data.message);
+            setRated(rate);
+            getUpdatedUserData();
+          });
+      }
+    } else {
+      changeAlert({
+        type: "error",
+        messages: ["You need to login first"],
       });
     }
   };
@@ -68,8 +99,6 @@ function Reviews({ book }) {
     axios
       .get("http://localhost:8000/review/getReviews/" + book._id)
       .then((res) => {
-        console.log("executed");
-        console.log(res.data.data);
         setReviews(res.data.data);
       });
   };
@@ -77,7 +106,6 @@ function Reviews({ book }) {
   const getUserReview = (rev) => {
     console.log("getUser Reviews");
     axios.get("http://localhost:8000/review/getReview/" + rev).then((res) => {
-      console.log(res.data.data);
       let novelData = res.data.data;
       setGivenReview(novelData);
       setGivenReviewTitle(novelData.title);
@@ -108,6 +136,7 @@ function Reviews({ book }) {
   };
 
   const calculateRatingPercentages = () => {
+    console.log("calculated");
     let total = 0;
     let ratings = [];
     if (book) {
@@ -143,6 +172,8 @@ function Reviews({ book }) {
     getReviews();
     calculateRatingPercentages();
     calculateAverageRating();
+    //calculateRatingPercentages();
+    //calculateAverageRating();
   }, []);
 
   useEffect(() => {
@@ -321,6 +352,11 @@ function Reviews({ book }) {
             </p>
           )}
         </div>
+        {reviews.length === 0 && (
+          <div className="reviewSection-reviews-noContent">
+            No reviews given yet
+          </div>
+        )}
       </div>
     </section>
   );

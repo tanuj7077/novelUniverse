@@ -28,7 +28,7 @@ const AppProvider = ({ children }) => {
     axios
       .get(`http://localhost:8000/user/getUpdatedUserData/${userData._id}`)
       .then((res) => {
-        setUserData(res.data);
+        setUserData(res.data.userData);
       });
   };
 
