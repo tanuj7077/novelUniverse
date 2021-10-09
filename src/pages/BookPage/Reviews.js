@@ -99,6 +99,7 @@ function Reviews({ book }) {
     axios
       .get("http://localhost:8000/review/getReviews/" + book._id)
       .then((res) => {
+        console.log(res.data.data);
         setReviews(res.data.data);
       });
   };

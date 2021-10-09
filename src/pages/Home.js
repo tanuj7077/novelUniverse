@@ -6,6 +6,7 @@ import { VscChevronLeft, VscChevronRight } from "react-icons/vsc";
 import { AiOutlineClockCircle } from "react-icons/ai";
 import axios from "axios";
 import { browseNovels } from "../mockData";
+import Slider from "../pages/HomePage/Slider";
 const Home = () => {
   const [newRelease, setNewRelease] = useState([]); //move to context
   const fetchNewRelease = async () => {
@@ -40,46 +41,11 @@ const Home = () => {
         <Carousel />
         <div className="homePage-novels">
           <p className="homePage-novels-heading">New Releases</p>
-          <div className="homePage-novels-slider">
-            <span className="leftButton" onClick={() => handleScroll("left")}>
-              <VscChevronLeft className="icon" />
-            </span>
-            <div className="novels" ref={sliderRef}>
-              <div className="novelSection">
-                {newRelease.map((item) => {
-                  return <Thumbnail novel={item} />;
-                })}
-                {newRelease.map((item) => {
-                  return <Thumbnail novel={item} />;
-                })}
-                {newRelease.map((item) => {
-                  return <Thumbnail novel={item} />;
-                })}
-                {newRelease.map((item) => {
-                  return <Thumbnail novel={item} />;
-                })}
-                {newRelease.map((item) => {
-                  return <Thumbnail novel={item} />;
-                })}
-              </div>
-            </div>
-
-            <span
-              className="rightButton"
-              ref={rightBtnRef}
-              onClick={() => handleScroll("right")}
-            >
-              <VscChevronRight className="icon" />
-            </span>
-          </div>
+          <Slider novels={newRelease} />
         </div>
         <div className="homePage-novels">
           <p className="homePage-novels-heading">Most Viewed</p>
-          <div className="novelSection">
-            {mostViewed.map((item) => {
-              return <Thumbnail novel={item} />;
-            })}
-          </div>
+          <Slider novels={mostViewed} />
         </div>
         <div className="homePage-novels">
           <p className="homePage-novels-heading">Latest Updates</p>
