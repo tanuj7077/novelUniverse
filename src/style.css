@@ -130,6 +130,9 @@ input,
 textarea {
   font-family: "Nunito", sans-serif, courier, arial, helvetica; }
 
+.btn:hover {
+  cursor: pointer; }
+
 a:link, a:visited, a:hover, a:active {
   text-decoration: none;
   color: white; }

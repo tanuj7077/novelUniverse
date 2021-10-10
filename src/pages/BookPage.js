@@ -6,15 +6,19 @@ import bg1 from "../assets/bg-3.jpg";
 import useOnScreen from "../components/Utilities/useOnScreen";
 import axios from "axios";
 import ChapterSection from "./BookPage/ChapterSection";
-
+import { useGlobalContext } from "../context";
 import { useParams } from "react-router-dom";
 
 const BookPage = () => {
+  const { userData, isLoggedIn, getUpdatedUserData, changeAlert } =
+    useGlobalContext();
+
   const introRef = useRef();
   const introVisible = useOnScreen(introRef);
   const { bookId } = useParams();
   const [novelData, setNovelData] = useState();
   const [averageRating, setAverageRating] = useState(0);
+  const [bookmarked, setBookmarked] = useState();
   const fetchBookData = (id) => {
     axios.get(`http://localhost:8000/book/${id}`).then((res) => {
       setNovelData(res.data.data.novel);
@@ -56,6 +60,37 @@ const BookPage = () => {
       setAverageRating(averageRating);
     }
   };
+  const bookmark = async () => {
+    isLoggedIn &&
+      (await axios
+        .post(`http://localhost:8000/book/bookmark/${bookId}`, {
+          userId: userData._id,
+        })
+        .then((res) => {
+          changeAlert(res.data.message);
+          fetchBookData(bookId);
+          getUpdatedUserData();
+          checkBookmarked();
+        }));
+  };
+  const checkBookmarked = () => {
+    let c = 0;
+    userData &&
+      userData.books &&
+      userData.books.forEach((item) => {
+        if (item.book === bookId && item.bookmarked) {
+          c++;
+        }
+      });
+    if (c) {
+      setBookmarked(true);
+    } else {
+      setBookmarked(false);
+    }
+  };
+  useEffect(() => {
+    checkBookmarked();
+  }, []);
   return (
     <div className="bookPage">
       <div className="bookPage-container">
@@ -85,6 +120,7 @@ const BookPage = () => {
                     <FaStar className="icon" />
                   </div>
                 </div>
+
                 <div className="introSection-container-content-midSection">
                   <div className="introSection-container-content-infoSectionCard">
                     <div className="subheading">Stats</div>
@@ -102,7 +138,7 @@ const BookPage = () => {
                     <div className="count">{novelObj.status}</div>
                   </div> */}
                       <div className="introSection-container-content-infoSection-item">
-                        <div className="count">{novelObj.bookmarked}</div>
+                        <div className="count">{novelData.bookmarked}</div>
                         <div className="subheading">Bookmarked</div>
                       </div>
                     </div>
@@ -125,7 +161,13 @@ const BookPage = () => {
                     <span className="text">{novelObj.readStatus}</span>
                   </div>
                   <div className="add btn">
-                    <span className="text">Bookmark</span>
+                    {bookmarked ? (
+                      <span className="text">Bookmarked</span>
+                    ) : (
+                      <span className="text" onClick={bookmark}>
+                        Bookmark
+                      </span>
+                    )}
                   </div>
                 </div>
               </div>

@@ -155,6 +155,11 @@ textarea {
   font-family: "Nunito", sans-serif, courier, arial, helvetica;
 }
 
+.btn {
+  &:hover {
+    cursor: pointer;
+  }
+}
 ::selection {
   // background-color: var(--color-tertiary-light);
   // color: var(--color-white);
