@@ -23,18 +23,6 @@ function Slider({ novels }) {
           {novels.map((item) => {
             return <Thumbnail2 novel={item} />;
           })}
-          {novels.map((item) => {
-            return <Thumbnail2 novel={item} />;
-          })}
-          {novels.map((item) => {
-            return <Thumbnail2 novel={item} />;
-          })}
-          {novels.map((item) => {
-            return <Thumbnail2 novel={item} />;
-          })}
-          {novels.map((item) => {
-            return <Thumbnail2 novel={item} />;
-          })}
         </div>
       </div>
       <span

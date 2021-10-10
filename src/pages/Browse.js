@@ -20,6 +20,7 @@ const Browse = () => {
   const [searchMode, setSearchMode] = useState(false);
   const [searchText, setSearchText] = useState("");
   const [searchResult, setSearchResult] = useState([]);
+  const [novels, setNovels] = useState([]);
   const history = useHistory();
 
   const checkTagAddedPresense = (tag) => {
@@ -42,11 +43,9 @@ const Browse = () => {
       });
       newList.splice(index, 1);
       setTagAdded(newList);
-      console.log("removed from tagAdded");
       newList = [...tagRemoved];
       newList.push(tag);
       setTagRemoved(newList);
-      console.log("added to tagRemoved");
       return;
     } else if (tagRemoved.includes(tag)) {
       let newList = [...tagRemoved];
@@ -58,13 +57,11 @@ const Browse = () => {
       });
       newList.splice(index, 1);
       setTagRemoved(newList);
-      console.log("removed from tagRemoved");
       return;
     } else {
       let newList = [...tagAdded];
       newList.push(tag);
       setTagAdded(newList);
-      console.log("added to tagAdded");
       return;
     }
   };
@@ -86,10 +83,29 @@ const Browse = () => {
   const goToNovel = (id) => {
     history.push(`book/${id}`);
   };
+  const getNovels = () => {
+    axios
+      .post(
+        `http://localhost:8000/book/getNovels/${currentStatus}/${currentOrder}`,
+        {
+          tagAdded,
+          tagRemoved,
+        }
+      )
+      .then((res) => {
+        console.log(res.data.data);
+        setNovels(res.data.data);
+      });
+  };
+  //useEffect
   const [currentStatus, setCurrentStatus] = useState("all");
   const [currentOrder, setCurrentOrder] = useState("new");
   let status = ["all", "completed", "ongoing"];
   let order = ["new", "views", "ratings"];
+
+  useEffect(() => {
+    getNovels();
+  }, [currentStatus, currentOrder]);
   return (
     <div className="browsePage">
       <div className="browsePage-container">
@@ -198,7 +214,9 @@ const Browse = () => {
                       })}
                   </div>
                 </div>
-                <div className="submitBtn">Apply Filters</div>
+                <div className="submitBtn" onClick={getNovels}>
+                  Apply Filters
+                </div>
                 <div className="genres">
                   <div className="genres-heading">Status</div>
                   <div className="genres-items">
@@ -246,7 +264,7 @@ const Browse = () => {
         <div className="novels">
           <div className="novels-heading">Novels List</div>
           <div className="novels-list">
-            {browseNovels.map((item) => {
+            {novels.map((item) => {
               return <DataThumb novel={item} />;
             })}
           </div>

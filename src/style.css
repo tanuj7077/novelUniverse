@@ -992,7 +992,8 @@ a:link, a:visited, a:hover, a:active {
       .browsePage-container-top-searchMode .filters {
         display: none; }
   .browsePage .novels {
-    z-index: 2; }
+    z-index: 2;
+    margin-bottom: 4rem; }
     .browsePage .novels-heading {
       text-transform: uppercase;
       letter-spacing: 0.3rem;
@@ -1067,7 +1068,8 @@ a:link, a:visited, a:hover, a:active {
             align-items: center;
             color: #c2c2c2; }
             .browsePage .novels-list .novel-info-item .count {
-              font-size: 2.5rem; }
+              font-size: 2.5rem;
+              text-transform: capitalize; }
           .browsePage .novels-list .novel-info-desc {
             color: #c2c2c2;
             font-size: 1.6rem; }

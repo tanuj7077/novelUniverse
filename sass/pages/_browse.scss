@@ -299,7 +299,7 @@
 
   .novels {
     z-index: 2;
-
+    margin-bottom: 4rem;
     &-heading {
       text-transform: uppercase;
       letter-spacing: 0.3rem;
@@ -307,8 +307,6 @@
       font-size: $small-font-size;
       font-weight: bold;
       margin-bottom: 2rem;
-    }
-    &-filters {
     }
     &-list {
       display: flex;
@@ -387,6 +385,7 @@
             color: rgb(194, 194, 194);
             .count {
               font-size: $medium-font-size;
+              text-transform: capitalize;
             }
           }
           &-desc {

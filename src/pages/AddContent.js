@@ -38,6 +38,7 @@ function AddContent() {
   const [selectedBook, setSelectedBook] = useState();
   const [chapterTitle, setChapterTitle] = useState("");
   const [chapterContent, setChapterContent] = useState("");
+  const [bookStatus, setBookStatus] = useState("");
   const handleImage = (e) => {
     if (e.target.files && e.target.files[0]) {
       let reader = new FileReader();
@@ -147,6 +148,16 @@ function AddContent() {
       .catch((err) => {
         console.log(err);
       });
+  };
+  const submitStatus = async () => {
+    let Book = {
+      bookId: selectedBook._id,
+      status: bookStatus,
+    };
+    axios.post("http://localhost:8000/book/setStatus", Book).then((res) => {
+      console.log("Status updated");
+      console.log(res);
+    });
   };
   return (
     <div className="addContentPage">
@@ -358,12 +369,12 @@ function AddContent() {
           <input
             type="text"
             className="text"
-            onChange={(e) => setChapterTitle(e.target.value)}
+            onChange={(e) => setBookStatus(e.target.value)}
           />
         </div>
         <button
           className="addContentPage-addContent-submitBtn"
-          onClick={submitChapter}
+          onClick={submitStatus}
         >
           Submit
         </button>

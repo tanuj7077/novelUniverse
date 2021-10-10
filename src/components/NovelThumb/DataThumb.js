@@ -7,7 +7,7 @@ const DataThumb = ({ novel }) => {
       <div
         className="novel-img"
         style={{
-          backgroundImage: `url(${novel.img})`,
+          backgroundImage: `url(${novel.imageUrl})`,
         }}
       ></div>
       <div className="novel-info">
@@ -21,7 +21,7 @@ const DataThumb = ({ novel }) => {
                     history.push(`/book/book1`);
                   }}
                 >
-                  {novel.title}
+                  {novel.name}
                 </div>
               )}
             />
@@ -29,7 +29,7 @@ const DataThumb = ({ novel }) => {
           </div>
 
           <div className="novel-info-top-rating">
-            <div className="ratingText">{novel.rating}</div>
+            <div className="ratingText">{novel.averageRating}</div>
             <FaStar className="ratingIcon" />
           </div>
         </div>
@@ -37,11 +37,11 @@ const DataThumb = ({ novel }) => {
         <div className="novel-info-stats">
           <div className="novel-info-item">
             <span className="subHeading">Chapters</span>
-            <span className="count">{novel.chapters}</span>
+            <span className="count">{novel.chapters.length}</span>
           </div>
           <div className="novel-info-item">
             <span className="subHeading">Rank</span>
-            <span className="count">{novel.rank}</span>
+            <span className="count">{1}</span>
           </div>
           <div className="novel-info-item">
             <span className="subHeading">Bookmarked</span>
@@ -52,7 +52,9 @@ const DataThumb = ({ novel }) => {
             <span className="count">{novel.status}</span>
           </div>
         </div>
-        <div className="novel-info-desc">{novel.desc.substring(0, 200)}...</div>
+        <div className="novel-info-desc">
+          {novel.description.substring(0, 200)}...
+        </div>
         <div className="novel-info-buttons">
           <div className="btn">Read</div>
           <div className="btn">Bookmark</div>
