@@ -214,7 +214,7 @@ const Browse = () => {
                       })}
                   </div>
                 </div>
-                <div className="submitBtn" onClick={getNovels}>
+                <div className="submitBtn btn" onClick={getNovels}>
                   Apply Filters
                 </div>
                 <div className="genres">

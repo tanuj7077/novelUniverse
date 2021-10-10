@@ -6,9 +6,11 @@ import { IoMdColorPalette } from "react-icons/io";
 import { CgDarkMode } from "react-icons/cg";
 import { useParams, Route, useHistory } from "react-router-dom";
 import axios from "axios";
+import { useGlobalContext } from "../../context";
 import Comments from "./Comments/Comments";
 
 const Chapter = () => {
+  const { userData, isLoggedIn, addChapterRead } = useGlobalContext();
   const { id } = useParams();
   const [chapterInput, setChapterInput] = useState("1");
   const [chapterSelectionPopupVis, setChapterSelectionPopupVis] =
@@ -63,10 +65,17 @@ const Chapter = () => {
   }, [fontSizeVal]);
 
   const [chapterData, setChapterData] = useState();
-  const getChapterDetails = async () => {
-    await axios.get(`http://localhost:8000/chapter/${id}`).then((res) => {
+  const getChapterDetails = () => {
+    axios.get(`http://localhost:8000/chapter/${id}`).then((res) => {
       console.log(res.data.data.chapterData);
       setChapterData(res.data.data.chapterData);
+      if (isLoggedIn && userData) {
+        addChapterRead(
+          res.data.data.chapterData.bookId,
+          res.data.data.chapterData.id,
+          userData._id
+        );
+      }
     });
   };
   const prevChapter = () => {

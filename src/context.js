@@ -24,11 +24,29 @@ const AppProvider = ({ children }) => {
     setAlert(msg);
     setShowAlert(1);
   };
-  const getUpdatedUserData = () => {
-    axios
+  const getUpdatedUserData = async () => {
+    await axios
       .get(`http://localhost:8000/user/getUpdatedUserData/${userData._id}`)
       .then((res) => {
         setUserData(res.data.userData);
+      });
+  };
+  const addToViews = (bookId) => {
+    axios.post(`http://localhost:8000/book/addViews/${bookId}`).then((res) => {
+      console.log("added to views");
+    });
+  };
+  const addChapterRead = (bookId, chapterId, userId) => {
+    console.log("executed");
+    axios
+      .post(`http://localhost:8000/book/addChaptersRead`, {
+        bookId,
+        chapterId,
+        userId,
+      })
+      .then((res) => {
+        console.log("added chapter");
+        getUpdatedUserData();
       });
   };
 
@@ -88,6 +106,8 @@ const AppProvider = ({ children }) => {
         setShowAlert,
         changeAlert,
         notificationVisibility,
+        addToViews,
+        addChapterRead,
       }}
     >
       {children}

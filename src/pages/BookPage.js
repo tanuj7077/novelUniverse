@@ -10,7 +10,7 @@ import { useGlobalContext } from "../context";
 import { useParams } from "react-router-dom";
 
 const BookPage = () => {
-  const { userData, isLoggedIn, getUpdatedUserData, changeAlert } =
+  const { userData, isLoggedIn, getUpdatedUserData, changeAlert, addToViews } =
     useGlobalContext();
 
   const introRef = useRef();
@@ -91,6 +91,9 @@ const BookPage = () => {
   useEffect(() => {
     checkBookmarked();
   }, []);
+  useEffect(() => {
+    addToViews(bookId);
+  }, [bookId]);
   return (
     <div className="bookPage">
       <div className="bookPage-container">
