@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Route } from "react-router-dom";
 import axios from "axios";
 const BrowsePageThumb = ({ novelId }) => {
+  //collectionPageThumb
   console.log(novelId);
   const [novel, setNovel] = useState();
   const getNovelData = async () => {

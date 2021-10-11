@@ -18,7 +18,7 @@ const DataThumb = ({ novel }) => {
                 <div
                   className="name"
                   onClick={() => {
-                    history.push(`/book/book1`);
+                    history.push(`/book/${novel._id}`);
                   }}
                 >
                   {novel.name}
