@@ -37,7 +37,7 @@ const AppProvider = ({ children }) => {
     });
   };
   const addChapterRead = (bookId, chapterId, userId) => {
-    console.log("executed");
+    console.log("chapter read executed");
     axios
       .post(`http://localhost:8000/book/addChaptersRead`, {
         bookId,

@@ -1689,7 +1689,6 @@ a:link, a:visited, a:hover, a:active {
     display: flex;
     gap: 10rem;
     flex-flow: column;
-    scroll-snap-type: y mandatory;
     overflow-y: auto;
     scroll-behavior: smooth;
     transition: all 1s ease;
@@ -1706,6 +1705,118 @@ a:link, a:visited, a:hover, a:active {
     }*/ }
     .collectionPage-rightPane::before {
       transition: all 1s ease; }
+    .collectionPage-rightPane .novels {
+      scroll-snap-align: start;
+      z-index: 2;
+      height: max-content;
+      min-height: calc(100vh - 6rem);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3rem; }
+      .collectionPage-rightPane .novels-novel {
+        width: 20rem;
+        height: 25rem;
+        overflow: hidden;
+        position: relative; }
+        .collectionPage-rightPane .novels-novel-img {
+          width: 100%;
+          padding-top: 125%;
+          background-size: cover;
+          background-position: center;
+          transition: all 0.3s ease;
+          display: block; }
+        .collectionPage-rightPane .novels-novel-info {
+          display: flex;
+          justify-content: space-between;
+          flex-flow: column;
+          position: absolute;
+          top: 78%;
+          left: 0;
+          right: 0;
+          height: calc(100% + 1px);
+          background-color: rgba(0, 0, 0, 0.6);
+          backdrop-filter: blur(2px);
+          -webkit-backdrop-filter: blur(2px);
+          transition: all 0.3s ease; }
+          .collectionPage-rightPane .novels-novel-info-title {
+            padding: 1rem 1.5rem;
+            color: white;
+            font-size: 1rem;
+            letter-spacing: 0.3rem;
+            text-align: center;
+            font-weight: bold;
+            position: relative; }
+            .collectionPage-rightPane .novels-novel-info-title::after {
+              content: "";
+              position: absolute;
+              top: 100%;
+              left: -100%;
+              z-index: 10;
+              width: 100%;
+              height: 2px;
+              background-color: #6fec6f;
+              transition: all 0.3s ease; }
+          .collectionPage-rightPane .novels-novel-info-other {
+            padding: 0rem 1.5rem;
+            display: flex;
+            flex-flow: column;
+            opacity: 0;
+            transition: opacity 0.3s ease; }
+            .collectionPage-rightPane .novels-novel-info-other-item {
+              display: flex;
+              flex-wrap: wrap;
+              align-items: center;
+              font-size: 1.2rem;
+              column-gap: 0.5rem; }
+              .collectionPage-rightPane .novels-novel-info-other-item .label {
+                color: #a3a3a3; }
+              .collectionPage-rightPane .novels-novel-info-other-item .data {
+                color: #dbdbdb; }
+            .collectionPage-rightPane .novels-novel-info-other-categories .label {
+              color: #a3a3a3; }
+            .collectionPage-rightPane .novels-novel-info-other-categories .data {
+              font-size: 0.9rem;
+              display: flex;
+              flex-flow: wrap;
+              column-gap: 0.5rem;
+              text-transform: uppercase;
+              color: #dbdbdb; }
+          .collectionPage-rightPane .novels-novel-info-btns {
+            padding: 1.5rem 1.5rem;
+            padding-top: 0;
+            display: flex;
+            justify-content: space-between; }
+            .collectionPage-rightPane .novels-novel-info-btns .btn {
+              width: 45%;
+              text-align: center;
+              font-size: 1.2rem;
+              color: #dfdfdf;
+              background-color: #1c65c4;
+              border-radius: 0.5rem;
+              text-transform: uppercase;
+              padding: 0.3rem 0;
+              transform: scale(0.5);
+              opacity: 0;
+              transition: opacity 0.3s ease, transform 0.3s ease; }
+              .collectionPage-rightPane .novels-novel-info-btns .btn:hover {
+                cursor: pointer; }
+        .collectionPage-rightPane .novels-novel:hover .novels-novel-img {
+          transform: scale(1.2); }
+        .collectionPage-rightPane .novels-novel:hover .novels-novel-info {
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+          top: 0%; }
+        .collectionPage-rightPane .novels-novel:hover .novels-novel-info .novels-novel-info-title::after {
+          box-shadow: 0px 0px 3px 3px rgba(111, 236, 111, 0.3);
+          transform: translateX(100%);
+          transition: all 0.3s 0.3s ease; }
+        .collectionPage-rightPane .novels-novel:hover .novels-novel-info .novels-novel-info-other {
+          opacity: 1;
+          transition: opacity 0.3s 0.3s ease; }
+        .collectionPage-rightPane .novels-novel:hover .novels-novel-info .novels-novel-info-btns .btn {
+          opacity: 1;
+          transform: scale(1);
+          transition: opacity 0.3s 0.3s ease, transform 0.3s 0.3s ease; }
     .collectionPage-rightPane .novelSection {
       scroll-snap-align: start;
       z-index: 2;

@@ -1,26 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Route } from "react-router-dom";
 const Thumbnail2 = ({ novel }) => {
-  const [averageRating, setAverageRating] = useState(0);
-  const calculateAverageRating = () => {
-    let total = 0;
-    let ratingTotal = 0;
-    if (novel) {
-      for (let k in novel.rating) {
-        total += novel.rating[k];
-        ratingTotal += parseInt(k) * novel.rating[k];
-      }
-    }
-    if (total === 0) {
-      setAverageRating(0);
-    } else {
-      let averageRating = Math.round((ratingTotal / total) * 10) / 10;
-      setAverageRating(averageRating);
-    }
-  };
-  useEffect(() => {
-    calculateAverageRating();
-  }, []);
   return (
     <Route
       render={({ history }) => (
@@ -49,7 +29,7 @@ const Thumbnail2 = ({ novel }) => {
               </div>
               <div className="novel-info-other-rating novel-info-other-item">
                 <p className="label">Rating: </p>
-                <p className="data">{averageRating}</p>
+                <p className="data">{novel.averageRating}</p>
               </div>
               <div className="novel-info-other-latest novel-info-other-item">
                 <p className="label">Chapters: </p>

@@ -4,13 +4,21 @@ import { FaStar } from "react-icons/fa";
 import { Route } from "react-router-dom";
 import useOnScreen from "../../components/Utilities/useOnScreen";
 import bg1 from "../../assets/abstract/1.jpg";
+import BrowsePageThumb from "../../components/NovelThumb/BrowsePageThumb";
+import { useGlobalContext } from "../../context";
+import axios from "axios";
 const Collection = () => {
+  const { userData } = useGlobalContext();
   const bookmarkedRef = useRef();
   const bookmarkedIsVisible = useOnScreen(bookmarkedRef);
   const ongoingRef = useRef();
   const ongoingIsVisible = useOnScreen(ongoingRef);
   const completedRef = useRef();
   const completedIsVisible = useOnScreen(completedRef);
+  const [collectionItems, setCollectionItems] = useState({});
+  const [bookmarked, setBookmarked] = useState([]);
+  const [ongoing, setOngoing] = useState([]);
+  const [completed, setCompleted] = useState([]);
   const moveToBookmarked = () => {
     document.getElementById("bookmarked").scrollIntoView(true);
   };
@@ -20,6 +28,17 @@ const Collection = () => {
   const moveToCompleted = () => {
     document.getElementById("completed").scrollIntoView(true);
   };
+  const getCollectionItems = async () => {
+    userData &&
+      (await axios
+        .get(`http://localhost:8000/book/getCollectionItems/${userData._id}`)
+        .then((res) => {
+          setCollectionItems(res.data.data);
+        }));
+  };
+  useEffect(() => {
+    getCollectionItems();
+  }, []);
   return (
     <div className="collectionPage">
       <div
@@ -54,130 +73,27 @@ const Collection = () => {
         } ${ongoingIsVisible ? "collectionPage-rightPane-ongoing" : ""}
         ${completedIsVisible ? "collectionPage-rightPane-completed" : ""}`}
       >
-        <div className="novelSection" id="bookmarked" ref={bookmarkedRef}>
-          {browseNovels &&
-            browseNovels.map((item) => {
-              return (
-                <Route
-                  render={({ history }) => (
-                    <div
-                      className="novel"
-                      onClick={() => {
-                        history.push(`/book/book1`);
-                      }}
-                    >
-                      <div
-                        className="novel-img"
-                        style={{
-                          backgroundImage: `url(${item.img})`,
-                        }}
-                      ></div>
-                      <div className="novel-info">
-                        <div className="novel-info-title">{item.title}</div>
-                        <div className="novel-info-other">
-                          {/* <div className="novel-info-author">
-                            Author: {item.author}
-                          </div> */}
-                          <div className="novel-info-desc">
-                            {item.desc.length >= 180
-                              ? item.desc.substring(0, 180) + "..."
-                              : item.desc}
-                          </div>
-                        </div>
-
-                        <div className="novel-info-btns">
-                          <span className="btn">Start</span>
-                          <span className="btn">Resume</span>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                />
-              );
+        <div className="novels" id="bookmarked" ref={bookmarkedRef}>
+          {collectionItems &&
+            collectionItems.bookmarked &&
+            collectionItems.bookmarked.map((item) => {
+              return <BrowsePageThumb novelId={item} />;
             })}
         </div>
-        <div className="novelSection" id="ongoing" ref={ongoingRef}>
-          {browseNovels &&
-            browseNovels.map((item) => {
-              return (
-                <Route
-                  render={({ history }) => (
-                    <div
-                      className="novel"
-                      onClick={() => {
-                        history.push(`/book/book1`);
-                      }}
-                    >
-                      <div
-                        className="novel-img"
-                        style={{
-                          backgroundImage: `url(${item.img})`,
-                        }}
-                      ></div>
-                      <div className="novel-info">
-                        <div className="novel-info-title">{item.title}</div>
-                        <div className="novel-info-other">
-                          {/* <div className="novel-info-author">
-                            Author: {item.author}
-                          </div> */}
-                          <div className="novel-info-desc">
-                            {item.desc.length >= 180
-                              ? item.desc.substring(0, 180) + "..."
-                              : item.desc}
-                          </div>
-                        </div>
 
-                        <div className="novel-info-btns">
-                          <span className="btn">Start</span>
-                          <span className="btn">Resume</span>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                />
-              );
+        <div className="novels" id="ongoing" ref={ongoingRef}>
+          {collectionItems &&
+            collectionItems.ongoing &&
+            collectionItems.ongoing.map((item) => {
+              return <BrowsePageThumb novelId={item} />;
             })}
         </div>
-        <div className="novelSection" id="completed" ref={completedRef}>
-          {browseNovels &&
-            browseNovels.map((item) => {
-              return (
-                <Route
-                  render={({ history }) => (
-                    <div
-                      className="novel"
-                      onClick={() => {
-                        history.push(`/book/book1`);
-                      }}
-                    >
-                      <div
-                        className="novel-img"
-                        style={{
-                          backgroundImage: `url(${item.img})`,
-                        }}
-                      ></div>
-                      <div className="novel-info">
-                        <div className="novel-info-title">{item.title}</div>
-                        <div className="novel-info-other">
-                          {/* <div className="novel-info-author">
-                            Author: {item.author}
-                          </div> */}
-                          <div className="novel-info-desc">
-                            {item.desc.length >= 180
-                              ? item.desc.substring(0, 180) + "..."
-                              : item.desc}
-                          </div>
-                        </div>
 
-                        <div className="novel-info-btns">
-                          <span className="btn">Start</span>
-                          <span className="btn">Resume</span>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                />
-              );
+        <div className="novels" id="completed" ref={completedRef}>
+          {collectionItems &&
+            collectionItems.completed &&
+            collectionItems.completed.map((item) => {
+              return <BrowsePageThumb novelId={item} />;
             })}
         </div>
       </div>
