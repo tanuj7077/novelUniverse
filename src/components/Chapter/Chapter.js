@@ -22,30 +22,7 @@ const Chapter = () => {
   const [myComment, setMyComment] = useState("");
   const [darkMode, setDarkMode] = useState(0);
   const history = useHistory();
-  /*
-  let comments = [
-    {
-      name: "Bruh",
-      comment: "This is getting interesting",
-      date: "12/01/2020",
-    },
-    {
-      name: "Uzumaki",
-      comment:
-        "Violence isn't the answer, its the question.\nAnd the answer is Yes",
-      date: "12/01/2020",
-    },
-    {
-      name: "RippleEffect07",
-      comment: "Damn these cliffhangers",
-      date: "12/01/2020",
-    },
-    {
-      name: "Bean",
-      comment: "I like this",
-      date: "12/01/2020",
-    },
-  ];*/
+
   const handleFontSize = () => {
     if (fontSizeVal == 0) {
       setFontSize("smallFont");

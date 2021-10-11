@@ -1,5 +1,6 @@
 import React from "react";
 import { useGlobalContext } from "../../context";
+import NotificationItem from "./NotificationItem";
 
 function Notification() {
   const { userData, toggleNotificationVisibility, notificationVisibility } =
@@ -19,7 +20,12 @@ function Notification() {
       ) : (
         <>
           <div className="notification-items">
-            {userData.notifications.reverse().map((notification) => {
+            {userData &&
+              userData.notifications &&
+              userData.notifications.reverse().map((notification) => {
+                return <NotificationItem notification={notification} />;
+              })}
+            {/* {userData.notifications.reverse().map((notification) => {
               return (
                 <div className="notification-items-item">
                   <p className="notification-items-item-head">
@@ -54,7 +60,7 @@ function Notification() {
                   </p>
                 </div>
               );
-            })}
+            })} */}
             <div className="notification-items-item">
               <p className="notification-items-item-head">
                 <span className="notification-items-item-type">
