@@ -89,7 +89,6 @@ const AppProvider = ({ children }) => {
   const calculateTimeDifference = (date) => {
     let curr = new Date();
     let novelUpdateDate = new Date(date);
-    console.log(novelUpdateDate);
     let diffMs = curr - novelUpdateDate;
     let diffSeconds = diffMs / 1000;
     let diffMinutes = diffSeconds / 60;

@@ -1093,6 +1093,26 @@ a:link, a:visited, a:hover, a:active {
               gap: 6%;
               border-radius: 5px;
               font-weight: bold; }
+    .browsePage .novels-buttons {
+      margin-top: 4rem;
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem; }
+      .browsePage .novels-buttons-btn {
+        border: none;
+        outline: none;
+        color: white;
+        background-color: #2079c2;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        display: grid;
+        place-items: center; }
+      .browsePage .novels-buttons-page {
+        font-size: 2.5rem;
+        letter-spacing: 0.3rem;
+        color: white; }
   .browsePage::-webkit-scrollbar {
     width: 1.5rem; }
   .browsePage::-webkit-scrollbar-track {

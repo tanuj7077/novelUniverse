@@ -32,15 +32,6 @@ const Home = () => {
     fetchLatestUpdates();
   }, []);
 
-  const sliderRef = useRef(null);
-  const rightBtnRef = useRef(null);
-  const handleScroll = (side) => {
-    if (side === "right") {
-      sliderRef.current.scrollBy(500, 0);
-    } else {
-      sliderRef.current.scrollBy(-500, 0);
-    }
-  };
   return (
     <div className="homePage">
       <div className="homePage-container">

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import { BsChevronRight } from "react-icons/bs";
 import { AiOutlineFontSize } from "react-icons/ai";
 import { IoMdColorPalette } from "react-icons/io";
 import { CgDarkMode } from "react-icons/cg";

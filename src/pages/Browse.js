@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { categoryList, browseNovels } from "../mockData";
+import { categoryList } from "../mockData";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { Route, useHistory } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
 import { IoCloseOutline } from "react-icons/io5";
@@ -22,6 +23,20 @@ const Browse = () => {
   const [searchResult, setSearchResult] = useState([]);
   const [novels, setNovels] = useState([]);
   const history = useHistory();
+
+  const [totalPages, setTotalPages] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
+  const PAGE_LIMIT = 2;
+  const nextPage = () => {
+    if (currentPage !== totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+  const previousPage = () => {
+    if (currentPage !== 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
 
   const checkTagAddedPresense = (tag) => {
     return tagAdded.includes(tag);
@@ -85,7 +100,7 @@ const Browse = () => {
   const getNovels = () => {
     axios
       .post(
-        `http://localhost:8000/book/getNovels/${currentStatus}/${currentOrder}`,
+        `http://localhost:8000/book/getNovels/${currentStatus}/${currentOrder}/${currentPage}/${PAGE_LIMIT}`,
         {
           tagAdded,
           tagRemoved,
@@ -93,6 +108,7 @@ const Browse = () => {
       )
       .then((res) => {
         setNovels(res.data.data);
+        setTotalPages(res.data.totalPages);
       });
   };
   //useEffect
@@ -103,7 +119,7 @@ const Browse = () => {
 
   useEffect(() => {
     getNovels();
-  }, [currentStatus, currentOrder]);
+  }, [currentStatus, currentOrder, currentPage]);
   return (
     <div className="browsePage">
       <div className="browsePage-container">
@@ -265,6 +281,17 @@ const Browse = () => {
             {novels.map((item) => {
               return <DataThumb novel={item} />;
             })}
+          </div>
+          <div className="novels-buttons">
+            <button className="novels-buttons-btn btn" onClick={previousPage}>
+              <FaChevronLeft className="novels-buttons-btn-icon" />
+            </button>
+            <p className="novels-buttons-page">
+              {currentPage} of {totalPages}
+            </p>
+            <button className="novels-buttons-btn btn" onClick={nextPage}>
+              <FaChevronRight className="novels-buttons-btn-icon" />
+            </button>
           </div>
         </div>
       </div>
