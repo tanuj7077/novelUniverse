@@ -35,7 +35,6 @@ const Home = () => {
   const sliderRef = useRef(null);
   const rightBtnRef = useRef(null);
   const handleScroll = (side) => {
-    console.log("clicked");
     if (side === "right") {
       sliderRef.current.scrollBy(500, 0);
     } else {

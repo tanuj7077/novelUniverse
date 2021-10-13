@@ -73,7 +73,6 @@ const Browse = () => {
     }
     axios.get(`http://localhost:8000/book/searchBook/${text}`).then((res) => {
       if (res.data.data.bookList.length > 0) {
-        console.log(res.data.data.bookList);
         setSearchResult(res.data.data.bookList);
       } else {
         setSearchResult([]);
@@ -93,7 +92,6 @@ const Browse = () => {
         }
       )
       .then((res) => {
-        console.log(res.data.data);
         setNovels(res.data.data);
       });
   };

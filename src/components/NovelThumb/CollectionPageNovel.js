@@ -2,16 +2,17 @@ import React, { useState, useEffect } from "react";
 import { Route } from "react-router-dom";
 import axios from "axios";
 import { AiOutlineClockCircle } from "react-icons/ai";
+import { useGlobalContext } from "../../context";
 
 const BrowsePageThumb = ({ novelId }) => {
-  //collectionPageThumb
-  console.log(novelId);
+  const { calculateTimeDifference } = useGlobalContext();
+  const [time, setTime] = useState("");
   const [novel, setNovel] = useState();
   const getNovelData = async () => {
     console.log("getNovelData called");
     await axios.get(`http://localhost:8000/book/${novelId}`).then((res) => {
-      console.log(res.data.data.novel);
       setNovel(res.data.data.novel);
+      setTime(calculateTimeDifference(res.data.data.novel.latestUpdate));
     });
   };
   useEffect(() => {
@@ -42,9 +43,7 @@ const BrowsePageThumb = ({ novelId }) => {
                   </p>
                   <p className="info-updated">
                     <AiOutlineClockCircle className="info-updated-icon" />
-                    <span className="info-updated-text">
-                      Updated 3 minutes ago
-                    </span>
+                    <span className="info-updated-text">{time} ago</span>
                   </p>
                 </div>
                 <div className="info-buttons">
