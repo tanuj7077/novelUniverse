@@ -1,3 +1,4 @@
+/*
 .collectionPage {
   width: 100%;
   height: calc(100vh - 6rem);
@@ -10,8 +11,6 @@
     top: 0;
     left: 0;
     width: 100%;
-    //left: 22%;
-    //width: 88%;
     height: 100%;
     background-size: cover;
     background-position: center;
@@ -31,12 +30,8 @@
     background-color: rgba(black, 0.5);
     backdrop-filter: blur(40px);
     -webkit-backdrop-filter: blur(40px);
-    //border-right: 3px solid rgb(187, 187, 187);
-    //z-index: 3;
-    //background-color: white;
     .item {
       font-size: $logo-small-font-size;
-      //font-weight: bold;
       letter-spacing: 0.3rem;
       transition: all 0.3s ease;
       z-index: 1;
@@ -355,15 +350,297 @@
       background: rgb(121, 121, 121);
       border-radius: 0.75rem;
     }
-    /*
-    &-bookmarked {
-      background-color: hsla(160, 91%, 30%, 0.55);
+  }
+}*/
+
+.collectionPage {
+  width: 100%;
+  height: calc(100vh - 6rem);
+  margin-top: 6rem;
+  display: flex;
+  align-items: center;
+  &-background {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    -webkit-animation: BgAnim 40s ease-in-out infinite;
+    -moz-animation: BgAnim 40s ease-in-out infinite;
+    animation: BgAnim 40s ease-in-out infinite;
+  }
+  &-container {
+    padding: 8rem 12%;
+    height: calc(100vh - 6rem);
+    width: 100%;
+    display: flex;
+    gap: 10rem;
+    flex-flow: column;
+    //scroll-snap-type: y mandatory;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    transition: all 1s ease;
+    backdrop-filter: blur(5px);
+    &::before {
+      transition: all 1s ease;
     }
-    &-ongoing {
-      background-color: hsla(0, 82%, 67%, 0.55);
+    //-webkit-overflow-scrolling: touch;
+    .novels {
+      z-index: 2;
+      height: max-content;
+      display: flex;
+      flex-flow: column;
+      //width: 100%;
+      gap: 1rem;
+      &-heading {
+        position: absolute;
+        top: 0;
+        z-index: 2;
+        text-transform: uppercase;
+        letter-spacing: 0.3rem;
+        color: white;
+        font-size: $small-font-size;
+        font-weight: bold;
+        height: 2rem;
+        margin-bottom: 2rem;
+        line-height: 2rem;
+        padding-left: 1.5rem;
+        position: relative;
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0rem;
+          width: 0.5rem;
+          height: 100%;
+          background-color: rgb(64, 147, 255);
+        }
+      }
+      &-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        row-gap: 1.5rem;
+      }
+      &-novel {
+        height: max-content;
+        width: 37rem;
+        display: flex;
+        flex-flow: row;
+        justify-content: space-between;
+        background-color: rgba(black, 0.5);
+        backdrop-filter: blur(40px);
+        border: 1px solid rgb(54, 54, 54);
+        border-radius: 1rem;
+        overflow: hidden;
+        .img {
+          display: block;
+          height: 15rem;
+          width: 11.5rem;
+          background-size: cover;
+          background-position: center;
+          padding: 0%;
+        }
+        .info {
+          height: 15rem;
+          width: calc(100% - 11.5rem);
+          padding: 1rem;
+          display: flex;
+          flex-flow: column;
+          justify-content: space-between;
+          &-content {
+            display: flex;
+            flex-flow: column;
+            gap: 0.5rem;
+          }
+          &-title {
+            font-size: $default-font-size;
+            color: rgb(233, 233, 233);
+          }
+          &-chapter {
+            font-size: $smaller-font-size;
+            color: rgb(218, 218, 218);
+          }
+          &-updated {
+            font-size: $smallest-font-size;
+            color: rgb(82, 172, 247);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            &-icon {
+              width: 1.7rem;
+              height: 1.7rem;
+            }
+          }
+          &-buttons {
+            display: flex;
+            justify-content: space-between;
+            &-btn {
+              width: calc(50% - 0.5rem);
+              color: white;
+              text-transform: uppercase;
+              text-align: center;
+              background-color: rgb(28, 101, 196);
+              border-radius: 0.5rem;
+              font-size: $smallest-font-size;
+              letter-spacing: 0.2rem;
+              padding: 0.7rem 1rem;
+              //font-weight: bold;
+              &:hover {
+                cursor: pointer;
+              }
+            }
+          }
+        }
+      }
+      &-empty {
+        width: 100%;
+        height: 10rem;
+        font-size: $medium-font-size;
+        display: grid;
+        place-items: center;
+        color: rgb(224, 224, 224);
+        background-color: rgba(black, 0.5);
+        backdrop-filter: blur(40px);
+        border: 1px solid rgb(54, 54, 54);
+        border-radius: 1rem;
+      }
     }
-    &-completed {
-      background-color: hsla(212, 69%, 43%, 0.55);
-    }*/
+    .novelSection {
+      scroll-snap-align: start;
+      z-index: 2;
+      height: max-content;
+      //min-height: calc(100vh - 6rem);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      row-gap: 3rem;
+      padding-top: 3rem;
+      padding-bottom: 10rem;
+      .novel {
+        width: 24%;
+        height: max-content;
+        border-radius: 1rem;
+        overflow: hidden;
+        position: relative;
+        //box-shadow: 0px 0px 10px 8px rgba(black, 0.2);
+        &-img {
+          width: 100%;
+          padding-top: 125%;
+          background-size: cover;
+          background-position: center;
+          transition: all 0.3s ease;
+          display: block;
+        }
+        &-info {
+          display: flex;
+          justify-content: space-between;
+          flex-flow: column;
+          position: absolute;
+          top: 78%;
+          left: 0;
+          right: 0;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.6);
+          backdrop-filter: blur(2px);
+          -webkit-backdrop-filter: blur(2px);
+          transition: all 0.3s ease;
+          &-title {
+            padding: 1rem 1.5rem;
+            color: white;
+            font-size: $default-font-size;
+            letter-spacing: 0.3rem;
+            text-align: center;
+            //font-weight: bold;
+            position: relative;
+            &::after {
+              content: "";
+              position: absolute;
+              top: 100%;
+              border-radius: 1px;
+              left: -100%;
+              z-index: 10;
+              width: 100%;
+              height: 2px;
+              background-color: rgb(111, 236, 111);
+              transition: all 0.3s ease;
+            }
+          }
+          &-other {
+            padding: 0rem 1.5rem;
+          }
+          &-author {
+            color: rgb(212, 212, 212);
+            font-size: $default-font-size;
+          }
+          &-desc {
+            color: rgb(212, 212, 212);
+            font-size: $default-font-size;
+            display: flex;
+            text-align: justify;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+          }
+          &-btns {
+            padding: 1.5rem 1.5rem;
+            padding-top: 0;
+            display: flex;
+            justify-content: space-between;
+            .btn {
+              width: 45%;
+              text-align: center;
+              font-size: $default-font-size;
+              border: 2px solid white;
+              color: white;
+              text-transform: uppercase;
+              background-color: transparent;
+              padding: 0.3rem 1rem;
+              transform: scale(0.5);
+              opacity: 0;
+              transition: opacity 0.3s ease, transform 0.3s ease;
+              &:hover {
+                cursor: pointer;
+              }
+            }
+          }
+        }
+        &:hover .novel-img {
+          transform: scale(1.2);
+        }
+        &:hover .novel-info {
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+          top: 0%;
+        }
+        &:hover .novel-info .novel-info-title::after {
+          box-shadow: 0px 0px 3px 3px rgba(111, 236, 111, 0.3);
+          transform: translateX(calc(100% - 1.5rem));
+          transition: all 0.3s 0.3s ease;
+        }
+        &:hover .novel-info .novel-info-desc {
+          opacity: 1;
+          transition: opacity 0.3s 0.3s ease;
+        }
+        &:hover .novel-info .novel-info-btns .btn {
+          opacity: 1;
+          transform: scale(1);
+          transition: opacity 0.3s 0.3s ease, transform 0.3s 0.3s ease;
+        }
+      }
+    }
+    &::-webkit-scrollbar {
+      width: 1rem;
+    }
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: rgb(121, 121, 121);
+      border-radius: 0.75rem;
+    }
   }
 }

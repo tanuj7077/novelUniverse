@@ -17,7 +17,11 @@ const Thumbnail2 = ({ novel }) => {
             }}
           ></div>
           <div className="novel-info">
-            <div className="novel-info-title">{novel.name}</div>
+            <div className="novel-info-title">
+              {novel.name.length > 25
+                ? novel.name.substring(0, 25) + "..."
+                : novel.name}
+            </div>
             <div className="novel-info-other">
               <div className="novel-info-other-author novel-info-other-item">
                 <p className="label">Author:</p>

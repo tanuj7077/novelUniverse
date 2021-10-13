@@ -1,7 +1,6 @@
 import React, { useRef } from "react";
 import { VscChevronLeft, VscChevronRight } from "react-icons/vsc";
-import Thumbnail from "../../components/NovelThumb/Thumbnail";
-import Thumbnail2 from "../../components/NovelThumb/Thumbnail2";
+import Thumbnail from "../../components/NovelThumb/Thumbnail2";
 function Slider({ novels }) {
   const sliderRef = useRef(null);
   const rightBtnRef = useRef(null);
@@ -21,7 +20,7 @@ function Slider({ novels }) {
       <div className="novels" ref={sliderRef}>
         <div className="novelSection2">
           {novels.map((item) => {
-            return <Thumbnail2 novel={item} />;
+            return <Thumbnail novel={item} />;
           })}
         </div>
       </div>

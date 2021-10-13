@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import Carousel from "../components/Carousel/Carousel";
-import Thumbnail from "../components/NovelThumb/Thumbnail";
+import HomePageNovels from "../components/NovelThumb/HomePageNovels";
 import Alert from "../components/Alert/Alert";
 import { VscChevronLeft, VscChevronRight } from "react-icons/vsc";
 import { AiOutlineClockCircle } from "react-icons/ai";
@@ -20,9 +20,16 @@ const Home = () => {
       setMostViewed(res.data.data.mostViewed);
     });
   };
+  const [latestUpdates, setLatestUpdates] = useState([]);
+  const fetchLatestUpdates = async () => {
+    await axios.get("http://localhost:8000/book/latestUpdates").then((res) => {
+      setLatestUpdates(res.data.data.latestUpdates);
+    });
+  };
   useEffect(() => {
     fetchNewRelease();
     fetchMostViewed();
+    fetchLatestUpdates();
   }, []);
 
   const sliderRef = useRef(null);
@@ -50,36 +57,10 @@ const Home = () => {
         <div className="homePage-novels">
           <p className="homePage-novels-heading">Latest Updates</p>
           <div className="homePage-novelList">
-            {browseNovels.map((item) => {
-              return (
-                <div className="homePage-novelList-novel">
-                  <span
-                    className="img"
-                    style={{
-                      backgroundImage: `url(${item.img})`,
-                    }}
-                  ></span>
-                  <div className="info">
-                    <div className="info-content">
-                      <p className="info-title">
-                        {item.title.substring(0, 50)}
-                      </p>
-                      <p className="info-chapter">Chapter: {item.chapters}</p>
-                      <p className="info-updated">
-                        <AiOutlineClockCircle className="info-updated-icon" />
-                        <span className="info-updated-text">
-                          Updated 3 minutes ago
-                        </span>
-                      </p>
-                    </div>
-                    <div className="info-buttons">
-                      <div className="info-buttons-btn">Visit</div>
-                      <div className="info-buttons-btn">Read</div>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
+            {latestUpdates &&
+              latestUpdates.map((novel) => {
+                return <HomePageNovels novel={novel} />;
+              })}
           </div>
         </div>
       </div>

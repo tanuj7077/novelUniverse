@@ -4,30 +4,12 @@ import { FaStar } from "react-icons/fa";
 import { Route } from "react-router-dom";
 import useOnScreen from "../../components/Utilities/useOnScreen";
 import bg1 from "../../assets/abstract/1.jpg";
-import BrowsePageThumb from "../../components/NovelThumb/BrowsePageThumb";
+import CollectionPageNovel from "../../components/NovelThumb/CollectionPageNovel";
 import { useGlobalContext } from "../../context";
 import axios from "axios";
-const Collection = () => {
+const Collection2 = () => {
   const { userData } = useGlobalContext();
-  const bookmarkedRef = useRef();
-  const bookmarkedIsVisible = useOnScreen(bookmarkedRef);
-  const ongoingRef = useRef();
-  const ongoingIsVisible = useOnScreen(ongoingRef);
-  const completedRef = useRef();
-  const completedIsVisible = useOnScreen(completedRef);
   const [collectionItems, setCollectionItems] = useState({});
-  const [bookmarked, setBookmarked] = useState([]);
-  const [ongoing, setOngoing] = useState([]);
-  const [completed, setCompleted] = useState([]);
-  const moveToBookmarked = () => {
-    document.getElementById("bookmarked").scrollIntoView(true);
-  };
-  const moveToOngoing = () => {
-    document.getElementById("ongoing").scrollIntoView(true);
-  };
-  const moveToCompleted = () => {
-    document.getElementById("completed").scrollIntoView(true);
-  };
   const getCollectionItems = async () => {
     userData &&
       (await axios
@@ -38,7 +20,7 @@ const Collection = () => {
   };
   useEffect(() => {
     getCollectionItems();
-  }, []);
+  }, [userData]);
   return (
     <div className="collectionPage">
       <div
@@ -47,57 +29,62 @@ const Collection = () => {
           backgroundImage: `url(${bg1})`,
         }}
       ></div>
-      <div className="collectionPage-leftPane">
-        <div
-          className={`item ${bookmarkedIsVisible ? "current" : ""}`}
-          onClick={moveToBookmarked}
-        >
-          <p id="bookmarkedText">Bookmarked</p>
-        </div>
-        <div
-          className={`item ${ongoingIsVisible ? "current" : ""}`}
-          onClick={moveToOngoing}
-        >
-          <p id="ongoingText">Ongoing</p>
-        </div>
-        <div
-          className={`item ${completedIsVisible ? "current" : ""}`}
-          onClick={moveToCompleted}
-        >
-          <p id="completedText">Completed</p>
-        </div>
-      </div>
-      <div
-        className={`collectionPage-rightPane ${
-          bookmarkedIsVisible ? "collectionPage-rightPane-bookmarked" : ""
-        } ${ongoingIsVisible ? "collectionPage-rightPane-ongoing" : ""}
-        ${completedIsVisible ? "collectionPage-rightPane-completed" : ""}`}
-      >
-        <div className="novels" id="bookmarked" ref={bookmarkedRef}>
-          {collectionItems &&
-            collectionItems.bookmarked &&
-            collectionItems.bookmarked.map((item) => {
-              return <BrowsePageThumb novelId={item} />;
-            })}
+      <div className={`collectionPage-container`}>
+        <div className="novels" id="bookmarked">
+          <p className="novels-heading">Bookmarked</p>
+          <div className="novels-container">
+            {collectionItems &&
+              collectionItems.bookmarked &&
+              collectionItems.bookmarked.map((item) => {
+                return <CollectionPageNovel novelId={item} />;
+              })}
+            {collectionItems &&
+              collectionItems.bookmarked &&
+              collectionItems.bookmarked.length === 0 && (
+                <div className="novels-empty">
+                  You have not bookmarked any novel yet
+                </div>
+              )}
+          </div>
         </div>
 
-        <div className="novels" id="ongoing" ref={ongoingRef}>
-          {collectionItems &&
-            collectionItems.ongoing &&
-            collectionItems.ongoing.map((item) => {
-              return <BrowsePageThumb novelId={item} />;
-            })}
+        <div className="novels" id="ongoing">
+          <p className="novels-heading">Ongoing</p>
+          <div className="novels-container">
+            {collectionItems &&
+              collectionItems.ongoing &&
+              collectionItems.ongoing.map((item) => {
+                return <CollectionPageNovel novelId={item} />;
+              })}
+            {collectionItems &&
+              collectionItems.ongoing &&
+              collectionItems.ongoing.length === 0 && (
+                <div className="novels-empty">
+                  You didn't start reading any novel yet
+                </div>
+              )}
+          </div>
         </div>
 
-        <div className="novels" id="completed" ref={completedRef}>
-          {collectionItems &&
-            collectionItems.completed &&
-            collectionItems.completed.map((item) => {
-              return <BrowsePageThumb novelId={item} />;
-            })}
+        <div className="novels" id="completed">
+          <p className="novels-heading">Completed</p>
+          <div className="novels-container">
+            {collectionItems &&
+              collectionItems.completed &&
+              collectionItems.completed.map((item) => {
+                return <CollectionPageNovel novelId={item} />;
+              })}
+            {collectionItems &&
+              collectionItems.completed &&
+              collectionItems.completed.length === 0 && (
+                <div className="novels-empty">
+                  You have not completed any novel yet
+                </div>
+              )}
+          </div>
         </div>
       </div>
     </div>
   );
 };
-export default Collection;
+export default Collection2;
