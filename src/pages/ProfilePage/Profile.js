@@ -28,6 +28,10 @@ if (!firebase.apps.length) {
 }
 var storage = firebase.storage();
 
+const CurrentProgress = ({ progressData }) => {
+  const { userData, isLoggedIn } = useGlobalContext();
+};
+
 const Profile = () => {
   //followers get new recommendations notifications
   const { username } = useParams();
@@ -44,6 +48,9 @@ const Profile = () => {
   const [bookImage, setBookImage] = useState("");
   const [toSendProfileImage, setToSendProfileImage] = useState("");
   const [isBookImageUploaded, setIsBookImageUploaded] = useState(false);
+
+  const [currentProgressData, setCurrentProgressData] = useState([]);
+  const [favGenreData, setFavGenreData] = useState();
 
   const changeCurrentVisibility = async () => {
     await axios
@@ -170,17 +177,73 @@ const Profile = () => {
       reader.readAsDataURL(e.target.files[0]);
     }
   };
+
+  //get profile data (userProfileData)
   const fetchUserData = async (username) => {
-    console.log(username);
     await axios.get(`http://localhost:8000/user/${username}`).then((res) => {
       console.log("fetched User Data");
       setUserProfileData(res.data.userData);
-      console.log(res.data.userData);
+      fetchCurrentProgress(res.data.userData._id);
+      fetchFavGenre(res.data.userData._id);
       if (res.data.userData && res.data.userData.profileData.about) {
         setAboutInput(res.data.userData.profileData.about);
         setUserInput(res.data.userData.username);
       }
     });
+  };
+
+  //get currentProgress data (currentProgressData)
+  const fetchCurrentProgress = async (userId) => {
+    await axios
+      .get(`http://localhost:8000/user/getCurrentProgress/${userId}`)
+      .then((res) => {
+        console.log(res.data.data);
+        setCurrentProgressData(res.data.data);
+      });
+  };
+  //get FavGenre data (favGenreData)
+  const fetchFavGenre = async (userId) => {
+    await axios
+      .get(`http://localhost:8000/user/getFavGenre/${userId}`)
+      .then((res) => {
+        console.log(res.data.data);
+        let fetchedData = res.data.data;
+        let arr = [];
+        //converting to array for sorting
+        for (let key in fetchedData) {
+          arr.push([key, fetchedData[key]]);
+        }
+        function Comparator(a, b) {
+          if (a[1] > b[1]) return -1;
+          if (a[1] < b[1]) return 1;
+          return 0;
+        }
+        arr.sort(Comparator);
+        arr = arr.slice(0, 6); //top 6 genres
+        let labels = [];
+        let data = [];
+        arr.forEach((item) => {
+          labels.push(item[0]);
+          data.push(item[1]);
+        });
+        setFavGenreData({
+          labels: labels,
+          datasets: [
+            {
+              data: data,
+              backgroundColor: [
+                "rgb(117, 255, 154)",
+                "rgb(255, 138, 177)",
+                "rgb(255, 220, 133",
+                "rgb(255, 88, 77)",
+                "rgb(138, 165, 255)",
+                "rgb(255, 125, 125)",
+              ],
+              borderWidth: 0,
+            },
+          ],
+        });
+      });
   };
 
   useEffect(() => {
@@ -276,6 +339,7 @@ const Profile = () => {
                   </div>
                 )}
               </div>
+
               <div className="body-item current">
                 <div className="body-item-top">
                   <div className="body-item-heading">Current Progress</div>
@@ -298,22 +362,25 @@ const Profile = () => {
                 </div>
                 <div className="current-content">
                   <div className="current-content-novels">
-                    {currentProgress &&
-                      currentProgress.map((item) => {
+                    {currentProgressData &&
+                      currentProgressData.map((item) => {
                         return (
                           <div className="novel">
-                            {/* <img src={item.img} alt="" className="novel-img" /> */}
-                            {/* <span className="novel-img"></span> */}
                             <div className="novel-data">
                               <span className="novel-data-text">
-                                <p className="novel-data-name">{item.name}</p>
-                                <p className="novel-data-time">14h</p>
+                                <p className="novel-data-name">{item.book}</p>
+                                <p className="novel-data-time">
+                                  {item.chaptersRead}/{item.totalChapters}
+                                </p>
                               </span>
                               <span className="novel-data-progressBar">
                                 <span
                                   className="progress"
                                   style={{
-                                    left: `${item.progress * 100 - 100}%`,
+                                    width: `${
+                                      (item.chaptersRead / item.totalChapters) *
+                                      100
+                                    }%`,
                                   }}
                                 ></span>
                               </span>
@@ -324,6 +391,7 @@ const Profile = () => {
                   </div>
                 </div>
               </div>
+
               <div className="body-item stats2">
                 <div className="body-item-top">
                   <div className="body-item-heading">Stats</div>
@@ -394,13 +462,13 @@ const Profile = () => {
                 </div>
                 <div className="favGenre-content">
                   <div className="labels">
-                    {favGenre.labels.map((item, index) => {
+                    {favGenreData.labels.map((item, index) => {
                       return (
                         <div className="labels-label">
                           <span
                             className="labels-label-color"
                             style={{
-                              backgroundColor: `${favGenre.datasets[0].backgroundColor[index]}`,
+                              backgroundColor: `${favGenreData.datasets[0].backgroundColor[index]}`,
                             }}
                           ></span>
                           <p className="labels-label-text">{item}</p>
@@ -411,14 +479,11 @@ const Profile = () => {
                   <div className="doughnutChart">
                     <Doughnut
                       className="doughnut"
-                      data={favGenre}
+                      data={favGenreData}
                       options={{
                         plugins: {
                           legend: {
                             display: false,
-                            labels: {
-                              color: "rgb(255, 99, 132)",
-                            },
                           },
                         },
                       }}
@@ -426,6 +491,7 @@ const Profile = () => {
                   </div>
                 </div>
               </div>
+
               <div className="body-item favourites">
                 <div className="body-item-top">
                   <div className="body-item-heading">Recommended</div>
