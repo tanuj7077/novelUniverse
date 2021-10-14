@@ -51,6 +51,7 @@ const Profile = () => {
 
   const [currentProgressData, setCurrentProgressData] = useState([]);
   const [favGenreData, setFavGenreData] = useState();
+  const [stats, setStats] = useState();
 
   const changeCurrentVisibility = async () => {
     await axios
@@ -185,6 +186,7 @@ const Profile = () => {
       setUserProfileData(res.data.userData);
       fetchCurrentProgress(res.data.userData._id);
       fetchFavGenre(res.data.userData._id);
+      getStats(res.data.userData);
       if (res.data.userData && res.data.userData.profileData.about) {
         setAboutInput(res.data.userData.profileData.about);
         setUserInput(res.data.userData.username);
@@ -206,7 +208,6 @@ const Profile = () => {
     await axios
       .get(`http://localhost:8000/user/getFavGenre/${userId}`)
       .then((res) => {
-        console.log(res.data.data);
         let fetchedData = res.data.data;
         let arr = [];
         //converting to array for sorting
@@ -243,6 +244,28 @@ const Profile = () => {
             },
           ],
         });
+      });
+  };
+
+  const getStats = async (userInfo) => {
+    await axios
+      .get(`http://localhost:8000/user/getUpvotes/${userInfo._id}`)
+      .then((res) => {
+        let completedCount = 0;
+        userInfo.books.forEach((book) => {
+          if (book.status === "completed") {
+            completedCount++;
+          }
+        });
+        let statsData = {
+          comments: userInfo.comments.length,
+          reviews: userInfo.reviews.length,
+          followers: userInfo.followed.length,
+          following: userInfo.following.length,
+          upvotes: res.data.data,
+          completed: completedCount,
+        };
+        setStats(statsData);
       });
   };
 
@@ -361,9 +384,9 @@ const Profile = () => {
                   )}
                 </div>
                 <div className="current-content">
-                  <div className="current-content-novels">
-                    {currentProgressData &&
-                      currentProgressData.map((item) => {
+                  {currentProgressData && (
+                    <div className="current-content-novels">
+                      {currentProgressData.map((item) => {
                         return (
                           <div className="novel">
                             <div className="novel-data">
@@ -388,7 +411,14 @@ const Profile = () => {
                           </div>
                         );
                       })}
-                  </div>
+                    </div>
+                  )}
+                  {(!currentProgressData ||
+                    currentProgressData.length === 0) && (
+                    <div className="current-content-noData">
+                      You have not started reading any novel yet
+                    </div>
+                  )}
                 </div>
               </div>
 
@@ -412,32 +442,34 @@ const Profile = () => {
                     </>
                   )}
                 </div>
-                <div className="stats2-content">
-                  <p className="item">
-                    <span className="count">120</span>
-                    <span className="title">Comments</span>
-                  </p>
-                  <p className="item">
-                    <span className="count">12</span>
-                    <span className="title">Reviews</span>
-                  </p>
-                  <p className="item">
-                    <span className="count">4.5k</span>
-                    <span className="title">Followers</span>
-                  </p>
-                  <p className="item">
-                    <span className="count">5.5k</span>
-                    <span className="title">Upvotes</span>
-                  </p>
-                  <p className="item">
-                    <span className="count">31</span>
-                    <span className="title">Completed</span>
-                  </p>
-                  <p className="item">
-                    <span className="count">12</span>
-                    <span className="title">Following</span>
-                  </p>
-                </div>
+                {stats && (
+                  <div className="stats2-content">
+                    <p className="item">
+                      <span className="count">{stats.comments}</span>
+                      <span className="title">Comments</span>
+                    </p>
+                    <p className="item">
+                      <span className="count">{stats.reviews}</span>
+                      <span className="title">Reviews</span>
+                    </p>
+                    <p className="item">
+                      <span className="count">{stats.followers}</span>
+                      <span className="title">Followers</span>
+                    </p>
+                    <p className="item">
+                      <span className="count">{stats.upvotes}</span>
+                      <span className="title">Upvotes</span>
+                    </p>
+                    <p className="item">
+                      <span className="count">{stats.completed}</span>
+                      <span className="title">Completed</span>
+                    </p>
+                    <p className="item">
+                      <span className="count">{stats.following}</span>
+                      <span className="title">Following</span>
+                    </p>
+                  </div>
+                )}
               </div>
 
               <div className="body-item favGenre">
@@ -460,36 +492,43 @@ const Profile = () => {
                     </>
                   )}
                 </div>
-                <div className="favGenre-content">
-                  <div className="labels">
-                    {favGenreData.labels.map((item, index) => {
-                      return (
-                        <div className="labels-label">
-                          <span
-                            className="labels-label-color"
-                            style={{
-                              backgroundColor: `${favGenreData.datasets[0].backgroundColor[index]}`,
-                            }}
-                          ></span>
-                          <p className="labels-label-text">{item}</p>
-                        </div>
-                      );
-                    })}
-                  </div>
-                  <div className="doughnutChart">
-                    <Doughnut
-                      className="doughnut"
-                      data={favGenreData}
-                      options={{
-                        plugins: {
-                          legend: {
-                            display: false,
+                {favGenreData && (
+                  <div className="favGenre-content">
+                    <div className="labels">
+                      {favGenreData.labels.map((item, index) => {
+                        return (
+                          <div className="labels-label">
+                            <span
+                              className="labels-label-color"
+                              style={{
+                                backgroundColor: `${favGenreData.datasets[0].backgroundColor[index]}`,
+                              }}
+                            ></span>
+                            <p className="labels-label-text">{item}</p>
+                          </div>
+                        );
+                      })}
+                    </div>
+                    <div className="doughnutChart">
+                      <Doughnut
+                        className="doughnut"
+                        data={favGenreData}
+                        options={{
+                          plugins: {
+                            legend: {
+                              display: false,
+                            },
                           },
-                        },
-                      }}
-                    />
+                        }}
+                      />
+                    </div>
                   </div>
-                </div>
+                )}
+                {!favGenreData && (
+                  <div className="favGenre-noData">
+                    You have not started reading any novel yet
+                  </div>
+                )}
               </div>
 
               <div className="body-item favourites">
@@ -709,25 +748,29 @@ const Profile = () => {
                       <div className="body-item-heading">Current Progress</div>
                     </div>
                     <div className="current-content">
-                      <div className="current-content-novels">
-                        {currentProgress &&
-                          currentProgress.map((item) => {
+                      {currentProgressData && (
+                        <div className="current-content-novels">
+                          {currentProgressData.map((item) => {
                             return (
                               <div className="novel">
-                                {/* <img src={item.img} alt="" className="novel-img" /> */}
-                                {/* <span className="novel-img"></span> */}
                                 <div className="novel-data">
                                   <span className="novel-data-text">
                                     <p className="novel-data-name">
-                                      {item.name}
+                                      {item.book}
                                     </p>
-                                    <p className="novel-data-time">14h</p>
+                                    <p className="novel-data-time">
+                                      {item.chaptersRead}/{item.totalChapters}
+                                    </p>
                                   </span>
                                   <span className="novel-data-progressBar">
                                     <span
                                       className="progress"
                                       style={{
-                                        left: `${item.progress * 100 - 100}%`,
+                                        width: `${
+                                          (item.chaptersRead /
+                                            item.totalChapters) *
+                                          100
+                                        }%`,
                                       }}
                                     ></span>
                                   </span>
@@ -735,7 +778,14 @@ const Profile = () => {
                               </div>
                             );
                           })}
-                      </div>
+                        </div>
+                      )}
+                      {(!currentProgressData ||
+                        currentProgressData.length === 0) && (
+                        <div className="current-content-noData">
+                          User has not started reading any novel yet
+                        </div>
+                      )}
                     </div>
                   </div>
                 )}
@@ -744,32 +794,34 @@ const Profile = () => {
                   <div className="body-item-top">
                     <div className="body-item-heading">Stats</div>
                   </div>
-                  <div className="stats2-content">
-                    <p className="item">
-                      <span className="count">120</span>
-                      <span className="title">Comments</span>
-                    </p>
-                    <p className="item">
-                      <span className="count">12</span>
-                      <span className="title">Reviews</span>
-                    </p>
-                    <p className="item">
-                      <span className="count">4.5k</span>
-                      <span className="title">Followers</span>
-                    </p>
-                    <p className="item">
-                      <span className="count">5.5k</span>
-                      <span className="title">Upvotes</span>
-                    </p>
-                    <p className="item">
-                      <span className="count">31</span>
-                      <span className="title">Completed</span>
-                    </p>
-                    <p className="item">
-                      <span className="count">12</span>
-                      <span className="title">Following</span>
-                    </p>
-                  </div>
+                  {stats && (
+                    <div className="stats2-content">
+                      <p className="item">
+                        <span className="count">{stats.comments}</span>
+                        <span className="title">Comments</span>
+                      </p>
+                      <p className="item">
+                        <span className="count">{stats.reviews}</span>
+                        <span className="title">Reviews</span>
+                      </p>
+                      <p className="item">
+                        <span className="count">{stats.followers}</span>
+                        <span className="title">Followers</span>
+                      </p>
+                      <p className="item">
+                        <span className="count">{stats.upvotes}</span>
+                        <span className="title">Upvotes</span>
+                      </p>
+                      <p className="item">
+                        <span className="count">{stats.completed}</span>
+                        <span className="title">Completed</span>
+                      </p>
+                      <p className="item">
+                        <span className="count">{stats.following}</span>
+                        <span className="title">Following</span>
+                      </p>
+                    </div>
+                  )}
                 </div>
               )}
               {userProfileData && userProfileData.profileData.favGenreVis && (
@@ -777,39 +829,43 @@ const Profile = () => {
                   <div className="body-item-top">
                     <div className="body-item-heading">Favourite Genre</div>
                   </div>
-                  <div className="favGenre-content">
-                    <div className="labels">
-                      {favGenre.labels.map((item, index) => {
-                        return (
-                          <div className="labels-label">
-                            <span
-                              className="labels-label-color"
-                              style={{
-                                backgroundColor: `${favGenre.datasets[0].backgroundColor[index]}`,
-                              }}
-                            ></span>
-                            <p className="labels-label-text">{item}</p>
-                          </div>
-                        );
-                      })}
-                    </div>
-                    <div className="doughnutChart">
-                      <Doughnut
-                        className="doughnut"
-                        data={favGenre}
-                        options={{
-                          plugins: {
-                            legend: {
-                              display: false,
-                              labels: {
-                                color: "rgb(255, 99, 132)",
+                  {favGenreData && (
+                    <div className="favGenre-content">
+                      <div className="labels">
+                        {favGenreData.labels.map((item, index) => {
+                          return (
+                            <div className="labels-label">
+                              <span
+                                className="labels-label-color"
+                                style={{
+                                  backgroundColor: `${favGenreData.datasets[0].backgroundColor[index]}`,
+                                }}
+                              ></span>
+                              <p className="labels-label-text">{item}</p>
+                            </div>
+                          );
+                        })}
+                      </div>
+                      <div className="doughnutChart">
+                        <Doughnut
+                          className="doughnut"
+                          data={favGenreData}
+                          options={{
+                            plugins: {
+                              legend: {
+                                display: false,
                               },
                             },
-                          },
-                        }}
-                      />
+                          }}
+                        />
+                      </div>
                     </div>
-                  </div>
+                  )}
+                  {!favGenreData && (
+                    <div className="favGenre-noData">
+                      User has not started reading any novel yet
+                    </div>
+                  )}
                 </div>
               )}
               {userProfileData && userProfileData.profileData.recommendedVis && (

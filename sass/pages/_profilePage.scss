@@ -193,6 +193,7 @@
             letter-spacing: 0.3rem;
             color: white;
             font-size: $default-font-size;
+            height: $default-font-size;
             font-weight: bold;
           }
         }
@@ -255,14 +256,21 @@
                       transition: all 0.4s ease;
                       position: absolute;
                       height: 100%;
-                      width: 100%;
-                      left: -100%;
+                      width: 0%;
+                      left: 0%;
                       border-radius: 0.5rem;
                       background-color: rgb(47, 117, 237);
                     }
                   }
                 }
               }
+            }
+            &-noData {
+              text-align: center;
+              font-size: $default-font-size;
+              height: calc(100% - 1.6rem);
+              display: grid;
+              place-items: center;
             }
             &::-webkit-scrollbar {
               width: 1rem;
@@ -369,6 +377,13 @@
               width: 20rem;
               height: 20rem;
             }
+          }
+          &-noData {
+            text-align: center;
+            font-size: $default-font-size;
+            height: calc(100% - 1.6rem);
+            display: grid;
+            place-items: center;
           }
         }
         .favourites {
