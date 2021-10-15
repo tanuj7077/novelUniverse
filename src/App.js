@@ -21,7 +21,8 @@ import { useGlobalContext } from "./context";
 
 axios.defaults.withCredentials = true;
 function App() {
-  const { setIsLoggedIn, setUserData, isLoggedIn } = useGlobalContext();
+  const { setIsLoggedIn, setUserData, userData, isLoggedIn } =
+    useGlobalContext();
   const getLoggedIn = async () => {
     const loggedInRes = await axios.get("http://localhost:8000/auth/loggedIn");
     if (loggedInRes.data.loggedIn) {
@@ -64,7 +65,7 @@ function App() {
           <Browse />
         </Route>
         <Route path="/collection">
-          <Collection />
+          {isLoggedIn ? <Collection /> : <Redirect to="/home" exact />}
         </Route>
         <Route path="/profile/:username">
           <Profile />
@@ -76,7 +77,11 @@ function App() {
           <BookPage />
         </Route>
         <Route path="/add">
-          <AddContent />
+          {isLoggedIn &&
+            userData &&
+            userData.username === process.env.REACT_APP_ADMIN_USERNAME && (
+              <AddContent />
+            )}
         </Route>
       </>
     </Switch>
