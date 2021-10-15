@@ -35,7 +35,13 @@ const CurrentProgress = ({ progressData }) => {
 const Profile = () => {
   //followers get new recommendations notifications
   const { username } = useParams();
-  const { userData, isLoggedIn, getUpdatedUserData } = useGlobalContext();
+  const {
+    userData,
+    isLoggedIn,
+    getUpdatedUserData,
+    toggleLoginModalVisibility,
+    changeAlert,
+  } = useGlobalContext();
 
   const [aboutModal, setAboutModal] = useState(false);
   const [usernameModal, setUsernameModal] = useState(false);
@@ -52,6 +58,7 @@ const Profile = () => {
   const [currentProgressData, setCurrentProgressData] = useState([]);
   const [favGenreData, setFavGenreData] = useState();
   const [stats, setStats] = useState();
+  const [followed, setFollowed] = useState(false);
 
   const changeCurrentVisibility = async () => {
     await axios
@@ -187,6 +194,7 @@ const Profile = () => {
       fetchCurrentProgress(res.data.userData._id);
       fetchFavGenre(res.data.userData._id);
       getStats(res.data.userData);
+      //checkFollowed();
       if (res.data.userData && res.data.userData.profileData.about) {
         setAboutInput(res.data.userData.profileData.about);
         setUserInput(res.data.userData.username);
@@ -269,9 +277,58 @@ const Profile = () => {
       });
   };
 
+  const checkFollowed = () => {
+    if (userData && userProfileData) {
+      let flag = 0;
+      userProfileData.followed.forEach((user) => {
+        if (user.toString() === userData._id.toString()) {
+          flag++;
+        }
+      });
+      flag ? setFollowed(true) : setFollowed(false);
+    }
+  };
+
+  const follow = async () => {
+    if (!isLoggedIn) {
+      toggleLoginModalVisibility();
+    } else {
+      if (followed) {
+        let data = {
+          toUnFollow: userProfileData._id,
+          user: userData._id,
+        };
+        await axios
+          .post(`http://localhost:8000/user/unFollow/`, data)
+          .then((res) => {
+            changeAlert(res.data.message);
+            res.data.message.type === "success" && setFollowed(false);
+            //fetchUserData();
+            //getUpdatedUserData();
+          });
+      } else {
+        let data = {
+          toFollow: userProfileData._id,
+          user: userData._id,
+        };
+        await axios
+          .post(`http://localhost:8000/user/follow`, data)
+          .then((res) => {
+            changeAlert(res.data.message);
+            res.data.message.type === "success" && setFollowed(true);
+            //fetchUserData();
+            //getUpdatedUserData();
+          });
+      }
+    }
+  };
+
   useEffect(() => {
     fetchUserData(username);
   }, [username]);
+  useEffect(() => {
+    checkFollowed();
+  }, [userData, userProfileData]);
   if (userData && username === userData.username) {
     return (
       <div className="profilePage">
@@ -327,7 +384,7 @@ const Profile = () => {
                 )}
               </span>
               {userProfileData && (
-                <p className="name">
+                <p className="info">
                   <span>{userProfileData.username}</span>
                   <span>
                     <MdEdit
@@ -531,7 +588,7 @@ const Profile = () => {
                 )}
               </div>
 
-              <div className="body-item favourites">
+              <div className="body-item recommended">
                 <div className="body-item-top">
                   <div className="body-item-heading">Recommended</div>
                   {isLoggedIn && (
@@ -720,11 +777,19 @@ const Profile = () => {
                 }}
               ></span>
               {userProfileData && (
-                <p className="name">
+                <p className="info">
                   <span>{userProfileData.username}</span>
                 </p>
               )}
-              {/* <p className="userName">@Jamie</p> */}
+              {followed ? (
+                <p className="follow" onClick={follow}>
+                  Followed
+                </p>
+              ) : (
+                <p className="follow" onClick={follow}>
+                  Follow
+                </p>
+              )}
             </div>
             <div className="body">
               <div className="body-item about">
@@ -741,6 +806,7 @@ const Profile = () => {
                   </div>
                 )}
               </div>
+
               {userProfileData &&
                 userProfileData.profileData.currentProgressVis && (
                   <div className="body-item current">
@@ -789,6 +855,7 @@ const Profile = () => {
                     </div>
                   </div>
                 )}
+
               {userProfileData && userProfileData.profileData.statsVis && (
                 <div className="body-item stats2">
                   <div className="body-item-top">
@@ -824,6 +891,7 @@ const Profile = () => {
                   )}
                 </div>
               )}
+
               {userProfileData && userProfileData.profileData.favGenreVis && (
                 <div className="body-item favGenre">
                   <div className="body-item-top">
@@ -868,6 +936,7 @@ const Profile = () => {
                   )}
                 </div>
               )}
+
               {userProfileData && userProfileData.profileData.recommendedVis && (
                 <div className="body-item favourites">
                   <div className="body-item-top">

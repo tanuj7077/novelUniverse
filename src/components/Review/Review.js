@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { FaStar } from "react-icons/fa";
 import { GoArrowUp } from "react-icons/go";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 import { useGlobalContext } from "../../context";
 
 function Review({ reviewId }) {
@@ -10,6 +11,7 @@ function Review({ reviewId }) {
   const [review, setReview] = useState();
   const [expanded, setExpanded] = useState(false);
   const [username, setUsername] = useState("");
+  const history = useHistory();
   const toggleReadMore = () => {
     setExpanded(!expanded);
   };
@@ -60,6 +62,9 @@ function Review({ reviewId }) {
       }
     }
   };
+  const goToUserProfile = (username) => {
+    history.push(`../profile/${username}`);
+  };
   useEffect(() => {
     getReview();
   }, []);
@@ -97,7 +102,12 @@ function Review({ reviewId }) {
             )}
           </span>
           <div className="info">
-            <div className="info-reviewUser">{username}</div>
+            <div
+              className="info-reviewUser"
+              onClick={() => goToUserProfile(username)}
+            >
+              {username}
+            </div>
             <div className="info-upvotes">
               <GoArrowUp className="info-upvotes-icon" onClick={upvote} />
               <p className="info-upvotes-count">{review.upvotes.length}</p>

@@ -588,6 +588,9 @@
                 &-reviewUser {
                   font-size: $default-font-size;
                   color: rgb(190, 190, 190);
+                  &:hover {
+                    cursor: pointer;
+                  }
                 }
                 &-upvotes {
                   display: flex;
