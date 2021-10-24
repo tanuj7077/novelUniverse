@@ -188,18 +188,19 @@ const Profile = () => {
 
   //get profile data (userProfileData)
   const fetchUserData = async (username) => {
-    await axios.get(`http://localhost:8000/user/${username}`).then((res) => {
-      console.log("fetched User Data");
-      setUserProfileData(res.data.userData);
-      fetchCurrentProgress(res.data.userData._id);
-      fetchFavGenre(res.data.userData._id);
-      getStats(res.data.userData);
-      //checkFollowed();
-      if (res.data.userData && res.data.userData.profileData.about) {
-        setAboutInput(res.data.userData.profileData.about);
-        setUserInput(res.data.userData.username);
-      }
-    });
+    (await username) &&
+      (await axios.get(`http://localhost:8000/user/${username}`).then((res) => {
+        console.log("fetched User Data");
+        console.log(res.data.userData);
+        setUserProfileData(res.data.userData);
+        fetchCurrentProgress(res.data.userData._id);
+        fetchFavGenre(res.data.userData._id);
+        getStats(res.data.userData);
+        if (res.data.userData && res.data.userData.profileData.about) {
+          setAboutInput(res.data.userData.profileData.about);
+          setUserInput(res.data.userData.username);
+        }
+      }));
   };
 
   //get currentProgress data (currentProgressData)
@@ -303,7 +304,7 @@ const Profile = () => {
           .then((res) => {
             changeAlert(res.data.message);
             res.data.message.type === "success" && setFollowed(false);
-            //fetchUserData();
+            fetchUserData();
             //getUpdatedUserData();
           });
       } else {
@@ -316,7 +317,7 @@ const Profile = () => {
           .then((res) => {
             changeAlert(res.data.message);
             res.data.message.type === "success" && setFollowed(true);
-            //fetchUserData();
+            fetchUserData();
             //getUpdatedUserData();
           });
       }
@@ -328,7 +329,7 @@ const Profile = () => {
   }, [username]);
   useEffect(() => {
     checkFollowed();
-  }, [userData, userProfileData]);
+  }, [userData && userProfileData]);
   if (userData && username === userData.username) {
     return (
       <div className="profilePage">

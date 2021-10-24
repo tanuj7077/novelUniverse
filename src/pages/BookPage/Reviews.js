@@ -342,7 +342,9 @@ function Reviews({ book }) {
         </div>
       )}
       <div className="reviewSection-reviews">
-        <p className="reviewSection-reviews-heading">Given Reviews</p>
+        {reviews.length !== 0 && (
+          <p className="reviewSection-reviews-heading">Given Reviews</p>
+        )}
         <div className="reviewSection-reviews-content">
           {reviews.slice(0, page * REVIEWS_LIMIT).map((review) => {
             return <Review reviewId={review} />;

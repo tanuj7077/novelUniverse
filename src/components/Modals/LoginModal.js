@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { IoCloseOutline } from "react-icons/io5";
+import { FaUserAlt, FaKey } from "react-icons/fa";
 import { useGlobalContext } from "../../context";
 import axios from "axios";
 
@@ -11,86 +12,177 @@ const LoginModal = () => {
   const [loginPassword, setLoginPassword] = useState("");
   const [registerUsername, setRegisterUsername] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
+  const [usernameExistance, setUsernameExistance] = useState(false);
 
-  // const login = () => {
-  //   const data = {
-  //     username: loginUsername,
-  //     password: loginPassword,
-  //   };
-  //   axios.post("http://localhost:8000/auth/signin", data).then((res) => {
-  //     console.log(res.data);
-  //   });
-  // };
-  // const signup = () => {
-  //   const data = {
-  //     username: registerUsername,
-  //     password: registerPassword,
-  //   };
-  //   axios.post("http://localhost:8000/auth/signup", data).then((res) => {
-  //     console.log(res.data);
-  //   });
-  // };
+  const checkUsernameExistance = () => {
+    console.log("yes");
+    axios
+      .get(`http://localhost:8000/user/checkUser/${registerUsername}`)
+      .then((res) => {
+        console.log(res.data);
+        setUsernameExistance(res.data.usernameExistance);
+      });
+  };
 
+  const toggleLoginMode = () => {
+    setLoginMode(!loginMode);
+  };
+
+  useEffect(() => {
+    checkUsernameExistance();
+  }, [registerUsername]);
   return (
     <>
       {loginModalVisible && (
         <div className="loginModalContainer">
           <div
-            className={`loginModal ${
-              loginMode ? "loginModal-login" : "loginModal-signup"
+            className="loginModalContainer-overlay"
+            onClick={toggleLoginModalVisibility}
+          ></div>
+          <div
+            className={`loginModalContainer-loginModal ${
+              loginMode
+                ? "loginModalContainer-loginModal-login"
+                : "loginModalContainer-loginModal-signup"
             }`}
           >
             <IoCloseOutline
-              className="loginModal-closeIcon"
+              className="loginModalContainer-loginModal-closeIcon"
               onClick={toggleLoginModalVisibility}
             />
-            <section className="loginSection">
-              <div className="loginFormGrp">
-                <input
-                  type="text"
-                  placeholder="username"
-                  value={loginUsername}
-                  onChange={(e) => setLoginUsername(e.target.value)}
-                />
-              </div>
-              <div className="loginFormGrp">
-                <input
-                  type="password"
-                  placeholder="password"
-                  value={loginPassword}
-                  onChange={(e) => setLoginPassword(e.target.value)}
-                />
-              </div>
-              <button
-                className="loginFormGrp-btn"
-                onClick={() => login(loginUsername, loginPassword)}
+            <div className="loginModalContainer-loginModal-optionBg">
+              <p
+                className="loginModalContainer-loginModal-optionBg-login"
+                onClick={toggleLoginMode}
               >
+                <span>Register</span>
+              </p>
+              <p
+                className="loginModalContainer-loginModal-optionBg-register"
+                onClick={toggleLoginMode}
+              >
+                <span>Login</span>
+              </p>
+            </div>
+
+            <section
+              className={`loginModalContainer-loginModal-loginSection ${
+                loginMode
+                  ? "loginModalContainer-loginModal-loginSectionVisible"
+                  : ""
+              }`}
+            >
+              <p className="loginModalContainer-loginModal-loginSection-heading">
                 Login
-              </button>
+              </p>
+              <div className="loginModalContainer-loginModal-loginSection-form">
+                <div className="loginFormGrp">
+                  <div className="loginFormGrp-input">
+                    <FaUserAlt className="loginFormGrp-input-icon" />
+                    <input
+                      type="loginFormGrp-text"
+                      placeholder="Username"
+                      value={loginUsername}
+                      onChange={(e) => setLoginUsername(e.target.value)}
+                      required
+                    />
+                    <label htmlFor="" className="loginFormGrp-input-label">
+                      Username
+                    </label>
+                  </div>
+                </div>
+                <div className="loginFormGrp">
+                  <div className="loginFormGrp-input">
+                    <FaKey className="loginFormGrp-input-icon" />
+                    <input
+                      className="loginFormGrp-text"
+                      type="password"
+                      placeholder="Password"
+                      value={loginPassword}
+                      onChange={(e) => setLoginPassword(e.target.value)}
+                      required
+                    />
+                    <label htmlFor="" className="loginFormGrp-input-label">
+                      Password
+                    </label>
+                  </div>
+                </div>
+                <button
+                  className="loginFormGrp-btn"
+                  onClick={() => login(loginUsername, loginPassword)}
+                >
+                  Login
+                </button>
+              </div>
             </section>
-            <section className="signupSection">
-              <div className="loginFormGrp">
-                <input
-                  type="text"
-                  placeholder="username"
-                  value={registerUsername}
-                  onChange={(e) => setRegisterUsername(e.target.value)}
-                />
+
+            <section
+              className={`loginModalContainer-loginModal-signupSection ${
+                !loginMode
+                  ? "loginModalContainer-loginModal-loginSectionVisible"
+                  : ""
+              }`}
+            >
+              <p className="loginModalContainer-loginModal-loginSection-heading">
+                Register
+              </p>
+              <div className="loginModalContainer-loginModal-loginSection-form">
+                <div className="loginFormGrp">
+                  <div className="loginFormGrp-input">
+                    <FaUserAlt className="loginFormGrp-input-icon" />
+                    <input
+                      type="loginFormGrp-text"
+                      placeholder="Username"
+                      value={registerUsername}
+                      onChange={(e) => {
+                        setRegisterUsername(e.target.value);
+                      }}
+                      required
+                    />
+                    <label htmlFor="" className="loginFormGrp-input-label">
+                      Username
+                    </label>
+
+                    {usernameExistance && (
+                      <p className="loginFormGrp-input-msg-error">
+                        username already exist
+                      </p>
+                    )}
+                    {!usernameExistance && registerUsername.length > 0 && (
+                      <p className="loginFormGrp-input-msg-success">
+                        username available
+                      </p>
+                    )}
+                  </div>
+                </div>
+                <div className="loginFormGrp">
+                  <div className="loginFormGrp-input">
+                    <FaKey className="loginFormGrp-input-icon" />
+                    <input
+                      className="loginFormGrp-text"
+                      type="password"
+                      placeholder="Password"
+                      value={registerPassword}
+                      onChange={(e) => setRegisterPassword(e.target.value)}
+                      required
+                    />
+                    <label htmlFor="" className="loginFormGrp-input-label">
+                      Password
+                    </label>
+                  </div>
+                </div>
+                <button
+                  className={`loginFormGrp-btn ${
+                    (usernameExistance ||
+                      registerPassword.length <= 2 ||
+                      registerUsername.length === 0) &&
+                    "loginFormGrp-btn-disabled"
+                  }`}
+                  onClick={() => signup(registerUsername, registerPassword)}
+                >
+                  Register
+                </button>
               </div>
-              <div className="loginFormGrp">
-                <input
-                  type="password"
-                  placeholder="password"
-                  value={registerPassword}
-                  onChange={(e) => setRegisterPassword(e.target.value)}
-                />
-              </div>
-              <button
-                className="loginFormGrp-btn"
-                onClick={() => signup(registerUsername, registerPassword)}
-              >
-                Sign up
-              </button>
             </section>
           </div>
         </div>

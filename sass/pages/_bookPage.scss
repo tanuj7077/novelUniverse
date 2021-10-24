@@ -626,6 +626,11 @@
               }
             }
           }
+          &-noContent {
+            font-size: $medium-font-size;
+            margin-bottom: 1rem;
+            padding-left: 0.5rem;
+          }
         }
       }
     }

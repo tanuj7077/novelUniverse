@@ -54,3 +54,21 @@
     transform: scale(1);
   }
 }
+@-webkit-keyframes FadeOut {
+  100% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+}
+@-moz-keyframes FadeOut {
+  100% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+}
+@keyframes FadeOut {
+  100% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+}

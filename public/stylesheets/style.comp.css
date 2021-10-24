@@ -180,6 +180,21 @@ a:link, a:visited, a:hover, a:active {
     opacity: 1;
     transform: scale(1); } }
 
+@-webkit-keyframes FadeOut {
+  100% {
+    opacity: 0;
+    transform: scale(0.5); } }
+
+@-moz-keyframes FadeOut {
+  100% {
+    opacity: 0;
+    transform: scale(0.5); } }
+
+@keyframes FadeOut {
+  100% {
+    opacity: 0;
+    transform: scale(0.5); } }
+
 .landing {
   width: 100vw;
   min-height: 100vh;
@@ -1603,6 +1618,8 @@ a:link, a:visited, a:hover, a:active {
               .bookPage-container .contentSection .reviewSection-reviews-content .review .info-reviewUser {
                 font-size: 1.6rem;
                 color: #bebebe; }
+                .bookPage-container .contentSection .reviewSection-reviews-content .review .info-reviewUser:hover {
+                  cursor: pointer; }
               .bookPage-container .contentSection .reviewSection-reviews-content .review .info-upvotes {
                 display: flex;
                 align-items: center; }
@@ -1624,6 +1641,10 @@ a:link, a:visited, a:hover, a:active {
             background-color: #555555; }
             .bookPage-container .contentSection .reviewSection-reviews-content .loadMore:hover {
               cursor: pointer; }
+        .bookPage-container .contentSection .reviewSection-reviews-noContent {
+          font-size: 2.5rem;
+          margin-bottom: 1rem;
+          padding-left: 0.5rem; }
     .bookPage-container .selection {
       display: flex;
       width: 95rem;
@@ -2644,26 +2665,29 @@ a:link, a:visited, a:hover, a:active {
             cursor: pointer; }
           .profilePage-right .contents .top .profileImg:hover .profileImg-edit {
             opacity: 1; }
-        .profilePage-right .contents .top .name {
+        .profilePage-right .contents .top .info {
           position: absolute;
           top: 21rem;
           left: 27rem;
+          display: flex;
+          gap: 2rem;
+          align-items: center;
           font-size: 3rem;
           color: white;
           font-weight: bold; }
         .profilePage-right .contents .top .editIcon {
-          margin-left: 2rem;
+          margin-left: 0.5rem;
           height: 2rem;
           width: 2rem;
           color: #818181; }
-        .profilePage-right .contents .top .userName {
+        .profilePage-right .contents .top .follow {
           position: absolute;
-          top: 24rem;
-          left: 25rem;
+          top: 24.8rem;
+          left: 27rem;
           font-size: 1.6rem;
-          color: #338afd;
-          font-weight: bold;
-          letter-spacing: 0.2rem; }
+          color: #6cc7eb; }
+          .profilePage-right .contents .top .follow:hover {
+            cursor: pointer; }
       .profilePage-right .contents .body {
         width: 90%;
         height: max-content;
@@ -2846,38 +2870,38 @@ a:link, a:visited, a:hover, a:active {
           height: calc(100% - 1.6rem);
           display: grid;
           place-items: center; }
-        .profilePage-right .contents .body .favourites-content {
+        .profilePage-right .contents .body .recommended-content {
           width: 100%;
           height: 85%;
           overflow: hidden;
           overflow-y: auto; }
-          .profilePage-right .contents .body .favourites-content-novels {
+          .profilePage-right .contents .body .recommended-content-novels {
             display: flex;
             flex-flow: column;
             gap: 1rem; }
-          .profilePage-right .contents .body .favourites-content-novel {
+          .profilePage-right .contents .body .recommended-content-novel {
             display: flex;
             gap: 1rem; }
-            .profilePage-right .contents .body .favourites-content-novel-img {
+            .profilePage-right .contents .body .recommended-content-novel-img {
               width: 3.5rem;
               height: 4rem;
               background-color: #ffc57e; }
-            .profilePage-right .contents .body .favourites-content-novel .text {
+            .profilePage-right .contents .body .recommended-content-novel .text {
               display: flex;
               flex-flow: column; }
-            .profilePage-right .contents .body .favourites-content-novel-name {
+            .profilePage-right .contents .body .recommended-content-novel-name {
               font-size: 1.6rem; }
-            .profilePage-right .contents .body .favourites-content-novel-rating {
+            .profilePage-right .contents .body .recommended-content-novel-rating {
               display: flex;
               align-items: center;
               height: 1rem; }
-              .profilePage-right .contents .body .favourites-content-novel-rating .icon {
+              .profilePage-right .contents .body .recommended-content-novel-rating .icon {
                 color: #ffd900; }
-          .profilePage-right .contents .body .favourites-content::-webkit-scrollbar {
+          .profilePage-right .contents .body .recommended-content::-webkit-scrollbar {
             width: 1rem; }
-          .profilePage-right .contents .body .favourites-content::-webkit-scrollbar-track {
+          .profilePage-right .contents .body .recommended-content::-webkit-scrollbar-track {
             background: transparent; }
-          .profilePage-right .contents .body .favourites-content::-webkit-scrollbar-thumb {
+          .profilePage-right .contents .body .recommended-content::-webkit-scrollbar-thumb {
             background: #b3b3b3;
             border-radius: 0.75rem; }
     .profilePage-right::-webkit-scrollbar {
@@ -3209,52 +3233,226 @@ a:link, a:visited, a:hover, a:active {
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 11;
-  background-color: rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px); }
-
-.loginModal {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 70vw;
-  height: 80vh;
-  background-color: white;
-  border-radius: 1rem;
-  z-index: 11;
-  overflow: hidden;
-  display: flex;
-  /*&::before {
-    content: "";
+  z-index: 11; }
+  .loginModalContainer button {
+    z-index: 20; }
+  .loginModalContainer-overlay {
     position: absolute;
     top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgb(32, 121, 194);
-  }*/ }
-  .loginModal-closeIcon {
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 11;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); }
+  .loginModalContainer-loginModal {
     position: absolute;
-    top: 2rem;
-    right: 2rem;
-    width: 3.5rem;
-    height: 3.5rem;
-    color: black; }
-  .loginModal-login {
-    /*&::before {
-      left: -50%;
-    }*/ }
-  .loginModal-signup {
-    /*&::before {
-      transform: translateX(50%);
-    }*/ }
-  .loginModal .loginSection {
-    width: 50%;
-    height: 100%; }
-  .loginModal .signupSection {
-    width: 50%;
-    height: 100%; }
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40rem;
+    height: 34rem;
+    background-color: white;
+    border-radius: 1rem;
+    z-index: 11;
+    display: flex; }
+    .loginModalContainer-loginModal-closeIcon {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      width: 2.5rem;
+      height: 2.5rem;
+      color: black;
+      z-index: 12; }
+    .loginModalContainer-loginModal-optionBg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 34rem;
+      height: 100%;
+      z-index: 9;
+      background-color: #ff9a88;
+      transition: all 0.3s 0.3s ease; }
+      .loginModalContainer-loginModal-optionBg-login {
+        position: absolute;
+        top: 50%;
+        left: 0%;
+        transform: translate(-3rem, -50%);
+        background-color: #ff9a88;
+        font-size: 2rem;
+        padding: 0.5rem;
+        z-index: 11; }
+        .loginModalContainer-loginModal-optionBg-login span {
+          writing-mode: vertical-lr;
+          text-orientation: upright; }
+          .loginModalContainer-loginModal-optionBg-login span:hover {
+            cursor: pointer; }
+        .loginModalContainer-loginModal-optionBg-login:hover {
+          cursor: pointer; }
+      .loginModalContainer-loginModal-optionBg-register {
+        position: absolute;
+        top: 50%;
+        right: 0%;
+        transform: translate(3rem, -50%);
+        background-color: #ff9a88;
+        font-size: 2rem;
+        padding: 0.5rem;
+        z-index: 11; }
+        .loginModalContainer-loginModal-optionBg-register span {
+          writing-mode: vertical-lr;
+          text-orientation: upright; }
+        .loginModalContainer-loginModal-optionBg-register:hover {
+          cursor: pointer; }
+    .loginModalContainer-loginModal-loginSection {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 35rem;
+      height: 100%;
+      z-index: 10;
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      padding: 1.5rem; }
+      .loginModalContainer-loginModal-loginSection-heading {
+        opacity: 0;
+        font-size: 2.5rem;
+        letter-spacing: 0.3rem;
+        font-weight: bold;
+        margin-bottom: 7rem; }
+      .loginModalContainer-loginModal-loginSection-form {
+        opacity: 0;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        gap: 7rem;
+        width: 100%; }
+    .loginModalContainer-loginModal-loginSectionInvisible .loginModalContainer-loginModal-loginSection-heading {
+      opacity: 1;
+      transform: scale(1);
+      -webkit-animation: FadeOut 0.3s ease-in-out forwards;
+      -moz-animation: FadeOut 0.3s ease-in-out forwards;
+      animation: FadeOut 0.3s ease-in-out forwards; }
+    .loginModalContainer-loginModal-loginSectionInvisible .loginModalContainer-loginModal-loginSection-form {
+      opacity: 1;
+      transform: scale(1);
+      -webkit-animation: FadeOut 0.3s ease-in-out forwards;
+      -moz-animation: FadeOut 0.3s ease-in-out forwards;
+      animation: FadeOut 0.3s ease-in-out forwards; }
+    .loginModalContainer-loginModal-loginSectionVisible .loginModalContainer-loginModal-loginSection-heading {
+      transform: scale(0.5);
+      -webkit-animation: FadeIn 0.3s 0.6s ease-in-out forwards;
+      -moz-animation: FadeIn 0.3s 0.6s ease-in-out forwards;
+      animation: FadeIn 0.3s 0.6s ease-in-out forwards; }
+    .loginModalContainer-loginModal-loginSectionVisible .loginModalContainer-loginModal-loginSection-form {
+      transform: scale(0.5);
+      -webkit-animation: FadeIn 0.3s 0.6s ease-in-out forwards;
+      -moz-animation: FadeIn 0.3s 0.6s ease-in-out forwards;
+      animation: FadeIn 0.3s 0.6s ease-in-out forwards; }
+    .loginModalContainer-loginModal-signupSection {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 35rem;
+      height: 100%;
+      z-index: 10;
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      padding: 1.5rem; }
+      .loginModalContainer-loginModal-signupSection-heading {
+        opacity: 0;
+        font-size: 2.5rem;
+        letter-spacing: 0.3rem;
+        font-weight: bold;
+        margin-bottom: 7rem; }
+      .loginModalContainer-loginModal-signupSection-form {
+        opacity: 0;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        gap: 7rem;
+        width: 100%; }
+    .loginModalContainer-loginModal-registerOptionInvisible {
+      opacity: 1;
+      transform: scale(1);
+      -webkit-animation: FadeOut 0.3s ease-in-out forwards;
+      -moz-animation: FadeOut 0.3s ease-in-out forwards;
+      animation: FadeOut 0.3s ease-in-out forwards; }
+    .loginModalContainer-loginModal-registerOptionVisible {
+      opacity: 0;
+      transform: scale(0.5);
+      -webkit-animation: FadeIn 0.3s 0.9s ease-in-out forwards;
+      -moz-animation: FadeIn 0.3s 0.9s ease-in-out forwards;
+      animation: FadeIn 0.3s 0.9s ease-in-out forwards; }
+  .loginModalContainer .loginFormGrp {
+    width: 30rem; }
+    .loginModalContainer .loginFormGrp-input {
+      width: 100%;
+      position: relative; }
+      .loginModalContainer .loginFormGrp-input-label {
+        position: absolute;
+        font-size: 1.6rem;
+        top: 0.5rem;
+        left: 3.2rem;
+        z-index: 10;
+        visibility: hidden;
+        color: #747474;
+        transition: all 0.3s ease; }
+      .loginModalContainer .loginFormGrp-input-icon {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        width: 2.2rem;
+        height: 2.2rem;
+        color: #a7a7a7; }
+      .loginModalContainer .loginFormGrp-input input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        border: none;
+        outline: none;
+        padding: 0.5rem 1rem;
+        padding-left: 3.2rem;
+        border-bottom: 1px solid #cacaca;
+        font-size: 1.6rem; }
+        .loginModalContainer .loginFormGrp-input input:focus + label {
+          visibility: visible;
+          top: -1.7rem;
+          color: #0692c9;
+          transition: all 0.3s ease; }
+        .loginModalContainer .loginFormGrp-input input:focus {
+          border-color: #0692c9; }
+        .loginModalContainer .loginFormGrp-input input::placeholder {
+          font-size: 1.6rem;
+          color: #747474;
+          opacity: 1;
+          transition: all 0s 0.3s ease; }
+        .loginModalContainer .loginFormGrp-input input:focus::placeholder {
+          opacity: 0;
+          transition: none; }
+        .loginModalContainer .loginFormGrp-input input:valid + label {
+          visibility: visible;
+          top: -1.7rem;
+          color: #0692c9;
+          transition: all 0.3s ease; }
+    .loginModalContainer .loginFormGrp-btn {
+      width: 20rem;
+      padding: 0.7rem;
+      outline: none;
+      border: none;
+      border-radius: 0.5rem;
+      color: white;
+      background-color: #0692c9; }
+      .loginModalContainer .loginFormGrp-btn:hover {
+        cursor: pointer; }
+  .loginModalContainer-loginModal-login .loginModalContainer-loginModal-optionBg {
+    left: 35rem; }
+  .loginModalContainer-loginModal-signup .loginModalContainer-loginModal-optionBg {
+    left: -33rem; }
 
 .alertBox {
   z-index: 2000;
