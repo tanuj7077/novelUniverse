@@ -2087,7 +2087,8 @@ a:link, a:visited, a:hover, a:active {
       .collectionPage-container .novels-container {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
+        justify-content: flex-start;
+        gap: 2rem;
         row-gap: 1.5rem; }
       .collectionPage-container .novels-novel {
         height: max-content;
@@ -2712,6 +2713,9 @@ a:link, a:visited, a:hover, a:active {
             display: flex;
             justify-content: space-between;
             align-items: center; }
+          .profilePage-right .contents .body-item-icons {
+            display: flex;
+            gap: 1.5rem; }
           .profilePage-right .contents .body-item-visibility {
             width: 2rem;
             height: 2rem; }
@@ -2872,31 +2876,64 @@ a:link, a:visited, a:hover, a:active {
           place-items: center; }
         .profilePage-right .contents .body .recommended-content {
           width: 100%;
-          height: 85%;
+          height: 23rem;
           overflow: hidden;
-          overflow-y: auto; }
+          overflow-y: auto;
+          scroll-snap-type: y;
+          scroll-behavior: smooth; }
           .profilePage-right .contents .body .recommended-content-novels {
             display: flex;
             flex-flow: column;
+            padding-right: 1rem;
             gap: 1rem; }
           .profilePage-right .contents .body .recommended-content-novel {
+            background-color: rgba(0, 0, 0, 0.4);
             display: flex;
-            gap: 1rem; }
+            height: 11rem;
+            gap: 1rem;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            scroll-snap-align: start; }
             .profilePage-right .contents .body .recommended-content-novel-img {
-              width: 3.5rem;
-              height: 4rem;
-              background-color: #ffc57e; }
-            .profilePage-right .contents .body .recommended-content-novel .text {
+              width: 9rem;
+              height: 11rem;
+              background-size: cover;
+              background-position: center;
+              display: block; }
+            .profilePage-right .contents .body .recommended-content-novel-body {
+              width: calc(100% - 9rem);
+              gap: 0.5rem;
+              padding: 0.5rem;
               display: flex;
-              flex-flow: column; }
-            .profilePage-right .contents .body .recommended-content-novel-name {
-              font-size: 1.6rem; }
-            .profilePage-right .contents .body .recommended-content-novel-rating {
-              display: flex;
-              align-items: center;
-              height: 1rem; }
-              .profilePage-right .contents .body .recommended-content-novel-rating .icon {
-                color: #ffd900; }
+              flex-flow: column;
+              justify-content: space-between; }
+              .profilePage-right .contents .body .recommended-content-novel-body-top {
+                display: flex;
+                justify-content: space-between;
+                position: relative; }
+                .profilePage-right .contents .body .recommended-content-novel-body-top .name {
+                  font-size: 1.6rem;
+                  width: 80%; }
+                .profilePage-right .contents .body .recommended-content-novel-body-top .rating {
+                  position: absolute;
+                  top: 0.5rem;
+                  right: 0.5rem;
+                  display: flex;
+                  align-items: baseline;
+                  gap: 0.2rem;
+                  height: 1rem; }
+                  .profilePage-right .contents .body .recommended-content-novel-body-top .rating .icon {
+                    color: #ffd900;
+                    width: 1.2rem;
+                    height: 1.2rem; }
+                  .profilePage-right .contents .body .recommended-content-novel-body-top .rating .text {
+                    font-size: 1.6rem; }
+          .profilePage-right .contents .body .recommended-content-noData {
+            text-align: center;
+            font-size: 1.6rem;
+            height: calc(100% - 1.6rem);
+            display: grid;
+            place-items: center; }
           .profilePage-right .contents .body .recommended-content::-webkit-scrollbar {
             width: 1rem; }
           .profilePage-right .contents .body .recommended-content::-webkit-scrollbar-track {
@@ -2932,11 +2969,13 @@ a:link, a:visited, a:hover, a:active {
     border-radius: 1rem;
     width: 65rem;
     height: max-content;
-    padding: 3rem; }
+    padding: 2rem;
+    display: flex;
+    flex-flow: column; }
     .modals-modal-close {
       position: absolute;
-      top: 2.5rem;
-      right: 2.5rem;
+      top: 2rem;
+      right: 2rem;
       width: 2.5rem;
       height: 2.5rem; }
     .modals-modal-formGrp {
@@ -2958,6 +2997,20 @@ a:link, a:visited, a:hover, a:active {
         width: 14rem;
         background-size: cover;
         background-position: center; }
+    .modals-modal-heading {
+      font-size: 2.5rem; }
+    .modals-modal-list {
+      list-style: none;
+      font-size: 1.6rem; }
+      .modals-modal-list-item {
+        margin: 1rem 0;
+        display: flex;
+        gap: 1rem; }
+        .modals-modal-list-item .icon {
+          width: 2rem;
+          height: 2rem; }
+          .modals-modal-list-item .icon:hover {
+            cursor: pointer; }
 
 .addContentPage {
   margin-top: 6rem;
@@ -3251,11 +3304,12 @@ a:link, a:visited, a:hover, a:active {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 40rem;
+    width: 45rem;
     height: 34rem;
     background-color: white;
     border-radius: 1rem;
     z-index: 11;
+    overflow: hidden;
     display: flex; }
     .loginModalContainer-loginModal-closeIcon {
       position: absolute;
@@ -3269,18 +3323,22 @@ a:link, a:visited, a:hover, a:active {
       position: absolute;
       top: 0;
       left: 0;
-      width: 34rem;
+      width: 100%;
       height: 100%;
-      z-index: 9;
-      background-color: #ff9a88;
-      transition: all 0.3s 0.3s ease; }
+      text-transform: uppercase;
+      font-size: 1.2rem;
+      z-index: 13;
+      background-color: #0367ea;
+      color: white;
+      transition: all 0.3s ease; }
       .loginModalContainer-loginModal-optionBg-login {
         position: absolute;
         top: 50%;
-        left: 0%;
+        left: 1rem;
         transform: translate(-3rem, -50%);
-        background-color: #ff9a88;
-        font-size: 2rem;
+        background-color: inherit;
+        border-top-left-radius: 1rem;
+        border-bottom-left-radius: 1rem;
         padding: 0.5rem;
         z-index: 11; }
         .loginModalContainer-loginModal-optionBg-login span {
@@ -3293,10 +3351,11 @@ a:link, a:visited, a:hover, a:active {
       .loginModalContainer-loginModal-optionBg-register {
         position: absolute;
         top: 50%;
-        right: 0%;
+        right: 1rem;
         transform: translate(3rem, -50%);
-        background-color: #ff9a88;
-        font-size: 2rem;
+        background-color: inherit;
+        border-top-right-radius: 1rem;
+        border-bottom-right-radius: 1rem;
         padding: 0.5rem;
         z-index: 11; }
         .loginModalContainer-loginModal-optionBg-register span {
@@ -3305,10 +3364,12 @@ a:link, a:visited, a:hover, a:active {
         .loginModalContainer-loginModal-optionBg-register:hover {
           cursor: pointer; }
     .loginModalContainer-loginModal-loginSection {
+      visibility: none;
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 35rem;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80%;
       height: 100%;
       z-index: 10;
       display: flex;
@@ -3318,6 +3379,7 @@ a:link, a:visited, a:hover, a:active {
       .loginModalContainer-loginModal-loginSection-heading {
         opacity: 0;
         font-size: 2.5rem;
+        color: #585858;
         letter-spacing: 0.3rem;
         font-weight: bold;
         margin-bottom: 7rem; }
@@ -3328,33 +3390,13 @@ a:link, a:visited, a:hover, a:active {
         align-items: center;
         gap: 7rem;
         width: 100%; }
-    .loginModalContainer-loginModal-loginSectionInvisible .loginModalContainer-loginModal-loginSection-heading {
-      opacity: 1;
-      transform: scale(1);
-      -webkit-animation: FadeOut 0.3s ease-in-out forwards;
-      -moz-animation: FadeOut 0.3s ease-in-out forwards;
-      animation: FadeOut 0.3s ease-in-out forwards; }
-    .loginModalContainer-loginModal-loginSectionInvisible .loginModalContainer-loginModal-loginSection-form {
-      opacity: 1;
-      transform: scale(1);
-      -webkit-animation: FadeOut 0.3s ease-in-out forwards;
-      -moz-animation: FadeOut 0.3s ease-in-out forwards;
-      animation: FadeOut 0.3s ease-in-out forwards; }
-    .loginModalContainer-loginModal-loginSectionVisible .loginModalContainer-loginModal-loginSection-heading {
-      transform: scale(0.5);
-      -webkit-animation: FadeIn 0.3s 0.6s ease-in-out forwards;
-      -moz-animation: FadeIn 0.3s 0.6s ease-in-out forwards;
-      animation: FadeIn 0.3s 0.6s ease-in-out forwards; }
-    .loginModalContainer-loginModal-loginSectionVisible .loginModalContainer-loginModal-loginSection-form {
-      transform: scale(0.5);
-      -webkit-animation: FadeIn 0.3s 0.6s ease-in-out forwards;
-      -moz-animation: FadeIn 0.3s 0.6s ease-in-out forwards;
-      animation: FadeIn 0.3s 0.6s ease-in-out forwards; }
     .loginModalContainer-loginModal-signupSection {
+      visibility: none;
       position: absolute;
-      top: 0;
-      right: 0;
-      width: 35rem;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80%;
       height: 100%;
       z-index: 10;
       display: flex;
@@ -3364,6 +3406,7 @@ a:link, a:visited, a:hover, a:active {
       .loginModalContainer-loginModal-signupSection-heading {
         opacity: 0;
         font-size: 2.5rem;
+        color: #585858;
         letter-spacing: 0.3rem;
         font-weight: bold;
         margin-bottom: 7rem; }
@@ -3374,20 +3417,21 @@ a:link, a:visited, a:hover, a:active {
         align-items: center;
         gap: 7rem;
         width: 100%; }
-    .loginModalContainer-loginModal-registerOptionInvisible {
-      opacity: 1;
-      transform: scale(1);
-      -webkit-animation: FadeOut 0.3s ease-in-out forwards;
-      -moz-animation: FadeOut 0.3s ease-in-out forwards;
-      animation: FadeOut 0.3s ease-in-out forwards; }
-    .loginModalContainer-loginModal-registerOptionVisible {
-      opacity: 0;
-      transform: scale(0.5);
-      -webkit-animation: FadeIn 0.3s 0.9s ease-in-out forwards;
-      -moz-animation: FadeIn 0.3s 0.9s ease-in-out forwards;
-      animation: FadeIn 0.3s 0.9s ease-in-out forwards; }
+    .loginModalContainer-loginModal-loginSectionVisible {
+      visibility: visible;
+      z-index: 12; }
+      .loginModalContainer-loginModal-loginSectionVisible .loginModalContainer-loginModal-loginSection-heading {
+        transform: scale(0.5);
+        -webkit-animation: FadeIn 0.3s ease-in-out forwards;
+        -moz-animation: FadeIn 0.3s ease-in-out forwards;
+        animation: FadeIn 0.3s ease-in-out forwards; }
+      .loginModalContainer-loginModal-loginSectionVisible .loginModalContainer-loginModal-loginSection-form {
+        transform: scale(0.5);
+        -webkit-animation: FadeIn 0.3s ease-in-out forwards;
+        -moz-animation: FadeIn 0.3s ease-in-out forwards;
+        animation: FadeIn 0.3s ease-in-out forwards; }
   .loginModalContainer .loginFormGrp {
-    width: 30rem; }
+    width: 100%; }
     .loginModalContainer .loginFormGrp-input {
       width: 100%;
       position: relative; }
@@ -3439,6 +3483,16 @@ a:link, a:visited, a:hover, a:active {
           top: -1.7rem;
           color: #0692c9;
           transition: all 0.3s ease; }
+      .loginModalContainer .loginFormGrp-input-msg-error {
+        font-size: 1.2rem;
+        position: absolute;
+        top: 3.2rem;
+        color: red; }
+      .loginModalContainer .loginFormGrp-input-msg-success {
+        font-size: 1.2rem;
+        position: absolute;
+        top: 3.2rem;
+        color: green; }
     .loginModalContainer .loginFormGrp-btn {
       width: 20rem;
       padding: 0.7rem;
@@ -3446,13 +3500,18 @@ a:link, a:visited, a:hover, a:active {
       border: none;
       border-radius: 0.5rem;
       color: white;
-      background-color: #0692c9; }
+      text-transform: uppercase;
+      background-color: #0367ea; }
       .loginModalContainer .loginFormGrp-btn:hover {
         cursor: pointer; }
+      .loginModalContainer .loginFormGrp-btn-disabled {
+        background-color: #999999; }
+        .loginModalContainer .loginFormGrp-btn-disabled:hover {
+          cursor: unset; }
   .loginModalContainer-loginModal-login .loginModalContainer-loginModal-optionBg {
-    left: 35rem; }
+    left: calc(100% - 1rem); }
   .loginModalContainer-loginModal-signup .loginModalContainer-loginModal-optionBg {
-    left: -33rem; }
+    left: calc(-100% + 1rem); }
 
 .alertBox {
   z-index: 2000;

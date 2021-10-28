@@ -200,37 +200,6 @@ const Chapter = () => {
           )}
         </div>
         {chapterData && <Comments chapterInfo={chapterData} />}
-        {/* <div
-          className={`chapterPage-comments ${darkMode ? "darkComments" : ""}`}
-        >
-          <p className="heading">Comments</p>
-          <section className="myComment">
-            <textarea
-              type="text"
-              className="commentInput"
-              value={myComment}
-              placeholder="Write comment here"
-              onChange={(e) => setMyComment(e.target.value)}
-            ></textarea>
-            {myComment.length > 0 && (
-              <button className="commentSubmit">Submit</button>
-            )}
-          </section>
-          <ul className="comments">
-            {comments.map((item) => {
-              return (
-                <li className="comment">
-                  <div className="head">
-                    <p className="user">{item.name}</p>
-                    <p className="date">{item.date}</p>
-                  </div>
-                  <p className="commentText">{item.comment}</p>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-      */}
       </div>
     </div>
   );

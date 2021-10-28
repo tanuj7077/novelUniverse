@@ -19,6 +19,8 @@ const BookPage = () => {
   const [novelData, setNovelData] = useState();
   const [averageRating, setAverageRating] = useState(0);
   const [bookmarked, setBookmarked] = useState();
+  const [recommendBtnVisibility, setRecommendBtnVisibility] = useState(false);
+  const [recommended, setRecommended] = useState(false);
   const fetchBookData = (id) => {
     axios.get(`http://localhost:8000/book/${id}`).then((res) => {
       setNovelData(res.data.data.novel);
@@ -88,8 +90,37 @@ const BookPage = () => {
       setBookmarked(false);
     }
   };
+  const checkCompleted = () => {
+    let c = 0;
+    userData &&
+      userData.books &&
+      userData.books.forEach((item) => {
+        if (item.book === bookId && item.status === "completed") {
+          c++;
+        }
+      });
+    if (c > 0) {
+      setRecommendBtnVisibility(true);
+      checkRecommended();
+    }
+  };
+  const checkRecommended = () => {
+    let c = 0;
+    userData &&
+      userData.profileData &&
+      userData.profileData.recommended &&
+      userData.profileData.recommended.forEach((item) => {
+        if (item === bookId) {
+          c++;
+        }
+      });
+    if (c > 0) {
+      setRecommended(true);
+    }
+  };
   useEffect(() => {
     checkBookmarked();
+    checkCompleted();
   }, []);
   useEffect(() => {
     addToViews(bookId);

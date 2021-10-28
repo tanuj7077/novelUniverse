@@ -2,13 +2,17 @@ import React, { useState, useEffect } from "react";
 import blank from "../../assets/blankProfile.png";
 import background from "../../assets/abstract/12.jpg";
 import { FaCentercode, FaStar } from "react-icons/fa";
-import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
+import {
+  AiOutlineEyeInvisible,
+  AiOutlineEye,
+  AiOutlineMinus,
+} from "react-icons/ai";
 import { MdEdit } from "react-icons/md";
-import { IoMdClose } from "react-icons/io";
+import { IoMdClose, IoMdAdd } from "react-icons/io";
 import { Doughnut } from "react-chartjs-2";
 import { following, currentProgress, favGenre } from "../../mockData";
 import { useGlobalContext } from "../../context";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory, Route } from "react-router-dom";
 import axios from "axios";
 import firebase from "firebase/app";
 import "firebase/storage";
@@ -32,6 +36,73 @@ const CurrentProgress = ({ progressData }) => {
   const { userData, isLoggedIn } = useGlobalContext();
 };
 
+const RecommendedItem = ({ bookId }) => {
+  const [novel, setNovel] = useState();
+};
+
+const RecommendedModalItems = ({ bookId }) => {
+  const [novel, setNovel] = useState();
+  const getNovel = async () => {
+    await axios.get(`http://localhost:8000/book/${bookId}`).then((res) => {
+      setNovel(res.data.data.novel);
+    });
+  };
+  useEffect(() => {
+    getNovel();
+  }, []);
+  return <>{novel && <div className="novel">{novel.name}</div>}</>;
+};
+const RecommendedItems = ({ bookId }) => {
+  const [novel, setNovel] = useState();
+  const getNovel = async () => {
+    await axios.get(`http://localhost:8000/book/${bookId}`).then((res) => {
+      setNovel(res.data.data.novel);
+      console.log(res.data.data.novel);
+    });
+  };
+  useEffect(() => {
+    getNovel();
+  }, [bookId]);
+  return (
+    <>
+      {novel && (
+        <div className="recommended-content-novel">
+          <div
+            className="recommended-content-novel-img"
+            style={{ backgroundImage: `url(${novel.imageUrl})` }}
+          ></div>
+          <div className="recommended-content-novel-body">
+            <div className="recommended-content-novel-body-top">
+              <Route
+                render={({ history }) => (
+                  <div
+                    className="name"
+                    onClick={() => {
+                      history.push(`/book/${bookId}`);
+                    }}
+                  >
+                    {novel.name}
+                  </div>
+                )}
+              />
+              <div className="rating">
+                <FaStar className="icon" />
+                <p className="text">{novel.averageRating}</p>
+              </div>
+            </div>
+            <div className="recommended-content-novel-body-info">
+              {novel.description.length > 170
+                ? novel.description.substring(0, 170) + "..."
+                : novel.description}
+            </div>
+            <div className="recommended-content-novel-body-buttons"></div>
+          </div>
+        </div>
+      )}
+    </>
+  );
+};
+
 const Profile = () => {
   //followers get new recommendations notifications
   const { username } = useParams();
@@ -47,6 +118,7 @@ const Profile = () => {
   const [usernameModal, setUsernameModal] = useState(false);
   const [profilePicModal, setProfilePicModal] = useState(false);
   const [userProfileData, setUserProfileData] = useState();
+  const [recommendedModal, setRecommendedModal] = useState(false);
 
   const [aboutInput, setAboutInput] = useState("");
   const [userInput, setUserInput] = useState("");
@@ -58,8 +130,9 @@ const Profile = () => {
   const [currentProgressData, setCurrentProgressData] = useState([]);
   const [favGenreData, setFavGenreData] = useState();
   const [stats, setStats] = useState();
+  const [recommended, setRecommended] = useState([]);
+  const [collectionItems, setCollectionItems] = useState([]);
   const [followed, setFollowed] = useState(false);
-
   const changeCurrentVisibility = async () => {
     await axios
       .post(`http://localhost:8000/user/updateUserProfile/${userData._id}`, {
@@ -195,6 +268,7 @@ const Profile = () => {
         setUserProfileData(res.data.userData);
         fetchCurrentProgress(res.data.userData._id);
         fetchFavGenre(res.data.userData._id);
+        setRecommended(res.data.userData.profileData.recommended);
         getStats(res.data.userData);
         if (res.data.userData && res.data.userData.profileData.about) {
           setAboutInput(res.data.userData.profileData.about);
@@ -256,6 +330,18 @@ const Profile = () => {
       });
   };
 
+  const fetchCollectionItems = async () => {
+    userData &&
+      (await axios
+        .get(`http://localhost:8000/book/getCollectionItems/${userData._id}`)
+        .then((res) => {
+          let recommendedList = [
+            ...res.data.data.completed,
+            ...res.data.data.ongoing,
+          ];
+          setCollectionItems(recommendedList);
+        }));
+  };
   const getStats = async (userInfo) => {
     await axios
       .get(`http://localhost:8000/user/getUpvotes/${userInfo._id}`)
@@ -324,11 +410,39 @@ const Profile = () => {
     }
   };
 
+  const addToRecommended = async (bookId) => {
+    let data = {
+      bookId,
+      userId: userProfileData._id,
+    };
+    await axios
+      .post(`http://localhost:8000/user/addToRecommended`, data)
+      .then((res) => {
+        console.log(res.data);
+        setRecommended(res.data.data.recommended);
+        changeAlert(res.data.message);
+      });
+  };
+  const removeFromRecommended = async (bookId) => {
+    let data = {
+      bookId,
+      userId: userProfileData._id,
+    };
+    await axios
+      .post(`http://localhost:8000/user/removeFromRecommended`, data)
+      .then((res) => {
+        console.log(res.data);
+        setRecommended(res.data.data.recommended);
+        changeAlert(res.data.message);
+      });
+  };
+
   useEffect(() => {
     fetchUserData(username);
   }, [username]);
   useEffect(() => {
     checkFollowed();
+    fetchCollectionItems();
   }, [userData && userProfileData]);
   if (userData && username === userData.username) {
     return (
@@ -593,41 +707,50 @@ const Profile = () => {
                 <div className="body-item-top">
                   <div className="body-item-heading">Recommended</div>
                   {isLoggedIn && (
-                    <>
+                    <div className="body-item-icons">
                       {userProfileData &&
                       userProfileData.profileData.recommendedVis ? (
-                        <AiOutlineEye
-                          className="body-item-visibility"
-                          onClick={changeRecommendedVisibility}
-                        />
+                        <>
+                          <IoMdAdd
+                            className="body-item-visibility"
+                            onClick={() => {
+                              setRecommendedModal(!recommendedModal);
+                            }}
+                          />
+                          <AiOutlineEye
+                            className="body-item-visibility"
+                            onClick={changeRecommendedVisibility}
+                          />
+                        </>
                       ) : (
-                        <AiOutlineEyeInvisible
-                          className="body-item-visibility"
-                          onClick={changeRecommendedVisibility}
-                        />
+                        <>
+                          <IoMdAdd
+                            className="body-item-visibility"
+                            onClick={() => {
+                              setRecommendedModal(!recommendedModal);
+                            }}
+                          />
+                          <AiOutlineEyeInvisible
+                            className="body-item-visibility"
+                            onClick={changeRecommendedVisibility}
+                          />
+                        </>
                       )}
-                    </>
+                    </div>
                   )}
                 </div>
-                <div className="favourites-content">
-                  <div className="favourites-content-novels">
-                    {currentProgress.map((item) => {
-                      return (
-                        <div className="favourites-content-novel">
-                          <div className="favourites-content-novel-img"></div>
-                          <div className="text">
-                            <div className="favourites-content-novel-name">
-                              {item.name}
-                            </div>
-                            <div className="favourites-content-novel-rating">
-                              <FaStar className="icon" />
-                              <p className="text">{item.rating}</p>
-                            </div>
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
+                <div className="recommended-content">
+                  {recommended.length > 0 ? (
+                    <div className="recommended-content-novels">
+                      {recommended.map((item) => {
+                        return <RecommendedItems bookId={item} />;
+                      })}
+                    </div>
+                  ) : (
+                    <div className="recommended-content-noData">
+                      You have not added anything in your recommendation
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -729,6 +852,50 @@ const Profile = () => {
               <div className="modals-modal-formGrp">
                 <button onClick={updateProfilePic}>Submit</button>
               </div>
+            </div>
+          </section>
+        )}
+        {recommendedModal && (
+          <section className="modals">
+            <div
+              className="modals-backdrop"
+              onClick={() => {
+                setRecommendedModal(!recommendedModal);
+              }}
+            ></div>
+            <div className="modals-modal">
+              <IoMdClose
+                className="modals-modal-close"
+                onClick={() => {
+                  setRecommendedModal(!recommendedModal);
+                }}
+              />
+              <p className="modals-modal-heading">Add to Recommendations</p>
+              <ul className="modals-modal-list">
+                {collectionItems &&
+                  collectionItems.map((item) => {
+                    return (
+                      <li className="modals-modal-list-item">
+                        {!recommended.includes(item) ? (
+                          <IoMdAdd
+                            className="icon"
+                            onClick={() => {
+                              addToRecommended(item);
+                            }}
+                          />
+                        ) : (
+                          <AiOutlineMinus
+                            className="icon"
+                            onClick={() => {
+                              removeFromRecommended(item);
+                            }}
+                          />
+                        )}
+                        <RecommendedModalItems bookId={item} />
+                      </li>
+                    );
+                  })}
+              </ul>
             </div>
           </section>
         )}
@@ -939,29 +1106,22 @@ const Profile = () => {
               )}
 
               {userProfileData && userProfileData.profileData.recommendedVis && (
-                <div className="body-item favourites">
+                <div className="body-item recommended">
                   <div className="body-item-top">
                     <div className="body-item-heading">Recommended</div>
                   </div>
-                  <div className="favourites-content">
-                    <div className="favourites-content-novels">
-                      {currentProgress.map((item) => {
-                        return (
-                          <div className="favourites-content-novel">
-                            <div className="favourites-content-novel-img"></div>
-                            <div className="text">
-                              <div className="favourites-content-novel-name">
-                                {item.name}
-                              </div>
-                              <div className="favourites-content-novel-rating">
-                                <FaStar className="icon" />
-                                <p className="text">{item.rating}</p>
-                              </div>
-                            </div>
-                          </div>
-                        );
-                      })}
-                    </div>
+                  <div className="recommended-content">
+                    {recommended.length > 0 ? (
+                      <div className="recommended-content-novels">
+                        {recommended.map((item) => {
+                          return <RecommendedItems bookId={item} />;
+                        })}
+                      </div>
+                    ) : (
+                      <div className="recommended-content-noData">
+                        User has not added any novels in recommendations yet
+                      </div>
+                    )}
                   </div>
                 </div>
               )}

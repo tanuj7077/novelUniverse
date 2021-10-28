@@ -7,7 +7,7 @@ import axios from "axios";
 const LoginModal = () => {
   const { loginModalVisible, toggleLoginModalVisibility, login, signup } =
     useGlobalContext();
-  const [loginMode, setLoginMode] = useState(false);
+  const [loginMode, setLoginMode] = useState(true);
   const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [registerUsername, setRegisterUsername] = useState("");
