@@ -3,7 +3,7 @@ import { useGlobalContext } from "../../context";
 import { Route, useHistory } from "react-router-dom";
 
 function NotificationItem({ notification }) {
-  let { getUpdatedUserData } = useGlobalContext();
+  let { getUpdatedUserData, setNotificationVisibility } = useGlobalContext();
   const [timeDiff, setTimeDiff] = useState();
   const history = useHistory();
   const calculateTimeDifference = () => {};
@@ -16,6 +16,7 @@ function NotificationItem({ notification }) {
     } else if (notification.notificationType === "followRecommend") {
       history.push(`/book/${notification.msg.book}`);
     }
+    setNotificationVisibility(false);
   };
 
   return (

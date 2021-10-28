@@ -1,15 +1,34 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import { useGlobalContext } from "../../context";
 import NotificationItem from "./NotificationItem";
 
 function Notification() {
-  const { userData, toggleNotificationVisibility, notificationVisibility } =
+  const { userData, notificationVisibility, setNotificationVisibility } =
     useGlobalContext();
+  //-----------------Disable Search on outside Click-----------------
+  function useOutsideAlerter(ref) {
+    useEffect(() => {
+      function handleClickOutside(event) {
+        if (ref.current && !ref.current.contains(event.target)) {
+          //!event.target.className === "text"
+          event.target.innerHTML.toLowerCase() !== "notification" &&
+            setNotificationVisibility(false);
+        }
+      }
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, [ref]);
+  }
+  const wrapperRef = useRef(null);
+  useOutsideAlerter(wrapperRef);
   return (
     <section
       className={`notification ${
         notificationVisibility ? "notification-visible" : ""
       }`}
+      ref={wrapperRef}
     >
       {userData &&
       userData.notifications &&

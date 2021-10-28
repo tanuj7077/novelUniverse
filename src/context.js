@@ -153,6 +153,7 @@ const AppProvider = ({ children }) => {
         setShowAlert,
         changeAlert,
         notificationVisibility,
+        setNotificationVisibility,
         addToViews,
         addChapterRead,
         calculateTimeDifference,
