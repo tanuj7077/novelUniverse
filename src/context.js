@@ -133,6 +133,65 @@ const AppProvider = ({ children }) => {
       return data;
     }
   };
+  const calculateNotificationTime = (date) => {
+    let curr = new Date();
+    let notificationDate = new Date(date);
+    let diffMs = curr - notificationDate;
+    let diffSeconds = diffMs / 1000;
+    let diffMinutes = diffSeconds / 60;
+    let diffHours = diffMinutes / 60;
+    let diffDays = diffHours / 24;
+    let diffWeeks = diffDays / 7;
+    let diffMonths = diffDays / 30.4375;
+    if (diffMinutes < 2) {
+      let data = parseInt(diffMinutes) + " minute";
+      return data;
+    }
+    if (diffMinutes >= 2 && diffMinutes < 60) {
+      let data = parseInt(diffMinutes) + " minutes";
+      return data;
+    }
+    if (diffHours < 2) {
+      let hr = parseInt(diffHours);
+      let data = hr + " hour";
+      return data;
+    }
+    if (diffHours >= 2 && diffHours < 24) {
+      let hr = parseInt(diffHours);
+      let data = hr + " hours";
+      return data;
+    }
+    if (diffDays < 2) {
+      let days = parseInt(diffDays);
+      let data = days + " day";
+      return data;
+    }
+    if (diffDays >= 2 && diffDays < 7) {
+      let days = parseInt(diffDays);
+      let data = days + " days ";
+      return data;
+    }
+    if (diffWeeks < 2) {
+      let weeks = parseInt(diffWeeks);
+      let data = weeks + " week";
+      return data;
+    }
+    if (diffWeeks >= 2 && diffWeeks < 4.34) {
+      let weeks = parseInt(diffWeeks);
+      let data = weeks + " weeks ";
+      return data;
+    }
+    if (diffMonths < 2) {
+      let month = parseInt(diffMonths);
+      let data = month + " month";
+      return data;
+    }
+    if (diffMonths >= 2 && diffMonths < 12) {
+      let month = parseInt(diffMonths);
+      let data = month + " months ";
+      return data;
+    }
+  };
   return (
     <AppContext.Provider
       value={{
@@ -157,6 +216,7 @@ const AppProvider = ({ children }) => {
         addToViews,
         addChapterRead,
         calculateTimeDifference,
+        calculateNotificationTime,
       }}
     >
       {children}
