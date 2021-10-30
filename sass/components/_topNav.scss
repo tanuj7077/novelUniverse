@@ -121,8 +121,12 @@
           padding: 1rem 0;
           width: 100%;
           text-align: center;
+          color: rgb(177, 177, 177);
           background-color: rgb(44, 44, 44);
           font-size: $smaller-font-size;
+          &:hover {
+            cursor: pointer;
+          }
         }
         &-visible {
           opacity: 1;

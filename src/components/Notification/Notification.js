@@ -1,10 +1,15 @@
 import React, { useRef, useEffect } from "react";
 import { useGlobalContext } from "../../context";
 import NotificationItem from "./NotificationItem";
+import axios from "axios";
 
 function Notification() {
-  const { userData, notificationVisibility, setNotificationVisibility } =
-    useGlobalContext();
+  const {
+    userData,
+    notificationVisibility,
+    setNotificationVisibility,
+    getUpdatedUserData,
+  } = useGlobalContext();
   //-----------------Disable Search on outside Click-----------------
   function useOutsideAlerter(ref) {
     useEffect(() => {
@@ -23,6 +28,18 @@ function Notification() {
   }
   const wrapperRef = useRef(null);
   useOutsideAlerter(wrapperRef);
+
+  const clearNotifications = async () => {
+    let data = {
+      userId: userData._id,
+    };
+    await axios
+      .post("http://localhost:8000/user/deleteAllNotifications", data)
+      .then((res) => {
+        console.log(res.data);
+        getUpdatedUserData();
+      });
+  };
   return (
     <section
       className={`notification ${
@@ -44,57 +61,10 @@ function Notification() {
               userData.notifications.reverse().map((notification) => {
                 return <NotificationItem notification={notification} />;
               })}
-            {/* {userData.notifications.reverse().map((notification) => {
-              return (
-                <div className="notification-items-item">
-                  <p className="notification-items-item-head">
-                    {notification.notificationType === "chapterUpdate" && (
-                      <span className="notification-items-item-type">
-                        Chapter Update
-                      </span>
-                    )}
-                    {notification.notificationType === "reply" && (
-                      <span className="notification-items-item-type">
-                        Reply
-                      </span>
-                    )}
-                    <span className="notification-items-item-date">
-                      9:26 am
-                    </span>
-                  </p>
-                  <p className="notification-items-item-body">
-                    {notification.notificationType === "chapterUpdate" && (
-                      <span className="notification-items-item-content">
-                        New chapter released for{" "}
-                        <em>"{notification.msg.bookName}"</em>
-                      </span>
-                    )}
-                    {notification.notificationType === "reply" && (
-                      <span className="notification-items-item-content">
-                        You have got new replies on your comment in{" "}
-                        <em>"{"Chapter " + notification.msg.chapterNumber}"</em>{" "}
-                        of <em>"{notification.msg.bookName}"</em>
-                      </span>
-                    )}
-                  </p>
-                </div>
-              );
-            })} */}
-            <div className="notification-items-item">
-              <p className="notification-items-item-head">
-                <span className="notification-items-item-type">
-                  Follow Update
-                </span>
-                <span className="notification-items-item-date">12/02/22</span>
-              </p>
-              <p className="notification-items-item-body">
-                <span className="notification-items-item-content">
-                  User <em>"Tanuj07"</em> has recommended <em>"The Boxer"</em>
-                </span>
-              </p>
-            </div>
           </div>
-          <div className="notification-read">Mark all as Read</div>
+          <div className="notification-read" onClick={clearNotifications}>
+            Mark all as Read
+          </div>
         </>
       )}
     </section>
