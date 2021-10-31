@@ -1157,6 +1157,32 @@ const Profile = () => {
                   </div>
                 </div>
               )}
+              {followingUsers.length > 0 && (
+                <div className="body-item following">
+                  <div className="body-item-top">
+                    <div className="body-item-heading">Following</div>
+                  </div>
+                  <div className="following-content">
+                    <ul className="following-content-list">
+                      {followingUsers.map((item) => {
+                        return (
+                          <li className="user">
+                            <span
+                              className="user-img"
+                              style={{
+                                backgroundImage: `url(${
+                                  item.img ? item.img : blank
+                                })`,
+                              }}
+                            ></span>
+                            <div className="user-name">{item.username}</div>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
