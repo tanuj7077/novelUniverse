@@ -32,14 +32,6 @@ if (!firebase.apps.length) {
 }
 var storage = firebase.storage();
 
-const CurrentProgress = ({ progressData }) => {
-  const { userData, isLoggedIn } = useGlobalContext();
-};
-
-const RecommendedItem = ({ bookId }) => {
-  const [novel, setNovel] = useState();
-};
-
 const RecommendedModalItems = ({ bookId }) => {
   const [novel, setNovel] = useState();
   const getNovel = async () => {
@@ -127,6 +119,7 @@ const Profile = () => {
   const [toSendProfileImage, setToSendProfileImage] = useState("");
   const [isBookImageUploaded, setIsBookImageUploaded] = useState(false);
 
+  const [followingUsers, setFollowingUsers] = useState([]);
   const [currentProgressData, setCurrentProgressData] = useState([]);
   const [favGenreData, setFavGenreData] = useState();
   const [stats, setStats] = useState();
@@ -266,6 +259,7 @@ const Profile = () => {
         console.log("fetched User Data");
         console.log(res.data.userData);
         setUserProfileData(res.data.userData);
+        fetchFollowing(res.data.userData._id);
         fetchCurrentProgress(res.data.userData._id);
         fetchFavGenre(res.data.userData._id);
         setRecommended(res.data.userData.profileData.recommended);
@@ -276,13 +270,19 @@ const Profile = () => {
         }
       }));
   };
-
+  const fetchFollowing = async (userId) => {
+    await axios
+      .get(`http://localhost:8000/user/getFollowing/${userId}`)
+      .then((res) => {
+        console.log(res.data.data);
+        setFollowingUsers(res.data.data);
+      });
+  };
   //get currentProgress data (currentProgressData)
   const fetchCurrentProgress = async (userId) => {
     await axios
       .get(`http://localhost:8000/user/getCurrentProgress/${userId}`)
       .then((res) => {
-        console.log(res.data.data);
         setCurrentProgressData(res.data.data);
       });
   };
@@ -418,7 +418,6 @@ const Profile = () => {
     await axios
       .post(`http://localhost:8000/user/addToRecommended`, data)
       .then((res) => {
-        console.log(res.data);
         setRecommended(res.data.data.recommended);
         changeAlert(res.data.message);
       });
@@ -431,7 +430,6 @@ const Profile = () => {
     await axios
       .post(`http://localhost:8000/user/removeFromRecommended`, data)
       .then((res) => {
-        console.log(res.data);
         setRecommended(res.data.data.recommended);
         changeAlert(res.data.message);
       });
@@ -450,19 +448,23 @@ const Profile = () => {
         <div className="profilePage-left">
           <div className="heading">
             <p className="text">Following</p>
-            <p className="count">50</p>
+            {followingUsers && (
+              <p className="count">
+                {followingUsers.length > 0 ? followingUsers.length : 0}
+              </p>
+            )}
           </div>
           <ul className="followingList">
-            {following.map((item) => {
+            {followingUsers.map((item) => {
               return (
                 <li className="user">
                   <span
                     className="img"
                     style={{
-                      backgroundImage: `url(${blank})`,
+                      backgroundImage: `url(${item.img ? item.img : blank})`,
                     }}
                   ></span>
-                  <div className="name">{item}</div>
+                  <div className="name">{item.username}</div>
                 </li>
               );
             })}
@@ -753,6 +755,32 @@ const Profile = () => {
                   )}
                 </div>
               </div>
+              {followingUsers.length > 0 && (
+                <div className="body-item following">
+                  <div className="body-item-top">
+                    <div className="body-item-heading">Following</div>
+                  </div>
+                  <div className="following-content">
+                    <ul className="following-content-list">
+                      {followingUsers.map((item) => {
+                        return (
+                          <li className="user">
+                            <span
+                              className="user-img"
+                              style={{
+                                backgroundImage: `url(${
+                                  item.img ? item.img : blank
+                                })`,
+                              }}
+                            ></span>
+                            <div className="user-name">{item.username}</div>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -907,19 +935,23 @@ const Profile = () => {
         <div className="profilePage-left">
           <div className="heading">
             <p className="text">Following</p>
-            <p className="count">50</p>
+            {followingUsers && (
+              <p className="count">
+                {followingUsers.length > 0 ? followingUsers.length : 0}
+              </p>
+            )}
           </div>
           <ul className="followingList">
-            {following.map((item) => {
+            {followingUsers.map((item) => {
               return (
                 <li className="user">
                   <span
                     className="img"
                     style={{
-                      backgroundImage: `url(${blank})`,
+                      backgroundImage: `url(${item.img ? item.img : blank})`,
                     }}
                   ></span>
-                  <div className="name">{item}</div>
+                  <div className="name">{item.username}</div>
                 </li>
               );
             })}
