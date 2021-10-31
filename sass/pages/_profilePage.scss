@@ -67,7 +67,9 @@
     }
   }
   &-right {
-    width: 80%;
+    //width: 80%;
+    width: 100%; //new
+    padding: 0 10%; //new
     height: calc(100vh - 6rem);
     //background-color: rgb(223, 223, 223);
     background-color: #2f2f35;
@@ -483,10 +485,6 @@
           }
         }
         .following {
-          display: none;
-          @include respond(phone) {
-            display: block;
-          }
           &-content {
             margin-top: 1rem;
             width: 100%;

@@ -2612,7 +2612,8 @@ a:link, a:visited, a:hover, a:active {
         background: #b3b3b3;
         border-radius: 0.75rem; }
   .profilePage-right {
-    width: 80%;
+    width: 100%;
+    padding: 0 10%;
     height: calc(100vh - 6rem);
     background-color: #2f2f35;
     overflow-y: auto; }
@@ -2943,45 +2944,40 @@ a:link, a:visited, a:hover, a:active {
           .profilePage-right .contents .body .recommended-content::-webkit-scrollbar-thumb {
             background: #b3b3b3;
             border-radius: 0.75rem; }
-        .profilePage-right .contents .body .following {
-          display: none; }
-          @media only screen and (max-width: 37.5em) {
-            .profilePage-right .contents .body .following {
-              display: block; } }
-          .profilePage-right .contents .body .following-content {
-            margin-top: 1rem;
-            width: 100%;
-            padding-right: 0.5rem;
-            height: 22rem;
-            overflow: hidden;
-            overflow-y: auto; }
-            .profilePage-right .contents .body .following-content-list {
+        .profilePage-right .contents .body .following-content {
+          margin-top: 1rem;
+          width: 100%;
+          padding-right: 0.5rem;
+          height: 22rem;
+          overflow: hidden;
+          overflow-y: auto; }
+          .profilePage-right .contents .body .following-content-list {
+            display: flex;
+            flex-wrap: wrap;
+            list-style: none;
+            column-gap: 1.5rem;
+            row-gap: 1.5rem; }
+            .profilePage-right .contents .body .following-content-list .user {
               display: flex;
-              flex-wrap: wrap;
-              list-style: none;
-              column-gap: 1.5rem;
-              row-gap: 1.5rem; }
-              .profilePage-right .contents .body .following-content-list .user {
-                display: flex;
-                gap: 1rem;
-                align-items: center;
-                background-color: rgba(0, 0, 0, 0.4);
-                padding-right: 1rem; }
-                .profilePage-right .contents .body .following-content-list .user-img {
-                  width: 3.5rem;
-                  height: 3.5rem;
-                  background-position: center;
-                  background-size: cover;
-                  border-radius: 0.3rem; }
-                .profilePage-right .contents .body .following-content-list .user-name {
-                  font-size: 1.6rem; }
-            .profilePage-right .contents .body .following-content::-webkit-scrollbar {
-              width: 1rem; }
-            .profilePage-right .contents .body .following-content::-webkit-scrollbar-track {
-              background: transparent; }
-            .profilePage-right .contents .body .following-content::-webkit-scrollbar-thumb {
-              background: #b3b3b3;
-              border-radius: 0.75rem; }
+              gap: 1rem;
+              align-items: center;
+              background-color: rgba(0, 0, 0, 0.4);
+              padding-right: 1rem; }
+              .profilePage-right .contents .body .following-content-list .user-img {
+                width: 3.5rem;
+                height: 3.5rem;
+                background-position: center;
+                background-size: cover;
+                border-radius: 0.3rem; }
+              .profilePage-right .contents .body .following-content-list .user-name {
+                font-size: 1.6rem; }
+          .profilePage-right .contents .body .following-content::-webkit-scrollbar {
+            width: 1rem; }
+          .profilePage-right .contents .body .following-content::-webkit-scrollbar-track {
+            background: transparent; }
+          .profilePage-right .contents .body .following-content::-webkit-scrollbar-thumb {
+            background: #b3b3b3;
+            border-radius: 0.75rem; }
     .profilePage-right::-webkit-scrollbar {
       width: 1rem; }
     .profilePage-right::-webkit-scrollbar-track {

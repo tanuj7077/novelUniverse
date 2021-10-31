@@ -445,7 +445,7 @@ const Profile = () => {
   if (userData && username === userData.username) {
     return (
       <div className="profilePage">
-        <div className="profilePage-left">
+        {/* <div className="profilePage-left">
           <div className="heading">
             <p className="text">Following</p>
             {followingUsers && (
@@ -469,7 +469,7 @@ const Profile = () => {
               );
             })}
           </ul>
-        </div>
+        </div> */}
         <div className="profilePage-right">
           <div className="contents">
             <div className="top">
@@ -932,7 +932,7 @@ const Profile = () => {
   } else {
     return (
       <div className="profilePage">
-        <div className="profilePage-left">
+        {/* <div className="profilePage-left">
           <div className="heading">
             <p className="text">Following</p>
             {followingUsers && (
@@ -957,6 +957,7 @@ const Profile = () => {
             })}
           </ul>
         </div>
+         */}
         <div className="profilePage-right">
           <div className="contents">
             <div className="top">
