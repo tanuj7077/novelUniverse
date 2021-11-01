@@ -2575,10 +2575,11 @@ a:link, a:visited, a:hover, a:active {
       flex-flow: column;
       align-items: center; }
       .profilePage-left .heading .text {
-        font-size: 2rem;
+        font-size: 2.5rem;
         letter-spacing: 0.3rem; }
       .profilePage-left .heading .count {
-        font-size: 1.6rem;
+        font-size: 2rem;
+        font-weight: bold;
         color: #4d4d4d; }
     .profilePage-left .followingList {
       width: 90%;
@@ -2611,7 +2612,8 @@ a:link, a:visited, a:hover, a:active {
         background: #b3b3b3;
         border-radius: 0.75rem; }
   .profilePage-right {
-    width: 80%;
+    width: 100%;
+    padding: 0 10%;
     height: calc(100vh - 6rem);
     background-color: #2f2f35;
     overflow-y: auto; }
@@ -2876,7 +2878,8 @@ a:link, a:visited, a:hover, a:active {
           place-items: center; }
         .profilePage-right .contents .body .recommended-content {
           width: 100%;
-          height: 23rem;
+          margin-top: 0.5rem;
+          height: 22.5rem;
           overflow: hidden;
           overflow-y: auto;
           scroll-snap-type: y;
@@ -2885,18 +2888,18 @@ a:link, a:visited, a:hover, a:active {
             display: flex;
             flex-flow: column;
             padding-right: 1rem;
-            gap: 1rem; }
+            gap: 1.1rem; }
           .profilePage-right .contents .body .recommended-content-novel {
             background-color: rgba(0, 0, 0, 0.4);
             display: flex;
-            height: 11rem;
+            height: 10.7rem;
             gap: 1rem;
             border-radius: 0.5rem;
             overflow: hidden;
             scroll-snap-align: start; }
             .profilePage-right .contents .body .recommended-content-novel-img {
               width: 9rem;
-              height: 11rem;
+              height: 10.7rem;
               background-size: cover;
               background-position: center;
               display: block; }
@@ -2939,6 +2942,42 @@ a:link, a:visited, a:hover, a:active {
           .profilePage-right .contents .body .recommended-content::-webkit-scrollbar-track {
             background: transparent; }
           .profilePage-right .contents .body .recommended-content::-webkit-scrollbar-thumb {
+            background: #b3b3b3;
+            border-radius: 0.75rem; }
+        .profilePage-right .contents .body .following-content {
+          margin-top: 1rem;
+          width: 100%;
+          padding-right: 0.5rem;
+          height: 22rem;
+          overflow: hidden;
+          overflow-y: auto; }
+          .profilePage-right .contents .body .following-content-list {
+            display: flex;
+            flex-wrap: wrap;
+            list-style: none;
+            column-gap: 1.5rem;
+            row-gap: 1.5rem; }
+            .profilePage-right .contents .body .following-content-list .user {
+              display: flex;
+              gap: 1rem;
+              align-items: center;
+              background-color: rgba(0, 0, 0, 0.4);
+              padding-right: 1rem; }
+              .profilePage-right .contents .body .following-content-list .user-img {
+                width: 3.5rem;
+                height: 3.5rem;
+                background-position: center;
+                background-size: cover;
+                border-radius: 0.3rem; }
+              .profilePage-right .contents .body .following-content-list .user-name {
+                font-size: 1.6rem; }
+              .profilePage-right .contents .body .following-content-list .user:hover {
+                cursor: pointer; }
+          .profilePage-right .contents .body .following-content::-webkit-scrollbar {
+            width: 1rem; }
+          .profilePage-right .contents .body .following-content::-webkit-scrollbar-track {
+            background: transparent; }
+          .profilePage-right .contents .body .following-content::-webkit-scrollbar-thumb {
             background: #b3b3b3;
             border-radius: 0.75rem; }
     .profilePage-right::-webkit-scrollbar {

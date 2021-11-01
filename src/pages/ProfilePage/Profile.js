@@ -435,6 +435,19 @@ const Profile = () => {
       });
   };
 
+  const [usernameExistance, setUsernameExistance] = useState(false);
+  const checkUsernameExistance = () => {
+    axios
+      .get(`http://localhost:8000/user/checkUser/${userInput}`)
+      .then((res) => {
+        console.log(res.data);
+        setUsernameExistance(res.data.usernameExistance);
+      });
+  };
+  useEffect(() => {
+    checkUsernameExistance();
+  }, [userInput]);
+
   useEffect(() => {
     fetchUserData(username);
   }, [username]);
@@ -831,7 +844,7 @@ const Profile = () => {
                 }}
               />
               <div className="modals-modal-formGrp">
-                <label className="modals-modal-form-grp-label">Username</label>
+                <label className="modals-modal-formGrp-label">Username</label>
                 <input
                   type="text"
                   className="modals-modal-formGrp-text"
@@ -840,6 +853,16 @@ const Profile = () => {
                     setUserInput(e.target.value);
                   }}
                 />
+                {usernameExistance && (
+                  <p className="modals-modal-formGrp-err">
+                    username already exists
+                  </p>
+                )}
+                {!usernameExistance && userInput.length > 0 && (
+                  <p className="modals-modal-formGrp-success">
+                    username available
+                  </p>
+                )}
               </div>
               <div className="modals-modal-formGrp">
                 <button onClick={updateUserName}>Submit</button>

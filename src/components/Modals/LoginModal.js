@@ -15,7 +15,6 @@ const LoginModal = () => {
   const [usernameExistance, setUsernameExistance] = useState(false);
 
   const checkUsernameExistance = () => {
-    console.log("yes");
     axios
       .get(`http://localhost:8000/user/checkUser/${registerUsername}`)
       .then((res) => {
@@ -171,17 +170,28 @@ const LoginModal = () => {
                     </label>
                   </div>
                 </div>
-                <button
-                  className={`loginFormGrp-btn ${
-                    (usernameExistance ||
-                      registerPassword.length <= 2 ||
-                      registerUsername.length === 0) &&
-                    "loginFormGrp-btn-disabled"
-                  }`}
-                  onClick={() => signup(registerUsername, registerPassword)}
-                >
-                  Register
-                </button>
+                {!(
+                  usernameExistance ||
+                  registerPassword.length <= 2 ||
+                  registerUsername.length === 0
+                ) && (
+                  <button
+                    className={`loginFormGrp-btn`}
+                    onClick={() => signup(registerUsername, registerPassword)}
+                  >
+                    Register
+                  </button>
+                )}
+                {(usernameExistance ||
+                  registerPassword.length <= 2 ||
+                  registerUsername.length === 0) && (
+                  <button
+                    className={`loginFormGrp-btn loginFormGrp-btn-disabled `}
+                    onClick={() => console.log("Hey")}
+                  >
+                    Register
+                  </button>
+                )}
               </div>
             </section>
           </div>

@@ -515,6 +515,9 @@
                 &-name {
                   font-size: $default-font-size;
                 }
+                &:hover {
+                  cursor: pointer;
+                }
               }
             }
             &::-webkit-scrollbar {
