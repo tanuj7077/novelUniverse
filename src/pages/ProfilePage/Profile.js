@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
 import blank from "../../assets/blankProfile.png";
 import background from "../../assets/abstract/12.jpg";
-import { FaCentercode, FaStar } from "react-icons/fa";
+import { FaStar } from "react-icons/fa";
 import {
   AiOutlineEyeInvisible,
   AiOutlineEye,
-  AiOutlineMinus,
+  AiFillDelete,
 } from "react-icons/ai";
 import { MdEdit } from "react-icons/md";
 import { IoMdClose, IoMdAdd } from "react-icons/io";
+import { IoAddCircleSharp } from "react-icons/io5";
 import { Doughnut } from "react-chartjs-2";
 import { following, currentProgress, favGenre } from "../../mockData";
 import { useGlobalContext } from "../../context";
@@ -813,7 +814,7 @@ const Profile = () => {
                 }}
               />
               <div className="modals-modal-formGrp">
-                <label>About</label>
+                <label className="modals-modal-formGrp-label">About</label>
                 <textarea
                   type="text"
                   onChange={(e) => {
@@ -823,7 +824,12 @@ const Profile = () => {
                 ></textarea>
               </div>
               <div className="modals-modal-formGrp">
-                <button onClick={updateAbout}>Submit</button>
+                <button
+                  className="modals-modal-formGrp-btn"
+                  onClick={updateAbout}
+                >
+                  Submit
+                </button>
               </div>
             </div>
           </section>
@@ -865,7 +871,19 @@ const Profile = () => {
                 )}
               </div>
               <div className="modals-modal-formGrp">
-                <button onClick={updateUserName}>Submit</button>
+                {!(usernameExistance || userInput.length === 0) && (
+                  <button
+                    className="modals-modal-formGrp-btn"
+                    onClick={updateUserName}
+                  >
+                    Submit
+                  </button>
+                )}
+                {(usernameExistance || userInput.length === 0) && (
+                  <button className="modals-modal-formGrp-btn modals-modal-formGrp-btn-disabled">
+                    Submit
+                  </button>
+                )}
               </div>
             </div>
           </section>
@@ -886,7 +904,7 @@ const Profile = () => {
                 }}
               />
               <div className="modals-modal-formGrp">
-                <label>Username</label>
+                <label>Change profile picture</label>
                 <input
                   id="fileInput"
                   type="file"
@@ -901,7 +919,18 @@ const Profile = () => {
                 )}
               </div>
               <div className="modals-modal-formGrp">
-                <button onClick={updateProfilePic}>Submit</button>
+                {isBookImageUploaded ? (
+                  <button
+                    className="modals-modal-formGrp-btn"
+                    onClick={updateProfilePic}
+                  >
+                    Submit
+                  </button>
+                ) : (
+                  <button className="modals-modal-formGrp-btn modals-modal-formGrp-btn-disabled">
+                    Submit
+                  </button>
+                )}
               </div>
             </div>
           </section>
@@ -928,15 +957,15 @@ const Profile = () => {
                     return (
                       <li className="modals-modal-list-item">
                         {!recommended.includes(item) ? (
-                          <IoMdAdd
-                            className="icon"
+                          <IoAddCircleSharp
+                            className="icon icon-add"
                             onClick={() => {
                               addToRecommended(item);
                             }}
                           />
                         ) : (
-                          <AiOutlineMinus
-                            className="icon"
+                          <AiFillDelete
+                            className="icon icon-delete"
                             onClick={() => {
                               removeFromRecommended(item);
                             }}

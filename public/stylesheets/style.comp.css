@@ -3006,7 +3006,7 @@ a:link, a:visited, a:hover, a:active {
     background-color: white;
     border: 1px solid #474747;
     border-radius: 1rem;
-    width: 65rem;
+    width: 45rem;
     height: max-content;
     padding: 2rem;
     display: flex;
@@ -3031,11 +3031,29 @@ a:link, a:visited, a:hover, a:active {
       .modals-modal-formGrp-text {
         font-size: 1.6rem;
         padding: 0.5rem 1rem; }
+      .modals-modal-formGrp-btn {
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        color: white;
+        background-color: #2f75ed;
+        letter-spacing: 0.3rem;
+        padding: 0.5rem 0;
+        border: none; }
+        .modals-modal-formGrp-btn:hover {
+          cursor: pointer; }
+        .modals-modal-formGrp-btn-disabled {
+          background-color: #999999; }
+          .modals-modal-formGrp-btn-disabled:hover {
+            cursor: unset; }
       .modals-modal-formGrp-uploadedImg {
         height: 14rem;
         width: 14rem;
         background-size: cover;
         background-position: center; }
+      .modals-modal-formGrp-err {
+        color: red; }
+      .modals-modal-formGrp-success {
+        color: green; }
     .modals-modal-heading {
       font-size: 2.5rem; }
     .modals-modal-list {

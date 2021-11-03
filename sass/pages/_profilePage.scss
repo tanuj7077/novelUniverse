@@ -567,7 +567,7 @@
     //background-color: rgb(44, 44, 44);
     border: 1px solid rgb(71, 71, 71);
     border-radius: 1rem;
-    width: 65rem;
+    width: 45rem;
     height: max-content;
     padding: 2rem;
     display: flex;
@@ -588,7 +588,8 @@
         font-size: $default-font-size;
       }
       textarea {
-        height: 20rem;
+        margin-top: 0.5rem;
+        height: 15rem;
         font-size: $default-font-size;
         padding: 0.5rem 1rem;
       }
@@ -596,11 +597,35 @@
         font-size: $default-font-size;
         padding: 0.5rem 1rem;
       }
+      &-btn {
+        font-size: $smaller-font-size;
+        text-transform: uppercase;
+        color: white;
+        background-color: rgb(47, 117, 237);
+        letter-spacing: 0.3rem;
+        padding: 0.5rem 0;
+        border: none;
+        &:hover {
+          cursor: pointer;
+        }
+        &-disabled {
+          background-color: rgb(153, 153, 153);
+          &:hover {
+            cursor: unset;
+          }
+        }
+      }
       &-uploadedImg {
         height: 14rem;
         width: 14rem;
         background-size: cover;
         background-position: center;
+      }
+      &-err {
+        color: red;
+      }
+      &-success {
+        color: green;
       }
     }
     &-heading {
@@ -618,6 +643,12 @@
           height: 2rem;
           &:hover {
             cursor: pointer;
+          }
+          &-add {
+            color: green;
+          }
+          &-delete {
+            color: red;
           }
         }
       }
