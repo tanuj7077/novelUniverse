@@ -97,39 +97,45 @@ const AppProvider = ({ children }) => {
     let diffWeeks = diffDays / 7;
     let diffMonths = diffDays / 30.4375;
     if (diffMinutes >= 0 && diffMinutes < 60) {
-      let data = parseInt(diffMinutes) + "minutes";
+      let data =
+        parseInt(diffMinutes) +
+        (parseInt(diffMinutes) < 2 ? " minute" : " minutes");
       return data;
     }
     if (diffHours >= 1 && diffHours < 24) {
       let hr = parseInt(diffHours);
-      let data = hr + " hours " + parseInt((diffHours - hr) * 60) + " minutes";
+      let data =
+        hr +
+        (hr < 2 ? " hour " : " hours ") +
+        parseInt((diffHours - hr) * 60) +
+        (parseInt((diffHours - hr) * 60) < 2 ? " minute" : " minutes");
       return data;
     }
     if (diffDays >= 1 && diffDays < 7) {
       let days = parseInt(diffDays);
       let data =
         parseInt(diffDays) +
-        " days " +
+        (parseInt(diffDays) < 2 ? " day " : " days ") +
         parseInt((diffDays - days) * 24) +
-        " hours";
+        (parseInt((diffDays - days) * 24) < 2 ? " hour" : "hours");
       return data;
     }
     if (diffWeeks >= 1 && diffWeeks < 4.34) {
       let weeks = parseInt(diffWeeks);
       let data =
         parseInt(diffWeeks) +
-        " weeks " +
+        (parseInt(diffWeeks) < 2 ? " week " : " weeks ") +
         parseInt((diffWeeks - weeks) * 7) +
-        " days";
+        (parseInt((diffWeeks - weeks) * 7) < 2 ? " day" : " days");
       return data;
     }
     if (diffMonths >= 1 && diffMonths < 12) {
       let month = parseInt(diffMonths);
       let data =
         parseInt(diffMonths) +
-        " months " +
+        (parseInt(diffMonths) < 2 ? " month " : " months ") +
         parseInt((diffMonths - month) * 30.4375) +
-        " days";
+        (parseInt((diffMonths - month) * 30.4375) < 2 ? " day" : " days");
       return data;
     }
   };

@@ -3025,7 +3025,8 @@ a:link, a:visited, a:hover, a:active {
       .modals-modal-formGrp label {
         font-size: 1.6rem; }
       .modals-modal-formGrp textarea {
-        height: 20rem;
+        margin-top: 0.5rem;
+        height: 15rem;
         font-size: 1.6rem;
         padding: 0.5rem 1rem; }
       .modals-modal-formGrp-text {
@@ -3068,6 +3069,10 @@ a:link, a:visited, a:hover, a:active {
           height: 2rem; }
           .modals-modal-list-item .icon:hover {
             cursor: pointer; }
+          .modals-modal-list-item .icon-add {
+            color: green; }
+          .modals-modal-list-item .icon-delete {
+            color: red; }
 
 .addContentPage {
   margin-top: 6rem;
