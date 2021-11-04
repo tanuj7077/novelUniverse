@@ -701,6 +701,71 @@ a:link, a:visited, a:hover, a:active {
     .homePage-novels-more {
       padding: 1rem 0.2rem;
       font-size: 1.6rem; }
+  .homePage-changeable {
+    margin-top: 6rem;
+    width: 76%; }
+    .homePage-changeable-container {
+      width: 100%;
+      display: flex;
+      justify-content: space-between; }
+    .homePage-changeable-heading {
+      position: absolute;
+      top: 0;
+      z-index: 2;
+      text-transform: uppercase;
+      letter-spacing: 0.3rem;
+      color: white;
+      font-size: 2rem;
+      font-weight: bold;
+      height: 2rem;
+      margin-bottom: 2rem;
+      line-height: 2rem;
+      padding-left: 1.5rem;
+      position: relative; }
+      .homePage-changeable-heading::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0rem;
+        width: 0.5rem;
+        height: 100%;
+        background-color: #4093ff; }
+    .homePage-changeable-options {
+      width: 31%;
+      background-color: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(40px);
+      border: 1px solid #363636;
+      border-radius: 1rem;
+      display: flex;
+      flex-flow: column; }
+    .homePage-changeable-novels {
+      margin-top: 0.5rem;
+      padding-bottom: 0;
+      width: 66.6%;
+      z-index: 2;
+      position: relative; }
+      .homePage-changeable-novels-heading {
+        position: absolute;
+        top: 0;
+        z-index: 2;
+        text-transform: uppercase;
+        letter-spacing: 0.3rem;
+        color: white;
+        font-size: 2rem;
+        font-weight: bold;
+        height: 2rem;
+        margin-bottom: 2rem;
+        line-height: 2rem;
+        padding-left: 1.5rem;
+        position: relative; }
+        .homePage-changeable-novels-heading::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0rem;
+          width: 0.5rem;
+          height: 100%;
+          background-color: #4093ff; }
   .homePage-novelList {
     width: 100%;
     z-index: 2;

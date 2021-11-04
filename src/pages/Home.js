@@ -6,6 +6,7 @@ import { VscChevronLeft, VscChevronRight } from "react-icons/vsc";
 import { AiOutlineClockCircle } from "react-icons/ai";
 import axios from "axios";
 import { browseNovels } from "../mockData";
+import { categoryList } from "../mockData";
 import Slider from "../pages/HomePage/Slider";
 const Home = () => {
   const [newRelease, setNewRelease] = useState([]); //move to context
@@ -44,13 +45,41 @@ const Home = () => {
           <p className="homePage-novels-heading">Most Viewed</p>
           <Slider novels={mostViewed} />
         </div>
-        <div className="homePage-novels">
-          <p className="homePage-novels-heading">Latest Updates</p>
-          <div className="homePage-novelList">
-            {latestUpdates &&
-              latestUpdates.map((novel) => {
-                return <HomePageNovels novel={novel} />;
-              })}
+        <div className="homePage-changeable">
+          <p className="homePage-changeable-heading">Novel List</p>
+          <div className="homePage-changeable-container">
+            <div className="homePage-changeable-options">
+              <div className="homePage-changeable-options-option">
+                <p className="heading heading-latest">Latest Updates</p>
+              </div>
+              <div className="homePage-changeable-options-option">
+                <p className="heading">Most Viewed</p>
+                <ul className="list">
+                  <li className="list-item">Today</li>
+                  <li className="list-item">Week</li>
+                  <li className="list-item">Month</li>
+                </ul>
+              </div>
+              <div className="homePage-changeable-options-option">
+                <p className="heading">Genre</p>
+                <ul className="list">
+                  {categoryList.map((genre) => {
+                    return <li className="list-item">{genre}</li>;
+                  })}
+                </ul>
+              </div>
+            </div>
+            <div className="homePage-changeable-novels">
+              {/* <p className="homePage-changeable-novels-heading">
+                Latest Updates
+              </p> */}
+              <div className="homePage-novelList">
+                {latestUpdates &&
+                  latestUpdates.map((novel) => {
+                    return <HomePageNovels novel={novel} />;
+                  })}
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -527,6 +527,136 @@
       font-size: $default-font-size;
     }
   }
+  &-changeable {
+    margin-top: 6rem;
+    width: 76%;
+
+    &-container {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+    }
+    &-heading {
+      position: absolute;
+      top: 0;
+      z-index: 2;
+      text-transform: uppercase;
+      letter-spacing: 0.3rem;
+      color: white;
+      font-size: $small-font-size;
+      font-weight: bold;
+      height: 2rem;
+      margin-bottom: 2rem;
+      line-height: 2rem;
+      padding-left: 1.5rem;
+      position: relative;
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0rem;
+        width: 0.5rem;
+        height: 100%;
+        background-color: rgb(64, 147, 255);
+      }
+    }
+    &-options {
+      width: 31%;
+      height: max-content;
+      background-color: rgba(black, 0.5);
+      backdrop-filter: blur(40px);
+      border: 1px solid rgb(54, 54, 54);
+      border-radius: 1rem;
+      display: flex;
+      flex-flow: column;
+      gap: 2rem;
+      padding: 2rem;
+      &-option {
+        .heading {
+          font-size: $default-font-size;
+          color: rgb(214, 214, 214);
+          text-transform: uppercase;
+          font-weight: bold;
+          letter-spacing: 0.3rem;
+          &-latest {
+            &:hover {
+              cursor: pointer;
+              color: rgb(32, 121, 194);
+            }
+          }
+        }
+        .list {
+          margin-top: 1rem;
+          list-style: none;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 1rem;
+          &-item {
+            text-transform: uppercase;
+            font-size: $smaller-font-size;
+            padding: 0.5rem 1.5rem;
+            background-color: rgb(68, 68, 68);
+            color: rgb(196, 196, 196);
+            border-left: none;
+            position: relative;
+            letter-spacing: 0.2rem;
+            transition: all 0.15s ease;
+            &:hover {
+              cursor: pointer;
+              color: rgb(142, 204, 255);
+              //color: white;
+              background-color: rgb(58, 58, 58);
+            }
+          }
+        }
+      }
+    }
+    &-novels {
+      margin-top: 0.5rem;
+      padding-bottom: 0;
+      padding-right: 0.5rem;
+      width: 66.6%;
+      height: 103.5rem;
+      overflow: hidden;
+      overflow-y: auto;
+      z-index: 2;
+      position: relative;
+      &-heading {
+        position: absolute;
+        top: 0;
+        z-index: 2;
+        text-transform: uppercase;
+        letter-spacing: 0.3rem;
+        color: white;
+        font-size: $small-font-size;
+        font-weight: bold;
+        height: 2rem;
+        margin-bottom: 2rem;
+        line-height: 2rem;
+        padding-left: 1.5rem;
+        position: relative;
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0rem;
+          width: 0.5rem;
+          height: 100%;
+          background-color: rgb(64, 147, 255);
+        }
+      }
+      &::-webkit-scrollbar {
+        width: 0.5rem;
+      }
+      &::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: rgb(104, 104, 104);
+        border-radius: 0.75rem;
+      }
+    }
+  }
   &-novelList {
     width: 100%;
     z-index: 2;
