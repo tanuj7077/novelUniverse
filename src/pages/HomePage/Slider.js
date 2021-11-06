@@ -18,8 +18,10 @@ function Slider({ novels }) {
       </span>
       <div className="novels" ref={sliderRef}>
         <div className="novelSection2">
-          {novels.map((item) => {
-            return <Thumbnail novel={item} />;
+          {novels.map((item, idx) => {
+            return (
+              <Thumbnail key={item._id + new Date().getTime()} novel={item} />
+            );
           })}
         </div>
       </div>

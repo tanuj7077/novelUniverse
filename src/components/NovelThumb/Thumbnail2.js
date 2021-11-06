@@ -26,9 +26,11 @@ const Thumbnail2 = ({ novel }) => {
               <div className="novel-info-other-author novel-info-other-item">
                 <p className="label">Author:</p>
                 {novel.author.length > 15 ? (
-                  <p className="data">{novel.author.substring(0, 15)}...</p>
+                  <span className="data">
+                    {novel.author.substring(0, 15)}...
+                  </span>
                 ) : (
-                  <p className="data">{novel.author}</p>
+                  <span className="data">{novel.author}</span>
                 )}
               </div>
               <div className="novel-info-other-rating novel-info-other-item">
@@ -42,8 +44,8 @@ const Thumbnail2 = ({ novel }) => {
               <div className="novel-info-other-categories">
                 <p className="label">Categories:</p>
                 <p className="data">
-                  {novel.categories.map((tag) => {
-                    return <p>{tag}</p>;
+                  {novel.categories.map((tag, idx) => {
+                    return <span key={`thumbNail${tag + idx}`}>{tag}</span>;
                   })}
                 </p>
               </div>
@@ -51,7 +53,7 @@ const Thumbnail2 = ({ novel }) => {
 
             <div className="novel-info-btns">
               <span className="btn">Start</span>
-              <span className="btn">Resume</span>
+              <span className="btn">Visit</span>
             </div>
           </div>
         </div>

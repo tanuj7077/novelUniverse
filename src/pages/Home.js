@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import Carousel from "../components/Carousel/Carousel";
 import HomePageNovels from "../components/NovelThumb/HomePageNovels";
-import Alert from "../components/Alert/Alert";
 import { VscChevronLeft, VscChevronRight } from "react-icons/vsc";
 import { AiOutlineClockCircle } from "react-icons/ai";
+import { BsFillPlusCircleFill, BsPlusCircle } from "react-icons/bs";
 import axios from "axios";
-import { browseNovels } from "../mockData";
 import { categoryList } from "../mockData";
 import Slider from "../pages/HomePage/Slider";
 const Home = () => {
@@ -27,6 +26,8 @@ const Home = () => {
       setLatestUpdates(res.data.data.latestUpdates);
     });
   };
+
+  const [optionsVisibility, setOptionsVisibility] = useState(false);
   useEffect(() => {
     fetchNewRelease();
     fetchMostViewed();
@@ -46,13 +47,42 @@ const Home = () => {
           <Slider novels={mostViewed} />
         </div>
         <div className="homePage-changeable">
-          <p className="homePage-changeable-heading">Novel List</p>
+          <p className="homePage-changeable-heading">
+            <span className="text">Novel List</span>
+            <BsPlusCircle
+              className="icon"
+              onClick={() => setOptionsVisibility(!optionsVisibility)}
+            />
+          </p>
           <div className="homePage-changeable-container">
-            <div className="homePage-changeable-options">
-              <div className="homePage-changeable-options-option">
+            <div className="homePage-changeable-container-novels">
+              <div className="homePage-novelList">
+                {latestUpdates &&
+                  latestUpdates.map((novel) => {
+                    return (
+                      <HomePageNovels
+                        key={novel._id + "homePageNovels"}
+                        novel={novel}
+                      />
+                    );
+                  })}
+              </div>
+              <div className="homePage-changeable-container-novels-footer">
+                <button className="homePage-changeable-footer-btn">
+                  <VscChevronLeft className="icon" />
+                </button>
+                <p className="homePage-changeable-footer-page">1 / 3</p>
+                <button className="homePage-changeable-footer-btn">
+                  <VscChevronRight className="icon" />
+                </button>
+              </div>
+            </div>
+
+            <div className="homePage-changeable-container-options">
+              <div className="homePage-changeable-container-options-option">
                 <p className="heading heading-latest">Latest Updates</p>
               </div>
-              <div className="homePage-changeable-options-option">
+              <div className="homePage-changeable-container-options-option">
                 <p className="heading">Most Viewed</p>
                 <ul className="list">
                   <li className="list-item">Today</li>
@@ -60,26 +90,70 @@ const Home = () => {
                   <li className="list-item">Month</li>
                 </ul>
               </div>
-              <div className="homePage-changeable-options-option">
+              <div className="homePage-changeable-container-options-option">
                 <p className="heading">Genre</p>
                 <ul className="list">
                   {categoryList.map((genre) => {
-                    return <li className="list-item">{genre}</li>;
+                    return (
+                      <li key={genre + "HomePage"} className="list-item">
+                        {genre}
+                      </li>
+                    );
                   })}
                 </ul>
               </div>
             </div>
-            <div className="homePage-changeable-novels">
-              {/* <p className="homePage-changeable-novels-heading">
-                Latest Updates
-              </p> */}
+          </div>
+          <div className="homePage-changeable-containerSmall">
+            {optionsVisibility && (
+              <div className="homePage-changeable-containerSmall-options">
+                <div className="homePage-changeable-containerSmall-options-option">
+                  <p className="heading heading-latest">Latest Updates</p>
+                </div>
+                <div className="homePage-changeable-containerSmall-options-option">
+                  <p className="heading">Most Viewed</p>
+                  <ul className="list">
+                    <li className="list-item">Today</li>
+                    <li className="list-item">Week</li>
+                    <li className="list-item">Month</li>
+                  </ul>
+                </div>
+                <div className="homePage-changeable-containerSmall-options-option">
+                  <p className="heading">Genre</p>
+                  <ul className="list">
+                    {categoryList.map((genre) => {
+                      return (
+                        <li key={genre + "HomePage"} className="list-item">
+                          {genre}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              </div>
+            )}
+            <div className="homePage-changeable-containerSmall-novels">
               <div className="homePage-novelList">
                 {latestUpdates &&
                   latestUpdates.map((novel) => {
-                    return <HomePageNovels novel={novel} />;
+                    return (
+                      <HomePageNovels
+                        key={novel._id + "homePageNovels"}
+                        novel={novel}
+                      />
+                    );
                   })}
               </div>
             </div>
+          </div>
+          <div className="homePage-changeable-footer">
+            <button className="homePage-changeable-footer-btn">
+              <VscChevronLeft className="icon" />
+            </button>
+            <p className="homePage-changeable-footer-page">1 / 3</p>
+            <button className="homePage-changeable-footer-btn">
+              <VscChevronRight className="icon" />
+            </button>
           </div>
         </div>
       </div>

@@ -75,6 +75,12 @@
         display: flex;
         flex-flow: column;
         gap: 2rem;
+        @include respond(tab-land) {
+          width: 85%;
+        }
+        @include respond(phone) {
+          width: 90%;
+        }
       }
       &-heading {
         font-size: $medium-font-size;
@@ -88,6 +94,12 @@
         font-size: $default-font-size;
         color: white;
         width: 60%;
+        @include respond(tab-land) {
+          width: 80%;
+        }
+        @include respond(phone) {
+          width: 100%;
+        }
         opacity: 0;
         transform: scale(0.5);
       }
@@ -136,6 +148,12 @@
     width: 76%;
     z-index: 2;
     position: relative;
+    @include respond(tab-land) {
+      width: 85%;
+    }
+    @include respond(phone) {
+      width: 90%;
+    }
 
     &-heading {
       position: absolute;
@@ -389,6 +407,7 @@
     }
     .novelSection2 {
       width: max-content;
+      height: 20rem;
       z-index: 2;
       display: flex;
       flex-flow: row;
@@ -530,11 +549,177 @@
   &-changeable {
     margin-top: 6rem;
     width: 76%;
+    @include respond(tab-land) {
+      width: 85%;
+    }
+    @include respond(phone) {
+      width: 90%;
+    }
 
     &-container {
       width: 100%;
       display: flex;
       justify-content: space-between;
+      @include respond(tab-land) {
+        display: none;
+      }
+      &-options {
+        width: 32%;
+        height: max-content;
+        background-color: rgba(black, 0.5);
+        backdrop-filter: blur(40px);
+        border: 1px solid rgb(54, 54, 54);
+        border-radius: 1rem;
+        display: flex;
+        flex-flow: column;
+        gap: 2rem;
+        padding: 2rem;
+        &-option {
+          .heading {
+            font-size: 1.4rem;
+            color: rgb(214, 214, 214);
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 0.3rem;
+            &-latest {
+              &:hover {
+                cursor: pointer;
+                color: rgb(32, 121, 194);
+              }
+            }
+          }
+          .list {
+            margin-top: 1rem;
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            &-item {
+              text-transform: uppercase;
+              font-size: $smallest-font-size;
+              padding: 0.5rem 1.5rem;
+              background-color: rgb(68, 68, 68);
+              color: rgb(196, 196, 196);
+              border-left: none;
+              position: relative;
+              letter-spacing: 0.2rem;
+              transition: all 0.15s ease;
+              &:hover {
+                cursor: pointer;
+                color: rgb(142, 204, 255);
+                //color: white;
+                background-color: rgb(58, 58, 58);
+              }
+            }
+          }
+        }
+      }
+      &-novels {
+        //margin-top: 0.5rem;
+        padding-bottom: 0;
+        padding-right: 0.5rem;
+        width: 66.6%;
+        //height: 103.5rem;
+        //overflow: hidden;
+        //overflow-y: auto;
+        z-index: 2;
+        position: relative;
+        &-heading {
+          position: absolute;
+          top: 0;
+          z-index: 2;
+          text-transform: uppercase;
+          letter-spacing: 0.3rem;
+          color: white;
+          font-size: $small-font-size;
+          font-weight: bold;
+          height: 2rem;
+          margin-bottom: 2rem;
+          line-height: 2rem;
+          padding-left: 1.5rem;
+          position: relative;
+          &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0rem;
+            width: 0.5rem;
+            height: 100%;
+            background-color: rgb(64, 147, 255);
+          }
+        }
+        &-footer {
+          margin-top: 2rem;
+          width: 100%;
+          align-items: center;
+          gap: 1rem;
+          display: flex;
+          @include respond(tab-land) {
+            display: none;
+          }
+        }
+      }
+    }
+    &-containerSmall {
+      display: none;
+      @include respond(tab-land) {
+        display: block;
+      }
+      &-options {
+        width: 100%;
+        height: max-content;
+        background-color: rgba(black, 0.5);
+        backdrop-filter: blur(40px);
+        border: 1px solid rgb(54, 54, 54);
+        border-radius: 1rem;
+        display: flex;
+        flex-flow: column;
+        gap: 2rem;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        &-option {
+          .heading {
+            font-size: 1.4rem;
+            color: rgb(214, 214, 214);
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 0.3rem;
+            &-latest {
+              &:hover {
+                cursor: pointer;
+                color: rgb(32, 121, 194);
+              }
+            }
+          }
+          .list {
+            margin-top: 1rem;
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            &-item {
+              text-transform: uppercase;
+              font-size: $smallest-font-size;
+              padding: 0.5rem 1.5rem;
+              background-color: rgb(68, 68, 68);
+              color: rgb(196, 196, 196);
+              border-left: none;
+              position: relative;
+              letter-spacing: 0.2rem;
+              transition: all 0.15s ease;
+              &:hover {
+                cursor: pointer;
+                color: rgb(142, 204, 255);
+                //color: white;
+                background-color: rgb(58, 58, 58);
+              }
+            }
+          }
+        }
+      }
+      &-novels {
+        height: max-content;
+      }
     }
     &-heading {
       position: absolute;
@@ -550,6 +735,9 @@
       line-height: 2rem;
       padding-left: 1.5rem;
       position: relative;
+      display: flex;
+      gap: 2rem;
+      align-items: center;
       &::before {
         content: "";
         position: absolute;
@@ -559,101 +747,51 @@
         height: 100%;
         background-color: rgb(64, 147, 255);
       }
-    }
-    &-options {
-      width: 31%;
-      height: max-content;
-      background-color: rgba(black, 0.5);
-      backdrop-filter: blur(40px);
-      border: 1px solid rgb(54, 54, 54);
-      border-radius: 1rem;
-      display: flex;
-      flex-flow: column;
-      gap: 2rem;
-      padding: 2rem;
-      &-option {
-        .heading {
-          font-size: $default-font-size;
-          color: rgb(214, 214, 214);
-          text-transform: uppercase;
-          font-weight: bold;
-          letter-spacing: 0.3rem;
-          &-latest {
-            &:hover {
-              cursor: pointer;
-              color: rgb(32, 121, 194);
-            }
-          }
+      .icon {
+        width: 1.8rem;
+        height: 1.8em;
+        display: none;
+        &:hover {
+          cursor: pointer;
         }
-        .list {
-          margin-top: 1rem;
-          list-style: none;
-          display: flex;
-          flex-wrap: wrap;
-          gap: 1rem;
-          &-item {
-            text-transform: uppercase;
-            font-size: $smaller-font-size;
-            padding: 0.5rem 1.5rem;
-            background-color: rgb(68, 68, 68);
-            color: rgb(196, 196, 196);
-            border-left: none;
-            position: relative;
-            letter-spacing: 0.2rem;
-            transition: all 0.15s ease;
-            &:hover {
-              cursor: pointer;
-              color: rgb(142, 204, 255);
-              //color: white;
-              background-color: rgb(58, 58, 58);
-            }
-          }
+        @include respond(tab-land) {
+          display: block;
         }
       }
     }
-    &-novels {
-      margin-top: 0.5rem;
-      padding-bottom: 0;
-      padding-right: 0.5rem;
-      width: 66.6%;
-      height: 103.5rem;
-      overflow: hidden;
-      overflow-y: auto;
-      z-index: 2;
-      position: relative;
-      &-heading {
-        position: absolute;
-        top: 0;
-        z-index: 2;
-        text-transform: uppercase;
-        letter-spacing: 0.3rem;
-        color: white;
-        font-size: $small-font-size;
+    &-footer {
+      margin-top: 2rem;
+      width: 100%;
+      align-items: center;
+      gap: 1rem;
+      display: none;
+      @include respond(tab-land) {
+        display: flex;
+      }
+      @include respond(tab-port) {
+        justify-content: center;
+      }
+      &-btn {
+        outline: none;
+        border: none;
+        background-color: rgba(black, 0.5);
+        backdrop-filter: blur(40px);
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        .icon {
+          width: 2rem;
+          height: 2rem;
+          color: white;
+        }
+      }
+      &-page {
+        font-size: $default-font-size;
         font-weight: bold;
-        height: 2rem;
-        margin-bottom: 2rem;
-        line-height: 2rem;
-        padding-left: 1.5rem;
+        color: white;
         position: relative;
-        &::before {
-          content: "";
-          position: absolute;
-          top: 0;
-          left: 0rem;
-          width: 0.5rem;
-          height: 100%;
-          background-color: rgb(64, 147, 255);
-        }
-      }
-      &::-webkit-scrollbar {
-        width: 0.5rem;
-      }
-      &::-webkit-scrollbar-track {
-        background: transparent;
-      }
-      &::-webkit-scrollbar-thumb {
-        background: rgb(104, 104, 104);
-        border-radius: 0.75rem;
       }
     }
   }
@@ -666,7 +804,7 @@
     row-gap: 1.5rem;
     &-novel {
       height: max-content;
-      width: 37rem;
+      width: 48%;
       display: flex;
       flex-flow: row;
       justify-content: space-between;
@@ -675,6 +813,15 @@
       border: 1px solid rgb(54, 54, 54);
       border-radius: 1rem;
       overflow: hidden;
+      @include respond(tab-land) {
+        width: 32.5%;
+      }
+      @include respond(tab-port) {
+        width: 48%;
+      }
+      @include respond(phone) {
+        width: 100%;
+      }
       .img {
         display: block;
         height: 15rem;
@@ -726,7 +873,7 @@
             border-radius: 0.5rem;
             font-size: $smallest-font-size;
             letter-spacing: 0.2rem;
-            padding: 0.7rem 1rem;
+            padding: 0.5rem 1rem;
             //font-weight: bold;
             &:hover {
               cursor: pointer;
