@@ -736,49 +736,131 @@ a:link, a:visited, a:hover, a:active {
       @media only screen and (max-width: 75em) {
         .homePage-changeable-container {
           display: none; } }
-    .homePage-changeable-containerSmall-options {
-      width: 100%;
-      height: max-content;
-      background-color: rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(40px);
-      border: 1px solid #363636;
-      border-radius: 1rem;
-      display: flex;
-      flex-flow: column;
-      gap: 2rem;
-      padding: 2rem;
-      margin-bottom: 2rem; }
-      .homePage-changeable-containerSmall-options-option .heading {
-        font-size: 1.4rem;
-        color: #d6d6d6;
-        text-transform: uppercase;
-        font-weight: bold;
-        letter-spacing: 0.3rem; }
-        .homePage-changeable-containerSmall-options-option .heading-latest:hover {
-          cursor: pointer;
-          color: #2079c2; }
-      .homePage-changeable-containerSmall-options-option .list {
-        margin-top: 1rem;
-        list-style: none;
+      .homePage-changeable-container-options {
+        width: 32%;
+        height: max-content;
+        background-color: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(40px);
+        border: 1px solid #363636;
+        border-radius: 1rem;
         display: flex;
-        flex-wrap: wrap;
-        gap: 1rem; }
-        .homePage-changeable-containerSmall-options-option .list-item {
+        flex-flow: column;
+        gap: 2rem;
+        padding: 2rem; }
+        .homePage-changeable-container-options-option .heading {
+          font-size: 1.4rem;
+          color: #d6d6d6;
           text-transform: uppercase;
-          font-size: 1rem;
-          padding: 0.5rem 1.5rem;
-          background-color: #444444;
-          color: #c4c4c4;
-          border-left: none;
-          position: relative;
-          letter-spacing: 0.2rem;
-          transition: all 0.15s ease; }
-          .homePage-changeable-containerSmall-options-option .list-item:hover {
+          font-weight: bold;
+          letter-spacing: 0.3rem; }
+          .homePage-changeable-container-options-option .heading-latest:hover {
             cursor: pointer;
-            color: #8eccff;
-            background-color: #3a3a3a; }
-    .homePage-changeable-containerSmall-novels {
-      height: max-content; }
+            color: #2079c2; }
+        .homePage-changeable-container-options-option .list {
+          margin-top: 1rem;
+          list-style: none;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 1rem; }
+          .homePage-changeable-container-options-option .list-item {
+            text-transform: uppercase;
+            font-size: 1rem;
+            padding: 0.5rem 1.5rem;
+            background-color: #444444;
+            color: #c4c4c4;
+            border-left: none;
+            position: relative;
+            letter-spacing: 0.2rem;
+            transition: all 0.15s ease; }
+            .homePage-changeable-container-options-option .list-item:hover {
+              cursor: pointer;
+              color: #8eccff;
+              background-color: #3a3a3a; }
+      .homePage-changeable-container-novels {
+        padding-bottom: 0;
+        padding-right: 0.5rem;
+        width: 66.6%;
+        z-index: 2;
+        position: relative; }
+        .homePage-changeable-container-novels-heading {
+          position: absolute;
+          top: 0;
+          z-index: 2;
+          text-transform: uppercase;
+          letter-spacing: 0.3rem;
+          color: white;
+          font-size: 2rem;
+          font-weight: bold;
+          height: 2rem;
+          margin-bottom: 2rem;
+          line-height: 2rem;
+          padding-left: 1.5rem;
+          position: relative; }
+          .homePage-changeable-container-novels-heading::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0rem;
+            width: 0.5rem;
+            height: 100%;
+            background-color: #4093ff; }
+        .homePage-changeable-container-novels-footer {
+          margin-top: 2rem;
+          width: 100%;
+          align-items: center;
+          gap: 1rem;
+          display: flex; }
+          @media only screen and (max-width: 75em) {
+            .homePage-changeable-container-novels-footer {
+              display: none; } }
+    .homePage-changeable-containerSmall {
+      display: none; }
+      @media only screen and (max-width: 75em) {
+        .homePage-changeable-containerSmall {
+          display: block; } }
+      .homePage-changeable-containerSmall-options {
+        width: 100%;
+        height: max-content;
+        background-color: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(40px);
+        border: 1px solid #363636;
+        border-radius: 1rem;
+        display: flex;
+        flex-flow: column;
+        gap: 2rem;
+        padding: 2rem;
+        margin-bottom: 2rem; }
+        .homePage-changeable-containerSmall-options-option .heading {
+          font-size: 1.4rem;
+          color: #d6d6d6;
+          text-transform: uppercase;
+          font-weight: bold;
+          letter-spacing: 0.3rem; }
+          .homePage-changeable-containerSmall-options-option .heading-latest:hover {
+            cursor: pointer;
+            color: #2079c2; }
+        .homePage-changeable-containerSmall-options-option .list {
+          margin-top: 1rem;
+          list-style: none;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 1rem; }
+          .homePage-changeable-containerSmall-options-option .list-item {
+            text-transform: uppercase;
+            font-size: 1rem;
+            padding: 0.5rem 1.5rem;
+            background-color: #444444;
+            color: #c4c4c4;
+            border-left: none;
+            position: relative;
+            letter-spacing: 0.2rem;
+            transition: all 0.15s ease; }
+            .homePage-changeable-containerSmall-options-option .list-item:hover {
+              cursor: pointer;
+              color: #8eccff;
+              background-color: #3a3a3a; }
+      .homePage-changeable-containerSmall-novels {
+        height: max-content; }
     .homePage-changeable-heading {
       position: absolute;
       top: 0;
@@ -792,7 +874,10 @@ a:link, a:visited, a:hover, a:active {
       margin-bottom: 2rem;
       line-height: 2rem;
       padding-left: 1.5rem;
-      position: relative; }
+      position: relative;
+      display: flex;
+      gap: 2rem;
+      align-items: center; }
       .homePage-changeable-heading::before {
         content: "";
         position: absolute;
@@ -801,45 +886,46 @@ a:link, a:visited, a:hover, a:active {
         width: 0.5rem;
         height: 100%;
         background-color: #4093ff; }
-    .homePage-changeable-novels {
-      margin-top: 0.5rem;
-      padding-bottom: 0;
-      padding-right: 0.5rem;
-      width: 66.6%;
-      height: 103.5rem;
-      overflow: hidden;
-      overflow-y: auto;
-      z-index: 2;
-      position: relative; }
-      .homePage-changeable-novels-heading {
-        position: absolute;
-        top: 0;
-        z-index: 2;
-        text-transform: uppercase;
-        letter-spacing: 0.3rem;
-        color: white;
-        font-size: 2rem;
+      .homePage-changeable-heading .icon {
+        width: 1.8rem;
+        height: 1.8em;
+        display: none; }
+        .homePage-changeable-heading .icon:hover {
+          cursor: pointer; }
+        @media only screen and (max-width: 75em) {
+          .homePage-changeable-heading .icon {
+            display: block; } }
+    .homePage-changeable-footer {
+      margin-top: 2rem;
+      width: 100%;
+      align-items: center;
+      gap: 1rem;
+      display: none; }
+      @media only screen and (max-width: 75em) {
+        .homePage-changeable-footer {
+          display: flex; } }
+      @media only screen and (max-width: 56.25em) {
+        .homePage-changeable-footer {
+          justify-content: center; } }
+      .homePage-changeable-footer-btn {
+        outline: none;
+        border: none;
+        background-color: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(40px);
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+        display: grid;
+        place-items: center; }
+        .homePage-changeable-footer-btn .icon {
+          width: 2rem;
+          height: 2rem;
+          color: white; }
+      .homePage-changeable-footer-page {
+        font-size: 1.6rem;
         font-weight: bold;
-        height: 2rem;
-        margin-bottom: 2rem;
-        line-height: 2rem;
-        padding-left: 1.5rem;
+        color: white;
         position: relative; }
-        .homePage-changeable-novels-heading::before {
-          content: "";
-          position: absolute;
-          top: 0;
-          left: 0rem;
-          width: 0.5rem;
-          height: 100%;
-          background-color: #4093ff; }
-      .homePage-changeable-novels::-webkit-scrollbar {
-        width: 0.5rem; }
-      .homePage-changeable-novels::-webkit-scrollbar-track {
-        background: transparent; }
-      .homePage-changeable-novels::-webkit-scrollbar-thumb {
-        background: #686868;
-        border-radius: 0.75rem; }
   .homePage-novelList {
     width: 100%;
     z-index: 2;
@@ -849,7 +935,7 @@ a:link, a:visited, a:hover, a:active {
     row-gap: 1.5rem; }
     .homePage-novelList-novel {
       height: max-content;
-      width: 37rem;
+      width: 48%;
       display: flex;
       flex-flow: row;
       justify-content: space-between;
@@ -858,6 +944,15 @@ a:link, a:visited, a:hover, a:active {
       border: 1px solid #363636;
       border-radius: 1rem;
       overflow: hidden; }
+      @media only screen and (max-width: 75em) {
+        .homePage-novelList-novel {
+          width: 32.5%; } }
+      @media only screen and (max-width: 56.25em) {
+        .homePage-novelList-novel {
+          width: 48%; } }
+      @media only screen and (max-width: 37.5em) {
+        .homePage-novelList-novel {
+          width: 100%; } }
       .homePage-novelList-novel .img {
         display: block;
         height: 15rem;
@@ -932,9 +1027,10 @@ a:link, a:visited, a:hover, a:active {
     flex-flow: column;
     align-items: center;
     gap: 4rem; }
+    @media only screen and (max-width: 37.5em) {
+      .browsePage-container {
+        gap: 1.5rem; } }
     .browsePage-container-top {
-      padding-top: 12rem;
-      padding-bottom: 5rem;
       display: flex;
       width: 100%;
       flex-flow: column;
@@ -942,7 +1038,21 @@ a:link, a:visited, a:hover, a:active {
       gap: 7rem;
       background-color: rgba(0, 0, 0, 0.5);
       backdrop-filter: blur(40px);
-      -webkit-backdrop-filter: blur(40px); }
+      -webkit-backdrop-filter: blur(40px);
+      padding: 0 calc((100% - 95rem) * 0.5);
+      padding-top: 12rem;
+      padding-bottom: 5rem; }
+      @media only screen and (max-width: 75em) {
+        .browsePage-container-top {
+          padding-right: 7.5%;
+          padding-left: 7.5%; } }
+      @media only screen and (max-width: 37.5em) {
+        .browsePage-container-top {
+          padding-right: 5%;
+          padding-left: 5%;
+          gap: 1.5rem;
+          padding-top: 7.5rem;
+          padding-bottom: 1.5rem; } }
       .browsePage-container-top .closeIcon {
         position: fixed;
         top: 3rem;
@@ -951,9 +1061,15 @@ a:link, a:visited, a:hover, a:active {
         height: 5rem;
         color: white;
         opacity: 0; }
+        @media only screen and (max-width: 37.5em) {
+          .browsePage-container-top .closeIcon {
+            top: 2rem;
+            right: 2rem;
+            width: 3rem;
+            height: 3rem; } }
       .browsePage-container-top .search {
         margin-top: 3rem;
-        width: 95rem;
+        width: 100%;
         height: 6rem;
         border-radius: 3rem;
         display: flex;
@@ -961,6 +1077,11 @@ a:link, a:visited, a:hover, a:active {
         align-items: center;
         background-color: #494949;
         z-index: 2; }
+        @media only screen and (max-width: 37.5em) {
+          .browsePage-container-top .search {
+            margin-top: 1.5rem;
+            height: 4rem;
+            border-radius: 2rem; } }
         .browsePage-container-top .search-input {
           height: 100%;
           width: 95%;
@@ -972,6 +1093,10 @@ a:link, a:visited, a:hover, a:active {
           color: white; }
           .browsePage-container-top .search-input::placeholder {
             color: #868686; }
+          @media only screen and (max-width: 37.5em) {
+            .browsePage-container-top .search-input {
+              padding: 0 2rem;
+              font-size: 1.6rem; } }
         .browsePage-container-top .search-icon {
           width: 4rem;
           height: 4rem;
@@ -979,32 +1104,59 @@ a:link, a:visited, a:hover, a:active {
           margin-right: 3rem;
           background-color: #494949;
           color: #868686; }
+          @media only screen and (max-width: 37.5em) {
+            .browsePage-container-top .search-icon {
+              width: 2.5rem;
+              height: 2.5rem;
+              margin-right: 1.5rem; } }
       .browsePage-container-top .searchList {
-        width: 95rem;
+        width: 100%;
         height: max-content;
         display: flex;
         flex-flow: column;
         gap: 2.5rem;
         color: white;
         list-style: none; }
+        @media only screen and (max-width: 37.5em) {
+          .browsePage-container-top .searchList {
+            gap: 1.5rem; } }
         .browsePage-container-top .searchList-item {
           display: flex;
           gap: 2rem;
           align-items: flex-start; }
+          @media only screen and (max-width: 37.5em) {
+            .browsePage-container-top .searchList-item {
+              gap: 1.5rem; } }
           .browsePage-container-top .searchList-item-img {
             width: 6rem;
             height: 8rem;
             border-radius: 0.5rem;
             background-size: cover;
             background-position: center; }
+            @media only screen and (max-width: 37.5em) {
+              .browsePage-container-top .searchList-item-img {
+                width: 4.9rem;
+                height: 6.5rem;
+                border-radius: 0.3rem; } }
           .browsePage-container-top .searchList-item-text {
             display: flex;
             flex-flow: column;
             gap: 0.5rem; }
+            @media only screen and (max-width: 37.5em) {
+              .browsePage-container-top .searchList-item-text {
+                gap: 0.3rem; } }
             .browsePage-container-top .searchList-item-text-title {
               font-size: 2.5rem; }
+              @media only screen and (max-width: 37.5em) {
+                .browsePage-container-top .searchList-item-text-title {
+                  letter-spacing: 0.15rem;
+                  font-size: 1.6rem; } }
             .browsePage-container-top .searchList-item-text-chapters {
-              font-size: 2rem; }
+              font-size: 2rem;
+              color: lightgray; }
+              @media only screen and (max-width: 37.5em) {
+                .browsePage-container-top .searchList-item-text-chapters {
+                  font-size: 1.2rem; } }
           .browsePage-container-top .searchList-item:hover {
             cursor: pointer; }
       .browsePage-container-top .filters {
@@ -1012,7 +1164,10 @@ a:link, a:visited, a:hover, a:active {
         flex-flow: column;
         align-items: start;
         gap: 3rem;
-        width: 95rem; }
+        width: 100%; }
+        @media only screen and (max-width: 37.5em) {
+          .browsePage-container-top .filters {
+            gap: 1.5rem; } }
         .browsePage-container-top .filters-heading {
           text-transform: uppercase;
           letter-spacing: 0.3rem;
@@ -1020,7 +1175,11 @@ a:link, a:visited, a:hover, a:active {
           font-size: 2rem;
           font-weight: bold;
           display: flex;
-          gap: 1rem; }
+          gap: 1rem;
+          width: 100%; }
+          @media only screen and (max-width: 37.5em) {
+            .browsePage-container-top .filters-heading {
+              justify-content: center; } }
           .browsePage-container-top .filters-heading .infoIcon {
             width: 2.5rem;
             height: 2.5rem; }
@@ -1029,7 +1188,7 @@ a:link, a:visited, a:hover, a:active {
           flex-flow: column;
           gap: 3rem; }
           .browsePage-container-top .filters-content .genres {
-            width: 95rem;
+            width: 100%;
             z-index: 2; }
             .browsePage-container-top .filters-content .genres-heading {
               width: max-content;
@@ -1150,7 +1309,14 @@ a:link, a:visited, a:hover, a:active {
         display: none; }
   .browsePage .novels {
     z-index: 2;
-    margin-bottom: 4rem; }
+    margin-bottom: 4rem;
+    padding: 0 calc((100% - 95rem) * 0.5); }
+    @media only screen and (max-width: 75em) {
+      .browsePage .novels {
+        padding: 0 7.5%; } }
+    @media only screen and (max-width: 37.5em) {
+      .browsePage .novels {
+        padding: 0 5%; } }
     .browsePage .novels-heading {
       text-transform: uppercase;
       letter-spacing: 0.3rem;
@@ -1158,13 +1324,25 @@ a:link, a:visited, a:hover, a:active {
       font-size: 2rem;
       font-weight: bold;
       margin-bottom: 2rem; }
+      @media only screen and (max-width: 75em) {
+        .browsePage .novels-heading {
+          margin-bottom: 1.5rem; } }
+      @media only screen and (max-width: 37.5em) {
+        .browsePage .novels-heading {
+          margin-bottom: 1rem; } }
     .browsePage .novels-list {
       display: flex;
       flex-flow: column;
       gap: 3rem; }
+      @media only screen and (max-width: 75em) {
+        .browsePage .novels-list {
+          gap: 2rem; } }
+      @media only screen and (max-width: 37.5em) {
+        .browsePage .novels-list {
+          gap: 1.5rem; } }
       .browsePage .novels-list .novel {
         height: max-content;
-        width: 95rem;
+        width: 100%;
         display: flex;
         flex-flow: row;
         justify-content: space-between;
@@ -1175,11 +1353,16 @@ a:link, a:visited, a:hover, a:active {
         overflow: hidden; }
         .browsePage .novels-list .novel-img {
           display: block;
-          height: 30rem;
           width: 23rem;
           background-size: cover;
           background-position: center;
           padding: 0%; }
+          @media only screen and (max-width: 75em) {
+            .browsePage .novels-list .novel-img {
+              width: 21rem; } }
+          @media only screen and (max-width: 37.5em) {
+            .browsePage .novels-list .novel-img {
+              width: 12.5rem; } }
         .browsePage .novels-list .novel-info {
           height: 30rem;
           width: calc(100% - 23rem);
@@ -1187,6 +1370,16 @@ a:link, a:visited, a:hover, a:active {
           display: flex;
           flex-flow: column;
           justify-content: space-between; }
+          @media only screen and (max-width: 75em) {
+            .browsePage .novels-list .novel-info {
+              height: 27rem;
+              width: calc(100% - 21rem);
+              padding: 1.5rem; } }
+          @media only screen and (max-width: 37.5em) {
+            .browsePage .novels-list .novel-info {
+              height: 16.2rem;
+              width: calc(100% - 12.5rem);
+              padding: 1rem; } }
           .browsePage .novels-list .novel-info-top {
             display: flex;
             flex-flow: row;
@@ -1198,9 +1391,21 @@ a:link, a:visited, a:hover, a:active {
                 font-size: 2.5rem;
                 letter-spacing: 0.2rem;
                 color: white; }
+                @media only screen and (max-width: 75em) {
+                  .browsePage .novels-list .novel-info-top-title .name {
+                    font-size: 2rem; } }
+                @media only screen and (max-width: 37.5em) {
+                  .browsePage .novels-list .novel-info-top-title .name {
+                    font-size: 1.2rem; } }
               .browsePage .novels-list .novel-info-top-title .author {
                 font-size: 1.6rem;
                 color: #bebebe; }
+                @media only screen and (max-width: 75em) {
+                  .browsePage .novels-list .novel-info-top-title .author {
+                    font-size: 1.2rem; } }
+                @media only screen and (max-width: 37.5em) {
+                  .browsePage .novels-list .novel-info-top-title .author {
+                    display: none; } }
             .browsePage .novels-list .novel-info-top-rating {
               font-size: 2.5rem;
               display: flex;
@@ -1208,17 +1413,39 @@ a:link, a:visited, a:hover, a:active {
               align-items: center;
               gap: 0.5rem;
               color: #bebebe; }
+              @media only screen and (max-width: 75em) {
+                .browsePage .novels-list .novel-info-top-rating {
+                  font-size: 2rem; } }
+              @media only screen and (max-width: 37.5em) {
+                .browsePage .novels-list .novel-info-top-rating {
+                  font-size: 1.6rem; } }
               .browsePage .novels-list .novel-info-top-rating .ratingIcon {
                 width: 2.5rem;
                 height: 2.5rem;
                 color: #f7b438;
                 filter: drop-shadow(0px 0px 2px #f7b438); }
+                @media only screen and (max-width: 75em) {
+                  .browsePage .novels-list .novel-info-top-rating .ratingIcon {
+                    width: 2rem;
+                    height: 2rem; } }
+                @media only screen and (max-width: 37.5em) {
+                  .browsePage .novels-list .novel-info-top-rating .ratingIcon {
+                    width: 1.6rem;
+                    height: 1.6rem; } }
           .browsePage .novels-list .novel-info-stats {
             display: flex;
             flex-flow: row;
             gap: 4rem;
             align-items: center;
-            font-size: 1.6rem; }
+            font-size: 1.2rem; }
+            @media only screen and (max-width: 75em) {
+              .browsePage .novels-list .novel-info-stats {
+                gap: 3rem; } }
+            @media only screen and (max-width: 37.5em) {
+              .browsePage .novels-list .novel-info-stats {
+                gap: unset;
+                justify-content: space-between;
+                display: none; } }
           .browsePage .novels-list .novel-info-item {
             display: flex;
             flex-flow: column;
@@ -1227,28 +1454,41 @@ a:link, a:visited, a:hover, a:active {
             .browsePage .novels-list .novel-info-item .count {
               font-size: 2.5rem;
               text-transform: capitalize; }
+              @media only screen and (max-width: 56.25em) {
+                .browsePage .novels-list .novel-info-item .count {
+                  font-size: 2rem; } }
           .browsePage .novels-list .novel-info-desc {
             color: #c2c2c2;
             font-size: 1.6rem; }
+            @media only screen and (max-width: 37.5em) {
+              .browsePage .novels-list .novel-info-desc {
+                font-size: 1.2rem; } }
           .browsePage .novels-list .novel-info-buttons {
             width: 100%;
             display: flex;
             justify-content: space-between; }
             .browsePage .novels-list .novel-info-buttons .btn {
               width: 47%;
-              height: 4rem;
               font-size: 1.6rem;
               text-transform: uppercase;
               letter-spacing: 0.2rem;
               color: white;
               background-color: #2079c2;
-              display: grid;
-              place-items: center;
               gap: 6%;
               border-radius: 5px;
-              font-weight: bold; }
+              text-align: center;
+              padding: 1rem 0; }
+              @media only screen and (max-width: 56.25em) {
+                .browsePage .novels-list .novel-info-buttons .btn {
+                  font-size: 1.6rem;
+                  letter-spacing: 0.2rem;
+                  padding: 0.7rem 0; } }
+              @media only screen and (max-width: 37.5em) {
+                .browsePage .novels-list .novel-info-buttons .btn {
+                  font-size: 1.2rem;
+                  letter-spacing: 0.2rem;
+                  padding: 0.3rem 0; } }
     .browsePage .novels-buttons {
-      margin-top: 4rem;
       display: flex;
       width: 100%;
       align-items: center;

@@ -26,7 +26,7 @@ const Browse = () => {
 
   const [totalPages, setTotalPages] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
-  const PAGE_LIMIT = 2;
+  const PAGE_LIMIT = 4;
   const nextPage = () => {
     if (currentPage !== totalPages) {
       setCurrentPage(currentPage + 1);
@@ -229,7 +229,7 @@ const Browse = () => {
                   </div>
                 </div>
                 <div className="submitBtn btn" onClick={getNovels}>
-                  Apply Filters
+                  Apply
                 </div>
                 <div className="genres">
                   <div className="genres-heading">Status</div>
@@ -279,7 +279,7 @@ const Browse = () => {
           <div className="novels-heading">Novels List</div>
           <div className="novels-list">
             {novels.map((item) => {
-              return <DataThumb novel={item} />;
+              return <DataThumb key={"browsePage" + item._id} novel={item} />;
             })}
           </div>
           <div className="novels-buttons">
@@ -287,7 +287,7 @@ const Browse = () => {
               <FaChevronLeft className="novels-buttons-btn-icon" />
             </button>
             <p className="novels-buttons-page">
-              {currentPage} of {totalPages}
+              {currentPage} / {totalPages}
             </p>
             <button className="novels-buttons-btn btn" onClick={nextPage}>
               <FaChevronRight className="novels-buttons-btn-icon" />

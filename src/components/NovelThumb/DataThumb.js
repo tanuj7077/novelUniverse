@@ -21,7 +21,7 @@ const DataThumb = ({ novel }) => {
                     history.push(`/book/${novel._id}`);
                   }}
                 >
-                  {novel.name}
+                  {novel.name.substring(0, 50)}
                 </div>
               )}
             />
