@@ -27,6 +27,11 @@ breakpoint argument choices:
       @content;
     }
   }
+  @if $breakpoint == phablet {
+    @media only screen and (max-width: 42em) {
+      @content;
+    }
+  }
   @if $breakpoint == tab-port {
     @media only screen and (max-width: 56.25em) {
       @content;
