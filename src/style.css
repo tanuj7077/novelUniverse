@@ -1544,6 +1544,9 @@ a:link, a:visited, a:hover, a:active {
       position: relative;
       overflow: hidden;
       z-index: 2; }
+      @media only screen and (max-width: 37.5em) {
+        .bookPage-container .introSection {
+          height: 55rem; } }
       .bookPage-container .introSection-bgImg {
         display: block;
         position: absolute;
@@ -1555,6 +1558,9 @@ a:link, a:visited, a:hover, a:active {
         background-position: center;
         filter: blur(10px) opacity(60%);
         z-index: 1; }
+        @media only screen and (max-width: 43.75em) {
+          .bookPage-container .introSection-bgImg {
+            display: none; } }
       .bookPage-container .introSection-container {
         position: absolute;
         top: 55%;
@@ -1565,6 +1571,12 @@ a:link, a:visited, a:hover, a:active {
         display: flex;
         justify-content: space-between;
         z-index: 2; }
+        @media only screen and (max-width: 75em) {
+          .bookPage-container .introSection-container {
+            width: 85%; } }
+        @media only screen and (max-width: 43.75em) {
+          .bookPage-container .introSection-container {
+            display: none; } }
         .bookPage-container .introSection-container-img {
           z-index: 2;
           width: 27rem;
@@ -1573,12 +1585,19 @@ a:link, a:visited, a:hover, a:active {
           background-position: center;
           border-radius: 1rem;
           display: block; }
+          @media only screen and (max-width: 75em) {
+            .bookPage-container .introSection-container-img {
+              width: 24rem;
+              border-radius: 0.8rem; } }
         .bookPage-container .introSection-container-content {
           width: calc(100% - 30rem);
           height: 100%;
           display: flex;
           flex-flow: column;
           justify-content: space-between; }
+          @media only screen and (max-width: 75em) {
+            .bookPage-container .introSection-container-content {
+              width: calc(100% - 27rem); } }
           .bookPage-container .introSection-container-content-titleSection {
             display: flex;
             color: white;
@@ -1619,6 +1638,9 @@ a:link, a:visited, a:hover, a:active {
             gap: 1rem;
             justify-content: space-between;
             border: 2px solid #272727; }
+            @media only screen and (max-width: 56.25em) {
+              .bookPage-container .introSection-container-content-infoSectionCard {
+                padding: 1rem; } }
             .bookPage-container .introSection-container-content-infoSectionCard .subheading {
               color: white;
               font-size: 1.6rem;
@@ -1636,9 +1658,15 @@ a:link, a:visited, a:hover, a:active {
               .bookPage-container .introSection-container-content-infoSection-item .subheading {
                 font-size: 1.2rem;
                 color: #bebebe; }
+                @media only screen and (max-width: 56.25em) {
+                  .bookPage-container .introSection-container-content-infoSection-item .subheading {
+                    font-size: 1rem; } }
               .bookPage-container .introSection-container-content-infoSection-item .count {
                 font-size: 3rem;
                 color: #bebebe; }
+                @media only screen and (max-width: 56.25em) {
+                  .bookPage-container .introSection-container-content-infoSection-item .count {
+                    font-size: 2.5rem; } }
           .bookPage-container .introSection-container-content-otherSectionCard {
             width: 47%;
             height: 100%;
@@ -1680,6 +1708,127 @@ a:link, a:visited, a:hover, a:active {
               gap: 6%;
               border-radius: 5px;
               font-weight: bold; }
+      .bookPage-container .introSection-containerSmall {
+        display: none;
+        width: 100%;
+        height: 100%;
+        position: relative; }
+        @media only screen and (max-width: 43.75em) {
+          .bookPage-container .introSection-containerSmall {
+            display: block; } }
+        .bookPage-container .introSection-containerSmall-img {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-size: cover;
+          background-position: center;
+          filter: blur(20px) opacity(75%); }
+        .bookPage-container .introSection-containerSmall-content {
+          position: absolute;
+          top: 55%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          height: 80%;
+          width: 80%;
+          display: flex;
+          flex-flow: column;
+          gap: 2rem; }
+          @media only screen and (max-width: 75em) {
+            .bookPage-container .introSection-containerSmall-content {
+              width: 85%; } }
+          @media only screen and (max-width: 37.5em) {
+            .bookPage-container .introSection-containerSmall-content {
+              width: 90%; } }
+          .bookPage-container .introSection-containerSmall-content-titleSection {
+            display: flex;
+            color: white;
+            justify-content: space-between; }
+            .bookPage-container .introSection-containerSmall-content-titleSection .name {
+              width: 80%; }
+              .bookPage-container .introSection-containerSmall-content-titleSection .name .novelName {
+                font-size: 3rem; }
+              .bookPage-container .introSection-containerSmall-content-titleSection .name .authorName {
+                display: block;
+                font-size: 1.6rem;
+                color: #bebebe; }
+            .bookPage-container .introSection-containerSmall-content-titleSection .ratingSection {
+              align-self: flex-start;
+              display: flex;
+              align-items: center;
+              gap: 1rem; }
+              .bookPage-container .introSection-containerSmall-content-titleSection .ratingSection .rating {
+                font-size: 3rem; }
+              .bookPage-container .introSection-containerSmall-content-titleSection .ratingSection .icon {
+                width: 3rem;
+                height: 3rem;
+                color: #f7b438;
+                filter: drop-shadow(0px 0px 2px #f7b438); }
+          .bookPage-container .introSection-containerSmall-content-midSection {
+            width: 100%;
+            height: max-content;
+            background-color: rgba(0, 0, 0, 0.39);
+            border: 2px solid #272727;
+            border-radius: 1rem;
+            padding: 2rem;
+            display: flex;
+            flex-flow: column;
+            gap: 2rem;
+            gap: 3rem; }
+            .bookPage-container .introSection-containerSmall-content-midSection .statSection-heading {
+              color: white;
+              font-size: 2rem;
+              font-weight: bold;
+              letter-spacing: 0.3rem;
+              margin-bottom: 0.5rem; }
+            .bookPage-container .introSection-containerSmall-content-midSection .statSection-items {
+              display: flex;
+              flex-wrap: wrap;
+              gap: 4rem;
+              row-gap: 1rem; }
+              .bookPage-container .introSection-containerSmall-content-midSection .statSection-items-item {
+                display: flex;
+                flex-flow: column;
+                align-items: center; }
+                .bookPage-container .introSection-containerSmall-content-midSection .statSection-items-item-count {
+                  font-size: 3rem;
+                  color: #bebebe;
+                  text-transform: uppercase; }
+                .bookPage-container .introSection-containerSmall-content-midSection .statSection-items-item-subheading {
+                  font-size: 1.2rem;
+                  color: #bebebe;
+                  text-transform: uppercase; }
+            .bookPage-container .introSection-containerSmall-content-midSection .categorySection-heading {
+              color: white;
+              font-size: 2rem;
+              font-weight: bold;
+              letter-spacing: 0.3rem;
+              margin-bottom: 0.5rem; }
+            .bookPage-container .introSection-containerSmall-content-midSection .categorySection-tags {
+              display: flex;
+              flex-wrap: wrap;
+              gap: 1.5rem; }
+              .bookPage-container .introSection-containerSmall-content-midSection .categorySection-tags-tag {
+                text-transform: uppercase;
+                font-size: 1.2rem;
+                color: #bebebe; }
+          .bookPage-container .introSection-containerSmall-content-buttons {
+            width: 100%;
+            display: flex;
+            justify-content: space-between; }
+            .bookPage-container .introSection-containerSmall-content-buttons .btn {
+              outline: none;
+              border: none;
+              width: 48%;
+              text-align: center;
+              padding: 1rem;
+              background-color: #2079c2;
+              color: white;
+              font-size: 1.6rem;
+              text-transform: uppercase;
+              letter-spacing: 0.2rem;
+              border-radius: 5px; }
     .bookPage-container .contentSection {
       width: 95rem;
       display: flex;
@@ -1687,13 +1836,22 @@ a:link, a:visited, a:hover, a:active {
       gap: 4rem;
       align-items: center;
       transition: all 1s ease; }
+      @media only screen and (max-width: 75em) {
+        .bookPage-container .contentSection {
+          width: 85%; } }
+      @media only screen and (max-width: 37.5em) {
+        .bookPage-container .contentSection {
+          width: 90%; } }
       .bookPage-container .contentSection .aboutSection {
-        width: 95rem;
+        width: 100%;
         height: max-content;
         padding: 3rem;
         background-color: rgba(63, 63, 63, 0.856);
         border-radius: 1rem;
         z-index: 2; }
+        @media only screen and (max-width: 37.5em) {
+          .bookPage-container .contentSection .aboutSection {
+            padding: 2rem; } }
         .bookPage-container .contentSection .aboutSection-subheading {
           text-transform: uppercase;
           letter-spacing: 0.3rem;
@@ -1704,15 +1862,17 @@ a:link, a:visited, a:hover, a:active {
         .bookPage-container .contentSection .aboutSection-content {
           letter-spacing: 0.1rem;
           font-size: 1.6rem;
-          color: #bebebe;
-          text-align: justify; }
+          color: #bebebe; }
       .bookPage-container .contentSection .chapterSection {
-        width: 95rem;
+        width: 100%;
         height: max-content;
         padding: 3rem;
         background-color: rgba(63, 63, 63, 0.856);
         border-radius: 1rem;
         z-index: 2; }
+        @media only screen and (max-width: 37.5em) {
+          .bookPage-container .contentSection .chapterSection {
+            padding: 2rem; } }
         .bookPage-container .contentSection .chapterSection-subheading {
           text-transform: uppercase;
           letter-spacing: 0.3rem;
@@ -1721,7 +1881,7 @@ a:link, a:visited, a:hover, a:active {
           font-weight: bold;
           margin-bottom: 2rem; }
         .bookPage-container .contentSection .chapterSection-latest {
-          width: max-content;
+          width: 100%;
           color: #bebebe;
           font-size: 1.6rem; }
           .bookPage-container .contentSection .chapterSection-latest .chapter {
@@ -1782,10 +1942,13 @@ a:link, a:visited, a:hover, a:active {
           padding: 3rem;
           background-color: #2f2f35;
           box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 30px 5px inset;
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 2rem;
-          perspective: 1000px; }
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          row-gap: 2rem; }
+          @media only screen and (max-width: 56.25em) {
+            .bookPage-container .contentSection .chapterSection-chapters {
+              padding: 2rem; } }
           .bookPage-container .contentSection .chapterSection-chapters .chapter {
             background-color: rgba(73, 73, 73, 0.856);
             color: #bebebe;
@@ -1793,7 +1956,11 @@ a:link, a:visited, a:hover, a:active {
             font-size: 1.6rem;
             opacity: 0;
             padding: 1rem 2rem;
-            transform-origin: center; }
+            transform-origin: center;
+            width: 48%; }
+            @media only screen and (max-width: 25em) {
+              .bookPage-container .contentSection .chapterSection-chapters .chapter {
+                width: 100%; } }
             .bookPage-container .contentSection .chapterSection-chapters .chapter .count {
               font-size: 1.2rem; }
             .bookPage-container .contentSection .chapterSection-chapters .chapter:hover {
@@ -1809,7 +1976,7 @@ a:link, a:visited, a:hover, a:active {
             opacity: 1;
             transition: all 0.2s linear; }
       .bookPage-container .contentSection .reviewSection {
-        width: 95rem;
+        width: 100%;
         height: max-content;
         color: #b8b8b8;
         padding: 3rem;
@@ -1820,6 +1987,9 @@ a:link, a:visited, a:hover, a:active {
         flex-flow: column;
         gap: 3.5rem;
         margin-bottom: 2rem; }
+        @media only screen and (max-width: 37.5em) {
+          .bookPage-container .contentSection .reviewSection {
+            padding: 2rem; } }
         .bookPage-container .contentSection .reviewSection-subheading {
           text-transform: uppercase;
           letter-spacing: 0.3rem;
@@ -1916,6 +2086,10 @@ a:link, a:visited, a:hover, a:active {
             font-size: 2rem;
             color: #bebebe;
             padding: 1rem 2rem; }
+            @media only screen and (max-width: 37.5em) {
+              .bookPage-container .contentSection .reviewSection-myReview-content .titleInput {
+                font-size: 1.6rem;
+                padding: 0.7rem 1.6rem; } }
             .bookPage-container .contentSection .reviewSection-myReview-content .titleInput::placeholder {
               color: #7e7e7e; }
           .bookPage-container .contentSection .reviewSection-myReview-content .reviewInput {
@@ -1928,6 +2102,10 @@ a:link, a:visited, a:hover, a:active {
             font-size: 2rem;
             color: #bebebe;
             resize: none; }
+            @media only screen and (max-width: 37.5em) {
+              .bookPage-container .contentSection .reviewSection-myReview-content .reviewInput {
+                font-size: 1.2rem;
+                padding: 0.7rem 1.6rem; } }
             .bookPage-container .contentSection .reviewSection-myReview-content .reviewInput::placeholder {
               color: #7e7e7e; }
           .bookPage-container .contentSection .reviewSection-myReview-content .rate {
@@ -1940,11 +2118,19 @@ a:link, a:visited, a:hover, a:active {
             .bookPage-container .contentSection .reviewSection-myReview-content .rate .text {
               font-size: 2rem;
               color: #bebebe; }
+              @media only screen and (max-width: 37.5em) {
+                .bookPage-container .contentSection .reviewSection-myReview-content .rate .text {
+                  font-size: 1.6rem; } }
             .bookPage-container .contentSection .reviewSection-myReview-content .rate .stars .icon {
               height: 2rem;
               width: 2rem;
               transition: color 0.1s ease;
               margin-right: 1rem; }
+              @media only screen and (max-width: 37.5em) {
+                .bookPage-container .contentSection .reviewSection-myReview-content .rate .stars .icon {
+                  height: 1.5rem;
+                  width: 1.5rem;
+                  margin-right: 0.7rem; } }
             .bookPage-container .contentSection .reviewSection-myReview-content .rate .stars .hovered {
               color: #f7b438;
               filter: drop-shadow(0px 0px 2px #f7b438); }
@@ -1959,6 +2145,9 @@ a:link, a:visited, a:hover, a:active {
               font-size: 1.2rem;
               letter-spacing: 0.2rem;
               padding: 1rem 1.5rem; }
+              @media only screen and (max-width: 37.5em) {
+                .bookPage-container .contentSection .reviewSection-myReview-content .rate .submit {
+                  padding: 0.6rem 1rem; } }
               .bookPage-container .contentSection .reviewSection-myReview-content .rate .submit-edit {
                 margin-left: 0; }
               .bookPage-container .contentSection .reviewSection-myReview-content .rate .submit-disabled {
@@ -1983,20 +2172,32 @@ a:link, a:visited, a:hover, a:active {
             flex-flow: column;
             gap: 1rem;
             background-color: #2f2f35; }
+            @media only screen and (max-width: 37.5em) {
+              .bookPage-container .contentSection .reviewSection-reviews-content .review {
+                padding: 1.6rem; } }
             .bookPage-container .contentSection .reviewSection-reviews-content .review .heading {
               display: flex;
-              justify-content: space-between; }
+              justify-content: space-between;
+              align-items: center; }
               .bookPage-container .contentSection .reviewSection-reviews-content .review .heading-title {
                 font-size: 2rem;
                 font-weight: bold; }
+                @media only screen and (max-width: 37.5em) {
+                  .bookPage-container .contentSection .reviewSection-reviews-content .review .heading-title {
+                    font-size: 1.6rem; } }
               .bookPage-container .contentSection .reviewSection-reviews-content .review .heading-time {
                 font-size: 1.6rem;
                 color: #bebebe; }
+                @media only screen and (max-width: 37.5em) {
+                  .bookPage-container .contentSection .reviewSection-reviews-content .review .heading-time {
+                    font-size: 1.2rem; } }
             .bookPage-container .contentSection .reviewSection-reviews-content .review .desc {
               font-size: 1.6rem;
               letter-spacing: 0.2rem;
-              text-align: justify;
               color: #bebebe; }
+              @media only screen and (max-width: 37.5em) {
+                .bookPage-container .contentSection .reviewSection-reviews-content .review .desc {
+                  font-size: 1.2rem; } }
               .bookPage-container .contentSection .reviewSection-reviews-content .review .desc .more {
                 margin-left: 1rem;
                 font-size: 1.2rem;
@@ -2807,7 +3008,7 @@ a:link, a:visited, a:hover, a:active {
           flex-flow: column;
           align-items: center;
           gap: 1rem; }
-          @media only screen and (max-width: 42em) {
+          @media only screen and (max-width: 43.75em) {
             .profilePage-right .contents .body-item {
               width: 100%; } }
           .profilePage-right .contents .body-item-top {

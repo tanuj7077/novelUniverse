@@ -12,6 +12,12 @@ breakpoint argument choices:
 - big-desk--1800px--112.5em
 */
 @mixin respond($breakpoint) {
+  @if $breakpoint == phone-port {
+    //400px
+    @media only screen and (max-width: 25em) {
+      @content;
+    }
+  }
   @if $breakpoint == phone {
     @media only screen and (max-width: 37.5em) {
       @content;
@@ -28,7 +34,8 @@ breakpoint argument choices:
     }
   }
   @if $breakpoint == phablet {
-    @media only screen and (max-width: 42em) {
+    @media only screen and (max-width: 43.75em) {
+      //700px
       @content;
     }
   }

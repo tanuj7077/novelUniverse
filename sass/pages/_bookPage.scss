@@ -16,6 +16,9 @@
       position: relative;
       overflow: hidden;
       z-index: 2;
+      @include respond(phone) {
+        height: 55rem;
+      }
       &-bgImg {
         display: block;
         position: absolute;
@@ -27,6 +30,9 @@
         background-position: center;
         filter: blur(10px) opacity(60%);
         z-index: 1;
+        @include respond(phablet) {
+          display: none;
+        }
       }
       &-container {
         position: absolute;
@@ -38,6 +44,12 @@
         display: flex;
         justify-content: space-between;
         z-index: 2;
+        @include respond(tab-land) {
+          width: 85%;
+        }
+        @include respond(phablet) {
+          display: none;
+        }
         &-img {
           z-index: 2;
           width: 27rem;
@@ -46,6 +58,10 @@
           background-position: center;
           border-radius: 1rem;
           display: block;
+          @include respond(tab-land) {
+            width: 24rem;
+            border-radius: 0.8rem;
+          }
         }
         &-content {
           width: calc(100% - 30rem);
@@ -54,6 +70,9 @@
           flex-flow: column;
           justify-content: space-between;
           //background-color: rgba(214, 25, 25, 0.493);
+          @include respond(tab-land) {
+            width: calc(100% - 27rem);
+          }
           &-titleSection {
             display: flex;
             color: white;
@@ -102,6 +121,9 @@
             gap: 1rem;
             justify-content: space-between;
             border: 2px solid rgb(39, 39, 39);
+            @include respond(tab-port) {
+              padding: 1rem;
+            }
             .subheading {
               color: white;
               font-size: $default-font-size;
@@ -121,10 +143,16 @@
               .subheading {
                 font-size: $smaller-font-size;
                 color: rgb(190, 190, 190);
+                @include respond(tab-port) {
+                  font-size: $smallest-font-size;
+                }
               }
               .count {
                 font-size: $logo-small-font-size;
                 color: rgb(190, 190, 190);
+                @include respond(tab-port) {
+                  font-size: $medium-font-size;
+                }
               }
             }
           }
@@ -180,6 +208,157 @@
           }
         }
       }
+      &-containerSmall {
+        display: none;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        @include respond(phablet) {
+          display: block;
+        }
+        &-img {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-size: cover;
+          background-position: center;
+          filter: blur(20px) opacity(75%);
+          //z-index: 2;
+        }
+        &-content {
+          position: absolute;
+          top: 55%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          height: 80%;
+          width: 80%;
+          //background-color: rgba(black, 0.5);
+          display: flex;
+          flex-flow: column;
+          gap: 2rem;
+          @include respond(tab-land) {
+            width: 85%;
+          }
+          @include respond(phone) {
+            width: 90%;
+          }
+          &-titleSection {
+            display: flex;
+            color: white;
+            justify-content: space-between;
+            .name {
+              width: 80%;
+              .novelName {
+                //font-size: $medium-font-size;
+                font-size: $logo-small-font-size;
+              }
+              .authorName {
+                display: block;
+                font-size: $default-font-size;
+                color: rgb(190, 190, 190);
+              }
+            }
+            .ratingSection {
+              align-self: flex-start;
+              display: flex;
+              align-items: center;
+              gap: 1rem;
+              .rating {
+                //font-size: $medium-font-size;
+                font-size: $logo-small-font-size;
+              }
+              .icon {
+                width: 3rem;
+                height: 3rem;
+                color: rgb(247, 180, 56);
+                filter: drop-shadow(0px 0px 2px rgb(247, 180, 56));
+              }
+            }
+          }
+          &-midSection {
+            width: 100%;
+            height: max-content;
+            background-color: rgba(0, 0, 0, 0.39);
+            border: 2px solid rgb(39, 39, 39);
+            border-radius: 1rem;
+            padding: 2rem;
+            display: flex;
+            flex-flow: column;
+            gap: 2rem;
+            //justify-content: space-between;
+            gap: 3rem;
+            .statSection {
+              &-heading {
+                color: white;
+                font-size: $small-font-size;
+                font-weight: bold;
+                letter-spacing: 0.3rem;
+                margin-bottom: 0.5rem;
+              }
+              &-items {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 4rem;
+                row-gap: 1rem;
+                &-item {
+                  display: flex;
+                  flex-flow: column;
+                  align-items: center;
+                  &-count {
+                    font-size: $logo-small-font-size;
+                    color: rgb(190, 190, 190);
+                    text-transform: uppercase;
+                  }
+                  &-subheading {
+                    font-size: $smaller-font-size;
+                    color: rgb(190, 190, 190);
+                    text-transform: uppercase;
+                  }
+                }
+              }
+            }
+            .categorySection {
+              &-heading {
+                color: white;
+                font-size: $small-font-size;
+                font-weight: bold;
+                letter-spacing: 0.3rem;
+                margin-bottom: 0.5rem;
+              }
+              &-tags {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 1.5rem;
+                &-tag {
+                  text-transform: uppercase;
+                  font-size: $smaller-font-size;
+                  color: rgb(190, 190, 190);
+                }
+              }
+            }
+          }
+          &-buttons {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            .btn {
+              outline: none;
+              border: none;
+              width: 48%;
+              text-align: center;
+              padding: 1rem;
+              background-color: rgb(32, 121, 194);
+              color: white;
+              font-size: $default-font-size;
+              text-transform: uppercase;
+              letter-spacing: 0.2rem;
+              border-radius: 5px;
+            }
+          }
+        }
+      }
     }
     .contentSection {
       width: 95rem;
@@ -188,13 +367,23 @@
       gap: 4rem;
       align-items: center;
       transition: all 1s ease;
+      @include respond(tab-land) {
+        width: 85%;
+      }
+      @include respond(phone) {
+        width: 90%;
+      }
       .aboutSection {
-        width: 95rem;
+        width: 100%;
         height: max-content;
         padding: 3rem;
         background-color: rgba(63, 63, 63, 0.856);
         border-radius: 1rem;
         z-index: 2;
+
+        @include respond(phone) {
+          padding: 2rem;
+        }
         &-subheading {
           text-transform: uppercase;
           letter-spacing: 0.3rem;
@@ -207,18 +396,21 @@
           letter-spacing: 0.1rem;
           font-size: $default-font-size;
           color: rgb(190, 190, 190);
-          text-align: justify;
+          //text-align: justify;
         }
       }
       .chapterSection {
         //width: 71%;
-        width: 95rem;
+        width: 100%;
         height: max-content;
         //color: rgb(245, 231, 231);
         padding: 3rem;
         background-color: rgba(63, 63, 63, 0.856);
         border-radius: 1rem;
         z-index: 2;
+        @include respond(phone) {
+          padding: 2rem;
+        }
         &-subheading {
           text-transform: uppercase;
           letter-spacing: 0.3rem;
@@ -228,7 +420,7 @@
           margin-bottom: 2rem;
         }
         &-latest {
-          width: max-content;
+          width: 100%;
           color: rgb(190, 190, 190);
           font-size: $default-font-size;
           .chapter {
@@ -307,10 +499,16 @@
           background-color: #2f2f35;
           //background-color: rgba(255, 255, 255, 0.3);
           box-shadow: hsla(0, 0%, 0%, 0.2) 0px 0px 30px 5px inset;
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 2rem;
-          perspective: 1000px;
+          // display: grid;
+          // grid-template-columns: repeat(2, 1fr);
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          //gap: 2rem;
+          row-gap: 2rem;
+          @include respond(tab-port) {
+            padding: 2rem;
+          }
           .chapter {
             background-color: rgba(73, 73, 73, 0.856);
             // background-color: rgba(87, 87, 87, 0.856);
@@ -320,6 +518,10 @@
             opacity: 0;
             padding: 1rem 2rem;
             transform-origin: center;
+            width: 48%;
+            @include respond(phone-port) {
+              width: 100%;
+            }
             .count {
               font-size: $smaller-font-size;
             }
@@ -342,7 +544,7 @@
         }
       }
       .reviewSection {
-        width: 95rem;
+        width: 100%;
         height: max-content;
         color: rgb(184, 184, 184);
         padding: 3rem;
@@ -353,6 +555,9 @@
         flex-flow: column;
         gap: 3.5rem;
         margin-bottom: 2rem;
+        @include respond(phone) {
+          padding: 2rem;
+        }
         &-subheading {
           text-transform: uppercase;
           letter-spacing: 0.3rem;
@@ -470,6 +675,10 @@
               font-size: $small-font-size;
               color: rgb(190, 190, 190);
               padding: 1rem 2rem;
+              @include respond(phone) {
+                font-size: $default-font-size;
+                padding: 0.7rem 1.6rem;
+              }
               &::placeholder {
                 color: rgb(126, 126, 126);
               }
@@ -485,6 +694,10 @@
               // color: rgb(194, 194, 194);
               color: rgb(190, 190, 190);
               resize: none;
+              @include respond(phone) {
+                font-size: $smaller-font-size;
+                padding: 0.7rem 1.6rem;
+              }
               &::placeholder {
                 color: rgb(126, 126, 126);
               }
@@ -499,6 +712,9 @@
               .text {
                 font-size: $small-font-size;
                 color: rgb(190, 190, 190);
+                @include respond(phone) {
+                  font-size: $default-font-size;
+                }
               }
               .stars {
                 .icon {
@@ -506,6 +722,11 @@
                   width: 2rem;
                   transition: color 0.1s ease;
                   margin-right: 1rem;
+                  @include respond(phone) {
+                    height: 1.5rem;
+                    width: 1.5rem;
+                    margin-right: 0.7rem;
+                  }
                 }
                 .hovered {
                   color: rgb(247, 180, 56);
@@ -523,6 +744,9 @@
                 font-size: $smaller-font-size;
                 letter-spacing: 0.2rem;
                 padding: 1rem 1.5rem;
+                @include respond(phone) {
+                  padding: 0.6rem 1rem;
+                }
                 &-edit {
                   margin-left: 0;
                 }
@@ -556,23 +780,36 @@
               flex-flow: column;
               gap: 1rem;
               background-color: #2f2f35;
+              @include respond(phone) {
+                padding: 1.6rem;
+              }
               .heading {
                 display: flex;
                 justify-content: space-between;
+                align-items: center;
                 &-title {
                   font-size: $small-font-size;
                   font-weight: bold;
+                  @include respond(phone) {
+                    font-size: $default-font-size;
+                  }
                 }
                 &-time {
                   font-size: $default-font-size;
                   color: rgb(190, 190, 190);
+                  @include respond(phone) {
+                    font-size: $smaller-font-size;
+                  }
                 }
               }
               .desc {
                 font-size: $default-font-size;
                 letter-spacing: 0.2rem;
-                text-align: justify;
+                //text-align: justify;
                 color: rgb(190, 190, 190);
+                @include respond(phone) {
+                  font-size: $smaller-font-size;
+                }
                 .more {
                   margin-left: 1rem;
                   font-size: $smaller-font-size;

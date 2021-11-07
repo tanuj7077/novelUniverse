@@ -2139,8 +2139,16 @@ a:link, a:visited, a:hover, a:active {
         display: flex;
         flex-wrap: wrap;
         justify-content: flex-start;
-        gap: 2rem;
+        gap: 2%;
         row-gap: 1.5rem; }
+        @media only screen and (max-width: 75em) {
+          .collectionPage-container .novels-container {
+            gap: 2%;
+            row-gap: 1rem; } }
+        @media only screen and (max-width: 37.5em) {
+          .collectionPage-container .novels-container {
+            gap: 2%;
+            row-gap: 0.5rem; } }
       .collectionPage-container .novels-novel {
         height: max-content;
         width: 32%;
@@ -2680,19 +2688,24 @@ a:link, a:visited, a:hover, a:active {
         border-radius: 0.75rem; }
   .profilePage-right {
     width: 100%;
-    padding: 0 10%;
+    padding: 3rem 10%;
     height: calc(100vh - 6rem);
     background-color: #2f2f35;
     overflow-y: auto; }
+    @media only screen and (max-width: 75em) {
+      .profilePage-right {
+        padding: 3rem 7.5%; } }
+    @media only screen and (max-width: 37.5em) {
+      .profilePage-right {
+        padding: 3rem 5%; } }
     .profilePage-right .contents {
       height: max-content;
       width: 100%;
-      padding: 3rem;
       display: flex;
       flex-flow: column;
       align-items: center; }
       .profilePage-right .contents .top {
-        width: 90%;
+        width: 100%;
         height: 30rem;
         position: relative; }
         .profilePage-right .contents .top .bg {
@@ -2717,6 +2730,12 @@ a:link, a:visited, a:hover, a:active {
           border: 4px solid white;
           overflow: hidden;
           display: block; }
+          @media only screen and (max-width: 75em) {
+            .profilePage-right .contents .top .profileImg {
+              left: 4rem;
+              top: 14rem;
+              width: 11rem;
+              height: 11rem; } }
           .profilePage-right .contents .top .profileImg-edit {
             opacity: 0;
             position: absolute;
@@ -2745,21 +2764,32 @@ a:link, a:visited, a:hover, a:active {
           font-size: 3rem;
           color: white;
           font-weight: bold; }
+          @media only screen and (max-width: 75em) {
+            .profilePage-right .contents .top .info {
+              left: 18rem;
+              gap: 1rem;
+              font-size: 2.5rem; } }
         .profilePage-right .contents .top .editIcon {
           margin-left: 0.5rem;
           height: 2rem;
           width: 2rem;
           color: #818181; }
+          @media only screen and (max-width: 75em) {
+            .profilePage-right .contents .top .editIcon {
+              margin-left: 0; } }
         .profilePage-right .contents .top .follow {
           position: absolute;
           top: 24.8rem;
           left: 27rem;
           font-size: 1.6rem;
           color: #6cc7eb; }
+          @media only screen and (max-width: 75em) {
+            .profilePage-right .contents .top .follow {
+              left: 18rem; } }
           .profilePage-right .contents .top .follow:hover {
             cursor: pointer; }
       .profilePage-right .contents .body {
-        width: 90%;
+        width: 100%;
         height: max-content;
         display: flex;
         flex-wrap: wrap;
@@ -2777,6 +2807,9 @@ a:link, a:visited, a:hover, a:active {
           flex-flow: column;
           align-items: center;
           gap: 1rem; }
+          @media only screen and (max-width: 42em) {
+            .profilePage-right .contents .body-item {
+              width: 100%; } }
           .profilePage-right .contents .body-item-top {
             width: 100%;
             display: flex;
@@ -2983,7 +3016,10 @@ a:link, a:visited, a:hover, a:active {
                 position: relative; }
                 .profilePage-right .contents .body .recommended-content-novel-body-top .name {
                   font-size: 1.6rem;
-                  width: 80%; }
+                  width: 85%; }
+                  @media only screen and (max-width: 56.25em) {
+                    .profilePage-right .contents .body .recommended-content-novel-body-top .name {
+                      font-size: 1.4rem; } }
                 .profilePage-right .contents .body .recommended-content-novel-body-top .rating {
                   position: absolute;
                   top: 0.5rem;
@@ -2992,12 +3028,23 @@ a:link, a:visited, a:hover, a:active {
                   align-items: baseline;
                   gap: 0.2rem;
                   height: 1rem; }
+                  @media only screen and (max-width: 75em) {
+                    .profilePage-right .contents .body .recommended-content-novel-body-top .rating {
+                      top: 0.2rem;
+                      right: 0.2rem; } }
                   .profilePage-right .contents .body .recommended-content-novel-body-top .rating .icon {
                     color: #ffd900;
                     width: 1.2rem;
                     height: 1.2rem; }
+                    @media only screen and (max-width: 75em) {
+                      .profilePage-right .contents .body .recommended-content-novel-body-top .rating .icon {
+                        width: 1rem;
+                        height: 1rem; } }
                   .profilePage-right .contents .body .recommended-content-novel-body-top .rating .text {
                     font-size: 1.6rem; }
+                    @media only screen and (max-width: 75em) {
+                      .profilePage-right .contents .body .recommended-content-novel-body-top .rating .text {
+                        font-size: 1.2rem; } }
           .profilePage-right .contents .body .recommended-content-noData {
             text-align: center;
             font-size: 1.6rem;
@@ -3078,6 +3125,9 @@ a:link, a:visited, a:hover, a:active {
     padding: 2rem;
     display: flex;
     flex-flow: column; }
+    @media only screen and (max-width: 37.5em) {
+      .modals-modal {
+        width: 80vw; } }
     .modals-modal-close {
       position: absolute;
       top: 2rem;

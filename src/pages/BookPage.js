@@ -207,6 +207,88 @@ const BookPage = () => {
               </div>
             </div>
           )}
+          {novelData && (
+            <div className="introSection-containerSmall">
+              <span
+                className="introSection-containerSmall-img"
+                style={{
+                  backgroundImage: `url(${novelData.imageUrl})`,
+                }}
+              ></span>
+              <div className="introSection-containerSmall-content">
+                <section className="introSection-containerSmall-content-titleSection">
+                  <p className="name">
+                    <span className="novelName">{novelData.name}</span>
+                    <span className="authorName">{novelData.author}</span>
+                  </p>
+                  <div className="ratingSection">
+                    <div className="rating">{averageRating}</div>
+                    <FaStar className="icon" />
+                  </div>
+                </section>
+                <section className="introSection-containerSmall-content-midSection">
+                  <div className="statSection">
+                    <p className="statSection-heading">Stats</p>
+                    <div className="statSection-items">
+                      <div className="statSection-items-item">
+                        <div className="statSection-items-item-count">
+                          {novelData.chapters.length}
+                        </div>
+                        <div className="statSection-items-item-subheading">
+                          Chapter
+                        </div>
+                      </div>
+                      <div className="statSection-items-item">
+                        <div className="statSection-items-item-count">
+                          {novelObj.rank}
+                        </div>
+                        <div className="statSection-items-item-subheading">
+                          Rank
+                        </div>
+                      </div>
+                      <div className="statSection-items-item">
+                        <div className="statSection-items-item-count">
+                          {novelData.bookmarked}
+                        </div>
+                        <div className="statSection-items-item-subheading">
+                          Bookmarked
+                        </div>
+                      </div>
+                      <div className="statSection-items-item">
+                        <div className="statSection-items-item-count">
+                          {novelData.status}
+                        </div>
+                        <div className="statSection-items-item-subheading">
+                          Status
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="categorySection">
+                    <p className="categorySection-heading">Categories</p>
+                    <div className="categorySection-tags">
+                      {novelData.categories.map((tag) => {
+                        return (
+                          <p className="categorySection-tags-tag">{tag}</p>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </section>
+                <section className="introSection-containerSmall-content-buttons">
+                  <button className="btn">{novelObj.readStatus}</button>
+
+                  {bookmarked ? (
+                    <button className="btn">Bookmarked</button>
+                  ) : (
+                    <button className="btn" onClick={bookmark}>
+                      Bookmark
+                    </button>
+                  )}
+                </section>
+              </div>
+            </div>
+          )}
         </div>
         <div
           className={`contentSection ${
