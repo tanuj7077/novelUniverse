@@ -12,6 +12,8 @@ const TopNav = () => {
   const {
     toggleLoginModalVisibility,
     toggleNotificationVisibility,
+    notificationVisibility,
+    setNotificationVisibility,
     userData,
     isLoggedIn,
     logout,
@@ -113,11 +115,17 @@ const TopNav = () => {
         )}
         {isLoggedIn && (
           <div className="topNav-right-item topNav-right-iconItem">
-            <IoNotifications
-              className="topNav-right-iconItem-notification"
-              onClick={toggleNotificationVisibility}
-            />
-            <Notification />
+            <div
+              id="notificationIcon"
+              onClick={() => {
+                !notificationVisibility
+                  ? setNotificationVisibility(true)
+                  : setNotificationVisibility(false);
+              }}
+            >
+              <IoNotifications className="topNav-right-iconItem-notification" />
+              <Notification />
+            </div>
           </div>
         )}
         <p className="topNav-right-iconItem">

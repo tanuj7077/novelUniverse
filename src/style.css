@@ -3704,9 +3704,15 @@ a:link, a:visited, a:hover, a:active {
       display: none;
       place-items: center;
       z-index: 10; }
+      .topNav-right-iconItem #notificationIcon {
+        width: max-content;
+        height: max-content;
+        z-index: 10; }
       .topNav-right-iconItem-notification {
         width: 2.2rem;
-        height: 2.2rem; }
+        height: 2.2rem;
+        pointer-events: none;
+        z-index: 9; }
       .topNav-right-iconItem-menu {
         width: 3rem;
         height: 3rem; }

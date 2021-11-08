@@ -15,19 +15,9 @@ function Notification() {
     useEffect(() => {
       function handleClickOutside(event) {
         if (ref.current && !ref.current.contains(event.target)) {
-          //!event.target.className === "text"
-          console.log(
-            event.path[0].className.baseVal,
-            event.path[1].className.baseVal
-          );
-          (event.target.innerHTML.toLowerCase() !== "notification" ||
-            (event.path &&
-              event.path[0] &&
-              event.path[1] &&
-              (event.path[0].baseVal.toString() ===
-                "topNav-right-iconItem-notification" ||
-                event.path[1].baseVal.toString() ===
-                  "topNav-right-iconItem-notification"))) &&
+          console.log(event.target.id === "notificationIcon");
+          event.target.innerHTML.toLowerCase() !== "notification" &&
+            event.target.id !== "notificationIcon" &&
             setNotificationVisibility(false);
         }
       }
@@ -47,7 +37,6 @@ function Notification() {
     await axios
       .post("http://localhost:8000/user/deleteAllNotifications", data)
       .then((res) => {
-        console.log(res.data);
         getUpdatedUserData();
       });
   };
