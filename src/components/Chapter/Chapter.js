@@ -99,8 +99,6 @@ const Chapter = () => {
           {chapterData && (
             <p className="info">
               <span className="bookName">{chapterData.bookName}</span>
-              {/* <BsChevronRight className="div" />
-              <span className="currentChapter">{chapter}</span> */}
             </p>
           )}
         </section>
