@@ -6,6 +6,7 @@
   box-sizing: inherit;
 } /*Removing every default margin or padding*/
 .dark {
+  --color-main: #21a099;
   --color-primary-light: #73bbfd;
   --color-primary-dark: #2d86da;
 
@@ -53,6 +54,7 @@
 }
 .light {
   //new
+  --color-main: #21a099;
   --color-primary-light: #73bbfd;
   --color-primary-dark: #2d86da;
 
@@ -128,6 +130,8 @@ html {
   }
 
   //COLORS
+  --color-main: #21a099;
+  --color-main-dark: #22725e;
   --color-primary: hsl(160, 79%, 35%);
   --color-primary-dark: hsl(160, 79%, 30%);
 }
@@ -143,10 +147,10 @@ body {
     width: 1.5rem;
   }
   &::-webkit-scrollbar-track {
-    background: rgb(216, 216, 216);
+    background: rgb(99, 99, 99);
   }
   &::-webkit-scrollbar-thumb {
-    background: rgb(119, 119, 119);
+    background: rgb(196, 196, 196);
     border-radius: 0.75rem;
   }
 }

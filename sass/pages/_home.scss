@@ -104,17 +104,15 @@
         transform: scale(0.5);
       }
       &-cta {
-        height: 3rem;
-        width: 12rem;
+        width: max-content;
+        padding: 0.8rem 2rem;
         font-size: $default-font-size;
         text-transform: uppercase;
         letter-spacing: 0.2rem;
         color: white;
         background-color: rgb(32, 121, 194);
-        display: grid;
-        place-items: center;
         border-radius: 5px;
-        font-weight: bold;
+        //font-weight: bold;
         opacity: 0;
         transform: scale(0.5);
       }

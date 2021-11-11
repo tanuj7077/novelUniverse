@@ -7,8 +7,8 @@ const AppProvider = ({ children }) => {
   const [loginModalVisible, setLoginModalVisible] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userData, setUserData] = useState();
-  const [notifications, setNotifications] = useState([]);
   const [notificationVisibility, setNotificationVisibility] = useState(false);
+  const [mostViewed, setMostViewed] = useState();
 
   const [alert, setAlert] = useState({});
   const [showAlert, setShowAlert] = useState(0);
