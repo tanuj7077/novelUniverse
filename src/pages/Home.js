@@ -50,7 +50,7 @@ const Home = () => {
         `http://localhost:8000/book/getNovelByDate/${optionType}/${currentPage}/${PAGE_LIMIT}`
       )
       .then((res) => {
-        console.log(res.data.data.novels);
+        console.log(res.data.data);
         setTotalPages(res.data.data.total);
         if (optionType === "today") {
           let list = [];

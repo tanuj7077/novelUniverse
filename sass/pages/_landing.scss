@@ -1,75 +1,148 @@
 .landing {
   width: 100vw;
   min-height: 100vh;
-  background-color: white;
   position: relative;
   display: flex;
   flex-flow: column;
   align-items: center;
-
-  &-top {
+  position: relative;
+  &-topNav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    height: 8rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10%;
+    &-logo {
+      display: flex;
+      align-items: center;
+      .text {
+        color: rgb(0, 162, 255);
+        font-size: $medium-font-size;
+      }
+      .icon {
+        width: 6rem;
+        height: 6rem;
+      }
+    }
+    &-button {
+      text-transform: capitalize;
+      font-size: $default-font-size;
+      padding: 0.5rem 1rem;
+      color: rgb(0, 162, 255);
+      border: 1px solid rgb(0, 162, 255);
+      border-radius: 0.5rem;
+    }
+  }
+  &-item {
     width: 100%;
-    &-nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem 12.5%;
-      background-color: var(--color-primary-dark);
-      position: relative;
-      &-logo {
-        font-size: $logo-small-font-size;
-        color: white;
-      }
-      &-login {
-        font-size: $small-font-size;
-        color: white;
-      }
-    }
+    height: 100vh;
     &-intro {
-      padding: 1rem 30%;
-      height: 80vh;
-      -webkit-backdrop-filter: blur(10px);
-      display: flex;
-      flex-flow: column;
-      align-items: center;
-      justify-content: center;
       position: relative;
-      clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%);
-      animation: landingIntroClip 0.3s ease forwards;
-      overflow: hidden;
-      &-heading {
-        font-size: $logo-font-size;
-        color: white;
-        z-index: 2;
-      }
-      &-desc {
-        margin-top: 1rem;
-        font-size: $medium-font-size;
-        color: white;
-        text-align: center;
-        z-index: 2;
-      }
-      &-cta {
-        margin-top: 2rem;
-        font-size: $medium-font-size;
-        border: 2px solid white;
-        padding: 0.5rem 3rem;
-        color: var(--color-main);
-        background-color: white;
-        z-index: 2;
-        border-radius: 3rem;
-      }
-      &::before {
-        content: "";
+      .textContent {
         position: absolute;
-        top: 0;
-        left: 0;
-        background-color: var(--color-main);
-        width: 100%;
-        height: 100%;
-        z-index: 1;
-        transform-origin: top left;
+        top: 50%;
+        left: 10%;
+        transform: translateY(-50%);
+        &-large {
+          font-size: 6rem;
+          font-weight: bold;
+          max-width: 40%;
+        }
+        &-small {
+          font-size: $small-font-size;
+          max-width: 45%;
+        }
+      }
+      .mediaContent {
+        position: absolute;
+        top: 50%;
+        right: 7%;
+        width: 72rem;
+        height: max-content;
+        transform: translate3d(0, 0, 0) translateY(-50%);
+        perspective: 150rem;
+        -webkit-perspective: 150rem;
+        -moz-perspective: 150rem;
+        transform-style: preserve-3d;
+        -webkit-transform-style: preserve-3d;
+
+        &-slideshow {
+          width: 100%;
+          background-color: transparent;
+          height: max-content;
+          overflow: hidden;
+          -webkit-mask-image: -webkit-gradient(
+            linear,
+            left center,
+            right center,
+            color-stop(0, transparent),
+            color-stop(0.2, rgba(255, 255, 255, 0.5)),
+            color-stop(0.4, rgb(255, 255, 255))
+          );
+          transform: rotateY(-45deg);
+          /*-webkit-mask-image: -webkit-gradient(
+            linear,
+            left center,
+            right center,
+            color-stop(0, transparent),
+            color-stop(0.1, rgba(0, 0, 0, 0.5)),
+            color-stop(0.25, black),
+            color-stop(0.75, black),
+            color-stop(0.9, rgba(0, 0, 0, 0.5)),
+            color-stop(1, transparent)
+          );*/
+          &-slideTrack {
+            display: flex;
+            height: 25rem;
+            width: calc(24rem * 12);
+            animation: scroll 20s linear infinite;
+            justify-content: space-around;
+            .slide {
+              background-size: cover;
+              width: 23rem;
+              transform-style: preserve-3d;
+              border-radius: 1rem;
+            }
+          }
+          &-genres {
+            margin-top: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: space-around;
+            -webkit-mask-image: -webkit-gradient(
+                linear,
+                left top,
+                left bottom,
+                from(rgba(0, 0, 0, 1)),
+                to(rgba(0, 0, 0, 0))
+              ),
+              -webkit-gradient(linear, left center, right center, color-stop(0, transparent), color-stop(0.2, rgba(255, 255, 255, 0.5)), color-stop(0.4, rgb(255, 255, 255)));
+
+            .genre {
+              color: white;
+              background-color: rgb(116, 116, 116);
+              font-size: $smaller-font-size;
+              text-transform: uppercase;
+              padding: 0.5rem 1rem;
+              border-radius: 0.6rem;
+            }
+          }
+        }
       }
     }
+  }
+}
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-24rem * 6));
   }
 }
