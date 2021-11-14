@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import TopNav from "../components/Navigation/TopNav";
 import { Route } from "react-router-dom";
 import logo from "../logo.svg";
@@ -10,6 +10,41 @@ import img5 from "../assets/slideshow/5.jpg";
 import img6 from "../assets/slideshow/6.jpg";
 import { categoryList } from "../mockData";
 const Landing = () => {
+  ///all elements which are to be shown on scroll
+  // var elementsToShow = document.querySelectorAll(".show-on-scroll");
+  function loop() {
+    var elementsToShow = document.querySelectorAll(".show-on-scroll");
+    console.log(elementsToShow);
+    elementsToShow.forEach((element) => {
+      if (isElementInViewPort(element)) {
+        element.classList.add("isVisible");
+      } else {
+        element.classList.remove("isVisible");
+      }
+    });
+  }
+
+  function isElementInViewPort(el) {
+    var rect = el.getBoundingClientRect();
+    return (
+      (rect.top <= 0 && rect.bottom >= 0) ||
+      (rect.bottom >=
+        (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.top <=
+          (window.innerHeight || document.documentElement.clientHeight)) ||
+      (rect.top >= 0 &&
+        rect.bottom <=
+          (window.innerHeight || document.documentElement.clientHeight))
+    );
+  }
+  useEffect(() => {
+    const interval = setInterval(() => {
+      loop();
+    }, 1000 / 24);
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
   return (
     <div className="landing">
       <nav className="landing-topNav">
@@ -112,6 +147,66 @@ const Landing = () => {
               })}
             </div>
           </div>
+        </div>
+      </section>
+      <section className="landing-item landing-item-filters">
+        <div className="mediaContent show-on-scroll">Test Media Contents</div>
+        <div className="textContent">
+          <p className="textContent-large">Easy to use Filters</p>
+          <p className="textContent-small">
+            It was popularised in the 1960s with the release of Letraset sheets
+            containing Lorem Ipsum passages, and more recently with desktop
+            publishing software like Aldus PageMaker including versions of Lorem
+            Ipsum.
+          </p>
+        </div>
+      </section>
+      <section className="landing-item landing-item-collection">
+        <div className="textContent">
+          <p className="textContent-large">Add novels to your Collection</p>
+          <p className="textContent-small">
+            It was popularised in the 1960s with the release of Letraset sheets
+            containing Lorem Ipsum passages, and more recently with desktop
+            publishing software like Aldus PageMaker including versions of Lorem
+            Ipsum.
+          </p>
+        </div>
+        <div className="mediaContent show-on-scroll">Test Media Content</div>
+      </section>
+      <section className="landing-item landing-item-notification">
+        <div className="mediaContent show-on-scroll">Test Media Content</div>
+        <div className="textContent">
+          <p className="textContent-large">Get customized notification</p>
+          <p className="textContent-small">
+            It was popularised in the 1960s with the release of Letraset sheets
+            containing Lorem Ipsum passages, and more recently with desktop
+            publishing software like Aldus PageMaker including versions of Lorem
+            Ipsum.
+          </p>
+        </div>
+      </section>
+      <section className="landing-item landing-item-follow">
+        <div className="textContent">
+          <p className="textContent-large">Follow users</p>
+          <p className="textContent-small">
+            It was popularised in the 1960s with the release of Letraset sheets
+            containing Lorem Ipsum passages, and more recently with desktop
+            publishing software like Aldus PageMaker including versions of Lorem
+            Ipsum.
+          </p>
+        </div>
+        <div className="mediaContent show-on-scroll">Test Media Content</div>
+      </section>
+      <section className="landing-item landing-item-reading">
+        <div className="mediaContent show-on-scroll">Test Media Content</div>
+        <div className="textContent">
+          <p className="textContent-large">Customize Chapter View</p>
+          <p className="textContent-small">
+            It was popularised in the 1960s with the release of Letraset sheets
+            containing Lorem Ipsum passages, and more recently with desktop
+            publishing software like Aldus PageMaker including versions of Lorem
+            Ipsum.
+          </p>
         </div>
       </section>
     </div>
