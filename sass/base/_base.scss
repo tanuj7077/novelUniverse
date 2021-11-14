@@ -150,8 +150,12 @@ body {
     background: rgb(99, 99, 99);
   }
   &::-webkit-scrollbar-thumb {
+    border: 0.4rem solid rgb(99, 99, 99);
     background: rgb(196, 196, 196);
     border-radius: 0.75rem;
+    &:hover {
+      background: white;
+    }
   }
 }
 input,

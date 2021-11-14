@@ -85,9 +85,19 @@ const Home = () => {
           <p className="homePage-novels-heading">Most Viewed</p>
           <Slider novels={mostViewed} />
         </div>
+
         <div className="homePage-changeable">
           <p className="homePage-changeable-heading">
-            <span className="text">Novel List</span>
+            <span className="text">Novel List: </span>
+            <span className="type">
+              {optionType === "today" && "Most Viewed Today"}
+              {optionType === "latest" && "Latest Updates"}
+              {optionType === "all" && "Most Viewed Till Date"}
+              {optionType !== "today" &&
+                optionType !== "latest" &&
+                optionType !== "all" &&
+                optionType}
+            </span>
             <BsPlusCircle
               className="icon"
               onClick={() => setOptionsVisibility(!optionsVisibility)}
@@ -106,17 +116,24 @@ const Home = () => {
                     );
                   })}
               </div>
-              <div className="homePage-changeable-container-novels-footer">
-                <button className="homePage-changeable-footer-btn">
-                  <VscChevronLeft className="icon" />
-                </button>
-                <p className="homePage-changeable-footer-page">
-                  {currentPage} / {totalPages}
-                </p>
-                <button className="homePage-changeable-footer-btn">
-                  <VscChevronRight className="icon" />
-                </button>
-              </div>
+              {novelList && novelList.length === 0 && (
+                <div className="homePage-changeable-container-novels-notFound">
+                  No novels found for selected filter
+                </div>
+              )}
+              {novelList && novelList.length > 0 && (
+                <div className="homePage-changeable-container-novels-footer">
+                  <button className="homePage-changeable-footer-btn">
+                    <VscChevronLeft className="icon" />
+                  </button>
+                  <p className="homePage-changeable-footer-page">
+                    {currentPage} / {totalPages}
+                  </p>
+                  <button className="homePage-changeable-footer-btn">
+                    <VscChevronRight className="icon" />
+                  </button>
+                </div>
+              )}
             </div>
 
             <div className="homePage-changeable-container-options">

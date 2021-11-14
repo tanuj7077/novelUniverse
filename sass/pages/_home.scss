@@ -646,6 +646,17 @@
             background-color: rgb(64, 147, 255);
           }
         }
+        &-notFound {
+          background-color: rgba(black, 0.5);
+          backdrop-filter: blur(40px);
+          border: 1px solid rgb(54, 54, 54);
+          border-radius: 1rem;
+          color: rgb(214, 214, 214);
+          height: 12rem;
+          font-size: $medium-font-size;
+          display: grid;
+          place-items: center;
+        }
         &-footer {
           margin-top: 2rem;
           width: 100%;
@@ -847,6 +858,9 @@
         &-chapter {
           font-size: $smaller-font-size;
           color: rgb(218, 218, 218);
+          &:hover {
+            cursor: pointer;
+          }
         }
         &-updated {
           font-size: $smallest-font-size;

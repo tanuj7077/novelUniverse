@@ -7,10 +7,6 @@
   align-items: center;
   position: relative;
   &-topNav {
-    //position: absolute;
-    //top: 0;
-    //left: 0;
-    //right: 0;
     width: 100vw;
     height: 8rem;
     display: flex;
@@ -43,6 +39,7 @@
     height: 100vh;
     &-intro {
       position: relative;
+      height: calc(100vh - 8rem);
       .textContent {
         position: absolute;
         width: 35%;
@@ -109,7 +106,9 @@
             }
           }
           &-genres {
-            margin-top: 2rem;
+            padding: 1rem;
+            padding-bottom: 1.5rem;
+            margin-top: 1.5rem;
             display: flex;
             flex-wrap: wrap;
             gap: 1rem;
@@ -130,6 +129,7 @@
               text-transform: uppercase;
               padding: 0.5rem 1rem;
               border-radius: 0.6rem;
+              box-shadow: 0.5rem 0.5rem 1rem 0.25em rgba(0, 0, 0, 0.2);
             }
           }
         }
