@@ -1,7 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import carousel2 from "../../assets/carousel2.jpg";
 import carousel3 from "../../assets/carousel3.png";
+import { useGlobalContext } from "../../context";
 function Carousel() {
+  const { isLoggedIn, toggleLoginModalVisibility } = useGlobalContext();
   const totalSlides = 2;
   const count = useRef(0);
   const [currentSlide, setCurrentSlide] = useState(1);
@@ -42,7 +44,7 @@ function Carousel() {
             instantly on the website and notification service is provided to the
             readers.
           </div>
-          <div className="homePage-carousel-slide-cta">Explore</div>
+          {/* <div className="homePage-carousel-slide-cta">Explore</div> */}
         </div>
       </div>
       <div
@@ -65,7 +67,14 @@ function Carousel() {
             instantly on the website and notification service is provided to the
             readers.
           </div>
-          <div className="homePage-carousel-slide-cta">Sign Up</div>
+          {!isLoggedIn && (
+            <div
+              className="homePage-carousel-slide-cta"
+              onClick={toggleLoginModalVisibility}
+            >
+              Sign Up
+            </div>
+          )}
         </div>
       </div>
 

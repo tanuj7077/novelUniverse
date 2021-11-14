@@ -602,6 +602,9 @@ a:link, a:visited, a:hover, a:active {
         border-radius: 5px;
         opacity: 0;
         transform: scale(0.5); }
+        .homePage-carousel-slide-cta:hover {
+          cursor: pointer;
+          font-weight: bold; }
     .homePage-carousel-navigation {
       position: absolute;
       width: max-content;

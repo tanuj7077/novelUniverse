@@ -3,7 +3,6 @@ import { Route } from "react-router-dom";
 import { AiOutlineClockCircle } from "react-icons/ai";
 import { useGlobalContext } from "../../context";
 function HomePageNovels({ novel }) {
-  console.log(novel.chapters);
   const { calculateTimeDifference } = useGlobalContext();
   const [time, setTime] = useState("");
   useEffect(() => {
