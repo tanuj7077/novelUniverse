@@ -25,15 +25,19 @@ function Reviews({ book }) {
   const [givenReview, setGivenReview] = useState();
 
   const addReview = () => {
-    const Review = {
-      title: reviewTitleInput,
-      description: reviewInput,
-      user: userData._id,
-      book: book._id,
-    };
-    axios.post("http://localhost:8000/review/addReview", Review).then((res) => {
-      getReviews();
-    });
+    if (userData) {
+      const Review = {
+        title: reviewTitleInput,
+        description: reviewInput,
+        user: userData._id,
+        book: book._id,
+      };
+      axios
+        .post("http://localhost:8000/review/addReview", Review)
+        .then((res) => {
+          getReviews();
+        });
+    }
   };
   const editReview = () => {
     const Review = {
