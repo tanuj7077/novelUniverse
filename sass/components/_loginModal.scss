@@ -41,6 +41,10 @@
       height: 2.5rem;
       color: black;
       z-index: 12;
+      &:hover {
+        cursor: pointer;
+        color: red;
+      }
     }
     &-optionBg {
       position: absolute;

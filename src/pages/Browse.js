@@ -282,17 +282,22 @@ const Browse = () => {
               return <DataThumb key={"browsePage" + item._id} novel={item} />;
             })}
           </div>
-          <div className="novels-buttons">
-            <button className="novels-buttons-btn btn" onClick={previousPage}>
-              <FaChevronLeft className="novels-buttons-btn-icon" />
-            </button>
-            <p className="novels-buttons-page">
-              {currentPage} / {totalPages}
-            </p>
-            <button className="novels-buttons-btn btn" onClick={nextPage}>
-              <FaChevronRight className="novels-buttons-btn-icon" />
-            </button>
-          </div>
+          {novels.length === 0 && (
+            <div className="novels-notFound">No novels found</div>
+          )}
+          {novels.length > 0 && (
+            <div className="novels-buttons">
+              <button className="novels-buttons-btn btn" onClick={previousPage}>
+                <FaChevronLeft className="novels-buttons-btn-icon" />
+              </button>
+              <p className="novels-buttons-page">
+                {currentPage} / {totalPages}
+              </p>
+              <button className="novels-buttons-btn btn" onClick={nextPage}>
+                <FaChevronRight className="novels-buttons-btn-icon" />
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>

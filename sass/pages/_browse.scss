@@ -67,6 +67,10 @@
           width: 3rem;
           height: 3rem;
         }
+        &:hover {
+          color: rgb(247, 139, 139);
+          cursor: pointer;
+        }
       }
       .search {
         margin-top: 3rem;
@@ -118,12 +122,28 @@
       }
       .searchList {
         width: 100%;
-        height: max-content;
+        //height: max-content;
+        max-height: 50vh;
+        overflow: hidden;
+        overflow-y: auto;
         display: flex;
         flex-flow: column;
         gap: 2.5rem;
         color: white;
         list-style: none;
+        &::-webkit-scrollbar {
+          width: 1rem;
+        }
+        &::-webkit-scrollbar-track {
+          background: rgb(99, 99, 99);
+        }
+        &::-webkit-scrollbar-thumb {
+          background: rgb(196, 196, 196);
+          border-radius: 0.75rem;
+          &:hover {
+            background: white;
+          }
+        }
         @include respond(phone) {
           gap: 1.5rem;
         }
@@ -373,6 +393,7 @@
     margin-top: 2rem;
     margin-bottom: 4rem;
     padding: 0 calc((100% - 95rem) * 0.5);
+    width: 100%;
     @include respond(tab-land) {
       padding: 0 7.5%;
     }
@@ -577,6 +598,18 @@
           }
         }
       }
+    }
+    &-notFound {
+      width: 100%;
+      background-color: rgba(black, 0.5);
+      backdrop-filter: blur(40px);
+      -webkit-backdrop-filter: blur(40px);
+      color: white;
+      font-size: $medium-font-size;
+      display: grid;
+      place-items: center;
+      height: 12rem;
+      border-radius: 1rem;
     }
     &-buttons {
       margin-top: 2rem;
