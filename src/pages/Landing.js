@@ -15,7 +15,10 @@ import { FaStar } from "react-icons/fa";
 import { ImFilter } from "react-icons/im";
 import { IoNotifications } from "react-icons/io5";
 import { CgDarkMode } from "react-icons/cg";
+import { useGlobalContext } from "../context";
+
 const Landing = () => {
+  const { isLoggedIn, toggleLoginModalVisibility } = useGlobalContext();
   ///all elements which are to be shown on scroll
   // var elementsToShow = document.querySelectorAll(".show-on-scroll");
   function loop() {
@@ -61,7 +64,14 @@ const Landing = () => {
             <img src={logo} alt="" className="icon" />
             <div className="text">NovelUpdates</div>
           </div>
-          <div className="landing-topNav-button">Login</div>
+          {!isLoggedIn && (
+            <div
+              className="landing-topNav-button"
+              onClick={toggleLoginModalVisibility}
+            >
+              Login
+            </div>
+          )}
         </nav>
         <div className="textContent">
           <p className="textContent-large">Your Daily dose of Novels</p>
@@ -70,7 +80,18 @@ const Landing = () => {
             versions of world famous Japanese, Chinese and Korean light novels
             in English.
           </p>
-          <button className="textContent-cta">Let's Go</button>
+          <Route
+            render={({ history }) => (
+              <button
+                className="textContent-cta"
+                onClick={() => {
+                  history.push(`/home`);
+                }}
+              >
+                Let's Go
+              </button>
+            )}
+          />
         </div>
         <div className="mediaContent">
           <div className="mediaContent-slideshow">
@@ -272,7 +293,19 @@ const Landing = () => {
             LeetCode by providing structure to guide your progress towards the
             next step in your programming career.
           </p>
-          <p className="textContent-cta">Get Started {`>`}</p>
+
+          <Route
+            render={({ history }) => (
+              <p
+                className="textContent-cta"
+                onClick={() => {
+                  history.push(`/home`);
+                }}
+              >
+                Get Started {`>`}
+              </p>
+            )}
+          />
         </div>
       </section>
 
