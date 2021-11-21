@@ -238,25 +238,32 @@ const Home = () => {
                     );
                   })}
               </div>
+              {novelList && novelList.length === 0 && (
+                <div className="homePage-changeable-containerSmall-novels-notFound">
+                  No novels found for selected filter
+                </div>
+              )}
             </div>
           </div>
-          <div className="homePage-changeable-footer">
-            <button
-              className="homePage-changeable-footer-btn"
-              onClick={previousPage}
-            >
-              <VscChevronLeft className="icon" />
-            </button>
-            <p className="homePage-changeable-footer-page">
-              {currentPage} / {totalPages}
-            </p>
-            <button
-              className="homePage-changeable-footer-btn"
-              onClick={nextPage}
-            >
-              <VscChevronRight className="icon" />
-            </button>
-          </div>
+          {novelList && novelList.length > 0 && (
+            <div className="homePage-changeable-footer">
+              <button
+                className="homePage-changeable-footer-btn"
+                onClick={previousPage}
+              >
+                <VscChevronLeft className="icon" />
+              </button>
+              <p className="homePage-changeable-footer-page">
+                {currentPage} / {totalPages}
+              </p>
+              <button
+                className="homePage-changeable-footer-btn"
+                onClick={nextPage}
+              >
+                <VscChevronRight className="icon" />
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>

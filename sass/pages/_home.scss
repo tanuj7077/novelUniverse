@@ -732,6 +732,17 @@
       }
       &-novels {
         height: max-content;
+        &-notFound {
+          background-color: rgba(black, 0.5);
+          backdrop-filter: blur(40px);
+          border: 1px solid rgb(54, 54, 54);
+          border-radius: 1rem;
+          color: rgb(214, 214, 214);
+          height: 12rem;
+          font-size: $medium-font-size;
+          display: grid;
+          place-items: center;
+        }
       }
     }
     &-heading {
