@@ -158,110 +158,113 @@ const Landing = () => {
         </div>
       </section>
       <section className="landing-item landing-item-filters">
-        <div className="mediaContent show-on-scroll">
-          <div className="mediaContent-filters">
-            <div className="mediaContent-filters-type">
-              <p className="mediaContent-filters-type-heading">Most Viewed</p>
-              <div className="mediaContent-filters-type-list">
-                {categoryList.slice(0, 3).map((item) => {
-                  return <div className="item">{item}</div>;
-                })}
+        <div className="media">
+          <div className="mediaContent show-on-scroll">
+            <div className="mediaContent-filters">
+              <div className="mediaContent-filters-type">
+                <p className="mediaContent-filters-type-heading">Most Viewed</p>
+                <div className="mediaContent-filters-type-list">
+                  {categoryList.slice(0, 3).map((item) => {
+                    return <div className="item">{item}</div>;
+                  })}
+                </div>
+              </div>
+              <div className="mediaContent-filters-type">
+                <p className="mediaContent-filters-type-heading">Genres</p>
+                <div className="mediaContent-filters-type-list">
+                  {categoryList.slice(0, 21).map((item) => {
+                    return <div className="item">{item}</div>;
+                  })}
+                </div>
+              </div>
+              <div className="mediaContent-filters-type">
+                <p className="mediaContent-filters-type-heading">Status</p>
+                <div className="mediaContent-filters-type-list">
+                  {categoryList.slice(0, 3).map((item) => {
+                    return <div className="item">{item}</div>;
+                  })}
+                </div>
+              </div>
+              <div className="mediaContent-filters-type">
+                <p className="mediaContent-filters-type-heading">Order By</p>
+                <div className="mediaContent-filters-type-list">
+                  {categoryList.slice(0, 3).map((item) => {
+                    return <div className="item">{item}</div>;
+                  })}
+                </div>
               </div>
             </div>
-            <div className="mediaContent-filters-type">
-              <p className="mediaContent-filters-type-heading">Genres</p>
-              <div className="mediaContent-filters-type-list">
-                {categoryList.slice(0, 21).map((item) => {
-                  return <div className="item">{item}</div>;
-                })}
+            <div className="mediaContent-empty">
+              <div className="iconContainer">
+                <BsFillPlayFill className="icon" />
               </div>
-            </div>
-            <div className="mediaContent-filters-type">
-              <p className="mediaContent-filters-type-heading">Status</p>
-              <div className="mediaContent-filters-type-list">
-                {categoryList.slice(0, 3).map((item) => {
-                  return <div className="item">{item}</div>;
-                })}
-              </div>
-            </div>
-            <div className="mediaContent-filters-type">
-              <p className="mediaContent-filters-type-heading">Order By</p>
-              <div className="mediaContent-filters-type-list">
-                {categoryList.slice(0, 3).map((item) => {
-                  return <div className="item">{item}</div>;
-                })}
-              </div>
+              <div className="emptySpace"></div>
             </div>
           </div>
-          <div className="mediaContent-empty">
-            <div className="iconContainer">
-              <BsFillPlayFill className="icon" />
-            </div>
-            <div className="emptySpace"></div>
-          </div>
-        </div>
-        <div className="mediaContent2 show-on-scroll">
-          <div className="mediaContent2-profile">
-            <div className="mediaContent2-profile-bg"></div>
-            <div className="mediaContent2-profile-img">
-              {/* <div
+          <div className="mediaContent2 show-on-scroll">
+            <div className="mediaContent2-profile">
+              <div className="mediaContent2-profile-bg"></div>
+              <div className="mediaContent2-profile-img">
+                {/* <div
                 className="img"
                 style={{ backgroundImage: `url(${blankUser})` }}
               ></div> */}
-            </div>
-            <div className="mediaContent2-profile-list">
-              <div className="item"></div>
-              <div className="item"></div>
-              <div className="item"></div>
-              <div className="item"></div>
-            </div>
-            <div className="mediaContent2-profile-chart">
-              <div className="circle">
-                <div className="circle-inner"></div>
               </div>
-              <div className="labels">
-                <div className="labels-label">
-                  <div className="labels-label-color"></div>
-                  <div className="labels-label-value"></div>
+              <div className="mediaContent2-profile-list">
+                <div className="item"></div>
+                <div className="item"></div>
+                <div className="item"></div>
+                <div className="item"></div>
+              </div>
+              <div className="mediaContent2-profile-chart">
+                <div className="circle">
+                  <div className="circle-inner"></div>
                 </div>
-                <div className="labels-label">
-                  <div className="labels-label-color"></div>
-                  <div className="labels-label-value"></div>
-                </div>
-                <div className="labels-label">
-                  <div className="labels-label-color"></div>
-                  <div className="labels-label-value"></div>
-                </div>
-                <div className="labels-label">
-                  <div className="labels-label-color"></div>
-                  <div className="labels-label-value"></div>
+                <div className="labels">
+                  <div className="labels-label">
+                    <div className="labels-label-color"></div>
+                    <div className="labels-label-value"></div>
+                  </div>
+                  <div className="labels-label">
+                    <div className="labels-label-color"></div>
+                    <div className="labels-label-value"></div>
+                  </div>
+                  <div className="labels-label">
+                    <div className="labels-label-color"></div>
+                    <div className="labels-label-value"></div>
+                  </div>
+                  <div className="labels-label">
+                    <div className="labels-label-color"></div>
+                    <div className="labels-label-value"></div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div className="mediaContent3 show-on-scroll">
-          <div className="mediaContent3-novel">
-            <div className="mediaContent3-novel-img">
-              {/* <div
+          <div className="mediaContent3 show-on-scroll">
+            <div className="mediaContent3-novel">
+              <div className="mediaContent3-novel-img">
+                {/* <div
                 className="img"
                 style={{ backgroundImage: `url(${blankUser})` }}
               ></div> */}
-            </div>
-          </div>
-          <div className="mediaContent3-desc">
-            <div className="mediaContent3-desc-rating">
-              <div className="rating">
-                <p className="rating-text">4.5</p>
-                <FaStar className="rating-star" />
               </div>
-              <div className="empty"></div>
-              <div className="empty"></div>
             </div>
-            <div className="mediaContent3-desc-empty"></div>
+            <div className="mediaContent3-desc">
+              <div className="mediaContent3-desc-rating">
+                <div className="rating">
+                  <p className="rating-text">4.5</p>
+                  <FaStar className="rating-star" />
+                </div>
+                <div className="empty"></div>
+                <div className="empty"></div>
+              </div>
+              <div className="mediaContent3-desc-empty"></div>
+            </div>
           </div>
+          <div className="mediaContent4 show-on-scroll"></div>
         </div>
-        <div className="mediaContent4 show-on-scroll"></div>
+
         <div className="textContent">
           <p className="textContent-large">Feature rich platform</p>
           <p className="textContent-small">
@@ -357,30 +360,6 @@ const Landing = () => {
         </div>
         <div className="copyright">&copy; Copyright 2021 by Tanuj Ghosh.</div>
       </footer>
-      {/* <section className="landing-item landing-item-collection">
-        <div className="textContent">
-          <p className="textContent-large">Add novels to your Collection</p>
-          <p className="textContent-small">
-            It was popularised in the 1960s with the release of Letraset sheets
-            containing Lorem Ipsum passages, and more recently with desktop
-            publishing software like Aldus PageMaker including versions of Lorem
-            Ipsum.
-          </p>
-        </div>
-        <div className="mediaContent show-on-scroll">Test Media Content</div>
-      </section>
-      <section className="landing-item landing-item-notification">
-        <div className="mediaContent show-on-scroll">Test Media Content</div>
-        <div className="textContent">
-          <p className="textContent-large">Get customized notification</p>
-          <p className="textContent-small">
-            It was popularised in the 1960s with the release of Letraset sheets
-            containing Lorem Ipsum passages, and more recently with desktop
-            publishing software like Aldus PageMaker including versions of Lorem
-            Ipsum.
-          </p>
-        </div>
-      </section> */}
     </div>
   );
 };
