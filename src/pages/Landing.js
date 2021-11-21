@@ -66,8 +66,9 @@ const Landing = () => {
         <div className="textContent">
           <p className="textContent-large">Your Daily dose of Novels</p>
           <p className="textContent-small">
-            LeetCode is the best platform to help you enhance your skills,
-            expand your knowledge and prepare for technical interviews.
+            Novel Updates is a platform where you can read the translated
+            versions of world famous Japanese, Chinese and Korean light novels
+            in English.
           </p>
           <button className="textContent-cta">Let's Go</button>
         </div>

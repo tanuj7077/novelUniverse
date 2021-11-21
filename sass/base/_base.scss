@@ -106,7 +106,7 @@ html {
   font-weight: 400;
   font-size: 62.5%; /*62.5% of 16px is 10px*/
   //therfore 1rem = 10px
-
+  transition: font-size 0.4s ease;
   @include respond(tab-land) {
     font-size: 56.25%; //1rem=9px
   }

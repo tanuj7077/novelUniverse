@@ -58,12 +58,15 @@
     width: 100%;
     height: 100vh;
     position: relative;
+    @include respond(phablet) {
+      height: 80vh;
+    }
     &-intro {
       .bg {
         position: absolute;
         top: 0;
         left: 0;
-        height: 100vh;
+        height: 100%;
         width: 100%;
         background-color: rgb(68, 68, 68);
         clip-path: polygon(0 0, 100% 0, 100% 63%, 0% 100%);
@@ -75,7 +78,7 @@
         top: 0;
         left: 0;
         //height: calc(100vh + 25%);
-        height: 100vh;
+        height: 100%;
         width: 100%;
         background-color: rgb(102, 102, 102);
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 75%);
@@ -85,15 +88,14 @@
         position: absolute;
         top: 0;
         left: 0;
-        height: 120vh;
+        height: 120%;
         width: 100%;
         background-color: rgb(146, 146, 146);
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100vh);
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 83.33%);
         z-index: -3;
       }
       position: relative;
-      //height: calc(100vh - 8rem);
-      height: 100vh;
+      //height: 100vh;
       background-color: transparent;
       .textContent {
         position: absolute;
@@ -101,12 +103,28 @@
         top: 50%;
         left: 10%;
         transform: translateY(-50%);
+        @include respond(phablet) {
+          //left: 5%;
+          width: 80%;
+          display: flex;
+          flex-flow: column;
+          align-items: center;
+        }
+        @include respond(phone) {
+          left: 5%;
+          width: 90%;
+        }
         &-large {
           font-family: "Source Code Pro", sans-serif, courier, arial, helvetica;
           font-size: 4.5rem;
           font-weight: 900;
           color: white;
-          //color: #40afaa;
+          @include respond(phablet) {
+            text-align: center;
+          }
+          @include respond(phone) {
+            font-size: $large-font-size;
+          }
         }
         &-small {
           margin-top: 2.5rem;
@@ -126,6 +144,10 @@
           background-color: #21a099;
           border-radius: 0.5rem;
           transition: all 0.15s ease;
+          @include respond(phone) {
+            padding: 1.2rem 2.5rem;
+            font-size: $default-font-size;
+          }
           &:hover {
             cursor: pointer;
             //background-color: hsl(177, 66%, 28%);
@@ -145,7 +167,16 @@
         -moz-perspective: 150rem;
         transform-style: preserve-3d;
         -webkit-transform-style: preserve-3d;
-
+        @include respond(tab-land) {
+          transform: translate3d(0, 0, 0) translateY(-45%) scale(0.8);
+          right: 2%;
+        }
+        @include respond(tab-port) {
+          width: 50%;
+        }
+        @include respond(phablet) {
+          display: none;
+        }
         &-slideshow {
           width: 100%;
           background-color: transparent;
@@ -247,7 +278,7 @@
       }
       .mediaContent {
         position: absolute;
-        height: max-content;
+        height: 47rem;
         width: 40rem;
         top: 60%;
         // left: 10%;
@@ -266,19 +297,21 @@
         will-change: transform, opacity;
         z-index: 3;
         overflow: hidden;
-        //visibility: hidden;
+        @include respond(tab-land) {
+          left: 20%;
+        }
+        @include respond(tab-land) {
+          //top: 0;
+        }
         &-filters {
           background-color: #129b72;
-          //position: absolute;
           height: max-content;
           width: 40rem;
-          //border-radius: 1rem;
           display: flex;
           flex-flow: column;
           gap: 1rem;
           padding: 3rem;
           padding-bottom: 4rem;
-          //box-shadow: -0.5em 0.5em 1em 0.15em rgba(0, 0, 0, 0.2);
           &-type {
             &-heading {
               color: white;
@@ -353,6 +386,9 @@
         background-color: hsl(0, 83%, 68%);
         z-index: 2;
         padding: 2rem;
+        @include respond(tab-land) {
+          left: 13%;
+        }
         &-profile {
           position: relative;
           width: 100%;
@@ -574,6 +610,19 @@
           rotateY(50deg);
         transform: translateY(-50%) translateX(0) rotateZ(-5deg) rotateY(50deg)
           scale(0.9);
+
+        @include respond(tab-port) {
+          -webkit-transform: translateY(-60%) translateX(0) rotateZ(-5deg)
+            rotateY(50deg);
+          transform: translateY(-60%) translateX(0) rotateZ(-5deg)
+            rotateY(50deg) scale(0.7);
+        }
+        @include respond(phablet) {
+          -webkit-transform: translateY(-50%) translateX(0) rotateZ(-5deg)
+            rotateY(50deg);
+          transform: translateY(-50%) translateX(0) rotateZ(-5deg)
+            rotateY(50deg) scale(0.6);
+        }
       }
     }
     &-features {
