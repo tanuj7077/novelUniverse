@@ -746,7 +746,6 @@
       }
     }
     &-heading {
-      position: absolute;
       top: 0;
       z-index: 2;
       text-transform: uppercase;
@@ -760,7 +759,7 @@
       padding-left: 1.5rem;
       position: relative;
       display: flex;
-      gap: 2rem;
+      gap: 1rem;
       align-items: center;
       &::before {
         content: "";

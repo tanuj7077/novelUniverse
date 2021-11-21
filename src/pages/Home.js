@@ -4,6 +4,7 @@ import HomePageNovels from "../components/NovelThumb/HomePageNovels";
 import { VscChevronLeft, VscChevronRight } from "react-icons/vsc";
 import { AiOutlineClockCircle } from "react-icons/ai";
 import { BsFillPlusCircleFill, BsPlusCircle } from "react-icons/bs";
+import { AiOutlineMinusCircle } from "react-icons/ai";
 import axios from "axios";
 import { categoryList } from "../mockData";
 import Slider from "../pages/HomePage/Slider";
@@ -88,8 +89,7 @@ const Home = () => {
 
         <div className="homePage-changeable">
           <p className="homePage-changeable-heading">
-            <span className="text">Novel List: </span>
-            <span className="type">
+            <span className="text">
               {optionType === "today" && "Most Viewed Today"}
               {optionType === "latest" && "Latest Updates"}
               {optionType === "all" && "Most Viewed Till Date"}
@@ -98,10 +98,18 @@ const Home = () => {
                 optionType !== "all" &&
                 optionType}
             </span>
-            <BsPlusCircle
-              className="icon"
-              onClick={() => setOptionsVisibility(!optionsVisibility)}
-            />
+            <span className="type"></span>
+            {!optionsVisibility ? (
+              <BsPlusCircle
+                className="icon"
+                onClick={() => setOptionsVisibility(!optionsVisibility)}
+              />
+            ) : (
+              <AiOutlineMinusCircle
+                className="icon"
+                onClick={() => setOptionsVisibility(!optionsVisibility)}
+              />
+            )}
           </p>
           <div className="homePage-changeable-container">
             <div className="homePage-changeable-container-novels">

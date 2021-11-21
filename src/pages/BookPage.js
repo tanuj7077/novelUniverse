@@ -7,12 +7,13 @@ import useOnScreen from "../components/Utilities/useOnScreen";
 import axios from "axios";
 import ChapterSection from "./BookPage/ChapterSection";
 import { useGlobalContext } from "../context";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 
 const BookPage = () => {
   const { userData, isLoggedIn, getUpdatedUserData, changeAlert, addToViews } =
     useGlobalContext();
 
+  const history = useHistory();
   const introRef = useRef();
   const introVisible = useOnScreen(introRef);
   const { bookId } = useParams();
@@ -24,6 +25,7 @@ const BookPage = () => {
   const fetchBookData = (id) => {
     axios.get(`http://localhost:8000/book/${id}`).then((res) => {
       setNovelData(res.data.data.novel);
+      console.log(res.data.data.novel);
       calculateAverageRating(res.data.data.novel);
     });
   };
@@ -74,6 +76,9 @@ const BookPage = () => {
           getUpdatedUserData();
           checkBookmarked();
         }));
+  };
+  const start = () => {
+    history.push(`../chapter/${novelData.chapters[0].id}`);
   };
   const checkBookmarked = () => {
     let c = 0;
@@ -191,7 +196,7 @@ const BookPage = () => {
                 </div>
 
                 <div className="introSection-container-content-buttons">
-                  <div className="start btn">
+                  <div className="start btn" onClick={start}>
                     <span className="text">{novelObj.readStatus}</span>
                   </div>
                   <div className="add btn">
