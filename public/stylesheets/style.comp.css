@@ -94,6 +94,7 @@ html {
   font-weight: 400;
   font-size: 62.5%;
   /*62.5% of 16px is 10px*/
+  transition: font-size 0.4s ease;
   --color-main: #21a099;
   --color-main-dark: #22725e;
   --color-primary: hsl(160, 79%, 35%);
@@ -217,6 +218,9 @@ a:link, a:visited, a:hover, a:active {
     align-items: center;
     justify-content: space-between;
     padding: 0 10%; }
+    @media only screen and (max-width: 37.5em) {
+      .landing-topNav {
+        padding: 0 5%; } }
     .landing-topNav-logo {
       display: flex;
       align-items: center; }
@@ -232,6 +236,9 @@ a:link, a:visited, a:hover, a:active {
       font-size: 2rem;
       color: white;
       position: relative; }
+      @media only screen and (max-width: 37.5em) {
+        .landing-topNav-button {
+          font-size: 1.6rem; } }
       .landing-topNav-button::after {
         content: "";
         position: absolute;
@@ -252,15 +259,21 @@ a:link, a:visited, a:hover, a:active {
     width: 100%;
     height: 100vh;
     position: relative; }
+    @media only screen and (max-width: 43.75em) {
+      .landing-item {
+        height: 80vh; } }
     .landing-item-intro {
+      min-height: 70rem;
       position: relative;
-      height: 100vh;
       background-color: transparent; }
+      @media only screen and (max-width: 43.75em) {
+        .landing-item-intro {
+          height: 85vh; } }
       .landing-item-intro .bg {
         position: absolute;
         top: 0;
         left: 0;
-        height: 100vh;
+        height: 100%;
         width: 100%;
         background-color: #444444;
         clip-path: polygon(0 0, 100% 0, 100% 63%, 0% 100%);
@@ -270,7 +283,7 @@ a:link, a:visited, a:hover, a:active {
         position: absolute;
         top: 0;
         left: 0;
-        height: 100vh;
+        height: 100%;
         width: 100%;
         background-color: #666666;
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 75%);
@@ -279,10 +292,10 @@ a:link, a:visited, a:hover, a:active {
         position: absolute;
         top: 0;
         left: 0;
-        height: 120vh;
+        height: 120%;
         width: 100%;
         background-color: #929292;
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100vh);
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 83.33%);
         z-index: -3; }
       .landing-item-intro .textContent {
         position: absolute;
@@ -290,11 +303,27 @@ a:link, a:visited, a:hover, a:active {
         top: 50%;
         left: 10%;
         transform: translateY(-50%); }
+        @media only screen and (max-width: 43.75em) {
+          .landing-item-intro .textContent {
+            width: 80%;
+            display: flex;
+            flex-flow: column;
+            align-items: center; } }
+        @media only screen and (max-width: 37.5em) {
+          .landing-item-intro .textContent {
+            left: 5%;
+            width: 90%; } }
         .landing-item-intro .textContent-large {
           font-family: "Source Code Pro", sans-serif, courier, arial, helvetica;
           font-size: 4.5rem;
           font-weight: 900;
           color: white; }
+          @media only screen and (max-width: 43.75em) {
+            .landing-item-intro .textContent-large {
+              text-align: center; } }
+          @media only screen and (max-width: 37.5em) {
+            .landing-item-intro .textContent-large {
+              font-size: 3.5rem; } }
         .landing-item-intro .textContent-small {
           margin-top: 2.5rem;
           font-size: 2rem;
@@ -311,6 +340,10 @@ a:link, a:visited, a:hover, a:active {
           background-color: #21a099;
           border-radius: 0.5rem;
           transition: all 0.15s ease; }
+          @media only screen and (max-width: 37.5em) {
+            .landing-item-intro .textContent-cta {
+              padding: 1.2rem 2.5rem;
+              font-size: 1.6rem; } }
           .landing-item-intro .textContent-cta:hover {
             cursor: pointer;
             transform: scale(1.1); }
@@ -326,6 +359,16 @@ a:link, a:visited, a:hover, a:active {
         -moz-perspective: 150rem;
         transform-style: preserve-3d;
         -webkit-transform-style: preserve-3d; }
+        @media only screen and (max-width: 75em) {
+          .landing-item-intro .mediaContent {
+            transform: translate3d(0, 0, 0) translateY(-45%) scale(0.8);
+            right: 2%; } }
+        @media only screen and (max-width: 56.25em) {
+          .landing-item-intro .mediaContent {
+            width: 50%; } }
+        @media only screen and (max-width: 43.75em) {
+          .landing-item-intro .mediaContent {
+            display: none; } }
         .landing-item-intro .mediaContent-slideshow {
           width: 100%;
           background-color: transparent;
@@ -364,19 +407,45 @@ a:link, a:visited, a:hover, a:active {
               border-radius: 0.6rem;
               box-shadow: 0.5rem 0.5rem 1rem 0.25em rgba(0, 0, 0, 0.2); }
     .landing-item-filters {
+      height: max-content;
       position: relative;
-      transform: translate3d(0, 0, 0);
-      perspective: 120rem;
-      -webkit-perspective: 120rem;
-      -moz-perspective: 120rem;
-      transform-style: preserve-3d;
-      -webkit-transform-style: preserve-3d; }
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20rem 10%;
+      padding-bottom: 15rem; }
+      @media only screen and (max-width: 43.75em) {
+        .landing-item-filters {
+          flex-flow: column;
+          justify-content: unset;
+          gap: 1rem;
+          padding: 5rem 10%;
+          padding-bottom: 4rem; } }
+      .landing-item-filters .media {
+        width: 45%;
+        height: 47rem;
+        position: relative;
+        transform: translate3d(0, 0, 0);
+        perspective: 120rem;
+        -webkit-perspective: 120rem;
+        -moz-perspective: 120rem;
+        transform-style: preserve-3d;
+        -webkit-transform-style: preserve-3d; }
+        @media only screen and (max-width: 43.75em) {
+          .landing-item-filters .media {
+            width: 50vw; } }
+        @media only screen and (max-width: 37.5em) {
+          .landing-item-filters .media {
+            width: 90vw; } }
       .landing-item-filters .textContent {
-        position: absolute;
-        width: 35%;
-        top: 55%;
-        right: 10%;
-        transform: translateY(-50%); }
+        width: 40%;
+        height: max-content;
+        display: flex;
+        flex-flow: column; }
+        @media only screen and (max-width: 43.75em) {
+          .landing-item-filters .textContent {
+            width: 100%;
+            align-items: center; } }
         .landing-item-filters .textContent-large {
           font-size: 2.5rem;
           font-weight: bold;
@@ -387,6 +456,9 @@ a:link, a:visited, a:hover, a:active {
           letter-spacing: 0.1rem;
           word-spacing: 0.2rem;
           color: #8a8a8a; }
+          @media only screen and (max-width: 43.75em) {
+            .landing-item-filters .textContent-small {
+              text-align: center; } }
         .landing-item-filters .textContent-cta {
           margin-top: 1rem;
           font-size: 1.6rem;
@@ -396,10 +468,10 @@ a:link, a:visited, a:hover, a:active {
             cursor: pointer; }
       .landing-item-filters .mediaContent {
         position: absolute;
-        height: max-content;
+        height: 47rem;
         width: 40rem;
         top: 60%;
-        left: 23%;
+        left: 30%;
         font-size: 2.5rem;
         border-radius: 1rem;
         box-shadow: -1em 1em 2em 0.25em rgba(0, 0, 0, 0.2);
@@ -410,6 +482,9 @@ a:link, a:visited, a:hover, a:active {
         will-change: transform, opacity;
         z-index: 3;
         overflow: hidden; }
+        @media only screen and (max-width: 75em) {
+          .landing-item-filters .mediaContent {
+            left: 20%; } }
         .landing-item-filters .mediaContent-filters {
           background-color: #129b72;
           height: max-content;
@@ -465,7 +540,7 @@ a:link, a:visited, a:hover, a:active {
         height: 40rem;
         width: 30rem;
         top: 60%;
-        left: 14%;
+        left: 15%;
         font-size: 2.5rem;
         border-radius: 1rem;
         box-shadow: -1em 1em 2em 0.25em rgba(0, 0, 0, 0.2);
@@ -478,6 +553,9 @@ a:link, a:visited, a:hover, a:active {
         background-color: #f16a6a;
         z-index: 2;
         padding: 2rem; }
+        @media only screen and (max-width: 75em) {
+          .landing-item-filters .mediaContent2 {
+            left: 13%; } }
         .landing-item-filters .mediaContent2-profile {
           position: relative;
           width: 100%;
@@ -573,7 +651,7 @@ a:link, a:visited, a:hover, a:active {
         height: 30rem;
         width: 22.5rem;
         top: 60%;
-        left: 8.5%;
+        left: 6%;
         font-size: 2.5rem;
         border-radius: 1rem;
         box-shadow: -1em 1em 2em 0.25em rgba(0, 0, 0, 0.2);
@@ -647,7 +725,7 @@ a:link, a:visited, a:hover, a:active {
         height: 21rem;
         width: 18rem;
         top: 60%;
-        left: 5%;
+        left: 0;
         font-size: 2.5rem;
         border-radius: 1rem;
         box-shadow: -1em 1em 2em 0.25em rgba(0, 0, 0, 0.2);
@@ -661,8 +739,16 @@ a:link, a:visited, a:hover, a:active {
         z-index: 1; }
       .landing-item-filters .isVisible {
         opacity: 1;
-        -webkit-transform: translateY(-50%) translateX(0) rotateZ(-5deg) rotateY(50deg);
-        transform: translateY(-50%) translateX(0) rotateZ(-5deg) rotateY(50deg) scale(0.9); }
+        -webkit-transform: translateY(-50%) translateX(0) rotateZ(-5deg) rotateY(40deg);
+        transform: translateY(-50%) translateX(0) rotateZ(-5deg) rotateY(40deg) scale(0.9); }
+        @media only screen and (max-width: 56.25em) {
+          .landing-item-filters .isVisible {
+            -webkit-transform: translateY(-50%) translateX(0) rotateZ(-5deg) rotateY(40deg) scale(0.7);
+            transform: translateY(-50%) translateX(0) rotateZ(-5deg) rotateY(40deg) scale(0.7); } }
+        @media only screen and (max-width: 43.75em) {
+          .landing-item-filters .isVisible {
+            -webkit-transform: translateY(-50%) translateX(0) rotateZ(-5deg) rotateY(50deg);
+            transform: translateY(-50%) translateX(0) rotateZ(-5deg) rotateY(50deg) scale(0.6); } }
     .landing-item-features {
       height: max-content; }
       .landing-item-features .bg {
@@ -700,6 +786,10 @@ a:link, a:visited, a:hover, a:active {
         padding-bottom: 10rem;
         justify-content: space-around;
         gap: 10rem; }
+        @media only screen and (max-width: 37.5em) {
+          .landing-item-features .features {
+            padding: 20rem 5%;
+            padding-bottom: 10rem; } }
         .landing-item-features .features-feature {
           width: 40%;
           background-color: white;
@@ -712,6 +802,12 @@ a:link, a:visited, a:hover, a:active {
           gap: 1.5rem;
           position: relative;
           box-shadow: 0em 1em 3em 0.25em rgba(0, 0, 0, 0.1); }
+          @media only screen and (max-width: 43.75em) {
+            .landing-item-features .features-feature {
+              width: 80%; } }
+          @media only screen and (max-width: 37.5em) {
+            .landing-item-features .features-feature {
+              width: 90%; } }
           .landing-item-features .features-feature .iconContainer {
             position: absolute;
             top: -3.3rem;
@@ -793,154 +889,6 @@ a:link, a:visited, a:hover, a:active {
       .landing-item-footer .copyright {
         color: #bbbbbb;
         font-size: 1.2rem; }
-    .landing-item-collection {
-      position: relative;
-      transform: translate3d(0, 0, 0);
-      perspective: 150rem;
-      -webkit-perspective: 150rem;
-      -moz-perspective: 150rem;
-      transform-style: preserve-3d;
-      -webkit-transform-style: preserve-3d; }
-      .landing-item-collection .textContent {
-        position: absolute;
-        width: 35%;
-        top: 50%;
-        left: 10%;
-        transform: translateY(-50%); }
-        .landing-item-collection .textContent-large {
-          font-size: 6rem;
-          font-weight: bold; }
-        .landing-item-collection .textContent-small {
-          font-size: 2rem; }
-      .landing-item-collection .mediaContent {
-        position: absolute;
-        width: 35%;
-        height: 50rem;
-        background-color: aquamarine;
-        top: 50%;
-        right: 10%;
-        font-size: 2.5rem;
-        box-shadow: 1em 1em 2em 0.25em rgba(0, 0, 0, 0.2);
-        -webkit-transform: translateY(-50%) translateX(50%) rotateZ(5deg) rotateY(-90deg);
-        transform: translateY(-50%) translateX(50%) rotateZ(5deg) rotateY(-90deg);
-        opacity: 0;
-        transition: transform 4s 0.25s cubic-bezier(0, 1, 0.3, 1), opacity 0.3s 0.25s ease-out;
-        will-change: transform, opacity; }
-      .landing-item-collection .isVisible {
-        opacity: 1;
-        -webkit-transform: translateY(-50%) translateX(0) rotateZ(5deg) rotateY(-50deg);
-        transform: translateY(-50%) translateX(0) rotateZ(5deg) rotateY(-50deg); }
-    .landing-item-notification {
-      position: relative;
-      transform: translate3d(0, 0, 0);
-      perspective: 150rem;
-      -webkit-perspective: 150rem;
-      -moz-perspective: 150rem;
-      transform-style: preserve-3d;
-      -webkit-transform-style: preserve-3d; }
-      .landing-item-notification .textContent {
-        position: absolute;
-        width: 35%;
-        top: 50%;
-        right: 10%;
-        transform: translateY(-50%); }
-        .landing-item-notification .textContent-large {
-          font-size: 6rem;
-          font-weight: bold; }
-        .landing-item-notification .textContent-small {
-          font-size: 2rem; }
-      .landing-item-notification .mediaContent {
-        position: absolute;
-        width: 35%;
-        height: 50rem;
-        background-color: aquamarine;
-        top: 50%;
-        left: 10%;
-        font-size: 2.5rem;
-        box-shadow: -1em 1em 2em 0.25em rgba(0, 0, 0, 0.2);
-        -webkit-transform: translateY(-50%) translateX(-50%) rotateZ(-5deg) rotateY(90deg);
-        transform: translateY(-50%) translateX(-50%) rotateZ(-5deg) rotateY(90deg);
-        opacity: 0;
-        transition: transform 4s 0.25s cubic-bezier(0, 1, 0.3, 1), opacity 0.3s 0.25s ease-out;
-        will-change: transform, opacity; }
-      .landing-item-notification .isVisible {
-        opacity: 1;
-        -webkit-transform: translateY(-50%) translateX(0) rotateZ(-5deg) rotateY(50deg);
-        transform: translateY(-50%) translateX(0) rotateZ(-5deg) rotateY(50deg); }
-    .landing-item-follow {
-      position: relative;
-      transform: translate3d(0, 0, 0);
-      perspective: 150rem;
-      -webkit-perspective: 150rem;
-      -moz-perspective: 150rem;
-      transform-style: preserve-3d;
-      -webkit-transform-style: preserve-3d; }
-      .landing-item-follow .textContent {
-        position: absolute;
-        width: 35%;
-        top: 50%;
-        left: 10%;
-        transform: translateY(-50%); }
-        .landing-item-follow .textContent-large {
-          font-size: 6rem;
-          font-weight: bold; }
-        .landing-item-follow .textContent-small {
-          font-size: 2rem; }
-      .landing-item-follow .mediaContent {
-        position: absolute;
-        width: 35%;
-        height: 50rem;
-        background-color: aquamarine;
-        top: 50%;
-        right: 10%;
-        font-size: 2.5rem;
-        box-shadow: 1em 1em 2em 0.25em rgba(0, 0, 0, 0.2);
-        -webkit-transform: translateY(-50%) translateX(50%) rotateZ(5deg) rotateY(-90deg);
-        transform: translateY(-50%) translateX(50%) rotateZ(5deg) rotateY(-90deg);
-        opacity: 0;
-        transition: transform 4s 0.25s cubic-bezier(0, 1, 0.3, 1), opacity 0.3s 0.25s ease-out;
-        will-change: transform, opacity; }
-      .landing-item-follow .isVisible {
-        opacity: 1;
-        -webkit-transform: translateY(-50%) translateX(0) rotateZ(5deg) rotateY(-50deg);
-        transform: translateY(-50%) translateX(0) rotateZ(5deg) rotateY(-50deg); }
-    .landing-item-reading {
-      position: relative;
-      transform: translate3d(0, 0, 0);
-      perspective: 150rem;
-      -webkit-perspective: 150rem;
-      -moz-perspective: 150rem;
-      transform-style: preserve-3d;
-      -webkit-transform-style: preserve-3d; }
-      .landing-item-reading .textContent {
-        position: absolute;
-        width: 35%;
-        top: 50%;
-        right: 10%;
-        transform: translateY(-50%); }
-        .landing-item-reading .textContent-large {
-          font-size: 6rem;
-          font-weight: bold; }
-        .landing-item-reading .textContent-small {
-          font-size: 2rem; }
-      .landing-item-reading .mediaContent {
-        position: absolute;
-        width: 35%;
-        height: 50rem;
-        background-color: aquamarine;
-        top: 50%;
-        left: 10%;
-        font-size: 2.5rem;
-        box-shadow: -1em 1em 2em 0.25em rgba(0, 0, 0, 0.2);
-        -webkit-transform: translateY(-50%) translateX(-50%) rotateZ(-5deg) rotateY(90deg);
-        transform: translateY(-50%) translateX(-50%) rotateZ(-5deg) rotateY(90deg);
-        opacity: 0;
-        transition: transform 4s 0.25s cubic-bezier(0, 1, 0.3, 1), opacity 0.3s 0.25s ease-out;
-        will-change: transform, opacity; }
-      .landing-item-reading .isVisible {
-        opacity: 1;
-        -webkit-transform: translateY(-50%) translateX(0) rotateZ(-5deg) rotateY(50deg);
-        transform: translateY(-50%) translateX(0) rotateZ(-5deg) rotateY(50deg); }
 
 @keyframes scroll {
   0% {
@@ -1198,6 +1146,20 @@ a:link, a:visited, a:hover, a:active {
         -webkit-overflow-scrolling: touch; }
         .homePage-novels-slider .novels::-webkit-scrollbar {
           display: none; }
+    .homePage-novels-sliderLoading {
+      height: 20rem;
+      width: 100%;
+      border-radius: 1rem;
+      overflow: hidden; }
+      .homePage-novels-sliderLoading .slider {
+        width: max-content;
+        height: 100%;
+        display: flex;
+        gap: 1rem; }
+        .homePage-novels-sliderLoading .slider-item {
+          height: 100%;
+          width: 17rem;
+          background-color: grey; }
     .homePage-novels .novelSection {
       width: max-content;
       z-index: 2;
@@ -1559,8 +1521,17 @@ a:link, a:visited, a:hover, a:active {
               background-color: #3a3a3a; }
       .homePage-changeable-containerSmall-novels {
         height: max-content; }
+        .homePage-changeable-containerSmall-novels-notFound {
+          background-color: rgba(0, 0, 0, 0.5);
+          backdrop-filter: blur(40px);
+          border: 1px solid #363636;
+          border-radius: 1rem;
+          color: #d6d6d6;
+          height: 12rem;
+          font-size: 2.5rem;
+          display: grid;
+          place-items: center; }
     .homePage-changeable-heading {
-      position: absolute;
       top: 0;
       z-index: 2;
       text-transform: uppercase;
@@ -1574,7 +1545,7 @@ a:link, a:visited, a:hover, a:active {
       padding-left: 1.5rem;
       position: relative;
       display: flex;
-      gap: 2rem;
+      gap: 1rem;
       align-items: center; }
       .homePage-changeable-heading::before {
         content: "";

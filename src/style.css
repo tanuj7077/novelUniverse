@@ -203,6 +203,38 @@ a:link, a:visited, a:hover, a:active {
     opacity: 0;
     transform: scale(0.5); } }
 
+@-webkit-keyframes CoverAnim {
+  0% {
+    background-position: 0% 49%; }
+  50% {
+    background-position: 100% 52%; }
+  100% {
+    background-position: 0% 49%; } }
+
+@-moz-keyframes CoverAnim {
+  0% {
+    background-position: 0% 49%; }
+  50% {
+    background-position: 100% 52%; }
+  100% {
+    background-position: 0% 49%; } }
+
+@keyframes CoverAnim {
+  0% {
+    background-position: 0% 49%; }
+  50% {
+    background-position: 100% 52%; }
+  100% {
+    background-position: 0% 49%; } }
+
+@keyframes pulse {
+  0% {
+    opacity: 0.5; }
+  50% {
+    opacity: 1; }
+  100% {
+    opacity: 0.5; } }
+
 .landing {
   width: 100vw;
   min-height: 100vh;
@@ -1146,6 +1178,24 @@ a:link, a:visited, a:hover, a:active {
         -webkit-overflow-scrolling: touch; }
         .homePage-novels-slider .novels::-webkit-scrollbar {
           display: none; }
+    .homePage-novels-sliderLoading {
+      height: 20rem;
+      width: 100%;
+      border-radius: 1rem;
+      overflow: hidden; }
+      .homePage-novels-sliderLoading .slider {
+        width: max-content;
+        height: 100%;
+        display: flex;
+        gap: 1rem; }
+        .homePage-novels-sliderLoading .slider-item {
+          height: 100%;
+          width: 17rem;
+          background: linear-gradient(220deg, #141414, #666666, #111111);
+          background-size: 600% 600%;
+          -webkit-animation: CoverAnim 2s ease infinite;
+          -moz-animation: CoverAnim 2s ease infinite;
+          animation: CoverAnim 2s ease infinite; }
     .homePage-novels .novelSection {
       width: max-content;
       z-index: 2;
@@ -1253,7 +1303,8 @@ a:link, a:visited, a:hover, a:active {
         scroll-snap-align: start;
         width: 17rem;
         overflow: hidden;
-        position: relative; }
+        position: relative;
+        background-color: #666666; }
         .homePage-novels .novelSection2 .novel-img {
           width: 100%;
           padding-top: 125%;

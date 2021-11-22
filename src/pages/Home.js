@@ -23,12 +23,12 @@ const Home = () => {
       setMostViewed(res.data.data.mostViewed);
     });
   };
-  const [latestUpdates, setLatestUpdates] = useState([]);
-  const fetchLatestUpdates = async () => {
-    await axios.get("http://localhost:8000/book/latestUpdates").then((res) => {
-      setLatestUpdates(res.data.data.latestUpdates);
-    });
-  };
+  // const [latestUpdates, setLatestUpdates] = useState([]);
+  // const fetchLatestUpdates = async () => {
+  //   await axios.get("http://localhost:8000/book/latestUpdates").then((res) => {
+  //     setLatestUpdates(res.data.data.latestUpdates);
+  //   });
+  // };
   const [optionsVisibility, setOptionsVisibility] = useState(false);
   const [novelList, setNovelList] = useState([]);
   const [optionType, setOptionType] = useState("today"); //today,all,(action,adventure,...),latest
@@ -67,7 +67,7 @@ const Home = () => {
   useEffect(() => {
     fetchNewRelease();
     fetchMostViewed();
-    fetchLatestUpdates();
+    //fetchLatestUpdates();
     //getTodayViews();
   }, []);
   useEffect(() => {
@@ -80,11 +80,41 @@ const Home = () => {
         <Carousel />
         <div className="homePage-novels">
           <p className="homePage-novels-heading">New Releases</p>
-          <Slider novels={newRelease} />
+          {newRelease && newRelease.length > 0 ? (
+            <Slider novels={newRelease} />
+          ) : (
+            <div className="homePage-novels-sliderLoading">
+              <div className="slider">
+                <div className="slider-item"></div>
+                <div className="slider-item"></div>
+                <div className="slider-item"></div>
+                <div className="slider-item"></div>
+                <div className="slider-item"></div>
+                <div className="slider-item"></div>
+                <div className="slider-item"></div>
+                <div className="slider-item"></div>
+              </div>
+            </div>
+          )}
         </div>
         <div className="homePage-novels">
           <p className="homePage-novels-heading">Most Viewed</p>
-          <Slider novels={mostViewed} />
+          {mostViewed && mostViewed.length > 0 ? (
+            <Slider novels={mostViewed} />
+          ) : (
+            <div className="homePage-novels-sliderLoading">
+              <div className="slider">
+                <div className="slider-item"></div>
+                <div className="slider-item"></div>
+                <div className="slider-item"></div>
+                <div className="slider-item"></div>
+                <div className="slider-item"></div>
+                <div className="slider-item"></div>
+                <div className="slider-item"></div>
+                <div className="slider-item"></div>
+              </div>
+            </div>
+          )}
         </div>
 
         <div className="homePage-changeable">
@@ -98,7 +128,6 @@ const Home = () => {
                 optionType !== "all" &&
                 optionType}
             </span>
-            <span className="type"></span>
             {!optionsVisibility ? (
               <BsPlusCircle
                 className="icon"

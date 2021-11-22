@@ -290,6 +290,27 @@
         }
       }
     }
+    &-sliderLoading {
+      height: 20rem;
+      width: 100%;
+      border-radius: 1rem;
+      overflow: hidden;
+      .slider {
+        width: max-content;
+        height: 100%;
+        display: flex;
+        gap: 1rem;
+        &-item {
+          height: 100%;
+          width: 17rem;
+          background: linear-gradient(220deg, #141414, #666666, #111111);
+          background-size: 600% 600%;
+          -webkit-animation: CoverAnim 2s ease infinite;
+          -moz-animation: CoverAnim 2s ease infinite;
+          animation: CoverAnim 2s ease infinite;
+        }
+      }
+    }
     //not getting used
     .novelSection {
       width: max-content;
@@ -419,6 +440,7 @@
         width: 17rem;
         overflow: hidden;
         position: relative;
+        background-color: #666666;
         &-img {
           width: 100%;
           padding-top: 125%;
