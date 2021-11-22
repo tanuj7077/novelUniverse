@@ -157,6 +157,15 @@
         // display: flex;
         // padding: 2rem 7.5%;
       }
+      @include respond(phone) {
+        position: fixed;
+        top: 6rem;
+        left: 0;
+        width: 100%;
+        transition: all 0s;
+        height: calc(100vh - 6rem);
+        justify-content: space-between;
+      }
 
       &-items {
         max-height: 30rem;
@@ -169,6 +178,9 @@
         flex-flow: column;
         gap: 0.75rem;
         overflow-y: auto;
+        @include respond(phone) {
+          max-height: calc(100vh - 8rem);
+        }
         &-item {
           display: flex;
           flex-flow: column;
@@ -182,10 +194,16 @@
             font-size: $smallest-font-size;
             text-transform: uppercase;
             color: rgb(163, 163, 163);
+            @include respond(phone) {
+              font-size: $smaller-font-size;
+            }
           }
           &-body {
             font-size: $smaller-font-size;
             color: rgb(221, 221, 221);
+            @include respond(phone) {
+              font-size: $default-font-size;
+            }
           }
         }
         &::-webkit-scrollbar {
