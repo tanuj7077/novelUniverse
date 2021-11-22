@@ -577,11 +577,9 @@
               //background-color: rgba(0, 0, 0, 0.39);
               //background-color: rgb(32, 158, 74);
               background-color: rgb(32, 121, 194);
-              gap: 6%;
               border-radius: 5px;
               text-align: center;
               padding: 1rem 0;
-              //font-weight: bold;
               @include respond(tab-port) {
                 //height: 3.5rem;
                 font-size: $default-font-size;
@@ -590,9 +588,9 @@
               }
               @include respond(phone) {
                 //height: 2.5rem;
-                font-size: $smaller-font-size;
+                font-size: $tiny-font-size;
                 letter-spacing: 0.2rem;
-                padding: 0.3rem 0;
+                padding: 0.4rem 0;
               }
             }
           }

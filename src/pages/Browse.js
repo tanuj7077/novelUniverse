@@ -26,7 +26,7 @@ const Browse = () => {
 
   const [totalPages, setTotalPages] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
-  const PAGE_LIMIT = 4;
+  const PAGE_LIMIT = 10;
   const nextPage = () => {
     if (currentPage !== totalPages) {
       setCurrentPage(currentPage + 1);

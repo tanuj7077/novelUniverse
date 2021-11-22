@@ -2202,7 +2202,6 @@ a:link, a:visited, a:hover, a:active {
               letter-spacing: 0.2rem;
               color: white;
               background-color: #2079c2;
-              gap: 6%;
               border-radius: 5px;
               text-align: center;
               padding: 1rem 0; }
@@ -2213,9 +2212,9 @@ a:link, a:visited, a:hover, a:active {
                   padding: 0.7rem 0; } }
               @media only screen and (max-width: 37.5em) {
                 .browsePage .novels-list .novel-info-buttons .btn {
-                  font-size: 1.2rem;
+                  font-size: 0.9rem;
                   letter-spacing: 0.2rem;
-                  padding: 0.3rem 0; } }
+                  padding: 0.4rem 0; } }
     .browsePage .novels-notFound {
       width: 100%;
       background-color: rgba(0, 0, 0, 0.5);

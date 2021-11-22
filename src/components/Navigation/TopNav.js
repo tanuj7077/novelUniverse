@@ -151,6 +151,7 @@ const TopNav = () => {
               }`}
               onClick={() => {
                 history.push(`/home`);
+                setMenuVisibility(false);
               }}
             >
               <p className="text">Home</p>
@@ -165,6 +166,7 @@ const TopNav = () => {
               }`}
               onClick={() => {
                 history.push(`/browse`);
+                setMenuVisibility(false);
               }}
             >
               <p className="text">Browse</p>
@@ -180,6 +182,7 @@ const TopNav = () => {
                 }`}
                 onClick={() => {
                   history.push(`/collection`);
+                  setMenuVisibility(false);
                 }}
               >
                 <p className="text">Collection</p>
@@ -196,6 +199,7 @@ const TopNav = () => {
                 }`}
                 onClick={() => {
                   history.push(`/profile/${userData.username}`);
+                  setMenuVisibility(false);
                 }}
               >
                 <p className="text">Profile</p>
