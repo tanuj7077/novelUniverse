@@ -54,6 +54,7 @@
           z-index: 2;
           width: 27rem;
           height: 100%;
+          background-color: rgb(31, 31, 31);
           background-size: cover;
           background-position: center;
           border-radius: 1rem;
@@ -361,12 +362,13 @@
       }
     }
     .contentSection {
+      min-height: calc(100vh - 50rem);
       width: 95rem;
       display: flex;
       flex-flow: column;
       gap: 4rem;
       align-items: center;
-      transition: all 1s ease;
+      //transition: all 1s ease;
       @include respond(tab-land) {
         width: 85%;
       }
@@ -397,6 +399,11 @@
           font-size: $default-font-size;
           color: rgb(190, 190, 190);
           //text-align: justify;
+          &-loading {
+            letter-spacing: 0.1rem;
+            font-size: $default-font-size;
+            color: rgb(190, 190, 190);
+          }
         }
       }
       .chapterSection {

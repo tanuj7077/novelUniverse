@@ -2314,6 +2314,7 @@ a:link, a:visited, a:hover, a:active {
           z-index: 2;
           width: 27rem;
           height: 100%;
+          background-color: #1f1f1f;
           background-size: cover;
           background-position: center;
           border-radius: 1rem;
@@ -2562,12 +2563,12 @@ a:link, a:visited, a:hover, a:active {
               letter-spacing: 0.2rem;
               border-radius: 5px; }
     .bookPage-container .contentSection {
+      min-height: calc(100vh - 50rem);
       width: 95rem;
       display: flex;
       flex-flow: column;
       gap: 4rem;
-      align-items: center;
-      transition: all 1s ease; }
+      align-items: center; }
       @media only screen and (max-width: 75em) {
         .bookPage-container .contentSection {
           width: 85%; } }
@@ -2595,6 +2596,10 @@ a:link, a:visited, a:hover, a:active {
           letter-spacing: 0.1rem;
           font-size: 1.6rem;
           color: #bebebe; }
+          .bookPage-container .contentSection .aboutSection-content-loading {
+            letter-spacing: 0.1rem;
+            font-size: 1.6rem;
+            color: #bebebe; }
       .bookPage-container .contentSection .chapterSection {
         width: 100%;
         height: max-content;

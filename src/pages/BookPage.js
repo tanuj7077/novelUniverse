@@ -212,6 +212,57 @@ const BookPage = () => {
               </div>
             </div>
           )}
+          {!novelData && (
+            <div className="introSection-container introSection-container-loading">
+              <span className="introSection-container-img"></span>
+              <div className="introSection-container-content">
+                <div className="introSection-container-content-titleSection">
+                  <p className="name">
+                    <span className="novelName">Loading name</span>
+                    <span className="authorName">Loading author</span>
+                  </p>
+                  <div className="ratingSection">
+                    <FaStar className="icon" />
+                  </div>
+                </div>
+
+                <div className="introSection-container-content-midSection">
+                  <div className="introSection-container-content-infoSectionCard">
+                    <div className="subheading">Stats</div>
+                    <div className="introSection-container-content-infoSection">
+                      <div className="introSection-container-content-infoSection-item">
+                        <div className="count">0</div>
+                        <div className="subheading">Chapter</div>
+                      </div>
+                      <div className="introSection-container-content-infoSection-item">
+                        <div className="count">0</div>
+                        <div className="subheading">Rank</div>
+                      </div>
+                      <div className="introSection-container-content-infoSection-item">
+                        <div className="count">0</div>
+                        <div className="subheading">Bookmarked</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="introSection-container-content-otherSectionCard">
+                    <div className="subheading">Categories</div>
+                    <div className="introSection-container-content-categorySection">
+                      <div className="tags"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="introSection-container-content-buttons">
+                  <div className="start btn">
+                    <span className="text">--</span>
+                  </div>
+                  <div className="add btn">
+                    <span className="text">--</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
           {novelData && (
             <div className="introSection-containerSmall">
               <span
@@ -281,7 +332,9 @@ const BookPage = () => {
                   </div>
                 </section>
                 <section className="introSection-containerSmall-content-buttons">
-                  <button className="btn">{novelObj.readStatus}</button>
+                  <button className="btn" onClick={start}>
+                    Start
+                  </button>
 
                   {bookmarked ? (
                     <button className="btn">Bookmarked</button>
@@ -294,13 +347,82 @@ const BookPage = () => {
               </div>
             </div>
           )}
+          {!novelData && (
+            <div className="introSection-containerSmall">
+              <span
+                className="introSection-containerSmall-img"
+                style={{
+                  backgroundImage: `url(${bg1})`,
+                }}
+              ></span>
+              <div className="introSection-containerSmall-content">
+                <section className="introSection-containerSmall-content-titleSection">
+                  <p className="name">
+                    <span className="novelName">Loading name</span>
+                    <span className="authorName">Loading author</span>
+                  </p>
+                  <div className="ratingSection">
+                    <FaStar className="icon" />
+                  </div>
+                </section>
+                <section className="introSection-containerSmall-content-midSection">
+                  <div className="statSection">
+                    <p className="statSection-heading">Stats</p>
+                    <div className="statSection-items">
+                      <div className="statSection-items-item">
+                        <div className="statSection-items-item-count">0</div>
+                        <div className="statSection-items-item-subheading">
+                          Chapter
+                        </div>
+                      </div>
+                      <div className="statSection-items-item">
+                        <div className="statSection-items-item-count">0</div>
+                        <div className="statSection-items-item-subheading">
+                          Rank
+                        </div>
+                      </div>
+                      <div className="statSection-items-item">
+                        <div className="statSection-items-item-count">0</div>
+                        <div className="statSection-items-item-subheading">
+                          Bookmarked
+                        </div>
+                      </div>
+                      <div className="statSection-items-item">
+                        <div className="statSection-items-item-count">
+                          Loading
+                        </div>
+                        <div className="statSection-items-item-subheading">
+                          Status
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="categorySection">
+                    <p className="categorySection-heading">Categories</p>
+                    <div className="categorySection-tags">
+                      <p className="categorySection-tags-tag">--</p>
+                    </div>
+                  </div>
+                </section>
+                <section className="introSection-containerSmall-content-buttons">
+                  <button className="btn">--</button>
+
+                  <button className="btn">--</button>
+                </section>
+              </div>
+            </div>
+          )}
         </div>
         <div
           className={`contentSection ${
             !introVisible ? "contentSection-alignRight" : ""
           }`}
         >
-          {novelData && <Summary content={novelData.description} />}
+          {novelData ? (
+            <Summary content={novelData.description} />
+          ) : (
+            <Summary loading={true} />
+          )}
           {novelData && novelData.chapters && (
             <ChapterSection Chapters={novelData.chapters} />
           )}
