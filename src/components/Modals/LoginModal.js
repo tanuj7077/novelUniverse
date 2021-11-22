@@ -187,7 +187,6 @@ const LoginModal = () => {
                   registerUsername.length === 0) && (
                   <button
                     className={`loginFormGrp-btn loginFormGrp-btn-disabled `}
-                    onClick={() => console.log("Hey")}
                   >
                     Register
                   </button>

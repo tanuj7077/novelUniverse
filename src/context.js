@@ -68,7 +68,7 @@ const AppProvider = ({ children }) => {
       password: registerPassword,
     };
     axios.post("http://localhost:8000/auth/signup", data).then((res) => {
-      console.log(res.data);
+      changeAlert(res.data.msg);
     });
   };
   const logout = async () => {

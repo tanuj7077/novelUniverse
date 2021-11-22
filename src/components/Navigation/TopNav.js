@@ -209,13 +209,22 @@ const TopNav = () => {
         )}
 
         {isLoggedIn ? (
-          <li className={`topNav-menu-list-item`} onClick={logout}>
+          <li
+            className={`topNav-menu-list-item`}
+            onClick={() => {
+              logout();
+              setMenuVisibility(false);
+            }}
+          >
             <p className="text">Logout</p>
           </li>
         ) : (
           <li
             className={`topNav-menu-list-item`}
-            onClick={toggleLoginModalVisibility}
+            onClick={() => {
+              toggleLoginModalVisibility();
+              setMenuVisibility(false);
+            }}
           >
             <p className="text">Login</p>
           </li>
