@@ -11,6 +11,7 @@ import {
   IoInformationCircleOutline,
   IoAddCircleOutline,
 } from "react-icons/io5";
+import { baseUrl } from "../Shared/constants";
 //1,2,3,6,7,9,11,12
 
 const Browse = () => {
@@ -86,12 +87,19 @@ const Browse = () => {
       setSearchResult([]);
       return;
     }
-    axios.get(`http://localhost:8000/book/searchBook/${text}`).then((res) => {
-      if (res.data.data.bookList.length > 0) {
-        setSearchResult(res.data.data.bookList);
-      } else {
-        setSearchResult([]);
-      }
+    axios
+      .get(`${process.env.REACT_APP_BASE_URL}/book/searchBook/${text}`)
+      .then((res) => {
+        if (res.data.data.bookList.length > 0) {
+          setSearchResult(res.data.data.bookList);
+        } else {
+          setSearchResult([]);
+        }
+      });
+  };
+  const test = () => {
+    axios.get(baseUrl).then((res) => {
+      console.log(res);
     });
   };
   const goToNovel = (id) => {
@@ -100,7 +108,7 @@ const Browse = () => {
   const getNovels = () => {
     axios
       .post(
-        `http://localhost:8000/book/getNovels/${currentStatus}/${currentOrder}/${currentPage}/${PAGE_LIMIT}`,
+        `${process.env.REACT_APP_BASE_URL}/book/getNovels/${currentStatus}/${currentOrder}/${currentPage}/${PAGE_LIMIT}`,
         {
           tagAdded,
           tagRemoved,
@@ -118,6 +126,7 @@ const Browse = () => {
   let order = ["new", "views", "ratings"];
 
   useEffect(() => {
+    test();
     getNovels();
   }, [currentStatus, currentOrder, currentPage]);
   return (

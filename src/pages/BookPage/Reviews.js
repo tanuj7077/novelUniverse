@@ -33,7 +33,7 @@ function Reviews({ book }) {
         book: book._id,
       };
       axios
-        .post("http://localhost:8000/review/addReview", Review)
+        .post(`${process.env.REACT_APP_BASE_URL}review/addReview`, Review)
         .then((res) => {
           getReviews();
         });
@@ -46,7 +46,7 @@ function Reviews({ book }) {
       reviewId: givenReview._id,
     };
     axios
-      .post("http://localhost:8000/review/editReview", Review)
+      .post(`${process.env.REACT_APP_BASE_URL}/review/editReview`, Review)
       .then((res) => {
         getReviews();
         changeAlert(res.data.message);
@@ -76,7 +76,7 @@ function Reviews({ book }) {
       };
       if (checkRatingGiven()) {
         axios
-          .post("http://localhost:8000/review/editRating", data)
+          .post(`${process.env.REACT_APP_BASE_URL}/review/editRating`, data)
           .then((res) => {
             changeAlert(res.data.message);
             setRated(rate);
@@ -84,7 +84,7 @@ function Reviews({ book }) {
           });
       } else {
         axios
-          .post("http://localhost:8000/review/addRating", data)
+          .post(`${process.env.REACT_APP_BASE_URL}/review/addRating`, data)
           .then((res) => {
             changeAlert(res.data.message);
             setRated(rate);
@@ -101,7 +101,7 @@ function Reviews({ book }) {
 
   const getReviews = async () => {
     axios
-      .get("http://localhost:8000/review/getReviews/" + book._id)
+      .get(`${process.env.REACT_APP_BASE_URL}/review/getReviews/` + book._id)
       .then((res) => {
         console.log(res.data.data);
         setReviews(res.data.data);
@@ -110,12 +110,14 @@ function Reviews({ book }) {
 
   const getUserReview = (rev) => {
     console.log("getUser Reviews");
-    axios.get("http://localhost:8000/review/getReview/" + rev).then((res) => {
-      let novelData = res.data.data;
-      setGivenReview(novelData);
-      setGivenReviewTitle(novelData.title);
-      setGivenReviewDesc(novelData.description);
-    });
+    axios
+      .get(`${process.env.REACT_APP_BASE_URL}/review/getReview/` + rev)
+      .then((res) => {
+        let novelData = res.data.data;
+        setGivenReview(novelData);
+        setGivenReviewTitle(novelData.title);
+        setGivenReviewDesc(novelData.description);
+      });
   };
 
   const checkReviewGiven = () => {

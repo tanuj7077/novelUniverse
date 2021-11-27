@@ -18,7 +18,7 @@ function NotificationItem({ notification }) {
       notificationId: notification._id,
     };
     await axios
-      .post(`http://localhost:8000/user/deleteNotification`, data)
+      .post(`${process.env.REACT_APP_BASE_URL}/user/deleteNotification`, data)
       .then((res) => {
         getUpdatedUserData();
       });

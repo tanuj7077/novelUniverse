@@ -2,8 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Carousel from "../components/Carousel/Carousel";
 import HomePageNovels from "../components/NovelThumb/HomePageNovels";
 import { VscChevronLeft, VscChevronRight } from "react-icons/vsc";
-import { AiOutlineClockCircle } from "react-icons/ai";
-import { BsFillPlusCircleFill, BsPlusCircle } from "react-icons/bs";
+import { BsPlusCircle } from "react-icons/bs";
 import { AiOutlineMinusCircle } from "react-icons/ai";
 import axios from "axios";
 import { categoryList } from "../mockData";
@@ -13,22 +12,20 @@ import { useGlobalContext } from "../context";
 const Home = () => {
   const [newRelease, setNewRelease] = useState([]); //move to context
   const fetchNewRelease = async () => {
-    await axios.get("http://localhost:8000/book/newRelease").then((res) => {
-      setNewRelease(res.data.data.newRelease);
-    });
+    await axios
+      .get(`${process.env.REACT_APP_BASE_URL}/book/newRelease`)
+      .then((res) => {
+        setNewRelease(res.data.data.newRelease);
+      });
   };
   const [mostViewed, setMostViewed] = useState([]);
   const fetchMostViewed = async () => {
-    await axios.get("http://localhost:8000/book/mostViewed").then((res) => {
-      setMostViewed(res.data.data.mostViewed);
-    });
+    await axios
+      .get(`${process.env.REACT_APP_BASE_URL}/book/mostViewed`)
+      .then((res) => {
+        setMostViewed(res.data.data.mostViewed);
+      });
   };
-  // const [latestUpdates, setLatestUpdates] = useState([]);
-  // const fetchLatestUpdates = async () => {
-  //   await axios.get("http://localhost:8000/book/latestUpdates").then((res) => {
-  //     setLatestUpdates(res.data.data.latestUpdates);
-  //   });
-  // };
   const [optionsVisibility, setOptionsVisibility] = useState(false);
   const [novelList, setNovelList] = useState([]);
   const [optionType, setOptionType] = useState("today"); //today,all,(action,adventure,...),latest
@@ -48,7 +45,7 @@ const Home = () => {
   const getNovelList = () => {
     axios
       .get(
-        `http://localhost:8000/book/getNovelByDate/${optionType}/${currentPage}/${PAGE_LIMIT}`
+        `${process.env.REACT_APP_BASE_URL}/book/getNovelByDate/${optionType}/${currentPage}/${PAGE_LIMIT}`
       )
       .then((res) => {
         console.log(res.data.data);

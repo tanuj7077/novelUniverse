@@ -23,7 +23,7 @@ const BookPage = () => {
   const [recommendBtnVisibility, setRecommendBtnVisibility] = useState(false);
   const [recommended, setRecommended] = useState(false);
   const fetchBookData = (id) => {
-    axios.get(`http://localhost:8000/book/${id}`).then((res) => {
+    axios.get(`${process.env.REACT_APP_BASE_URL}/book/${id}`).then((res) => {
       setNovelData(res.data.data.novel);
       console.log(res.data.data.novel);
       calculateAverageRating(res.data.data.novel);
@@ -67,7 +67,7 @@ const BookPage = () => {
   const bookmark = async () => {
     isLoggedIn &&
       (await axios
-        .post(`http://localhost:8000/book/bookmark/${bookId}`, {
+        .post(`${process.env.REACT_APP_BASE_URL}/book/bookmark/${bookId}`, {
           userId: userData._id,
         })
         .then((res) => {

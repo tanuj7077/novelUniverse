@@ -26,20 +26,24 @@ const AppProvider = ({ children }) => {
   };
   const getUpdatedUserData = async () => {
     await axios
-      .get(`http://localhost:8000/user/getUpdatedUserData/${userData._id}`)
+      .get(
+        `${process.env.REACT_APP_BASE_URL}/user/getUpdatedUserData/${userData._id}`
+      )
       .then((res) => {
         setUserData(res.data.userData);
       });
   };
   const addToViews = (bookId) => {
-    axios.post(`http://localhost:8000/book/addViews/${bookId}`).then((res) => {
-      console.log("added to views");
-    });
+    axios
+      .post(`${process.env.REACT_APP_BASE_URL}/book/addViews/${bookId}`)
+      .then((res) => {
+        console.log("added to views");
+      });
   };
   const addChapterRead = (bookId, chapterId, userId) => {
     console.log("chapter read executed");
     axios
-      .post(`http://localhost:8000/book/addChaptersRead`, {
+      .post(`${process.env.REACT_APP_BASE_URL}/book/addChaptersRead`, {
         bookId,
         chapterId,
         userId,
@@ -55,33 +59,39 @@ const AppProvider = ({ children }) => {
       username: loginUsername,
       password: loginPassword,
     };
-    axios.post("http://localhost:8000/auth/signin", data).then((res) => {
-      changeAlert(res.data.msg);
-      setUserData(res.data.userData);
-      setIsLoggedIn(true);
-      setLoginModalVisible(false);
-    });
+    axios
+      .post(`${process.env.REACT_APP_BASE_URL}/auth/signin`, data)
+      .then((res) => {
+        changeAlert(res.data.msg);
+        setUserData(res.data.userData);
+        setIsLoggedIn(true);
+        setLoginModalVisible(false);
+      });
   };
   const signup = (registerUsername, registerPassword) => {
     const data = {
       username: registerUsername,
       password: registerPassword,
     };
-    axios.post("http://localhost:8000/auth/signup", data).then((res) => {
-      changeAlert(res.data.msg);
-    });
+    axios
+      .post(`${process.env.REACT_APP_BASE_URL}/auth/signup`, data)
+      .then((res) => {
+        changeAlert(res.data.msg);
+      });
   };
   const logout = async () => {
     try {
-      await axios.get("http://localhost:8000/auth/signout").then((res) => {
-        if (res.data.success) {
-          changeAlert(res.data.msg);
-          setUserData({});
-          setIsLoggedIn(false);
-          //changeAlert(res.data.message);
-          //return <Redirect to="/" exact />;
-        }
-      });
+      await axios
+        .get(`${process.env.REACT_APP_BASE_URL}/auth/signout`)
+        .then((res) => {
+          if (res.data.success) {
+            changeAlert(res.data.msg);
+            setUserData({});
+            setIsLoggedIn(false);
+            //changeAlert(res.data.message);
+            //return <Redirect to="/" exact />;
+          }
+        });
     } catch (err) {
       console.log(err);
     }

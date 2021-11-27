@@ -20,7 +20,10 @@ function Replies({ comment }) {
         chapterId: comment.chapter,
       };
       axios
-        .post(`http://localhost:8000/comment/addReply/${comment._id}`, data)
+        .post(
+          `${process.env.REACT_APP_BASE_URL}/comment/addReply/${comment._id}`,
+          data
+        )
         .then((res) => {
           setReplies([...replies, res.data.reply]);
         });
@@ -28,7 +31,9 @@ function Replies({ comment }) {
   };
   const getReplies = () => {
     axios
-      .get(`http://localhost:8000/comment/getReplies/${comment._id}`)
+      .get(
+        `${process.env.REACT_APP_BASE_URL}/comment/getReplies/${comment._id}`
+      )
       .then((res) => {
         setReplies(res.data.replies);
       });

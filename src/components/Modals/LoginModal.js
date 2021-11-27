@@ -16,7 +16,9 @@ const LoginModal = () => {
 
   const checkUsernameExistance = () => {
     axios
-      .get(`http://localhost:8000/user/checkUser/${registerUsername}`)
+      .get(
+        `${process.env.REACT_APP_BASE_URL}/user/checkUser/${registerUsername}`
+      )
       .then((res) => {
         console.log(res.data);
         setUsernameExistance(res.data.usernameExistance);

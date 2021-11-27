@@ -42,7 +42,7 @@ const Chapter = () => {
 
   const [chapterData, setChapterData] = useState();
   const getChapterDetails = () => {
-    axios.get(`http://localhost:8000/chapter/${id}`).then((res) => {
+    axios.get(`${process.env.REACT_APP_BASE_URL}/chapter/${id}`).then((res) => {
       console.log(res.data.data.chapterData);
       setChapterData(res.data.data.chapterData);
       if (isLoggedIn && userData) {

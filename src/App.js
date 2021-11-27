@@ -24,7 +24,9 @@ function App() {
   const { setIsLoggedIn, setUserData, userData, isLoggedIn } =
     useGlobalContext();
   const getLoggedIn = async () => {
-    const loggedInRes = await axios.get("http://localhost:8000/auth/loggedIn");
+    const loggedInRes = await axios.get(
+      `${process.env.REACT_APP_BASE_URL}/auth/loggedIn`
+    );
     if (loggedInRes.data.loggedIn) {
       console.log(loggedInRes.data);
       setIsLoggedIn(true);

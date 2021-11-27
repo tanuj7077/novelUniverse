@@ -10,10 +10,12 @@ const BrowsePageThumb = ({ novelId }) => {
   const [novel, setNovel] = useState();
   const getNovelData = async () => {
     console.log("getNovelData called");
-    await axios.get(`http://localhost:8000/book/${novelId}`).then((res) => {
-      setNovel(res.data.data.novel);
-      setTime(calculateTimeDifference(res.data.data.novel.latestUpdate));
-    });
+    await axios
+      .get(`${process.env.REACT_APP_BASE_URL}/book/${novelId}`)
+      .then((res) => {
+        setNovel(res.data.data.novel);
+        setTime(calculateTimeDifference(res.data.data.novel.latestUpdate));
+      });
   };
   useEffect(() => {
     getNovelData();

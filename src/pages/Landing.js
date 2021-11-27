@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import TopNav from "../components/Navigation/TopNav";
 import { Route } from "react-router-dom";
-import logo from "../logo.svg";
+import logo from "../assets/logo/Asset4.png";
 import img1 from "../assets/slideshow/1.jpg";
 import img2 from "../assets/slideshow/2.jpg";
 import img3 from "../assets/slideshow/3.jpg";
@@ -62,7 +62,7 @@ const Landing = () => {
         <nav className="landing-topNav">
           <div className="landing-topNav-logo">
             <img src={logo} alt="" className="icon" />
-            <div className="text">NovelUpdates</div>
+            <div className="text"></div>
           </div>
           {!isLoggedIn && (
             <div
@@ -389,7 +389,7 @@ const Landing = () => {
       <footer className="landing-item-footer">
         <div className="iconContainer">
           <img src={logo} alt="" className="iconContainer-icon" />
-          <p className="iconContainer-text">Novel Updates</p>
+          <p className="iconContainer-text"></p>
         </div>
         <div className="copyright">&copy; Copyright 2021 by Tanuj Ghosh.</div>
       </footer>

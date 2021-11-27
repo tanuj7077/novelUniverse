@@ -13,7 +13,9 @@ const Collection2 = () => {
   const getCollectionItems = async () => {
     userData &&
       (await axios
-        .get(`http://localhost:8000/book/getCollectionItems/${userData._id}`)
+        .get(
+          `${process.env.REACT_APP_BASE_URL}/book/getCollectionItems/${userData._id}`
+        )
         .then((res) => {
           setCollectionItems(res.data.data);
         }));

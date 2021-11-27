@@ -16,7 +16,7 @@ function Comment({ commentId }) {
   };
   const getComment = () => {
     axios
-      .get(`http://localhost:8000/comment/getComment/${commentId}`)
+      .get(`${process.env.REACT_APP_BASE_URL}/comment/getComment/${commentId}`)
       .then((res) => {
         setComment(res.data.data);
         setEditedComment(res.data.data.text);
@@ -25,7 +25,9 @@ function Comment({ commentId }) {
   };
   const getUserName = (userId) => {
     axios
-      .get(`http://localhost:8000/user/getUpdatedUserData/${userId}`)
+      .get(
+        `${process.env.REACT_APP_BASE_URL}/user/getUpdatedUserData/${userId}`
+      )
       .then((res) => {
         setUsername(res.data.userData.username);
       });
@@ -35,7 +37,10 @@ function Comment({ commentId }) {
       text: editedComment,
     };
     axios
-      .post(`http://localhost:8000/comment/editComment/${comment._id}`, data)
+      .post(
+        `${process.env.REACT_APP_BASE_URL}/comment/editComment/${comment._id}`,
+        data
+      )
       .then((res) => {
         setNewComment(res.data.data.text);
         setEdit(false);

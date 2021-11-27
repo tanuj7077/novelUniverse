@@ -4,7 +4,8 @@ import { Route } from "react-router-dom";
 import { useGlobalContext } from "../../context";
 import { IoIosMenu } from "react-icons/io";
 import { IoNotifications } from "react-icons/io5";
-import logo from "../../logo.svg";
+//import logo from "../../logo.svg";
+import logo from "../../assets/logo/Asset4.png";
 import Notification from "../Notification/Notification";
 const TopNav = () => {
   const location = useLocation();
@@ -30,7 +31,7 @@ const TopNav = () => {
       <div className="topNav-left">
         <div className="topNav-logo">
           <img src={logo} alt="" className="topNav-logo-icon" />
-          <p className="topNav-logo-text">NovelUpdates</p>
+          <p className="topNav-logo-text"></p>
         </div>
       </div>
       <div className="topNav-right">

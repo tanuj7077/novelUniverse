@@ -20,7 +20,7 @@ function Comments({ chapterInfo }) {
         text: myComment,
       };
       axios
-        .post("http://localhost:8000/comment/addComment", data)
+        .post(`${process.env.REACT_APP_BASE_URL}/comment/addComment`, data)
         .then((res) => {
           console.log(res.data);
           //getComments();
@@ -33,7 +33,10 @@ function Comments({ chapterInfo }) {
 
   const getComments = async () => {
     axios
-      .get("http://localhost:8000/comment/getComments/" + chapterInfo.id)
+      .get(
+        `${process.env.REACT_APP_BASE_URL}/comment/getComments/` +
+          chapterInfo.id
+      )
       .then((res) => {
         console.log(res.data);
         setComments(res.data.data);

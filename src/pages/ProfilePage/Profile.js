@@ -36,9 +36,11 @@ var storage = firebase.storage();
 const RecommendedModalItems = ({ bookId }) => {
   const [novel, setNovel] = useState();
   const getNovel = async () => {
-    await axios.get(`http://localhost:8000/book/${bookId}`).then((res) => {
-      setNovel(res.data.data.novel);
-    });
+    await axios
+      .get(`${process.env.REACT_APP_BASE_URL}/book/${bookId}`)
+      .then((res) => {
+        setNovel(res.data.data.novel);
+      });
   };
   useEffect(() => {
     getNovel();
@@ -48,10 +50,12 @@ const RecommendedModalItems = ({ bookId }) => {
 const RecommendedItems = ({ bookId }) => {
   const [novel, setNovel] = useState();
   const getNovel = async () => {
-    await axios.get(`http://localhost:8000/book/${bookId}`).then((res) => {
-      setNovel(res.data.data.novel);
-      console.log(res.data.data.novel);
-    });
+    await axios
+      .get(`${process.env.REACT_APP_BASE_URL}/book/${bookId}`)
+      .then((res) => {
+        setNovel(res.data.data.novel);
+        console.log(res.data.data.novel);
+      });
   };
   useEffect(() => {
     getNovel();
@@ -129,9 +133,12 @@ const Profile = () => {
   const [followed, setFollowed] = useState(false);
   const changeCurrentVisibility = async () => {
     await axios
-      .post(`http://localhost:8000/user/updateUserProfile/${userData._id}`, {
-        currentVisibility: true,
-      })
+      .post(
+        `${process.env.REACT_APP_BASE_URL}/user/updateUserProfile/${userData._id}`,
+        {
+          currentVisibility: true,
+        }
+      )
       .then((res) => {
         console.log(
           "Toggle Current Progress",
@@ -142,9 +149,12 @@ const Profile = () => {
   };
   const changeStatsVisibility = async () => {
     await axios
-      .post(`http://localhost:8000/user/updateUserProfile/${userData._id}`, {
-        statsVisibility: true,
-      })
+      .post(
+        `${process.env.REACT_APP_BASE_URL}/user/updateUserProfile/${userData._id}`,
+        {
+          statsVisibility: true,
+        }
+      )
       .then((res) => {
         console.log("Toggle Stats", res.data.userData.profileData.statsVis);
 
@@ -153,9 +163,12 @@ const Profile = () => {
   };
   const changeFavGenreVisibility = async () => {
     await axios
-      .post(`http://localhost:8000/user/updateUserProfile/${userData._id}`, {
-        favGenreVisibility: true,
-      })
+      .post(
+        `${process.env.REACT_APP_BASE_URL}/user/updateUserProfile/${userData._id}`,
+        {
+          favGenreVisibility: true,
+        }
+      )
       .then((res) => {
         console.log(
           "Toggle FavGenre",
@@ -167,9 +180,12 @@ const Profile = () => {
   };
   const changeRecommendedVisibility = async () => {
     await axios
-      .post(`http://localhost:8000/user/updateUserProfile/${userData._id}`, {
-        recommendedVisibility: true,
-      })
+      .post(
+        `${process.env.REACT_APP_BASE_URL}/user/updateUserProfile/${userData._id}`,
+        {
+          recommendedVisibility: true,
+        }
+      )
       .then((res) => {
         console.log(
           "Toggle Recommended",
@@ -181,9 +197,12 @@ const Profile = () => {
   };
   const updateAbout = async () => {
     await axios
-      .post(`http://localhost:8000/user/updateUserProfile/${userData._id}`, {
-        about: aboutInput,
-      })
+      .post(
+        `${process.env.REACT_APP_BASE_URL}/user/updateUserProfile/${userData._id}`,
+        {
+          about: aboutInput,
+        }
+      )
       .then((res) => {
         console.log("About Added", res.data);
         setUserProfileData(res.data.userData);
@@ -191,9 +210,12 @@ const Profile = () => {
   };
   const updateUserName = async () => {
     await axios
-      .post(`http://localhost:8000/user/updateUserProfile/${userData._id}`, {
-        userName: userInput,
-      })
+      .post(
+        `${process.env.REACT_APP_BASE_URL}/user/updateUserProfile/${userData._id}`,
+        {
+          userName: userInput,
+        }
+      )
       .then((res) => {
         console.log("Username changed", res.data);
         if (res.data.message.type === "success") {
@@ -224,7 +246,7 @@ const Profile = () => {
           .then((url) => {
             axios
               .post(
-                `http://localhost:8000/user/updateUserProfile/${userData._id}`,
+                `${process.env.REACT_APP_BASE_URL}/user/updateUserProfile/${userData._id}`,
                 {
                   userImage: url,
                 }
@@ -256,24 +278,26 @@ const Profile = () => {
   //get profile data (userProfileData)
   const fetchUserData = async (username) => {
     (await username) &&
-      (await axios.get(`http://localhost:8000/user/${username}`).then((res) => {
-        console.log("fetched User Data");
-        console.log(res.data.userData);
-        setUserProfileData(res.data.userData);
-        fetchFollowing(res.data.userData._id);
-        fetchCurrentProgress(res.data.userData._id);
-        fetchFavGenre(res.data.userData._id);
-        setRecommended(res.data.userData.profileData.recommended);
-        getStats(res.data.userData);
-        if (res.data.userData && res.data.userData.profileData.about) {
-          setAboutInput(res.data.userData.profileData.about);
-          setUserInput(res.data.userData.username);
-        }
-      }));
+      (await axios
+        .get(`${process.env.REACT_APP_BASE_URL}/user/${username}`)
+        .then((res) => {
+          console.log("fetched User Data");
+          console.log(res.data.userData);
+          setUserProfileData(res.data.userData);
+          fetchFollowing(res.data.userData._id);
+          fetchCurrentProgress(res.data.userData._id);
+          fetchFavGenre(res.data.userData._id);
+          setRecommended(res.data.userData.profileData.recommended);
+          getStats(res.data.userData);
+          if (res.data.userData && res.data.userData.profileData.about) {
+            setAboutInput(res.data.userData.profileData.about);
+            setUserInput(res.data.userData.username);
+          }
+        }));
   };
   const fetchFollowing = async (userId) => {
     await axios
-      .get(`http://localhost:8000/user/getFollowing/${userId}`)
+      .get(`${process.env.REACT_APP_BASE_URL}/user/getFollowing/${userId}`)
       .then((res) => {
         console.log(res.data.data);
         setFollowingUsers(res.data.data);
@@ -282,7 +306,9 @@ const Profile = () => {
   //get currentProgress data (currentProgressData)
   const fetchCurrentProgress = async (userId) => {
     await axios
-      .get(`http://localhost:8000/user/getCurrentProgress/${userId}`)
+      .get(
+        `${process.env.REACT_APP_BASE_URL}/user/getCurrentProgress/${userId}`
+      )
       .then((res) => {
         setCurrentProgressData(res.data.data);
       });
@@ -290,7 +316,7 @@ const Profile = () => {
   //get FavGenre data (favGenreData)
   const fetchFavGenre = async (userId) => {
     await axios
-      .get(`http://localhost:8000/user/getFavGenre/${userId}`)
+      .get(`${process.env.REACT_APP_BASE_URL}/user/getFavGenre/${userId}`)
       .then((res) => {
         let fetchedData = res.data.data;
         let arr = [];
@@ -334,7 +360,9 @@ const Profile = () => {
   const fetchCollectionItems = async () => {
     userData &&
       (await axios
-        .get(`http://localhost:8000/book/getCollectionItems/${userData._id}`)
+        .get(
+          `${process.env.REACT_APP_BASE_URL}/book/getCollectionItems/${userData._id}`
+        )
         .then((res) => {
           let recommendedList = [
             ...res.data.data.completed,
@@ -345,7 +373,7 @@ const Profile = () => {
   };
   const getStats = async (userInfo) => {
     await axios
-      .get(`http://localhost:8000/user/getUpvotes/${userInfo._id}`)
+      .get(`${process.env.REACT_APP_BASE_URL}/user/getUpvotes/${userInfo._id}`)
       .then((res) => {
         let completedCount = 0;
         userInfo.books.forEach((book) => {
@@ -387,7 +415,7 @@ const Profile = () => {
           user: userData._id,
         };
         await axios
-          .post(`http://localhost:8000/user/unFollow/`, data)
+          .post(`${process.env.REACT_APP_BASE_URL}/user/unFollow/`, data)
           .then((res) => {
             changeAlert(res.data.message);
             res.data.message.type === "success" && setFollowed(false);
@@ -400,7 +428,7 @@ const Profile = () => {
           user: userData._id,
         };
         await axios
-          .post(`http://localhost:8000/user/follow`, data)
+          .post(`${process.env.REACT_APP_BASE_URL}/user/follow`, data)
           .then((res) => {
             changeAlert(res.data.message);
             res.data.message.type === "success" && setFollowed(true);
@@ -417,7 +445,7 @@ const Profile = () => {
       userId: userProfileData._id,
     };
     await axios
-      .post(`http://localhost:8000/user/addToRecommended`, data)
+      .post(`${process.env.REACT_APP_BASE_URL}/user/addToRecommended`, data)
       .then((res) => {
         setRecommended(res.data.data.recommended);
         changeAlert(res.data.message);
@@ -429,7 +457,10 @@ const Profile = () => {
       userId: userProfileData._id,
     };
     await axios
-      .post(`http://localhost:8000/user/removeFromRecommended`, data)
+      .post(
+        `${process.env.REACT_APP_BASE_URL}/user/removeFromRecommended`,
+        data
+      )
       .then((res) => {
         setRecommended(res.data.data.recommended);
         changeAlert(res.data.message);
@@ -439,7 +470,7 @@ const Profile = () => {
   const [usernameExistance, setUsernameExistance] = useState(false);
   const checkUsernameExistance = () => {
     axios
-      .get(`http://localhost:8000/user/checkUser/${userInput}`)
+      .get(`${process.env.REACT_APP_BASE_URL}/user/checkUser/${userInput}`)
       .then((res) => {
         console.log(res.data);
         setUsernameExistance(res.data.usernameExistance);

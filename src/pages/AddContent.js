@@ -70,13 +70,15 @@ function AddContent() {
   };
   const handleSearch = (text) => {
     setSearchText(text);
-    axios.get(`http://localhost:8000/book/searchBook/${text}`).then((res) => {
-      if (res.data.data.bookList.length > 0) {
-        setSearchResult(res.data.data.bookList);
-      } else {
-        setSearchResult([]);
-      }
-    });
+    axios
+      .get(`${process.env.REACT_APP_BASE_URL}book/searchBook/${text}`)
+      .then((res) => {
+        if (res.data.data.bookList.length > 0) {
+          setSearchResult(res.data.data.bookList);
+        } else {
+          setSearchResult([]);
+        }
+      });
   };
   const removeFromCategories = (tag) => {
     let newList = [...categories];
@@ -119,7 +121,7 @@ function AddContent() {
             };
             // cons
             axios
-              .post("http://localhost:8000/book/addBook", Book)
+              .post(`${process.env.REACT_APP_BASE_URL}/book/addBook`, Book)
               .then((res) => {
                 console.log("sent to server");
                 console.log(res);
@@ -139,7 +141,7 @@ function AddContent() {
       story: chapterContent,
     };
     axios
-      .post("http://localhost:8000/chapter/addChapter", Chapter)
+      .post(`${process.env.REACT_APP_BASE_URL}/chapter/addChapter`, Chapter)
       .then((res) => {
         setSearchResult([]);
         setSelectedBook(null);
@@ -154,10 +156,12 @@ function AddContent() {
       bookId: selectedBook._id,
       status: bookStatus,
     };
-    axios.post("http://localhost:8000/book/setStatus", Book).then((res) => {
-      console.log("Status updated");
-      console.log(res);
-    });
+    axios
+      .post(`${process.env.REACT_APP_BASE_URL}/book/setStatus`, Book)
+      .then((res) => {
+        console.log("Status updated");
+        console.log(res);
+      });
   };
   return (
     <div className="addContentPage">

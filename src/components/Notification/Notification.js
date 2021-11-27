@@ -35,7 +35,10 @@ function Notification() {
       userId: userData._id,
     };
     await axios
-      .post("http://localhost:8000/user/deleteAllNotifications", data)
+      .post(
+        `${process.env.REACT_APP_BASE_URL}/user/deleteAllNotifications`,
+        data
+      )
       .then((res) => {
         getUpdatedUserData();
       });

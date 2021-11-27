@@ -17,7 +17,7 @@ function Review({ reviewId }) {
   };
   const getReview = async () => {
     axios
-      .get("http://localhost:8000/review/getReview/" + reviewId)
+      .get(`${process.env.REACT_APP_BASE_URL}/review/getReview/` + reviewId)
       .then((res) => {
         setReview(res.data.data);
         getUsername(res.data.data.user);
@@ -25,7 +25,9 @@ function Review({ reviewId }) {
   };
   const getUsername = (userId) => {
     axios
-      .get(`http://localhost:8000/user/getUpdatedUserData/${userId}`)
+      .get(
+        `${process.env.REACT_APP_BASE_URL}/user/getUpdatedUserData/${userId}`
+      )
       .then((res) => {
         setUsername(res.data.userData.username);
       });
@@ -51,7 +53,7 @@ function Review({ reviewId }) {
         });
       } else {
         axios
-          .post("http://localhost:8000/review/upvote/" + reviewId, {
+          .post(`${process.env.REACT_APP_BASE_URL}/review/upvote/` + reviewId, {
             user: userData._id,
           })
           .then((res) => {

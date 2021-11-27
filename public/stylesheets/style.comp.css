@@ -203,6 +203,38 @@ a:link, a:visited, a:hover, a:active {
     opacity: 0;
     transform: scale(0.5); } }
 
+@-webkit-keyframes CoverAnim {
+  0% {
+    background-position: 0% 49%; }
+  50% {
+    background-position: 100% 52%; }
+  100% {
+    background-position: 0% 49%; } }
+
+@-moz-keyframes CoverAnim {
+  0% {
+    background-position: 0% 49%; }
+  50% {
+    background-position: 100% 52%; }
+  100% {
+    background-position: 0% 49%; } }
+
+@keyframes CoverAnim {
+  0% {
+    background-position: 0% 49%; }
+  50% {
+    background-position: 100% 52%; }
+  100% {
+    background-position: 0% 49%; } }
+
+@keyframes pulse {
+  0% {
+    opacity: 0.5; }
+  50% {
+    opacity: 1; }
+  100% {
+    opacity: 0.5; } }
+
 .landing {
   width: 100vw;
   min-height: 100vh;
@@ -1159,7 +1191,11 @@ a:link, a:visited, a:hover, a:active {
         .homePage-novels-sliderLoading .slider-item {
           height: 100%;
           width: 17rem;
-          background-color: grey; }
+          background: linear-gradient(220deg, #141414, #666666, #111111);
+          background-size: 600% 600%;
+          -webkit-animation: CoverAnim 2s ease infinite;
+          -moz-animation: CoverAnim 2s ease infinite;
+          animation: CoverAnim 2s ease infinite; }
     .homePage-novels .novelSection {
       width: max-content;
       z-index: 2;
@@ -1267,7 +1303,8 @@ a:link, a:visited, a:hover, a:active {
         scroll-snap-align: start;
         width: 17rem;
         overflow: hidden;
-        position: relative; }
+        position: relative;
+        background-color: #666666; }
         .homePage-novels .novelSection2 .novel-img {
           width: 100%;
           padding-top: 125%;
@@ -2165,7 +2202,6 @@ a:link, a:visited, a:hover, a:active {
               letter-spacing: 0.2rem;
               color: white;
               background-color: #2079c2;
-              gap: 6%;
               border-radius: 5px;
               text-align: center;
               padding: 1rem 0; }
@@ -2176,9 +2212,9 @@ a:link, a:visited, a:hover, a:active {
                   padding: 0.7rem 0; } }
               @media only screen and (max-width: 37.5em) {
                 .browsePage .novels-list .novel-info-buttons .btn {
-                  font-size: 1.2rem;
+                  font-size: 0.9rem;
                   letter-spacing: 0.2rem;
-                  padding: 0.3rem 0; } }
+                  padding: 0.4rem 0; } }
     .browsePage .novels-notFound {
       width: 100%;
       background-color: rgba(0, 0, 0, 0.5);
@@ -2278,6 +2314,7 @@ a:link, a:visited, a:hover, a:active {
           z-index: 2;
           width: 27rem;
           height: 100%;
+          background-color: #1f1f1f;
           background-size: cover;
           background-position: center;
           border-radius: 1rem;
@@ -2526,12 +2563,12 @@ a:link, a:visited, a:hover, a:active {
               letter-spacing: 0.2rem;
               border-radius: 5px; }
     .bookPage-container .contentSection {
+      min-height: calc(100vh - 50rem);
       width: 95rem;
       display: flex;
       flex-flow: column;
       gap: 4rem;
-      align-items: center;
-      transition: all 1s ease; }
+      align-items: center; }
       @media only screen and (max-width: 75em) {
         .bookPage-container .contentSection {
           width: 85%; } }
@@ -2559,6 +2596,10 @@ a:link, a:visited, a:hover, a:active {
           letter-spacing: 0.1rem;
           font-size: 1.6rem;
           color: #bebebe; }
+          .bookPage-container .contentSection .aboutSection-content-loading {
+            letter-spacing: 0.1rem;
+            font-size: 1.6rem;
+            color: #bebebe; }
       .bookPage-container .contentSection .chapterSection {
         width: 100%;
         height: max-content;
@@ -4444,6 +4485,15 @@ a:link, a:visited, a:hover, a:active {
       @media only screen and (max-width: 75em) {
         .topNav-right .notification {
           top: 5.5em; } }
+      @media only screen and (max-width: 37.5em) {
+        .topNav-right .notification {
+          position: fixed;
+          top: 6rem;
+          left: 0;
+          width: 100%;
+          transition: all 0s;
+          height: calc(100vh - 6rem);
+          justify-content: space-between; } }
       .topNav-right .notification-items {
         max-height: 30rem;
         margin: 1rem 1rem;
@@ -4454,6 +4504,9 @@ a:link, a:visited, a:hover, a:active {
         flex-flow: column;
         gap: 0.75rem;
         overflow-y: auto; }
+        @media only screen and (max-width: 37.5em) {
+          .topNav-right .notification-items {
+            max-height: calc(100vh - 8rem); } }
         .topNav-right .notification-items-item {
           display: flex;
           flex-flow: column;
@@ -4467,9 +4520,15 @@ a:link, a:visited, a:hover, a:active {
             font-size: 1rem;
             text-transform: uppercase;
             color: #a3a3a3; }
+            @media only screen and (max-width: 37.5em) {
+              .topNav-right .notification-items-item-head {
+                font-size: 1.2rem; } }
           .topNav-right .notification-items-item-body {
             font-size: 1.2rem;
             color: #dddddd; }
+            @media only screen and (max-width: 37.5em) {
+              .topNav-right .notification-items-item-body {
+                font-size: 1.6rem; } }
         .topNav-right .notification-items::-webkit-scrollbar {
           width: 0.5rem; }
         .topNav-right .notification-items::-webkit-scrollbar-track {
