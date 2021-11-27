@@ -63,9 +63,11 @@ const AppProvider = ({ children }) => {
       .post(`${process.env.REACT_APP_BASE_URL}/auth/signin`, data)
       .then((res) => {
         changeAlert(res.data.msg);
-        setUserData(res.data.userData);
-        setIsLoggedIn(true);
-        setLoginModalVisible(false);
+        if (res.data.msg.type === "success") {
+          setUserData(res.data.userData);
+          setIsLoggedIn(true);
+          setLoginModalVisible(false);
+        }
       });
   };
   const signup = (registerUsername, registerPassword) => {

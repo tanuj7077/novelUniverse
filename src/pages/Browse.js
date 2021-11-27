@@ -11,7 +11,6 @@ import {
   IoInformationCircleOutline,
   IoAddCircleOutline,
 } from "react-icons/io5";
-import { baseUrl } from "../Shared/constants";
 //1,2,3,6,7,9,11,12
 
 const Browse = () => {
@@ -97,11 +96,6 @@ const Browse = () => {
         }
       });
   };
-  const test = () => {
-    axios.get(baseUrl).then((res) => {
-      console.log(res);
-    });
-  };
   const goToNovel = (id) => {
     history.push(`book/${id}`);
   };
@@ -126,7 +120,6 @@ const Browse = () => {
   let order = ["new", "views", "ratings"];
 
   useEffect(() => {
-    test();
     getNovels();
   }, [currentStatus, currentOrder, currentPage]);
   return (
