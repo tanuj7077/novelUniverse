@@ -17,12 +17,21 @@ import Chapter from "./components/Chapter/Chapter";
 import Background from "./components/Background/Background";
 import AddContent from "./pages/AddContent";
 import Alert from "./components/Alert/Alert";
+import Loading from "./components/Loading/Loading";
 import { useGlobalContext } from "./context";
 
 axios.defaults.withCredentials = true;
 function App() {
-  const { setIsLoggedIn, setUserData, userData, isLoggedIn } =
+  const { setIsLoggedIn, setUserData, userData, isLoggedIn, setIsLoading } =
     useGlobalContext();
+  axios.interceptors.request.use((request) => {
+    setIsLoading(true);
+    return request;
+  });
+  axios.interceptors.response.use((response) => {
+    setIsLoading(false);
+    return response;
+  });
   const getLoggedIn = async () => {
     const loggedInRes = await axios.get(
       `${process.env.REACT_APP_BASE_URL}/auth/loggedIn`
@@ -43,12 +52,14 @@ function App() {
     <Switch>
       <Route path="/" exact>
         <Alert />
+        <Loading />
         <LoginModal />
         <Landing />
       </Route>
       <Route path="/chapter/:id" exact>
         <LoginModal />
         <Alert />
+        <Loading />
         <Chapter />
       </Route>
 
@@ -57,6 +68,7 @@ function App() {
         <TopNav />
         <LoginModal />
         <Alert />
+        <Loading />
         {/* <Background /> */}
         <Route path="/home">
           <Background />

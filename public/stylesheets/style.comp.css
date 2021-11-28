@@ -145,6 +145,17 @@ a:link, a:visited, a:hover, a:active {
   text-decoration: none;
   color: white; }
 
+.loading {
+  position: fixed;
+  bottom: 3rem;
+  right: 3rem;
+  background-color: black; }
+  .loading-invisible {
+    display: none; }
+  .loading-text {
+    font-size: 1.6rem;
+    color: white; }
+
 @keyframes landingIntroClip {
   100% {
     clip-path: polygon(0 0, 100% 0%, 100% 77%, 0% 100%); } }

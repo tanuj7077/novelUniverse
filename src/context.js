@@ -4,6 +4,7 @@ import axios from "axios";
 const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
+  const [isLoading, setIsLoading] = useState(false);
   const [loginModalVisible, setLoginModalVisible] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userData, setUserData] = useState();
@@ -235,6 +236,8 @@ const AppProvider = ({ children }) => {
         addChapterRead,
         calculateTimeDifference,
         calculateNotificationTime,
+        isLoading,
+        setIsLoading,
       }}
     >
       {children}
