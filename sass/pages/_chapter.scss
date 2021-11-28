@@ -7,7 +7,8 @@
     right: 0;
     background-color: rgb(59, 59, 59);
     color: white;
-    height: 5rem;
+    // height: 5rem;
+    height: 6rem;
     .left {
       position: absolute;
       top: 50%;
@@ -113,21 +114,18 @@
             font-size: $default-font-size;
           }
           &::-webkit-scrollbar {
-            width: 0.5rem;
+            width: 1.5rem;
           }
           &::-webkit-scrollbar-track {
-            // background: hsl(160, 79%, 15%);
-            background: transparent;
+            background: rgb(99, 99, 99);
           }
           &::-webkit-scrollbar-thumb {
-            //background: var(--color-primary-dark);
-            background: linear-gradient(
-              135deg,
-              rgb(104, 187, 255) 0%,
-              rgb(85, 255, 212) 49%,
-              rgb(133, 255, 109) 100%
-            );
+            border: 0.4rem solid rgb(99, 99, 99);
+            background: rgb(196, 196, 196);
             border-radius: 0.75rem;
+            &:hover {
+              background: white;
+            }
           }
         }
       }
@@ -192,13 +190,28 @@
   }
   &-body {
     width: 100%;
-    margin-top: 5rem;
-    height: calc(100vh - 5rem);
+    // margin-top: 5rem;
+    margin-top: 6rem;
+    height: calc(100vh - 6rem);
     overflow: hidden;
     overflow-y: auto;
     padding-top: 5rem;
     padding-bottom: 7rem;
     transition: all 0.3s ease;
+    &::-webkit-scrollbar {
+      width: 1.5rem;
+    }
+    &::-webkit-scrollbar-track {
+      background: rgb(99, 99, 99);
+    }
+    &::-webkit-scrollbar-thumb {
+      border: 0.4rem solid rgb(99, 99, 99);
+      background: rgb(196, 196, 196);
+      border-radius: 0.75rem;
+      &:hover {
+        background: white;
+      }
+    }
     @include respond(phone) {
       padding-top: 0;
     }

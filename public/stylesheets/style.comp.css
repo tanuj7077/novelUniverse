@@ -145,16 +145,22 @@ a:link, a:visited, a:hover, a:active {
   text-decoration: none;
   color: white; }
 
-.loading {
+.loadingAnim {
   position: fixed;
-  bottom: 3rem;
-  right: 3rem;
-  background-color: black; }
-  .loading-invisible {
-    display: none; }
-  .loading-text {
-    font-size: 1.6rem;
-    color: white; }
+  left: 0;
+  top: 6rem;
+  height: 0.2rem;
+  width: 100vw;
+  background-color: white;
+  z-index: 3000;
+  opacity: 1;
+  background: linear-gradient(-45deg, #ec7956, #e64080, #21a6d6, #25d3aa);
+  background-size: 200% 200%;
+  animation: gradient 2s ease infinite;
+  transition: opacity 0.3s ease; }
+  .loadingAnim-invisible {
+    opacity: 0;
+    transition: opacity 0.3s ease; }
 
 @keyframes landingIntroClip {
   100% {
@@ -245,6 +251,14 @@ a:link, a:visited, a:hover, a:active {
     opacity: 1; }
   100% {
     opacity: 0.5; } }
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%; }
+  50% {
+    background-position: 100% 50%; }
+  100% {
+    background-position: 0% 50%; } }
 
 .landing {
   width: 100vw;
@@ -3303,7 +3317,7 @@ a:link, a:visited, a:hover, a:active {
     right: 0;
     background-color: #3b3b3b;
     color: white;
-    height: 5rem; }
+    height: 6rem; }
     .chapterPage-top .left {
       position: absolute;
       top: 50%;
@@ -3398,12 +3412,15 @@ a:link, a:visited, a:hover, a:active {
           .chapterPage-top .middle .chapterSelectionPopup .chapterList .chapter {
             font-size: 1.6rem; }
           .chapterPage-top .middle .chapterSelectionPopup .chapterList::-webkit-scrollbar {
-            width: 0.5rem; }
+            width: 1.5rem; }
           .chapterPage-top .middle .chapterSelectionPopup .chapterList::-webkit-scrollbar-track {
-            background: transparent; }
+            background: #636363; }
           .chapterPage-top .middle .chapterSelectionPopup .chapterList::-webkit-scrollbar-thumb {
-            background: linear-gradient(135deg, #68bbff 0%, #55ffd4 49%, #85ff6d 100%);
+            border: 0.4rem solid #636363;
+            background: #c4c4c4;
             border-radius: 0.75rem; }
+            .chapterPage-top .middle .chapterSelectionPopup .chapterList::-webkit-scrollbar-thumb:hover {
+              background: white; }
       .chapterPage-top .middle .popupVisible {
         opacity: 1;
         transform: scale(1) translateX(-50%); }
@@ -3456,13 +3473,23 @@ a:link, a:visited, a:hover, a:active {
         transform: scale(1); }
   .chapterPage-body {
     width: 100%;
-    margin-top: 5rem;
-    height: calc(100vh - 5rem);
+    margin-top: 6rem;
+    height: calc(100vh - 6rem);
     overflow: hidden;
     overflow-y: auto;
     padding-top: 5rem;
     padding-bottom: 7rem;
     transition: all 0.3s ease; }
+    .chapterPage-body::-webkit-scrollbar {
+      width: 1.5rem; }
+    .chapterPage-body::-webkit-scrollbar-track {
+      background: #636363; }
+    .chapterPage-body::-webkit-scrollbar-thumb {
+      border: 0.4rem solid #636363;
+      background: #c4c4c4;
+      border-radius: 0.75rem; }
+      .chapterPage-body::-webkit-scrollbar-thumb:hover {
+        background: white; }
     @media only screen and (max-width: 37.5em) {
       .chapterPage-body {
         padding-top: 0; } }
@@ -4403,8 +4430,8 @@ a:link, a:visited, a:hover, a:active {
     align-items: center;
     gap: 0.5rem; }
     .topNav-logo-icon {
-      width: 4.5rem;
-      height: 4.5rem; }
+      width: 4rem;
+      height: 4rem; }
     .topNav-logo-text {
       font-size: 2.5rem; }
   .topNav-right {
