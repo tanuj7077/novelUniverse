@@ -82,20 +82,22 @@ const Chapter = () => {
     <div className="chapterPage">
       <div className="chapterPage-top">
         <section className="left">
-          <Route
-            render={({ history }) => (
-              <CgDarkMode
-                className="logo"
-                onClick={() => {
-                  history.push(`/home`);
-                }}
-              />
-            )}
-          />
-
           {chapterData && (
             <p className="info">
-              <span className="bookName">{chapterData.bookName}</span>
+              <Route
+                render={({ history }) => (
+                  <span
+                    className="bookName"
+                    onClick={() => {
+                      history.push(`/book/${chapterData.bookId}`);
+                    }}
+                  >{`>> ${
+                    chapterData.bookName.legth < 25
+                      ? chapterData.bookName
+                      : chapterData.bookName.substr(0, 25) + "..."
+                  }`}</span>
+                )}
+              />
             </p>
           )}
         </section>

@@ -55,12 +55,12 @@ function App() {
         <LoginModal />
         <Landing />
       </Route>
-      <Route path="/chapter/:id" exact>
+      {/* <Route path="/chapter/:id" exact>
         <LoginModal />
         <Alert />
         <Loading />
         <Chapter />
-      </Route>
+      </Route> */}
 
       <>
         {/* <SideNav /> */}
@@ -72,6 +72,9 @@ function App() {
         <Route path="/home">
           <Background />
           <Home />
+        </Route>
+        <Route path="/chapter/:id" exact>
+          <Chapter />
         </Route>
         <Route path="/browse">
           <Background />
