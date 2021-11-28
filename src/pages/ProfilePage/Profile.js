@@ -54,7 +54,6 @@ const RecommendedItems = ({ bookId }) => {
       .get(`${process.env.REACT_APP_BASE_URL}/book/${bookId}`)
       .then((res) => {
         setNovel(res.data.data.novel);
-        console.log(res.data.data.novel);
       });
   };
   useEffect(() => {
@@ -140,10 +139,6 @@ const Profile = () => {
         }
       )
       .then((res) => {
-        console.log(
-          "Toggle Current Progress",
-          res.data.userData.profileData.currentProgressVis
-        );
         setUserProfileData(res.data.userData);
       });
   };
@@ -156,8 +151,6 @@ const Profile = () => {
         }
       )
       .then((res) => {
-        console.log("Toggle Stats", res.data.userData.profileData.statsVis);
-
         setUserProfileData(res.data.userData);
       });
   };
@@ -170,11 +163,6 @@ const Profile = () => {
         }
       )
       .then((res) => {
-        console.log(
-          "Toggle FavGenre",
-          res.data.userData.profileData.favGenreVis
-        );
-
         setUserProfileData(res.data.userData);
       });
   };
@@ -187,11 +175,6 @@ const Profile = () => {
         }
       )
       .then((res) => {
-        console.log(
-          "Toggle Recommended",
-          res.data.userData.profileData.recommendedVis
-        );
-
         setUserProfileData(res.data.userData);
       });
   };
@@ -204,7 +187,6 @@ const Profile = () => {
         }
       )
       .then((res) => {
-        console.log("About Added", res.data);
         setUserProfileData(res.data.userData);
       });
   };
@@ -217,7 +199,6 @@ const Profile = () => {
         }
       )
       .then((res) => {
-        console.log("Username changed", res.data);
         if (res.data.message.type === "success") {
           setUserProfileData(res.data.userData);
         } else {
@@ -281,8 +262,6 @@ const Profile = () => {
       (await axios
         .get(`${process.env.REACT_APP_BASE_URL}/user/${username}`)
         .then((res) => {
-          console.log("fetched User Data");
-          console.log(res.data.userData);
           setUserProfileData(res.data.userData);
           fetchFollowing(res.data.userData._id);
           fetchCurrentProgress(res.data.userData._id);
@@ -299,7 +278,6 @@ const Profile = () => {
     await axios
       .get(`${process.env.REACT_APP_BASE_URL}/user/getFollowing/${userId}`)
       .then((res) => {
-        console.log(res.data.data);
         setFollowingUsers(res.data.data);
       });
   };
@@ -472,7 +450,6 @@ const Profile = () => {
     axios
       .get(`${process.env.REACT_APP_BASE_URL}/user/checkUser/${userInput}`)
       .then((res) => {
-        console.log(res.data);
         setUsernameExistance(res.data.usernameExistance);
       });
   };

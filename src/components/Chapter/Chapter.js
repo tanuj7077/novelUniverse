@@ -43,7 +43,6 @@ const Chapter = () => {
   const [chapterData, setChapterData] = useState();
   const getChapterDetails = () => {
     axios.get(`${process.env.REACT_APP_BASE_URL}/chapter/${id}`).then((res) => {
-      console.log(res.data.data.chapterData);
       setChapterData(res.data.data.chapterData);
       if (isLoggedIn && userData) {
         addChapterRead(
@@ -55,13 +54,11 @@ const Chapter = () => {
     });
   };
   const prevChapter = () => {
-    console.log("prev clicked");
     if (chapterData && chapterData.prevChapter) {
       history.push(`/chapter/${chapterData.prevChapter}`);
     }
   };
   const nextChapter = () => {
-    console.log("next clicked");
     if (chapterData && chapterData.nextChapter) {
       history.push(`/chapter/${chapterData.nextChapter}`);
     }

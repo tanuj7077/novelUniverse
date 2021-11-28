@@ -15,7 +15,6 @@ function Notification() {
     useEffect(() => {
       function handleClickOutside(event) {
         if (ref.current && !ref.current.contains(event.target)) {
-          console.log(event.target.id === "notificationIcon");
           event.target.innerHTML.toLowerCase() !== "notification" &&
             event.target.id !== "notificationIcon" &&
             setNotificationVisibility(false);

@@ -3,7 +3,6 @@ import { useGlobalContext } from "../../../context";
 import axios from "axios";
 
 function Reply({ commentId }) {
-  console.log(commentId);
   const { userData, isLoggedIn } = useGlobalContext();
   const [editedComment, setEditedComment] = useState();
   const [comment, setComment] = useState();
@@ -26,7 +25,6 @@ function Reply({ commentId }) {
         `${process.env.REACT_APP_BASE_URL}/user/getUpdatedUserData/${userId}`
       )
       .then((res) => {
-        console.log(res.data.userData.username);
         setUsername(res.data.userData.username);
       });
   };

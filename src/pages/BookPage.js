@@ -25,7 +25,6 @@ const BookPage = () => {
   const fetchBookData = (id) => {
     axios.get(`${process.env.REACT_APP_BASE_URL}/book/${id}`).then((res) => {
       setNovelData(res.data.data.novel);
-      console.log(res.data.data.novel);
       calculateAverageRating(res.data.data.novel);
     });
   };

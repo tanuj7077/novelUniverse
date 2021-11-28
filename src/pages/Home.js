@@ -48,7 +48,6 @@ const Home = () => {
         `${process.env.REACT_APP_BASE_URL}/book/getNovelByDate/${optionType}/${currentPage}/${PAGE_LIMIT}`
       )
       .then((res) => {
-        console.log(res.data.data);
         setTotalPages(res.data.data.total);
         if (optionType === "today") {
           let list = [];

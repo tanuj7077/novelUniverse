@@ -20,7 +20,6 @@ const LoginModal = () => {
         `${process.env.REACT_APP_BASE_URL}/user/checkUser/${registerUsername}`
       )
       .then((res) => {
-        console.log(res.data);
         setUsernameExistance(res.data.usernameExistance);
       });
   };

@@ -9,7 +9,6 @@ const BrowsePageThumb = ({ novelId }) => {
   const [time, setTime] = useState("");
   const [novel, setNovel] = useState();
   const getNovelData = async () => {
-    console.log("getNovelData called");
     await axios
       .get(`${process.env.REACT_APP_BASE_URL}/book/${novelId}`)
       .then((res) => {

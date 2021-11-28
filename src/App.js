@@ -37,7 +37,6 @@ function App() {
       `${process.env.REACT_APP_BASE_URL}/auth/loggedIn`
     );
     if (loggedInRes.data.loggedIn) {
-      console.log(loggedInRes.data);
       setIsLoggedIn(true);
       setUserData(loggedInRes.data.userData);
     }

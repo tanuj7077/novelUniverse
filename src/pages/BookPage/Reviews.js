@@ -103,13 +103,11 @@ function Reviews({ book }) {
     axios
       .get(`${process.env.REACT_APP_BASE_URL}/review/getReviews/` + book._id)
       .then((res) => {
-        console.log(res.data.data);
         setReviews(res.data.data);
       });
   };
 
   const getUserReview = (rev) => {
-    console.log("getUser Reviews");
     axios
       .get(`${process.env.REACT_APP_BASE_URL}/review/getReview/` + rev)
       .then((res) => {
@@ -121,7 +119,6 @@ function Reviews({ book }) {
   };
 
   const checkReviewGiven = () => {
-    console.log("check review given");
     if (!userData || !userData.books) {
       setGivenReview(null);
       setGivenReviewTitle("");
@@ -143,7 +140,6 @@ function Reviews({ book }) {
   };
 
   const calculateRatingPercentages = () => {
-    console.log("calculated");
     let total = 0;
     let ratings = [];
     if (book) {

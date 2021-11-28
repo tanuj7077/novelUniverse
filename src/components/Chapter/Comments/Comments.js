@@ -22,9 +22,6 @@ function Comments({ chapterInfo }) {
       axios
         .post(`${process.env.REACT_APP_BASE_URL}/comment/addComment`, data)
         .then((res) => {
-          console.log(res.data);
-          //getComments();
-          //console.log()
           setComments([...comments, res.data.comment]);
           changeAlert(res.data.msg);
         });
@@ -38,7 +35,6 @@ function Comments({ chapterInfo }) {
           chapterInfo.id
       )
       .then((res) => {
-        console.log(res.data);
         setComments(res.data.data);
       });
   };

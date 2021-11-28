@@ -92,7 +92,6 @@ function AddContent() {
     setCategories(newList);
   };
   const submitBook = async () => {
-    console.log("Submit pressed");
     let currentImageName = "image-" + Date.now();
     let uploadImage = storage
       .ref(`bookPhotos/${currentImageName}`)
@@ -124,7 +123,6 @@ function AddContent() {
               .post(`${process.env.REACT_APP_BASE_URL}/book/addBook`, Book)
               .then((res) => {
                 console.log("sent to server");
-                console.log(res);
               });
           })
           .catch((err) => {
@@ -145,7 +143,6 @@ function AddContent() {
       .then((res) => {
         setSearchResult([]);
         setSelectedBook(null);
-        console.log(res);
       })
       .catch((err) => {
         console.log(err);
@@ -160,7 +157,6 @@ function AddContent() {
       .post(`${process.env.REACT_APP_BASE_URL}/book/setStatus`, Book)
       .then((res) => {
         console.log("Status updated");
-        console.log(res);
       });
   };
   return (

@@ -57,7 +57,6 @@ function Review({ reviewId }) {
             user: userData._id,
           })
           .then((res) => {
-            console.log(res.data);
             changeAlert(res.data.message);
             getReview();
           });
