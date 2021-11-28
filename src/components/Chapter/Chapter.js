@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { AiOutlineFontSize } from "react-icons/ai";
 import { IoMdColorPalette } from "react-icons/io";
-import { CgDarkMode } from "react-icons/cg";
 import { useParams, Route, useHistory } from "react-router-dom";
 import axios from "axios";
 import { useGlobalContext } from "../../context";
@@ -10,6 +9,7 @@ import Comments from "./Comments/Comments";
 
 const Chapter = () => {
   const { userData, isLoggedIn, addChapterRead } = useGlobalContext();
+  const chapterRef = useRef();
   const { id } = useParams();
   const [chapterInput, setChapterInput] = useState("1");
   const [chapterSelectionPopupVis, setChapterSelectionPopupVis] =
@@ -17,8 +17,6 @@ const Chapter = () => {
   const [fontPopupVis, setFontPopupVis] = useState(false);
   const [fontSizeVal, setFontSizeVal] = useState(2);
   const [fontSize, setFontSize] = useState("largeFont");
-  const [letterSpacing, setLetterSpacing] = useState("smallSpace");
-  const [myComment, setMyComment] = useState("");
   const [darkMode, setDarkMode] = useState(0);
   const history = useHistory();
 
@@ -44,6 +42,7 @@ const Chapter = () => {
   const getChapterDetails = () => {
     axios.get(`${process.env.REACT_APP_BASE_URL}/chapter/${id}`).then((res) => {
       setChapterData(res.data.data.chapterData);
+      scrollToTop();
       if (isLoggedIn && userData) {
         addChapterRead(
           res.data.data.chapterData.bookId,
@@ -74,6 +73,9 @@ const Chapter = () => {
     }
     history.push(`/chapter/${chapterId}`);
   };
+  const scrollToTop = () => {
+    chapterRef.current.scrollTop = 0;
+  };
   useEffect(() => {
     getChapterDetails();
   }, [id]);
@@ -92,7 +94,7 @@ const Chapter = () => {
                       history.push(`/book/${chapterData.bookId}`);
                     }}
                   >{`>> ${
-                    chapterData.bookName.legth < 25
+                    chapterData.bookName.length < 25
                       ? chapterData.bookName
                       : chapterData.bookName.substr(0, 25) + "..."
                   }`}</span>
@@ -132,7 +134,10 @@ const Chapter = () => {
               />
               <button
                 className="gotoBtn"
-                onClick={() => selectChapter(parseInt(chapterInput))}
+                onClick={() => {
+                  selectChapter(parseInt(chapterInput));
+                  setChapterSelectionPopupVis(false);
+                }}
               >
                 Load
               </button>
@@ -143,7 +148,10 @@ const Chapter = () => {
                   return (
                     <li
                       className="chapter"
-                      onClick={() => selectChapter(chapter.number)}
+                      onClick={() => {
+                        selectChapter(chapter.number);
+                        setChapterSelectionPopupVis(false);
+                      }}
                     >
                       #{chapter.number} {chapter.name}
                     </li>
@@ -178,22 +186,19 @@ const Chapter = () => {
                 onChange={(e) => setFontSizeVal(e.target.value)}
               ></input>
             </div>
-            {/* <div className="letterSpacing">
-              <p className="letterSpacingText">Letter Spacing: </p>
-              <input type="range" min="0" max="3" step="1"></input>
-            </div> */}
           </div>
         </section>
       </div>
-      <div className={`chapterPage-body ${darkMode ? "darkChapterBody" : ""}`}>
+      <div
+        className={`chapterPage-body ${darkMode ? "darkChapterBody" : ""}`}
+        ref={chapterRef}
+      >
         {chapterData && (
           <p className="chapterPage-title">{chapterData.chapterName}</p>
         )}
         <div className={`chapterPage-chapter`}>
           {chapterData && (
-            <div className={`${fontSize} ${letterSpacing}`}>
-              {chapterData.chapterContent}
-            </div>
+            <div className={`${fontSize}`}>{chapterData.chapterContent}</div>
           )}
         </div>
         {chapterData && <Comments chapterInfo={chapterData} />}
