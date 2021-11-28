@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import carousel2 from "../../assets/carousel2.jpg";
-import carousel3 from "../../assets/carousel3.png";
+import carousel3 from "../../assets/carousel3.jpg";
 import { useGlobalContext } from "../../context";
 function Carousel() {
   const { isLoggedIn, toggleLoginModalVisibility } = useGlobalContext();

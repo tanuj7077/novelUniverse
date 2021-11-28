@@ -1,8 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
-import { browseNovels } from "../../mockData";
-import { FaStar } from "react-icons/fa";
-import { Route } from "react-router-dom";
-import useOnScreen from "../../components/Utilities/useOnScreen";
+import React, { useState, useEffect } from "react";
 import bg1 from "../../assets/abstract/1.jpg";
 import CollectionPageNovel from "../../components/NovelThumb/CollectionPageNovel";
 import { useGlobalContext } from "../../context";

@@ -4,7 +4,6 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { Route, useHistory } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
 import { IoCloseOutline } from "react-icons/io5";
-import bg1 from "../assets/abstract/1.jpg";
 import DataThumb from "../components/NovelThumb/DataThumb";
 import axios from "axios";
 import {

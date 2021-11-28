@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import TopNav from "../components/Navigation/TopNav";
+import React, { useEffect } from "react";
 import { Route } from "react-router-dom";
 import logo from "../assets/logo/Asset4.png";
 import img1 from "../assets/slideshow/1.jpg";
@@ -8,7 +7,6 @@ import img3 from "../assets/slideshow/3.jpg";
 import img4 from "../assets/slideshow/4.jpg";
 import img5 from "../assets/slideshow/5.jpg";
 import img6 from "../assets/slideshow/6.jpg";
-import blankUser from "../assets/blankProfile.png";
 import { categoryList } from "../mockData";
 import { BsFillPlayFill, BsCollectionFill, BsPeopleFill } from "react-icons/bs";
 import { FaStar } from "react-icons/fa";
