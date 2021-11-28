@@ -27,7 +27,7 @@ function Notification() {
     }, [ref]);
   }
   const wrapperRef = useRef(null);
-  useOutsideAlerter(wrapperRef);
+  //useOutsideAlerter(wrapperRef);
 
   const clearNotifications = async () => {
     let data = {

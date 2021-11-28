@@ -178,6 +178,9 @@
         flex-flow: column;
         gap: 0.75rem;
         overflow-y: auto;
+        &:hover {
+          cursor: pointer;
+        }
         @include respond(phone) {
           max-height: calc(100vh - 8rem);
         }
