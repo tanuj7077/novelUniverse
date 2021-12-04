@@ -255,7 +255,37 @@
       }
     }
     &-btn {
-      width: 20rem;
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      gap: 0.7rem;
+      .btn {
+        width: 20rem;
+        padding: 0.7rem;
+        outline: none;
+        border: none;
+        border-radius: 0.5rem;
+        color: white;
+        text-transform: uppercase;
+        background-color: rgb(3, 103, 234);
+        &:hover {
+          cursor: pointer;
+        }
+        &-disabled {
+          background-color: rgb(153, 153, 153);
+          &:hover {
+            cursor: unset;
+          }
+        }
+      }
+      .additional {
+        font-size: $default-font-size;
+        color: rgb(3, 103, 234);
+        &:hover {
+          cursor: pointer;
+        }
+      }
+      /*width: 20rem;
       padding: 0.7rem;
       outline: none;
       border: none;
@@ -271,7 +301,7 @@
         &:hover {
           cursor: unset;
         }
-      }
+      }*/
     }
   }
   &-loginModal-login {

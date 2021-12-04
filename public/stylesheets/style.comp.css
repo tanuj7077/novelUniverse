@@ -3312,12 +3312,12 @@ a:link, a:visited, a:hover, a:active {
   width: 100%; }
   .chapterPage-top {
     position: fixed;
-    top: 0;
+    bottom: 0;
     left: 0;
     right: 0;
     background-color: #3b3b3b;
     color: white;
-    height: 6rem; }
+    height: 5rem; }
     .chapterPage-top .left {
       position: absolute;
       top: 50%;
@@ -3332,22 +3332,13 @@ a:link, a:visited, a:hover, a:active {
       @media only screen and (max-width: 37.5em) {
         .chapterPage-top .left {
           left: 5%; } }
-      .chapterPage-top .left .logo {
-        width: 4rem;
-        height: 4rem; }
-        @media only screen and (max-width: 37.5em) {
-          .chapterPage-top .left .logo {
-            height: 3rem;
-            width: 3rem; } }
-        .chapterPage-top .left .logo:hover {
-          cursor: pointer; }
       .chapterPage-top .left .info {
         font-size: 2rem;
         letter-spacing: 0.2rem;
         display: flex;
         align-items: center;
         gap: 1rem; }
-        @media only screen and (max-width: 37.5em) {
+        @media only screen and (max-width: 56.25em) {
           .chapterPage-top .left .info {
             display: none; } }
         .chapterPage-top .left .info .bookName:hover {
@@ -3363,9 +3354,9 @@ a:link, a:visited, a:hover, a:active {
       gap: 2rem; }
       .chapterPage-top .middle .chapterSelectionPopup {
         position: absolute;
-        top: 5rem;
+        bottom: 5rem;
         left: 50%;
-        transform-origin: 0% 0%;
+        transform-origin: 0% 100%;
         transform: scale(0) translateX(-50%);
         background-color: #3b3b3b;
         width: 25rem;
@@ -3414,7 +3405,7 @@ a:link, a:visited, a:hover, a:active {
           .chapterPage-top .middle .chapterSelectionPopup .chapterList::-webkit-scrollbar {
             width: 1.5rem; }
           .chapterPage-top .middle .chapterSelectionPopup .chapterList::-webkit-scrollbar-track {
-            background: #636363; }
+            background: transparent; }
           .chapterPage-top .middle .chapterSelectionPopup .chapterList::-webkit-scrollbar-thumb {
             border: 0.4rem solid #636363;
             background: #c4c4c4;
@@ -3447,7 +3438,7 @@ a:link, a:visited, a:hover, a:active {
             height: 2rem; } }
       .chapterPage-top .right .fontPopup {
         position: absolute;
-        top: 5rem;
+        bottom: 5rem;
         right: 0;
         padding: 2rem;
         border-radius: 1rem;
@@ -3459,6 +3450,7 @@ a:link, a:visited, a:hover, a:active {
         gap: 1rem;
         font-size: 1.6rem;
         opacity: 0;
+        transform-origin: 50% 100%;
         transform: scale(0);
         transition: all 0.3s ease; }
         .chapterPage-top .right .fontPopup .fontSize,
@@ -3474,7 +3466,8 @@ a:link, a:visited, a:hover, a:active {
   .chapterPage-body {
     width: 100%;
     margin-top: 6rem;
-    height: calc(100vh - 6rem);
+    margin-bottom: 5rem;
+    height: calc(100vh - 11rem);
     overflow: hidden;
     overflow-y: auto;
     padding-top: 5rem;
@@ -4542,6 +4535,8 @@ a:link, a:visited, a:hover, a:active {
         flex-flow: column;
         gap: 0.75rem;
         overflow-y: auto; }
+        .topNav-right .notification-items:hover {
+          cursor: pointer; }
         @media only screen and (max-width: 37.5em) {
           .topNav-right .notification-items {
             max-height: calc(100vh - 8rem); } }

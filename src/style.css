@@ -4865,20 +4865,47 @@ a:link, a:visited, a:hover, a:active {
         top: 3.2rem;
         color: green; }
     .loginModalContainer .loginFormGrp-btn {
-      width: 20rem;
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      gap: 0.7rem;
+      /*width: 20rem;
       padding: 0.7rem;
       outline: none;
       border: none;
       border-radius: 0.5rem;
       color: white;
       text-transform: uppercase;
-      background-color: #0367ea; }
-      .loginModalContainer .loginFormGrp-btn:hover {
-        cursor: pointer; }
-      .loginModalContainer .loginFormGrp-btn-disabled {
-        background-color: #999999; }
-        .loginModalContainer .loginFormGrp-btn-disabled:hover {
-          cursor: unset; }
+      background-color: rgb(3, 103, 234);
+      &:hover {
+        cursor: pointer;
+      }
+      &-disabled {
+        background-color: rgb(153, 153, 153);
+        &:hover {
+          cursor: unset;
+        }
+      }*/ }
+      .loginModalContainer .loginFormGrp-btn .btn {
+        width: 20rem;
+        padding: 0.7rem;
+        outline: none;
+        border: none;
+        border-radius: 0.5rem;
+        color: white;
+        text-transform: uppercase;
+        background-color: #0367ea; }
+        .loginModalContainer .loginFormGrp-btn .btn:hover {
+          cursor: pointer; }
+        .loginModalContainer .loginFormGrp-btn .btn-disabled {
+          background-color: #999999; }
+          .loginModalContainer .loginFormGrp-btn .btn-disabled:hover {
+            cursor: unset; }
+      .loginModalContainer .loginFormGrp-btn .additional {
+        font-size: 1.6rem;
+        color: #0367ea; }
+        .loginModalContainer .loginFormGrp-btn .additional:hover {
+          cursor: pointer; }
   .loginModalContainer-loginModal-login .loginModalContainer-loginModal-optionBg {
     left: calc(100% - 1rem); }
   .loginModalContainer-loginModal-signup .loginModalContainer-loginModal-optionBg {

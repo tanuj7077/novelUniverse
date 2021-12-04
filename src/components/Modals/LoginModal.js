@@ -27,6 +27,11 @@ const LoginModal = () => {
   const toggleLoginMode = () => {
     setLoginMode(!loginMode);
   };
+  const demoLogin = () => {
+    //setLoginUsername("demoUser");
+    //setLoginPassword("demoPassword");
+    login("demoUser", "demoPassword");
+  };
 
   useEffect(() => {
     checkUsernameExistance();
@@ -107,12 +112,26 @@ const LoginModal = () => {
                     </label>
                   </div>
                 </div>
-                <button
+                <div className="loginFormGrp-btn">
+                  <button
+                    className="btn"
+                    onClick={() => login(loginUsername, loginPassword)}
+                  >
+                    Login
+                  </button>
+                  <p className="additional" onClick={demoLogin}>
+                    Login with demo account
+                  </p>
+                </div>
+                {/* <button
                   className="loginFormGrp-btn"
                   onClick={() => login(loginUsername, loginPassword)}
                 >
                   Login
                 </button>
+                <p className="loginFormGrp-additional">
+                  Login with demo account
+                </p> */}
               </div>
             </section>
 
@@ -176,21 +195,21 @@ const LoginModal = () => {
                   registerPassword.length <= 2 ||
                   registerUsername.length === 0
                 ) && (
-                  <button
-                    className={`loginFormGrp-btn`}
-                    onClick={() => signup(registerUsername, registerPassword)}
-                  >
-                    Register
-                  </button>
+                  <div className="loginFormGrp-btn">
+                    <button
+                      className={`btn`}
+                      onClick={() => signup(registerUsername, registerPassword)}
+                    >
+                      Register
+                    </button>
+                  </div>
                 )}
                 {(usernameExistance ||
                   registerPassword.length <= 2 ||
                   registerUsername.length === 0) && (
-                  <button
-                    className={`loginFormGrp-btn loginFormGrp-btn-disabled `}
-                  >
-                    Register
-                  </button>
+                  <div className="loginFormGrp-btn">
+                    <button className={`btn btn-disabled `}>Register</button>
+                  </div>
                 )}
               </div>
             </section>
