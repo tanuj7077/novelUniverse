@@ -289,7 +289,7 @@ a:link, a:visited, a:hover, a:active {
         height: 6rem; }
     .landing-topNav-button {
       text-transform: uppercase;
-      letter-spacing: 0.3rem;
+      letter-spacing: 0.2rem;
       font-size: 2rem;
       color: white;
       position: relative; }
@@ -316,16 +316,9 @@ a:link, a:visited, a:hover, a:active {
     width: 100%;
     height: 100vh;
     position: relative; }
-    @media only screen and (max-width: 43.75em) {
-      .landing-item {
-        height: 80vh; } }
     .landing-item-intro {
-      min-height: 70rem;
       position: relative;
       background-color: transparent; }
-      @media only screen and (max-width: 43.75em) {
-        .landing-item-intro {
-          height: 85vh; } }
       .landing-item-intro .bg {
         position: absolute;
         top: 0;
@@ -372,7 +365,7 @@ a:link, a:visited, a:hover, a:active {
             width: 90%; } }
         .landing-item-intro .textContent-large {
           font-family: "Source Code Pro", sans-serif, courier, arial, helvetica;
-          font-size: 4.5rem;
+          font-size: 5rem;
           font-weight: 900;
           color: white; }
           @media only screen and (max-width: 43.75em) {
@@ -848,9 +841,10 @@ a:link, a:visited, a:hover, a:active {
             padding: 20rem 5%;
             padding-bottom: 10rem; } }
         .landing-item-features .features-feature {
-          width: 40%;
+          width: 40rem;
+          height: 35rem;
           background-color: white;
-          border-radius: 2rem;
+          border-radius: 1rem;
           padding: 3rem;
           padding-top: 4.5rem;
           display: flex;
@@ -892,6 +886,9 @@ a:link, a:visited, a:hover, a:active {
             font-size: 2rem;
             font-weight: bold; }
           .landing-item-features .features-feature .desc {
+            height: 100%;
+            display: grid;
+            place-items: center;
             font-size: 1.6rem;
             letter-spacing: 0.1rem;
             word-spacing: 0.2rem;
@@ -4865,20 +4862,47 @@ a:link, a:visited, a:hover, a:active {
         top: 3.2rem;
         color: green; }
     .loginModalContainer .loginFormGrp-btn {
-      width: 20rem;
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      gap: 0.7rem;
+      /*width: 20rem;
       padding: 0.7rem;
       outline: none;
       border: none;
       border-radius: 0.5rem;
       color: white;
       text-transform: uppercase;
-      background-color: #0367ea; }
-      .loginModalContainer .loginFormGrp-btn:hover {
-        cursor: pointer; }
-      .loginModalContainer .loginFormGrp-btn-disabled {
-        background-color: #999999; }
-        .loginModalContainer .loginFormGrp-btn-disabled:hover {
-          cursor: unset; }
+      background-color: rgb(3, 103, 234);
+      &:hover {
+        cursor: pointer;
+      }
+      &-disabled {
+        background-color: rgb(153, 153, 153);
+        &:hover {
+          cursor: unset;
+        }
+      }*/ }
+      .loginModalContainer .loginFormGrp-btn .btn {
+        width: 20rem;
+        padding: 0.7rem;
+        outline: none;
+        border: none;
+        border-radius: 0.5rem;
+        color: white;
+        text-transform: uppercase;
+        background-color: #0367ea; }
+        .loginModalContainer .loginFormGrp-btn .btn:hover {
+          cursor: pointer; }
+        .loginModalContainer .loginFormGrp-btn .btn-disabled {
+          background-color: #999999; }
+          .loginModalContainer .loginFormGrp-btn .btn-disabled:hover {
+            cursor: unset; }
+      .loginModalContainer .loginFormGrp-btn .additional {
+        font-size: 1.6rem;
+        color: #0367ea; }
+        .loginModalContainer .loginFormGrp-btn .additional:hover {
+          cursor: pointer; }
   .loginModalContainer-loginModal-login .loginModalContainer-loginModal-optionBg {
     left: calc(100% - 1rem); }
   .loginModalContainer-loginModal-signup .loginModalContainer-loginModal-optionBg {

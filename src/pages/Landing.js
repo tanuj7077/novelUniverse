@@ -74,7 +74,7 @@ const Landing = () => {
         <div className="textContent">
           <p className="textContent-large">Your Daily dose of Novels</p>
           <p className="textContent-small">
-            Novel Updates is a platform where you can read the translated
+            Novel Universe is a platform where you can read the translated
             versions of world famous Japanese, Chinese and Korean light novels
             in English.
           </p>
@@ -169,7 +169,7 @@ const Landing = () => {
               ></div>
             </div>
             <div className="mediaContent-slideshow-genres">
-              {categoryList.slice(0, 21).map((item) => {
+              {categoryList.slice(0, 19).map((item) => {
                 return <div className="genre">{item}</div>;
               })}
             </div>

@@ -30,8 +30,8 @@
     }
     &-button {
       text-transform: uppercase;
-      letter-spacing: 0.3rem;
-      font-size: $small-font-size;
+      letter-spacing: 0.2rem;
+      font-size: 2rem;
       color: white;
       position: relative;
       @include respond(phone) {
@@ -63,21 +63,21 @@
     height: 100vh;
     position: relative;
     @include respond(phablet) {
-      height: 80vh;
+      //height: 80vh;
     }
     &-intro {
       @include respond(phablet) {
-        height: 85vh;
+        //height: 85vh;
       }
-      min-height: 70rem;
+      //min-height: 70rem;
       .bg {
         position: absolute;
         top: 0;
         left: 0;
-        height: 100%;
+        height: 110%;
         width: 100%;
-        background-color: rgb(68, 68, 68);
-        clip-path: polygon(0 0, 100% 0, 100% 63%, 0% 100%);
+        background-color: hsl(0, 0%, 12%);
+        clip-path: polygon(0 0, 100% 0, 100% 91%, 0% 100%);
         opacity: 0.9;
         z-index: -1;
       }
@@ -88,18 +88,18 @@
         //height: calc(100vh + 25%);
         height: 100%;
         width: 100%;
-        background-color: rgb(102, 102, 102);
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 75%);
+        background-color: hsl(0, 0%, 32%);
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 85%);
         z-index: -2;
       }
       .bg3 {
         position: absolute;
         top: 0;
         left: 0;
-        height: 120%;
+        height: 129%;
         width: 100%;
-        background-color: rgb(146, 146, 146);
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 83.33%);
+        background-color: hsl(0, 0%, 80%);
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 85%);
         z-index: -3;
       }
       position: relative;
@@ -108,7 +108,7 @@
       .textContent {
         position: absolute;
         width: 35%;
-        top: 50%;
+        top: 55%;
         left: 10%;
         transform: translateY(-50%);
         @include respond(phablet) {
@@ -124,9 +124,9 @@
         }
         &-large {
           font-family: "Source Code Pro", sans-serif, courier, arial, helvetica;
-          font-size: 4.5rem;
+          font-size: 4rem;
           font-weight: 900;
-          color: white;
+          color: hsl(0, 71%, 64%);
           @include respond(phablet) {
             text-align: center;
           }
@@ -135,21 +135,30 @@
           }
         }
         &-small {
+          font-family: "Source Code Pro", sans-serif, courier, arial, helvetica;
+          letter-spacing: 0.1rem;
           margin-top: 2.5rem;
-          font-size: $small-font-size;
+          font-size: 1.6rem;
+          line-height: 2.1rem;
+          font-weight: 400;
           color: rgb(223, 223, 223);
-          //color: #6eb3af;
+
+          @include respond(phablet) {
+            text-align: center;
+          }
         }
         &-cta {
           border: none;
           outline: none;
-          margin-top: 2.5rem;
-          font-size: $small-font-size;
+          margin-top: 3rem;
+          font-size: $default-font-size;
           text-transform: uppercase;
-          letter-spacing: 0.2rem;
-          padding: 1.5rem 3rem;
-          color: white;
-          background-color: #21a099;
+          letter-spacing: 0.3rem;
+          padding: 1.5rem 5rem;
+          //color: #85ddd9;
+          color: hsl(0, 76%, 73%);
+          //background-color: #21a099;
+          background-color: hsl(0, 0, 30%);
           border-radius: 0.5rem;
           transition: all 0.15s ease;
           @include respond(phone) {
@@ -165,7 +174,7 @@
       }
       .mediaContent {
         position: absolute;
-        top: 50%;
+        top: 55%;
         right: 7%;
         width: 72rem;
         height: max-content;
@@ -201,7 +210,7 @@
           transform: rotateY(-45deg);
           &-slideTrack {
             display: flex;
-            height: 25rem;
+            height: 24rem;
             width: calc(24rem * 12);
             animation: scroll 30s linear infinite;
             justify-content: space-around;
@@ -214,6 +223,7 @@
             }
           }
           &-genres {
+            transform-style: preserve-3d;
             padding: 1rem;
             padding-bottom: 1.5rem;
             margin-top: 1.5rem;
@@ -233,11 +243,14 @@
             .genre {
               color: white;
               //background-color: rgb(116, 116, 116);
-              background-color: #129b72;
+              //background-color: #129b72;
+              font-family: "Source Code Pro", sans-serif, courier, arial,
+                helvetica;
+              background-color: hsl(0, 0%, 30%);
               font-size: $smaller-font-size;
-              font-weight: bold;
-              letter-spacing: 0.2rem;
-              text-transform: uppercase;
+              font-weight: 300;
+              letter-spacing: 0.3rem;
+              text-transform: capitalize;
               padding: 0.7rem 1.3rem;
               border-radius: 0.6rem;
               box-shadow: 0.5rem 0.5rem 1rem 0.25em rgba(0, 0, 0, 0.2);
@@ -252,8 +265,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 20rem 10%;
-      padding-bottom: 15rem;
+      padding: 24rem 10% 15rem 10%;
       @include respond(phablet) {
         flex-flow: column;
         justify-content: unset;
@@ -294,14 +306,19 @@
           //font-size: 5rem;
           font-size: $medium-font-size;
           font-weight: bold;
-          color: #129b72;
+          color: hsl(0, 71%, 64%);
           margin-bottom: 2rem;
         }
         &-small {
-          font-size: $default-font-size;
+          font-family: "Source Code Pro", sans-serif, courier, arial, helvetica;
           letter-spacing: 0.1rem;
-          word-spacing: 0.2rem;
-          color: #8a8a8a;
+          font-size: 1.6rem;
+          line-height: 2.1rem;
+          font-weight: 400;
+          // font-size: $default-font-size;
+          // letter-spacing: 0.1rem;
+          // word-spacing: 0.2rem;
+          color: #636363;
           @include respond(phablet) {
             text-align: center;
           }
@@ -310,7 +327,7 @@
           margin-top: 1rem;
           font-size: $default-font-size;
           letter-spacing: 0.1rem;
-          color: #129b72;
+          color: hsl(0, 71%, 69%);
           &:hover {
             cursor: pointer;
           }
@@ -709,9 +726,10 @@
           padding-bottom: 10rem;
         }
         &-feature {
-          width: 40%;
-          background-color: white;
-          border-radius: 2rem;
+          width: 40rem;
+          height: 35rem;
+          background-color: rgb(39, 39, 39);
+          border-radius: 1rem;
           padding: 3rem;
           padding-top: 4.5rem;
           display: flex;
@@ -734,6 +752,7 @@
             width: 6.6rem;
             height: 6.6rem;
             border-radius: 0.9rem 1.8rem;
+            background-color: hsl(0, 71%, 64%);
             //position: relative;
             &-circle {
               position: absolute;
@@ -749,41 +768,48 @@
               &-icon {
                 width: 2.5rem;
                 height: 2.5rem;
+                color: hsl(0, 71%, 64%);
               }
             }
           }
           .heading {
+            margin-top: 1.5rem;
+            text-transform: uppercase;
             letter-spacing: 0.2rem;
-            font-size: $small-font-size;
-            font-weight: bold;
+            font-size: $default-font-size;
+            color: hsl(0, 71%, 84%);
+            //font-weight: 300;
           }
           .desc {
+            height: 100%;
+            display: grid;
+            place-items: center;
             font-size: $default-font-size;
             letter-spacing: 0.1rem;
             word-spacing: 0.2rem;
-            color: #8a8a8a;
+            color: #a3a3a3;
           }
         }
-        &-filters {
+        /*&-filters {
           .iconContainer {
-            background-color: hsl(0, 92%, 63%);
+            background-color: hsl(202, 79%, 34%);
             &-circle-icon {
-              color: hsl(0, 92%, 63%);
+              color: hsl(202, 79%, 34%);
             }
           }
           .heading {
-            color: hsl(0, 92%, 63%);
+            color: hsl(202, 76%, 50%);
           }
         }
         &-collection {
           .iconContainer {
-            background-color: hsl(162, 79%, 34%);
+            background-color: hsl(202, 79%, 34%);
             &-circle-icon {
-              color: hsl(162, 79%, 34%);
+              color: hsl(202, 79%, 34%);
             }
           }
           .heading {
-            color: hsl(162, 79%, 34%);
+            color: hsl(202, 76%, 50%);
           }
         }
         &-notification {
@@ -794,31 +820,31 @@
             }
           }
           .heading {
-            color: hsl(202, 79%, 34%);
+            color: hsl(202, 76%, 50%);
           }
         }
         &-follow {
           .iconContainer {
-            background-color: hsl(283, 66%, 29%);
+            background-color: hsl(202, 79%, 34%);
             &-circle-icon {
-              color: hsl(283, 66%, 29%);
+              color: hsl(202, 79%, 34%);
             }
           }
           .heading {
-            color: hsl(283, 66%, 29%);
+            color: hsl(202, 76%, 50%);
           }
         }
         &-custom {
           .iconContainer {
-            background-color: hsl(40, 1%, 40%);
+            background-color: hsl(202, 79%, 34%);
             &-circle-icon {
-              color: hsl(42, 17%, 15%);
+              color: hsl(202, 79%, 34%);
             }
           }
           .heading {
-            color: hsl(42, 17%, 15%);
+            color: hsl(202, 76%, 50%);
           }
-        }
+        }*/
       }
     }
     &-footer {
