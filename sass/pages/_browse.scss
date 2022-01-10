@@ -155,15 +155,15 @@
             gap: 1.5rem;
           }
           &-img {
-            width: 6rem;
+            width: 7rem;
             height: 8rem;
-            border-radius: 0.5rem;
+            border-radius: 0.2rem;
             background-size: cover;
             background-position: center;
             @include respond(phone) {
               width: 4.9rem;
               height: 6.5rem;
-              border-radius: 0.3rem;
+              border-radius: 0.2rem;
             }
           }
           &-text {
@@ -223,6 +223,10 @@
             @include respond(phone) {
               display: none;
             }
+            &:hover {
+              cursor: pointer;
+              color: hsl(0, 76%, 73%);
+            }
           }
         }
         &-content {
@@ -259,7 +263,7 @@
                 opacity: 0;
                 visibility: hidden;
                 background-color: rgb(32, 32, 32);
-                border-radius: 1rem;
+                border-radius: 0.5rem;
                 border: 2px solid rgb(85, 85, 85);
                 z-index: 10;
                 .item {
@@ -356,15 +360,16 @@
           }
           .submitBtn {
             width: max-content;
-            padding: 0.5rem 1rem;
-            font-size: $default-font-size;
+            padding: 0.5rem 1.5rem;
+            font-size: $smaller-font-size;
+            font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 0.2rem;
             color: white;
             //background-color: rgba(0, 0, 0, 0.39);
             //background-color: rgb(32, 158, 74);
-            background-color: rgb(32, 121, 194);
-            border-radius: 5px;
+            background-color: hsl(0, 76%, 63%);
+            border-radius: 0.2rem;
           }
         }
       }
@@ -433,7 +438,7 @@
         background-color: rgba(black, 0.5);
         backdrop-filter: blur(40px);
         border: 1px solid rgb(54, 54, 54);
-        border-radius: 1rem;
+        border-radius: 0.5rem;
         overflow: hidden;
         &-img {
           display: block;
@@ -482,6 +487,10 @@
                 }
                 @include respond(phone) {
                   font-size: $smaller-font-size;
+                }
+                &:hover {
+                  cursor: pointer;
+                  color: hsl(0, 76%, 73%);
                 }
               }
               .author {
@@ -576,8 +585,9 @@
               color: white;
               //background-color: rgba(0, 0, 0, 0.39);
               //background-color: rgb(32, 158, 74);
-              background-color: rgb(32, 121, 194);
-              border-radius: 5px;
+              background-color: hsl(0, 76%, 63%);
+              font-weight: bold;
+              border-radius: 0.25rem;
               text-align: center;
               padding: 1rem 0;
               @include respond(tab-port) {
@@ -607,7 +617,7 @@
       display: grid;
       place-items: center;
       height: 12rem;
-      border-radius: 1rem;
+      border-radius: 0.5rem;
     }
     &-buttons {
       margin-top: 2rem;

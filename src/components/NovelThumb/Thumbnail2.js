@@ -11,8 +11,8 @@ const Thumbnail2 = ({ novel }) => {
       ></div>
       <div className="novel-info">
         <div className="novel-info-title">
-          {novel.name.length > 25
-            ? novel.name.substring(0, 25) + "..."
+          {novel.name.length > 30
+            ? novel.name.substring(0, 30) + "..."
             : novel.name}
         </div>
         <div className="novel-info-other">
@@ -47,9 +47,9 @@ const Thumbnail2 = ({ novel }) => {
             render={({ history }) => (
               <span
                 className="btn"
-                onClick={() => history.push(`/chapter/${novel.chapters[0].id}`)}
+                onClick={() => history.push(`/book/${novel._id}`)}
               >
-                Start
+                Visit
               </span>
             )}
           />
@@ -57,9 +57,9 @@ const Thumbnail2 = ({ novel }) => {
             render={({ history }) => (
               <span
                 className="btn"
-                onClick={() => history.push(`/book/${novel._id}`)}
+                onClick={() => history.push(`/chapter/${novel.chapters[0].id}`)}
               >
-                Visit
+                Start
               </span>
             )}
           />

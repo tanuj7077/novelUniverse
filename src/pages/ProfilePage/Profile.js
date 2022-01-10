@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import blank from "../../assets/blankProfile.png";
 import background from "../../assets/abstract/12.jpg";
@@ -101,13 +102,8 @@ const RecommendedItems = ({ bookId }) => {
 const Profile = () => {
   //followers get new recommendations notifications
   const { username } = useParams();
-  const {
-    userData,
-    isLoggedIn,
-    getUpdatedUserData,
-    toggleLoginModalVisibility,
-    changeAlert,
-  } = useGlobalContext();
+  const { userData, isLoggedIn, toggleLoginModalVisibility, changeAlert } =
+    useGlobalContext();
 
   const [aboutModal, setAboutModal] = useState(false);
   const [usernameModal, setUsernameModal] = useState(false);
@@ -466,31 +462,6 @@ const Profile = () => {
   if (userData && username === userData.username) {
     return (
       <div className="profilePage">
-        {/* <div className="profilePage-left">
-          <div className="heading">
-            <p className="text">Following</p>
-            {followingUsers && (
-              <p className="count">
-                {followingUsers.length > 0 ? followingUsers.length : 0}
-              </p>
-            )}
-          </div>
-          <ul className="followingList">
-            {followingUsers.map((item) => {
-              return (
-                <li className="user">
-                  <span
-                    className="img"
-                    style={{
-                      backgroundImage: `url(${item.img ? item.img : blank})`,
-                    }}
-                  ></span>
-                  <div className="name">{item.username}</div>
-                </li>
-              );
-            })}
-          </ul>
-        </div> */}
         <div className="profilePage-right">
           <div className="contents">
             <div className="top">
@@ -991,32 +962,6 @@ const Profile = () => {
   } else {
     return (
       <div className="profilePage">
-        {/* <div className="profilePage-left">
-          <div className="heading">
-            <p className="text">Following</p>
-            {followingUsers && (
-              <p className="count">
-                {followingUsers.length > 0 ? followingUsers.length : 0}
-              </p>
-            )}
-          </div>
-          <ul className="followingList">
-            {followingUsers.map((item) => {
-              return (
-                <li className="user">
-                  <span
-                    className="img"
-                    style={{
-                      backgroundImage: `url(${item.img ? item.img : blank})`,
-                    }}
-                  ></span>
-                  <div className="name">{item.username}</div>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-         */}
         <div className="profilePage-right">
           <div className="contents">
             <div className="top">

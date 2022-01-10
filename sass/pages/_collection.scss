@@ -76,7 +76,7 @@
           left: 0rem;
           width: 0.5rem;
           height: 100%;
-          background-color: rgb(64, 147, 255);
+          background-color: hsl(0, 76%, 73%);
         }
       }
       &-container {
@@ -105,7 +105,7 @@
         background-color: rgba(black, 0.5);
         backdrop-filter: blur(40px);
         border: 1px solid rgb(54, 54, 54);
-        border-radius: 1rem;
+        border-radius: 0.5rem;
         overflow: hidden;
         @include respond(tab-land) {
           width: 48%;
@@ -136,18 +136,31 @@
           &-title {
             font-size: $default-font-size;
             color: rgb(233, 233, 233);
+            &:hover {
+              cursor: pointer;
+              color: hsl(0, 76%, 73%);
+            }
           }
           &-chapter {
-            font-size: $smaller-font-size;
-            color: rgb(218, 218, 218);
-          }
-          &-updated {
-            font-size: $smallest-font-size;
-            color: rgb(82, 172, 247);
+            font-size: 1.4rem;
+            color: rgb(211, 211, 211);
             display: flex;
             align-items: center;
             gap: 0.5rem;
             &-icon {
+              color: hsl(0, 76%, 73%);
+              width: 1.7rem;
+              height: 1.7rem;
+            }
+          }
+          &-updated {
+            font-size: $smallest-font-size;
+            color: rgb(211, 211, 211);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            &-icon {
+              color: hsl(0, 76%, 73%);
               width: 1.7rem;
               height: 1.7rem;
             }
@@ -160,11 +173,11 @@
               color: white;
               text-transform: uppercase;
               text-align: center;
-              background-color: rgb(28, 101, 196);
-              border-radius: 0.5rem;
+              background-color: hsl(0, 76%, 63%);
+              border-radius: 0.2rem;
               font-size: $smallest-font-size;
               letter-spacing: 0.2rem;
-              padding: 0.7rem 1rem;
+              padding: 0.5rem 1rem;
               //font-weight: bold;
               &:hover {
                 cursor: pointer;

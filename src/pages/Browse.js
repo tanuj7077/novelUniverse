@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import { categoryList } from "../mockData";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";

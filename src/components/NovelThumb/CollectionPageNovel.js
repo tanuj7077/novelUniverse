@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Route } from "react-router-dom";
 import axios from "axios";
-import { AiOutlineClockCircle } from "react-icons/ai";
+import { AiOutlineClockCircle, AiOutlineBook } from "react-icons/ai";
 import { useGlobalContext } from "../../context";
 
 const BrowsePageThumb = ({ novelId }) => {
@@ -40,7 +40,10 @@ const BrowsePageThumb = ({ novelId }) => {
                 <div className="info-content">
                   <p className="info-title">{novel.name.substring(0, 50)}</p>
                   <p className="info-chapter">
-                    Chapters: {novel.chapters.length}
+                    <AiOutlineBook className="info-chapter-icon" />
+                    <span className="info-chapter-text">
+                      Chapter {novel.chapters.length}
+                    </span>
                   </p>
                   <p className="info-updated">
                     <AiOutlineClockCircle className="info-updated-icon" />

@@ -195,9 +195,9 @@
           height: 30rem;
           border-radius: 10px;
           //background-color: white;
-          background-color: rgba(63, 63, 63, 0.856);
-          border: 1px solid rgb(71, 71, 71);
-          color: rgb(190, 190, 190);
+          background-color: hsla(0, 0%, 25%, 0.856);
+          //border: 1px solid rgb(71, 71, 71);
+          color: hsl(0, 0%, 85%);
           padding: 2rem;
           display: flex;
           flex-flow: column;
@@ -233,6 +233,7 @@
             font-size: $default-font-size;
             height: $default-font-size;
             font-weight: bold;
+            color: white;
           }
         }
         .about {
@@ -297,7 +298,7 @@
                       width: 0%;
                       left: 0%;
                       border-radius: 0.5rem;
-                      background-color: rgb(47, 117, 237);
+                      background-color: hsl(0, 76%, 63%);
                     }
                   }
                 }
@@ -469,7 +470,13 @@
                   position: relative;
                   .name {
                     font-size: $default-font-size;
+                    letter-spacing: 0.1rem;
                     width: 85%;
+                    color: hsl(0, 0%, 90%);
+                    &:hover {
+                      cursor: pointer;
+                      color: hsl(0, 76%, 73%);
+                    }
                     @include respond(tab-port) {
                       font-size: 1.4rem;
                     }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Route } from "react-router-dom";
-import { AiOutlineClockCircle } from "react-icons/ai";
+import { AiOutlineClockCircle, AiOutlineBook } from "react-icons/ai";
 import { useGlobalContext } from "../../context";
 function HomePageNovels({ novel }) {
   const { calculateTimeDifference } = useGlobalContext();
@@ -29,7 +29,10 @@ function HomePageNovels({ novel }) {
                   )
                 }
               >
-                Chapter {novel.chapters.length}
+                <AiOutlineBook className="info-chapter-icon" />
+                <span className="info-chapter-text">
+                  Chapter {novel.chapters.length}
+                </span>
               </p>
             )}
           />
