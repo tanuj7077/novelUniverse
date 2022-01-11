@@ -331,7 +331,7 @@ a:link, a:visited, a:hover, a:active {
   height: 8rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding: 0 10%;
 }
 @media only screen and (max-width: 37.5em) {
@@ -341,15 +341,18 @@ a:link, a:visited, a:hover, a:active {
 }
 .landing-topNav-logo {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
+  gap: 1.5rem;
 }
 .landing-topNav-logo .text {
-  color: #00a2ff;
-  font-size: 2.5rem;
+  font-family: "Source Code Pro", sans-serif, courier, arial, helvetica;
+  font-size: 2.55rem;
+  font-weight: 700;
+  color: #e6e6e6;
+  line-height: 2.3rem;
 }
 .landing-topNav-logo .icon {
-  width: 6rem;
-  height: 6rem;
+  height: 5rem;
 }
 .landing-topNav-button {
   text-transform: uppercase;
@@ -1156,14 +1159,18 @@ a:link, a:visited, a:hover, a:active {
 .landing-item-footer .iconContainer {
   display: flex;
   align-items: center;
+  gap: 2rem;
 }
 .landing-item-footer .iconContainer-icon {
   width: 10rem;
   height: 10rem;
 }
 .landing-item-footer .iconContainer-text {
-  color: #46bbff;
-  font-size: 3.5rem;
+  font-family: "Source Code Pro", sans-serif, courier, arial, helvetica;
+  font-size: 5.2rem;
+  font-weight: 700;
+  color: #e6e6e6;
+  line-height: 5rem;
 }
 .landing-item-footer .copyright {
   color: #bbbbbb;

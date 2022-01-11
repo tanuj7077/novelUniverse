@@ -143,7 +143,7 @@ body {
   overflow-x: hidden;
   // user-select: none;
 
-  &::-webkit-scrollbar {
+  /*&::-webkit-scrollbar {
     width: 1.5rem;
   }
   &::-webkit-scrollbar-track {
@@ -155,6 +155,20 @@ body {
     border-radius: 0.75rem;
     &:hover {
       background: white;
+    }
+  }*/
+  &::-webkit-scrollbar {
+    width: 1.5rem;
+  }
+  &::-webkit-scrollbar-track {
+    background: hsl(0, 0%, 19%);
+  }
+  &::-webkit-scrollbar-thumb {
+    border: 0.4rem solid hsl(0, 0%, 19%);
+    background: hsl(0, 76%, 63%);
+    border-radius: 0.75rem;
+    &:hover {
+      background: hsl(0, 76%, 83%);
     }
   }
 }
