@@ -214,7 +214,7 @@
           @include respond(phone) {
             justify-content: center;
             font-size: $default-font-size;
-            color: rgb(47, 171, 209);
+            color: hsl(0, 76%, 63%);
             text-transform: capitalize;
           }
           .infoIcon {
