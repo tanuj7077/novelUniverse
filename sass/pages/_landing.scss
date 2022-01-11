@@ -11,21 +11,24 @@
     height: 8rem;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     padding: 0 10%;
     @include respond(phone) {
       padding: 0 5%;
     }
     &-logo {
       display: flex;
-      align-items: center;
+      align-items: flex-end;
+      gap: 1.5rem;
       .text {
-        color: rgb(0, 162, 255);
-        font-size: $medium-font-size;
+        font-family: "Source Code Pro", sans-serif, courier, arial, helvetica;
+        font-size: 2.55rem;
+        font-weight: 700;
+        color: hsl(0, 0%, 90%);
+        line-height: 2.3rem;
       }
       .icon {
-        width: 6rem;
-        height: 6rem;
+        height: 5rem;
       }
     }
     &-button {
@@ -858,13 +861,17 @@
       .iconContainer {
         display: flex;
         align-items: center;
+        gap: 2rem;
         &-icon {
           width: 10rem;
           height: 10rem;
         }
         &-text {
-          color: rgb(70, 187, 255);
-          font-size: $large-font-size;
+          font-family: "Source Code Pro", sans-serif, courier, arial, helvetica;
+          font-size: 5.2rem;
+          font-weight: 700;
+          color: hsl(0, 0%, 90%);
+          line-height: 5rem;
         }
       }
       .copyright {

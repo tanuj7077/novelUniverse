@@ -5,7 +5,7 @@ import { useGlobalContext } from "../../context";
 import { IoIosMenu } from "react-icons/io";
 import { IoNotifications } from "react-icons/io5";
 //import logo from "../../logo.svg";
-import logo from "../../assets/logo/Asset4.png";
+import logo from "../../assets/logo/novelUpdatesLogo7.svg";
 import Notification from "../Notification/Notification";
 const TopNav = () => {
   const location = useLocation();

@@ -1,6 +1,8 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from "react";
 import { Route } from "react-router-dom";
 import logo from "../assets/logo/Asset4.png";
+import logoMono from "../assets/logo/novelUpdatesLogo7.svg";
 import img1 from "../assets/slideshow/1.jpg";
 import img2 from "../assets/slideshow/2.jpg";
 import img3 from "../assets/slideshow/3.jpg";
@@ -58,18 +60,24 @@ const Landing = () => {
         <div className="bg2"></div>
         <div className="bg3"></div>
         <nav className="landing-topNav">
-          <div className="landing-topNav-logo">
+          {/* <div className="landing-topNav-logo">
             <img src={logo} alt="" className="icon" />
             <div className="text"></div>
+          </div> */}
+          <div className="landing-topNav-logo">
+            <img src={logoMono} alt="" className="icon" />
+            <div className="text">
+              Novel<br></br>Universe
+            </div>
           </div>
-          {!isLoggedIn && (
+          {/* {!isLoggedIn && (
             <div
               className="landing-topNav-button"
               onClick={toggleLoginModalVisibility}
             >
               Login
             </div>
-          )}
+          )} */}
         </nav>
         <div className="textContent">
           <p className="textContent-large">Your Daily dose of Novels</p>
@@ -386,10 +394,13 @@ const Landing = () => {
       </div>
       <footer className="landing-item-footer">
         <div className="iconContainer">
-          <img src={logo} alt="" className="iconContainer-icon" />
-          <p className="iconContainer-text"></p>
+          <img src={logoMono} alt="" className="iconContainer-icon" />
+          {/* <p className="iconContainer-text">
+            Novel<br></br>
+            <span>Universe</span>
+          </p> */}
         </div>
-        <div className="copyright">&copy; Copyright 2021 by Tanuj Ghosh.</div>
+        <div className="copyright">Created by Tanuj Ghosh @2021</div>
       </footer>
     </div>
   );
