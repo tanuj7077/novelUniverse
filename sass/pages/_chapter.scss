@@ -195,11 +195,12 @@
       width: 1.5rem;
     }
     &::-webkit-scrollbar-track {
-      background: rgb(99, 99, 99);
+      background: hsl(0, 0%, 71%);
     }
     &::-webkit-scrollbar-thumb {
       border: 0.4rem solid rgb(99, 99, 99);
-      background: rgb(196, 196, 196);
+      border: 0.4rem solid hsl(0, 0%, 71%);
+      background: hsl(0, 76%, 63%);
       border-radius: 0.75rem;
       &:hover {
         background: white;

@@ -139,20 +139,34 @@ body {
   text-transform: none;
   background-color: var(--color-white);
   overflow-x: hidden;
+  /*&::-webkit-scrollbar {
+    width: 1.5rem;
+  }
+  &::-webkit-scrollbar-track {
+    background: rgb(99, 99, 99);
+  }
+  &::-webkit-scrollbar-thumb {
+    border: 0.4rem solid rgb(99, 99, 99);
+    background: rgb(196, 196, 196);
+    border-radius: 0.75rem;
+    &:hover {
+      background: white;
+    }
+  }*/
 }
 body::-webkit-scrollbar {
   width: 1.5rem;
 }
 body::-webkit-scrollbar-track {
-  background: #636363;
+  background: #303030;
 }
 body::-webkit-scrollbar-thumb {
-  border: 0.4rem solid #636363;
-  background: #c4c4c4;
+  border: 0.4rem solid #303030;
+  background: #e85959;
   border-radius: 0.75rem;
 }
 body::-webkit-scrollbar-thumb:hover {
-  background: white;
+  background: #f5b3b3;
 }
 
 input,

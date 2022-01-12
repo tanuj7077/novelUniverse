@@ -74,7 +74,7 @@ const Chapter = () => {
     history.push(`/chapter/${chapterId}`);
   };
   const scrollToTop = () => {
-    chapterRef.current.scrollTop = 0;
+    chapterRef && chapterRef.current && (chapterRef.current.scrollTop = 0);
   };
   useEffect(() => {
     getChapterDetails();

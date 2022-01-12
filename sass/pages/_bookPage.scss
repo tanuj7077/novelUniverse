@@ -57,11 +57,10 @@
           background-color: rgb(31, 31, 31);
           background-size: cover;
           background-position: center;
-          border-radius: 1rem;
+          border-radius: 0.5rem;
           display: block;
           @include respond(tab-land) {
             width: 24rem;
-            border-radius: 0.8rem;
           }
         }
         &-content {
@@ -115,7 +114,7 @@
             width: 47%;
             height: max-content;
             background-color: rgba(0, 0, 0, 0.39);
-            border-radius: 1rem;
+            border-radius: 0.5rem;
             padding: 2rem;
             display: flex;
             flex-flow: column;
@@ -161,7 +160,7 @@
             width: 47%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.39);
-            border-radius: 1rem;
+            border-radius: 0.5rem;
             padding: 2rem;
             display: flex;
             flex-flow: column;
@@ -198,12 +197,11 @@
               text-transform: uppercase;
               letter-spacing: 0.3rem;
               color: white;
-              //background-color: rgba(0, 0, 0, 0.39);
-              background-color: rgb(32, 121, 194);
+              background-color: hsl(0, 76%, 63%);
               display: grid;
               place-items: center;
               gap: 6%;
-              border-radius: 5px;
+              border-radius: 0.2rem;
               //font-weight: bold;
             }
           }
@@ -283,7 +281,7 @@
             height: max-content;
             background-color: rgba(0, 0, 0, 0.39);
             border: 2px solid rgb(39, 39, 39);
-            border-radius: 1rem;
+            border-radius: 0.5rem;
             padding: 2rem;
             display: flex;
             flex-flow: column;
@@ -350,12 +348,12 @@
               width: 48%;
               text-align: center;
               padding: 1rem;
-              background-color: rgb(32, 121, 194);
+              background-color: hsl(0, 76%, 63%);
               color: white;
               font-size: $default-font-size;
               text-transform: uppercase;
               letter-spacing: 0.2rem;
-              border-radius: 5px;
+              border-radius: 0.2rem;
             }
           }
         }
@@ -380,7 +378,7 @@
         height: max-content;
         padding: 3rem;
         background-color: rgba(63, 63, 63, 0.856);
-        border-radius: 1rem;
+        border-radius: 0.5rem;
         z-index: 2;
 
         @include respond(phone) {
@@ -413,7 +411,7 @@
         //color: rgb(245, 231, 231);
         padding: 3rem;
         background-color: rgba(63, 63, 63, 0.856);
-        border-radius: 1rem;
+        border-radius: 0.5rem;
         z-index: 2;
         @include respond(phone) {
           padding: 2rem;
@@ -450,7 +448,7 @@
             border: none;
             outline: none;
             padding: 0.5rem 1rem;
-            border-radius: 0.5rem;
+            border-radius: 0.2rem;
             //background-color: hsla(0, 0%, 95%, 0.3);
             background-color: #50505a;
             color: white;
@@ -471,24 +469,28 @@
           .gotoBtn {
             font-size: $default-font-size;
             padding: 0.5rem 1.5rem;
-            border-radius: 0.5rem;
-            //border: 2px solid black;
-            background-color: rgb(32, 121, 194);
+            border-radius: 0.2rem;
+            background-color: hsl(0, 76%, 63%);
             color: white;
             letter-spacing: 0.3rem;
             text-transform: uppercase;
+            &:hover {
+              cursor: pointer;
+            }
           }
           .pageChange {
             display: flex;
             gap: 1rem;
             &-icon {
               padding: 1rem;
-              border-radius: 0.5rem;
-              //border: 2px solid black;
-              background-color: rgb(32, 121, 194);
+              border-radius: 0.2rem;
+              background-color: hsl(0, 76%, 63%);
               color: white;
               width: 3rem;
               height: 3rem;
+              &:hover {
+                cursor: pointer;
+              }
             }
             .page {
               color: white;
@@ -501,7 +503,7 @@
         }
         &-chapters {
           margin-top: 2rem;
-          border-radius: 1rem;
+          border-radius: 0.5rem;
           padding: 3rem;
           background-color: #2f2f35;
           //background-color: rgba(255, 255, 255, 0.3);
@@ -519,8 +521,8 @@
           .chapter {
             background-color: rgba(73, 73, 73, 0.856);
             // background-color: rgba(87, 87, 87, 0.856);
-            color: rgb(190, 190, 190);
-            border-radius: 5px;
+            color: hsl(0, 0%, 85%);
+            border-radius: 0.25rem;
             font-size: $default-font-size;
             opacity: 0;
             padding: 1rem 2rem;
@@ -530,9 +532,11 @@
               width: 100%;
             }
             .count {
+              color: hsl(0, 76%, 79%);
               font-size: $smaller-font-size;
             }
             &:hover {
+              transition: all 0.05s ease;
               cursor: pointer;
               transform: scale(1.02);
               box-shadow: hsla(0, 0%, 0%, 0.15) 3px 3px 10px 2px;
@@ -556,7 +560,7 @@
         color: rgb(184, 184, 184);
         padding: 3rem;
         background-color: rgba(63, 63, 63, 0.856);
-        border-radius: 1rem;
+        border-radius: 0.5rem;
         z-index: 2;
         display: flex;
         flex-flow: column;
@@ -668,7 +672,7 @@
             padding-left: 0.5rem;
           }
           &-content {
-            border-radius: 1rem;
+            border-radius: 0.5rem;
             background-color: transparent;
             display: flex;
             gap: 2px;
@@ -734,6 +738,9 @@
                     width: 1.5rem;
                     margin-right: 0.7rem;
                   }
+                  &:hover {
+                    cursor: pointer;
+                  }
                 }
                 .hovered {
                   color: rgb(247, 180, 56);
@@ -744,13 +751,13 @@
                 margin-left: auto;
                 outline: none;
                 border: none;
-                border-radius: 5px;
-                font-weight: bold;
+                border-radius: 0.2rem;
+                //font-weight: bold;
                 color: white;
                 text-transform: uppercase;
                 font-size: $smaller-font-size;
-                letter-spacing: 0.2rem;
-                padding: 1rem 1.5rem;
+                letter-spacing: 0.1rem;
+                padding: 1rem 2rem;
                 @include respond(phone) {
                   padding: 0.6rem 1rem;
                 }
@@ -761,7 +768,10 @@
                   background-color: rgb(122, 122, 122);
                 }
                 &-enabled {
-                  background-color: rgb(32, 121, 194);
+                  background-color: hsl(0, 76%, 63%);
+                  &:hover {
+                    cursor: pointer;
+                  }
                 }
               }
             }
