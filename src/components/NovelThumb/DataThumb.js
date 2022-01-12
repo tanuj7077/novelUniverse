@@ -41,7 +41,7 @@ const DataThumb = ({ novel }) => {
           </div>
           <div className="novel-info-item">
             <span className="subHeading">Rank</span>
-            <span className="count">{1}</span>
+            <span className="count">--</span>
           </div>
           <div className="novel-info-item">
             <span className="subHeading">Bookmarked</span>
@@ -56,8 +56,28 @@ const DataThumb = ({ novel }) => {
           {novel.description.substring(0, 200)}...
         </div>
         <div className="novel-info-buttons">
-          <div className="btn">Read</div>
-          <div className="btn">Bookmark</div>
+          <Route
+            render={({ history }) => (
+              <button
+                className="btn"
+                onClick={() => history.push(`/book/${novel._id}`)}
+              >
+                Visit
+              </button>
+            )}
+          />
+          <Route
+            render={({ history }) => (
+              <button
+                className="btn"
+                onClick={() => history.push(`/chapter/${novel.chapters[0].id}`)}
+              >
+                Read
+              </button>
+            )}
+          />
+          {/* <div className="btn">Read</div> */}
+          {/* <div className="btn">Bookmark</div> */}
         </div>
       </div>
     </div>

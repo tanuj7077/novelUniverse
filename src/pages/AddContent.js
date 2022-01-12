@@ -71,7 +71,7 @@ function AddContent() {
   const handleSearch = (text) => {
     setSearchText(text);
     axios
-      .get(`${process.env.REACT_APP_BASE_URL}book/searchBook/${text}`)
+      .get(`${process.env.REACT_APP_BASE_URL}/book/searchBook/${text}`)
       .then((res) => {
         if (res.data.data.bookList.length > 0) {
           setSearchResult(res.data.data.bookList);

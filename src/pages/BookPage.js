@@ -168,7 +168,7 @@ const BookPage = () => {
                         <div className="subheading">Chapter</div>
                       </div>
                       <div className="introSection-container-content-infoSection-item">
-                        <div className="count">{novelObj.rank}</div>
+                        <div className="count">--</div>
                         <div className="subheading">Rank</div>
                       </div>
                       {/* <div className="introSection-container-content-infoSection-item">
@@ -294,9 +294,7 @@ const BookPage = () => {
                         </div>
                       </div>
                       <div className="statSection-items-item">
-                        <div className="statSection-items-item-count">
-                          {novelObj.rank}
-                        </div>
+                        <div className="statSection-items-item-count">--</div>
                         <div className="statSection-items-item-subheading">
                           Rank
                         </div>

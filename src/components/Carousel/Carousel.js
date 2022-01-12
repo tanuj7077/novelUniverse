@@ -38,7 +38,7 @@ function Carousel() {
             Read Light Novel and Web Novel Translations Online
           </div>
           <div className="homePage-carousel-slide-desc">
-            Ultimate Biblio is a platform where you can read the translated
+            Novel Universe is a platform where you can read the translated
             versions of world famous Japanese, Chinese and Korean light novels
             in English. Every new chapters published by the author is updated
             instantly on the website and notification service is provided to the
@@ -61,11 +61,9 @@ function Carousel() {
         <div className="homePage-carousel-slide-content">
           <div className="homePage-carousel-slide-heading">Why sign up?</div>
           <div className="homePage-carousel-slide-desc">
-            Ultimate Biblio is a platform where you can read the translated
-            versions of world famous Japanese, Chinese and Korean light novels
-            in English. Every new chapters published by the author is updated
-            instantly on the website and notification service is provided to the
-            readers.
+            Once you sign up you will be able to bookmark novels, have record of
+            the novels you are reading, get notified when a new chapter releases
+            and do many more things.
           </div>
           {!isLoggedIn && (
             <div

@@ -77,6 +77,24 @@ const TopNav = () => {
             )}
           />
         )}
+        {isLoggedIn &&
+          userData &&
+          userData.username === process.env.REACT_APP_ADMIN_USERNAME && (
+            <Route
+              render={({ history }) => (
+                <p
+                  className={`topNav-right-item ${
+                    tab === "add" ? "active" : ""
+                  }`}
+                  onClick={() => {
+                    history.push(`/add`);
+                  }}
+                >
+                  <span className="text">Add</span>
+                </p>
+              )}
+            />
+          )}
         {isLoggedIn && (
           <Route
             render={({ history }) => (
@@ -208,6 +226,25 @@ const TopNav = () => {
             )}
           />
         )}
+        {isLoggedIn &&
+          userData &&
+          userData.username === process.env.REACT_APP_ADMIN_USERNAME && (
+            <Route
+              render={({ history }) => (
+                <li
+                  className={`topNav-menu-list-item  ${
+                    tab === "add" ? "active" : ""
+                  }`}
+                  onClick={() => {
+                    history.push(`/add`);
+                    setMenuVisibility(false);
+                  }}
+                >
+                  <p className="text">Add</p>
+                </li>
+              )}
+            />
+          )}
 
         {isLoggedIn ? (
           <li

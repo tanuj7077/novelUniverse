@@ -2796,6 +2796,8 @@ a:link, a:visited, a:hover, a:active {
   justify-content: space-between;
 }
 .browsePage .novels-list .novel-info-buttons .btn {
+  outline: none;
+  border: none;
   width: 47%;
   font-size: 1.6rem;
   text-transform: uppercase;

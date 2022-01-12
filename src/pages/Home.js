@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, useRef } from "react";
 import Carousel from "../components/Carousel/Carousel";
 import HomePageNovels from "../components/NovelThumb/HomePageNovels";
@@ -7,7 +8,6 @@ import { AiOutlineMinusCircle } from "react-icons/ai";
 import axios from "axios";
 import { categoryList } from "../mockData";
 import Slider from "../pages/HomePage/Slider";
-import { useGlobalContext } from "../context";
 
 const Home = () => {
   const [newRelease, setNewRelease] = useState([]); //move to context
@@ -28,10 +28,10 @@ const Home = () => {
   };
   const [optionsVisibility, setOptionsVisibility] = useState(false);
   const [novelList, setNovelList] = useState([]);
-  const [optionType, setOptionType] = useState("today"); //today,all,(action,adventure,...),latest
+  const [optionType, setOptionType] = useState("all"); //today,all,(action,adventure,...),latest
   const [totalPages, setTotalPages] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
-  const PAGE_LIMIT = 15;
+  const PAGE_LIMIT = 12;
   const nextPage = () => {
     if (currentPage !== totalPages) {
       setCurrentPage(currentPage + 1);
@@ -67,6 +67,7 @@ const Home = () => {
     //getTodayViews();
   }, []);
   useEffect(() => {
+    console.log("clicked");
     getNovelList();
   }, [currentPage, optionType]);
 
@@ -156,13 +157,19 @@ const Home = () => {
               )}
               {novelList && novelList.length > 0 && (
                 <div className="homePage-changeable-container-novels-footer">
-                  <button className="homePage-changeable-footer-btn">
+                  <button
+                    className="homePage-changeable-footer-btn"
+                    onClick={previousPage}
+                  >
                     <VscChevronLeft className="icon" />
                   </button>
                   <p className="homePage-changeable-footer-page">
                     {currentPage} / {totalPages}
                   </p>
-                  <button className="homePage-changeable-footer-btn">
+                  <button
+                    className="homePage-changeable-footer-btn"
+                    onClick={nextPage}
+                  >
                     <VscChevronRight className="icon" />
                   </button>
                 </div>
@@ -173,7 +180,10 @@ const Home = () => {
               <div className="homePage-changeable-container-options-option">
                 <p
                   className="heading heading-latest"
-                  onClick={() => setOptionType("latest")}
+                  onClick={() => {
+                    setCurrentPage(1);
+                    setOptionType("latest");
+                  }}
                 >
                   Latest Updates
                 </p>
@@ -183,13 +193,19 @@ const Home = () => {
                 <ul className="list">
                   <li
                     className="list-item"
-                    onClick={() => setOptionType("today")}
+                    onClick={() => {
+                      setCurrentPage(1);
+                      setOptionType("today");
+                    }}
                   >
                     Today
                   </li>
                   <li
                     className="list-item"
-                    onClick={() => setOptionType("all")}
+                    onClick={() => {
+                      setCurrentPage(1);
+                      setOptionType("all");
+                    }}
                   >
                     All
                   </li>
@@ -203,7 +219,10 @@ const Home = () => {
                       <li
                         key={genre + "HomePage"}
                         className="list-item"
-                        onClick={() => setOptionType(genre)}
+                        onClick={() => {
+                          setCurrentPage(1);
+                          setOptionType(genre);
+                        }}
                       >
                         {genre}
                       </li>
@@ -219,7 +238,10 @@ const Home = () => {
                 <div className="homePage-changeable-containerSmall-options-option">
                   <p
                     className="heading heading-latest"
-                    onClick={() => setOptionType("latest")}
+                    onClick={() => {
+                      setCurrentPage(1);
+                      setOptionType("latest");
+                    }}
                   >
                     Latest Updates
                   </p>
@@ -229,13 +251,19 @@ const Home = () => {
                   <ul className="list">
                     <li
                       className="list-item"
-                      onClick={() => setOptionType("today")}
+                      onClick={() => {
+                        setCurrentPage(1);
+                        setOptionType("today");
+                      }}
                     >
                       Today
                     </li>
                     <li
                       className="list-item"
-                      onClick={() => setOptionType("all")}
+                      onClick={() => {
+                        setCurrentPage(1);
+                        setOptionType("all");
+                      }}
                     >
                       All
                     </li>
@@ -249,7 +277,10 @@ const Home = () => {
                         <li
                           key={genre + "HomePage"}
                           className="list-item"
-                          onClick={() => setOptionType(genre)}
+                          onClick={() => {
+                            setCurrentPage(1);
+                            setOptionType(genre);
+                          }}
                         >
                           {genre}
                         </li>

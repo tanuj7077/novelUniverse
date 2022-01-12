@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import axios from "axios";
 
@@ -11,7 +11,6 @@ import Collection from "./pages/CollectionPage/Collection";
 import Profile from "./pages/ProfilePage/Profile";
 import Contact from "./pages/Contact";
 import BookPage from "./pages/BookPage";
-import SideNav from "./components/Navigation/SideNav";
 import TopNav from "./components/Navigation/TopNav";
 import Chapter from "./components/Chapter/Chapter";
 import Background from "./components/Background/Background";
@@ -55,20 +54,11 @@ function App() {
         <LoginModal />
         <Landing />
       </Route>
-      {/* <Route path="/chapter/:id" exact>
-        <LoginModal />
-        <Alert />
-        <Loading />
-        <Chapter />
-      </Route> */}
-
       <>
-        {/* <SideNav /> */}
         <TopNav />
         <LoginModal />
         <Alert />
         <Loading />
-        {/* <Background /> */}
         <Route path="/home">
           <Background />
           <Home />
@@ -94,10 +84,12 @@ function App() {
         </Route>
         <Route path="/add">
           {isLoggedIn &&
-            userData &&
-            userData.username === process.env.REACT_APP_ADMIN_USERNAME && (
-              <AddContent />
-            )}
+          userData &&
+          userData.username === process.env.REACT_APP_ADMIN_USERNAME ? (
+            <AddContent />
+          ) : (
+            <Redirect to="/home" exact />
+          )}
         </Route>
       </>
     </Switch>
