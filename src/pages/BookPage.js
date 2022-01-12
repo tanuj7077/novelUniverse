@@ -10,8 +10,14 @@ import { useGlobalContext } from "../context";
 import { useParams, useHistory } from "react-router-dom";
 
 const BookPage = () => {
-  const { userData, isLoggedIn, getUpdatedUserData, changeAlert, addToViews } =
-    useGlobalContext();
+  const {
+    userData,
+    isLoggedIn,
+    getUpdatedUserData,
+    changeAlert,
+    addToViews,
+    toggleLoginModalVisibility,
+  } = useGlobalContext();
 
   const history = useHistory();
   const introRef = useRef();
@@ -75,6 +81,7 @@ const BookPage = () => {
           getUpdatedUserData();
           checkBookmarked();
         }));
+    !isLoggedIn && toggleLoginModalVisibility();
   };
   const start = () => {
     history.push(`../chapter/${novelData.chapters[0].id}`);

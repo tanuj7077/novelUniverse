@@ -147,6 +147,7 @@ const Chapter = () => {
                 {chapterData.allChapters.map((chapter, index) => {
                   return (
                     <li
+                      key={`chapterPopup${chapter.name}${index}`}
                       className="chapter"
                       onClick={() => {
                         selectChapter(chapter.number);
