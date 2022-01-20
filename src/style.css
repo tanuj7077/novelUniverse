@@ -648,7 +648,7 @@ a:link, a:visited, a:hover, a:active {
   font-size: 1.6rem;
   line-height: 2.1rem;
   font-weight: 400;
-  color: #636363;
+  color: #575757;
 }
 @media only screen and (max-width: 43.75em) {
   .landing-item-filters .textContent-small {
@@ -659,7 +659,7 @@ a:link, a:visited, a:hover, a:active {
   margin-top: 1rem;
   font-size: 1.6rem;
   letter-spacing: 0.1rem;
-  color: #e87878;
+  color: #e15151;
 }
 .landing-item-filters .textContent-cta:hover {
   cursor: pointer;

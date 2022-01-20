@@ -328,10 +328,11 @@ const Landing = () => {
             </div>
             <div className="heading">Easy to use Filters</div>
             <div className="desc">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book
+              Advanced filters are provided which can be used to display and
+              search the novels of your preference.<br></br> You can
+              include/exclude specific genres in search, you can view most
+              viewed novels of today or all time, you can view latest updated
+              novels and do much more.
             </div>
           </div>
           <div className="features-feature  features-collection">
@@ -342,10 +343,10 @@ const Landing = () => {
             </div>
             <div className="heading">Personalized Collection</div>
             <div className="desc">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book
+              You can add any novel to your collection when you are logged in.
+              You bookmark any novel for reading it later. If you start reading
+              a novel, it automatically gets added to your ongoing section. If
+              you complete a novel it will be added to completed section
             </div>
           </div>
           <div className="features-feature  features-notification">
@@ -356,10 +357,10 @@ const Landing = () => {
             </div>
             <div className="heading">Customized notification</div>
             <div className="desc">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book
+              Once logged in you will be able to receive useful notification.
+              You can opt to get notified when a new chapter releases. You will
+              also receive notification when someone replies to your comment and
+              when a followed user recommends a novel.
             </div>
           </div>
           <div className="features-feature  features-follow">
@@ -370,10 +371,9 @@ const Landing = () => {
             </div>
             <div className="heading">Follow avid Readers</div>
             <div className="desc">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book
+              You can visit fellow user's page and follow them if their read
+              list is to your matching. You will be notified when the user
+              reviews or recommends a novel.
             </div>
           </div>
           <div className="features-feature  features-custom">
@@ -384,10 +384,9 @@ const Landing = () => {
             </div>
             <div className="heading">Customize reading mode</div>
             <div className="desc">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book
+              You can customize the view while you are reading a chapter
+              according to your comfort. You can modify text size and you can
+              toggle between dark and light theme as well.
             </div>
           </div>
         </div>

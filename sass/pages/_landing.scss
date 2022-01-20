@@ -321,7 +321,7 @@
           // font-size: $default-font-size;
           // letter-spacing: 0.1rem;
           // word-spacing: 0.2rem;
-          color: #636363;
+          color: hsl(0, 0%, 34%);
           @include respond(phablet) {
             text-align: center;
           }
@@ -330,7 +330,7 @@
           margin-top: 1rem;
           font-size: $default-font-size;
           letter-spacing: 0.1rem;
-          color: hsl(0, 71%, 69%);
+          color: hsl(0, 71%, 60%);
           &:hover {
             cursor: pointer;
           }

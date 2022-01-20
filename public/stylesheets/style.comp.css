@@ -2796,6 +2796,8 @@ a:link, a:visited, a:hover, a:active {
   justify-content: space-between;
 }
 .browsePage .novels-list .novel-info-buttons .btn {
+  outline: none;
+  border: none;
   width: 47%;
   font-size: 1.6rem;
   text-transform: uppercase;
@@ -2944,13 +2946,12 @@ a:link, a:visited, a:hover, a:active {
   background-color: #1f1f1f;
   background-size: cover;
   background-position: center;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   display: block;
 }
 @media only screen and (max-width: 75em) {
   .bookPage-container .introSection-container-img {
     width: 24rem;
-    border-radius: 0.8rem;
   }
 }
 .bookPage-container .introSection-container-content {
@@ -3006,7 +3007,7 @@ a:link, a:visited, a:hover, a:active {
   width: 47%;
   height: max-content;
   background-color: rgba(0, 0, 0, 0.39);
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   padding: 2rem;
   display: flex;
   flex-flow: column;
@@ -3058,7 +3059,7 @@ a:link, a:visited, a:hover, a:active {
   width: 47%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.39);
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   padding: 2rem;
   display: flex;
   flex-flow: column;
@@ -3094,11 +3095,11 @@ a:link, a:visited, a:hover, a:active {
   text-transform: uppercase;
   letter-spacing: 0.3rem;
   color: white;
-  background-color: #2079c2;
+  background-color: #e85959;
   display: grid;
   place-items: center;
   gap: 6%;
-  border-radius: 5px;
+  border-radius: 0.2rem;
 }
 .bookPage-container .introSection-containerSmall {
   display: none;
@@ -3178,7 +3179,7 @@ a:link, a:visited, a:hover, a:active {
   height: max-content;
   background-color: rgba(0, 0, 0, 0.39);
   border: 2px solid #272727;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   padding: 2rem;
   display: flex;
   flex-flow: column;
@@ -3241,12 +3242,12 @@ a:link, a:visited, a:hover, a:active {
   width: 48%;
   text-align: center;
   padding: 1rem;
-  background-color: #2079c2;
+  background-color: #e85959;
   color: white;
   font-size: 1.6rem;
   text-transform: uppercase;
   letter-spacing: 0.2rem;
-  border-radius: 5px;
+  border-radius: 0.2rem;
 }
 .bookPage-container .contentSection {
   min-height: calc(100vh - 50rem);
@@ -3271,7 +3272,7 @@ a:link, a:visited, a:hover, a:active {
   height: max-content;
   padding: 3rem;
   background-color: rgba(63, 63, 63, 0.856);
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   z-index: 2;
 }
 @media only screen and (max-width: 37.5em) {
@@ -3302,7 +3303,7 @@ a:link, a:visited, a:hover, a:active {
   height: max-content;
   padding: 3rem;
   background-color: rgba(63, 63, 63, 0.856);
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   z-index: 2;
 }
 @media only screen and (max-width: 37.5em) {
@@ -3343,7 +3344,7 @@ a:link, a:visited, a:hover, a:active {
   border: none;
   outline: none;
   padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
+  border-radius: 0.2rem;
   background-color: #50505a;
   color: white;
   text-align: center;
@@ -3360,11 +3361,14 @@ a:link, a:visited, a:hover, a:active {
 .bookPage-container .contentSection .chapterSection-goto .gotoBtn {
   font-size: 1.6rem;
   padding: 0.5rem 1.5rem;
-  border-radius: 0.5rem;
-  background-color: #2079c2;
+  border-radius: 0.2rem;
+  background-color: #e85959;
   color: white;
   letter-spacing: 0.3rem;
   text-transform: uppercase;
+}
+.bookPage-container .contentSection .chapterSection-goto .gotoBtn:hover {
+  cursor: pointer;
 }
 .bookPage-container .contentSection .chapterSection-goto .pageChange {
   display: flex;
@@ -3372,11 +3376,14 @@ a:link, a:visited, a:hover, a:active {
 }
 .bookPage-container .contentSection .chapterSection-goto .pageChange-icon {
   padding: 1rem;
-  border-radius: 0.5rem;
-  background-color: #2079c2;
+  border-radius: 0.2rem;
+  background-color: #e85959;
   color: white;
   width: 3rem;
   height: 3rem;
+}
+.bookPage-container .contentSection .chapterSection-goto .pageChange-icon:hover {
+  cursor: pointer;
 }
 .bookPage-container .contentSection .chapterSection-goto .pageChange .page {
   color: white;
@@ -3387,7 +3394,7 @@ a:link, a:visited, a:hover, a:active {
 }
 .bookPage-container .contentSection .chapterSection-chapters {
   margin-top: 2rem;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   padding: 3rem;
   background-color: #2f2f35;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 30px 5px inset;
@@ -3403,8 +3410,8 @@ a:link, a:visited, a:hover, a:active {
 }
 .bookPage-container .contentSection .chapterSection-chapters .chapter {
   background-color: rgba(73, 73, 73, 0.856);
-  color: #bebebe;
-  border-radius: 5px;
+  color: #d9d9d9;
+  border-radius: 0.25rem;
   font-size: 1.6rem;
   opacity: 0;
   padding: 1rem 2rem;
@@ -3417,9 +3424,11 @@ a:link, a:visited, a:hover, a:active {
   }
 }
 .bookPage-container .contentSection .chapterSection-chapters .chapter .count {
+  color: #f2a1a1;
   font-size: 1.2rem;
 }
 .bookPage-container .contentSection .chapterSection-chapters .chapter:hover {
+  transition: all 0.05s ease;
   cursor: pointer;
   transform: scale(1.02);
   box-shadow: rgba(0, 0, 0, 0.15) 3px 3px 10px 2px;
@@ -3440,7 +3449,7 @@ a:link, a:visited, a:hover, a:active {
   color: #b8b8b8;
   padding: 3rem;
   background-color: rgba(63, 63, 63, 0.856);
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   z-index: 2;
   display: flex;
   flex-flow: column;
@@ -3550,7 +3559,7 @@ a:link, a:visited, a:hover, a:active {
   padding-left: 0.5rem;
 }
 .bookPage-container .contentSection .reviewSection-myReview-content {
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   background-color: transparent;
   display: flex;
   gap: 2px;
@@ -3625,6 +3634,9 @@ a:link, a:visited, a:hover, a:active {
     margin-right: 0.7rem;
   }
 }
+.bookPage-container .contentSection .reviewSection-myReview-content .rate .stars .icon:hover {
+  cursor: pointer;
+}
 .bookPage-container .contentSection .reviewSection-myReview-content .rate .stars .hovered {
   color: #f7b438;
   filter: drop-shadow(0px 0px 2px #f7b438);
@@ -3633,13 +3645,12 @@ a:link, a:visited, a:hover, a:active {
   margin-left: auto;
   outline: none;
   border: none;
-  border-radius: 5px;
-  font-weight: bold;
+  border-radius: 0.2rem;
   color: white;
   text-transform: uppercase;
   font-size: 1.2rem;
-  letter-spacing: 0.2rem;
-  padding: 1rem 1.5rem;
+  letter-spacing: 0.1rem;
+  padding: 1rem 2rem;
 }
 @media only screen and (max-width: 37.5em) {
   .bookPage-container .contentSection .reviewSection-myReview-content .rate .submit {
@@ -3653,7 +3664,10 @@ a:link, a:visited, a:hover, a:active {
   background-color: #7a7a7a;
 }
 .bookPage-container .contentSection .reviewSection-myReview-content .rate .submit-enabled {
-  background-color: #2079c2;
+  background-color: #e85959;
+}
+.bookPage-container .contentSection .reviewSection-myReview-content .rate .submit-enabled:hover {
+  cursor: pointer;
 }
 .bookPage-container .contentSection .reviewSection-reviews-heading {
   font-size: 1.6rem;
@@ -4359,11 +4373,12 @@ a:link, a:visited, a:hover, a:active {
   width: 1.5rem;
 }
 .chapterPage-body::-webkit-scrollbar-track {
-  background: #636363;
+  background: #b5b5b5;
 }
 .chapterPage-body::-webkit-scrollbar-thumb {
   border: 0.4rem solid #636363;
-  background: #c4c4c4;
+  border: 0.4rem solid #b5b5b5;
+  background: #e85959;
   border-radius: 0.75rem;
 }
 .chapterPage-body::-webkit-scrollbar-thumb:hover {
