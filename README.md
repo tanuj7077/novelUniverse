@@ -25,7 +25,8 @@ A platform where a user can browse and read various light-novels and keep track 
 ## Preview
 
 
-https://user-images.githubusercontent.com/68465509/151241831-a8b15aa0-5abb-4ae7-992c-572f9b305ea9.mp4
+
+https://user-images.githubusercontent.com/68465509/151243014-fea6523c-d24d-4d43-8ded-3633e87a529e.mp4
 
 
 
