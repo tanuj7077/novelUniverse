@@ -1,7 +1,7 @@
 # <a href="https://sleepy-jones-10bf5b.netlify.app/"><img width="25" alt="logo" src="https://firebasestorage.googleapis.com/v0/b/portfolio-598a6.appspot.com/o/NovelUniverse%2FnovelUpdatesLogo7.svg?alt=media&token=6509250f-b3a6-475d-96de-8a51903a92d9" />  Novel Universe  </a>
 
 A platform where a user can browse and read various light-novels and keep track of it.<br />
-<a href="https://sleepy-jones-10bf5b.netlify.app/">Live Website</a> ( Backend hosted on Heroku and the website may take about 15 seconds to load up )
+<b><a href="https://sleepy-jones-10bf5b.netlify.app/">Live Website</a></b> ( Backend hosted on Heroku and the website may take about 15 seconds to load up )
 
 ## Features
 <ul>
